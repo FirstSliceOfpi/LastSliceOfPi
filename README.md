@@ -1,6 +1,7 @@
-# LastSliceOfPi
+# Last Slice Of Pi
 Text adventure game
 
 ## Collaborators
-* Kelson smith
-* Gina villegas
+* Kelson Smith
+* Gina Villegas
+* Tyrone Moore
