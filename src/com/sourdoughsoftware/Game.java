@@ -10,6 +10,5 @@ public class Game {
         System.out.println("This is gonna be great.");
         String userEntry = prompt.prompt(">> ");
         System.out.println(userEntry);
-
     }
 }
