@@ -1,7 +1,5 @@
 package com.sourdoughsoftware;
 
-import com.sourdoughsoftware.InputParser;
-
 import java.util.Scanner;
 
 public class Game {
@@ -10,7 +8,6 @@ public class Game {
         WelcomeScreen.getWelcomeMessage();
         String userEntry = prompt.prompt(">> ");
         System.out.println(userEntry);
-
 
         System.out.println("This is gonna be great.");
         String userName = prompt.prompt("Enter your name adventurer\n>> ");
