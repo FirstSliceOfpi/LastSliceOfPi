@@ -16,5 +16,8 @@ public class Game {
         Player player1 = new Player(userName,"Room 0");
 
         System.out.println(player1.toString());
+
+        player1.addInventory("Knife");
+        System.out.println(player1.toString());
     }
 }

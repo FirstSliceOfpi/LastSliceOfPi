@@ -2,16 +2,19 @@ package com.sourdoughsoftware;
 
 //import com.sourdoughsoftware.InputParser;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
     private String name;
     private String location;
+    private ArrayList<String> inventory;
 
     // Constructors
     public Player(String name, String location) {
         this.name = name;
         this.location = location;
+        this.inventory = new ArrayList<>();
     }
 
     // Accessors
@@ -33,9 +36,18 @@ public class Player {
         this.location = location;
     }
 
+    public ArrayList<String> getInventory() {
+        return inventory;
+    }
+
+    public ArrayList<String> addInventory(String item) {
+        Player.this.inventory.add(item);
+        return inventory;
+    }
+
     @Override
     public String toString() {
-        return "Thank you " + getName() + ", I see that you are in " + getLocation() + ".";
+        return "Thank you " + getName() + ", I see that you are in " + getLocation() + ".\nYour current inventory is: " + getInventory().toString();
     }
 
 //    public static void main(String[] args) {
