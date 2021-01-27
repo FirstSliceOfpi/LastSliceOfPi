@@ -19,5 +19,7 @@ public class Game {
 
         player1.addInventory("Knife");
         System.out.println(player1.toString());
+
+        Story.readFile();
     }
 }
