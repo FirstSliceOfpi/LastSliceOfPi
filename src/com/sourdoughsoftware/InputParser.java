@@ -18,7 +18,7 @@ public class InputParser {
         return scanner.nextLine();
     }
 
-    public String promptAction(String userInput) {
+    public String[] promptAction(String userInput) {
         String[] response = {};
 
         while (true) {
@@ -28,17 +28,20 @@ public class InputParser {
             System.out.println(response[0] + response[1]);
             if (response.length != 2) {
                 System.out.println("Please enter one verb and one noun");
+                response[0] ="verb,noun";
             } else {
                 String verb= response[0];
                 String noun = response[1];
 
                 if (!isValidVerb(verb)) {
                     System.out.println("Invalid Verb");
+                    response[0] = "invalid verb";
                 }
 
 
                 else if (!isValidNoun(noun)) {
                     System.out.println("Invalid Noun");
+                    response[0] = "invalid noun";
                 }
 
                 else{
@@ -51,7 +54,7 @@ public class InputParser {
             }
         }
         System.out.println(Arrays.toString(response));
-        return Arrays.toString(response);
+        return response;
     }
 
     public boolean isValidVerb(String word) {

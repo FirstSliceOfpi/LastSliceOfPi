@@ -1,5 +1,6 @@
 package com.sourdoughsoftware;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -13,9 +14,11 @@ public class Game {
         System.out.println(player1.toString());
         player1.addInventory("Knife");
         System.out.println(player1.toString());
-        String userEntry = prompt.prompt(">> ");
-        System.out.println(userEntry);
-        System.out.println(userEntry.length());
+        String[] userEntry = prompt.promptAction(">> ");
+        System.out.println(Arrays.toString(userEntry));
+        System.out.println(userEntry.length);
+        System.out.println(userEntry[0] + "," + userEntry[1]);
+
 
 
 //        System.out.println(userEntry);
