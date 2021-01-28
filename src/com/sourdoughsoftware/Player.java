@@ -11,9 +11,9 @@ public class Player {
     private ArrayList<String> inventory;
 
     // Constructors
-    public Player(String name, String location) {
+    public Player(String name, Room location) {
         this.name = name;
-        this.location = location;
+        this.location = location.getName();
         this.inventory = new ArrayList<>();
     }
 
