@@ -14,7 +14,8 @@ public class Game {
         player1.addInventory("Knife");
         System.out.println(player1.toString());
         String userEntry = prompt.prompt(">> ");
-//        System.out.println(userEntry);
+        System.out.println(userEntry);
+        System.out.println(userEntry.length());
 
 
 //        System.out.println(userEntry);
