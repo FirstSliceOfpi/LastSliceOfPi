@@ -1,5 +1,12 @@
 package com.sourdoughsoftware;
 
 public enum Nouns {
-    HAIRBRUSH
+    // Items
+    HAIRBRUSH,
+
+    // Non-takeable things
+    ROOM,
+
+    // Directions
+    E
 }
