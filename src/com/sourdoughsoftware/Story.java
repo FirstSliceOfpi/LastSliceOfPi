@@ -4,10 +4,19 @@ package com.sourdoughsoftware;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+// These imports are .* because I have to make it work
+// I will learn which specific files are necessary
 
 public class Story {
 
-    /** This method will display the story from another text-based file
+//    I use this for practice and quick testing - remove before final code
+//    public static void main(String[] args) {
+//        readFileArray(9);
+//    }
+
+    /**
+     * This method will display game information from
+     * separate .txt files
      */
     // TODO: adapt this for XML
      static void readFile() {
@@ -24,4 +33,45 @@ public class Story {
             error.printStackTrace();
         }
     }
+
+    /**
+     * This method will display game information from
+     * separate .txt files.
+     *
+     * It will take an integer as a room[index].
+     *
+     * It can throw FileNotFoundException
+     * and ArrayIndexOutOfBoundsException
+     */
+    // TODO: adapt this for XML
+    static void readFileArray(int roomIndex) {
+
+        String[] roomFiles = {"cinderella.txt",
+                              "frogprince.txt",
+                              "hanselandgretel.txt",
+                              "rapunzel.txt",
+                              "redridinghood.txt",
+                              "rumplestiltskin.txt",
+                              "shoemaker.txt",
+                              "sleepingbeauty.txt",
+                              "snowwhite.txt"};
+
+        try{
+            File myFile = new File("LastSliceOfPi/resources/" + roomFiles[roomIndex]);
+            Scanner myReader = new Scanner(myFile);
+            while(myReader.hasNextLine()) {
+                String storyLine = myReader.nextLine();
+                System.out.println(storyLine);
+            }
+            myReader.close();
+        } catch (FileNotFoundException error) {
+            System.out.println("That file is NOT found.");
+            error.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException error) {
+            System.out.println("That room is NOT found");
+            error.printStackTrace();
+        }
+
+}
+
 }
