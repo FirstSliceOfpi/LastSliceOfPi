@@ -24,36 +24,33 @@ public class InputParser {
         while (true) {
             System.out.print(userInput);
             response = scanner.nextLine().split(" ");
-            System.out.println(Arrays.toString(response));
-            System.out.println(response[0] + response[1]);
             if (response.length != 2) {
                 System.out.println("Please enter one verb and one noun");
-                response[0] ="verb,noun";
-            } else {
+            }
+            else {
                 String verb= response[0];
                 String noun = response[1];
 
                 if (!isValidVerb(verb)) {
                     System.out.println("Invalid Verb");
-                    response[0] = "invalid verb";
                 }
-
 
                 else if (!isValidNoun(noun)) {
                     System.out.println("Invalid Noun");
-                    response[0] = "invalid noun";
                 }
+                // // TODO: 1/28/2021 Logic here to check for verb/noun combination
+
+//                {
+//                    System.out.println("Invalid verb and noun combination");
+//                }
 
                 else{
                     break;
                 }
-                // // TODO: 1/28/2021 Logic here to check for verb/noun combination
-//                else {
-//                    System.out.println("Invalid verb and noun combination");
-//                }
+
             }
         }
-        System.out.println(Arrays.toString(response));
+//        System.out.println(Arrays.toString(response));
         return response;
     }
 
