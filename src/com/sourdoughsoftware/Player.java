@@ -7,13 +7,13 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private String location;
+    private Room location;
     private ArrayList<String> inventory;
 
     // Constructors
     public Player(String name, Room location) {
         this.name = name;
-        this.location = location.getName();
+        this.location = location;
         this.inventory = new ArrayList<>();
     }
 
@@ -25,14 +25,14 @@ public class Player {
     }
 
     public String getLocation() {
-        return location;
+        return location.getName();
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Room location) {
         this.location = location;
     }
 
