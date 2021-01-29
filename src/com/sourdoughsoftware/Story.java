@@ -54,7 +54,8 @@ public class Story {
                               "rumplestiltskin.txt",
                               "shoemaker.txt",
                               "sleepingbeauty.txt",
-                              "snowwhite.txt"};
+                              "snowwhite.txt",
+                              "goldengoose.txt"};
 
         try{
             File myFile = new File("LastSliceOfPi/resources/" + roomFiles[roomIndex]);
