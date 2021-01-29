@@ -66,7 +66,7 @@ public class Game {
         room1.addExit("e", room2);
         InputParser prompt = new InputParser(new Scanner(System.in));
         WelcomeScreen.getWelcomeMessage();
-        Story.readFile();
+//        Story.readFile();
         System.out.println("This is gonna be great.");
         String userName = prompt.prompt("Enter your name adventurer\n>> ");
         Player player1 = new Player(userName, room1);
@@ -97,12 +97,12 @@ public class Game {
                 // turn this if into a for loop over the rooms checking against descriptions
                 // if (currentRoom.equals(room[i].getName()))
                 if (currentRoom.equals(room1.getName())) {
-                    player1.setLocation(room2.getName());
+                    player1.setLocation(room2);
                     System.out.println("Player in: " + player1.getLocation());
                 }
             }
         }
 
 //        System.out.println(userEntry);
-      
+    }
 }
