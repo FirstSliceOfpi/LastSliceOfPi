@@ -59,6 +59,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
+        Items items = new Items();
         Room room1 = new Room("Room 1");
         Room room2 = new Room("Room 2");
         room1.addExit("e", room2);
@@ -75,6 +76,7 @@ public class Game {
         System.out.println(Arrays.toString(userEntry));
         System.out.println(userEntry.length);
         System.out.println(userEntry[0] + "," + userEntry[1]);
+        System.out.println(items.rapunzelItems(userEntry[0], userEntry[1]));
 
 
         if (userEntry[0].equals("look")) {
