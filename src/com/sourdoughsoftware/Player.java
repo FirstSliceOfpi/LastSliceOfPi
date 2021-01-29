@@ -3,7 +3,6 @@ package com.sourdoughsoftware;
 //import com.sourdoughsoftware.InputParser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Player {
     private String name;
@@ -24,8 +23,8 @@ public class Player {
         return name;
     }
 
-    public String getLocation() {
-        return location.getName();
+    public Room getLocation() {
+        return location;
     }
 
     public void setName(String name) {
