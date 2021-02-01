@@ -26,7 +26,7 @@ public class PopulateRoomsFromXML {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("LastSliceOfPi/resources/test.xml"));
+        Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
         document.getDocumentElement().normalize();
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
