@@ -4,16 +4,54 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
+//    Maybe this has a board with a list of rooms
     private Player p1;
+    private InputParser parser;
+    private boolean gameOver = false;
 
     public Game() {
-//         setup
-//         welcome message
-//         prompts
+        parser = new InputParser(new Scanner(System.in));
+//         setup methods
+
 //        p1 = new Player("hope", setupRooms());
 //
 //         game loop
 
+
+    }
+
+    public void start() {
+        WelcomeScreen.getWelcomeMessage();
+//        get room description
+        String userName = parser.prompt("Enter your name adventurer\n>> ");
+        p1 = new Player(userName, setupRooms());
+
+
+        do {
+//            give player description of the scene
+//            take valid player commands or inform player of invalid choices
+//            change game state
+//            inform player of the changes
+//            loop
+
+            p1.getLocation().getDescription();
+            String[] userCommands = parser.promptAction(">> ");
+            System.out.println(Arrays.toString(userCommands));
+            if (userCommands[0].equals("go")) {
+            if (userCommands[1].equals("north")) {
+                if (p1.getLocation().hasExit("north")) {
+                    p1.setLocation(p1.getLocation().getRoomAt("north"));
+                    System.out.println("Player in: " + p1.getLocation().getName());
+                    System.out.println(p1.getLocation().getDescription());
+                }
+                else{
+                    System.out.println("no");
+                }
+            }
+        }
+
+
+        } while (!gameOver);
 
     }
 
@@ -70,60 +108,65 @@ public class Game {
         return room0;
     }
 
+
+
     public static void main(String[] args) {
 
-//        Room room1 = new Room("Room 1");
-//        System.out.println(room1.getDescription());
-//        Room room2 = new Room("Room 2");
-//        room1.addExit("e", room2);
-        InputParser prompt = new InputParser(new Scanner(System.in));
-        WelcomeScreen.getWelcomeMessage();
-//        Story.readFile();
-        System.out.println("This is gonna be great.");
-        String userName = prompt.prompt("Enter your name adventurer\n>> ");
-        Player player1 = new Player(userName, setupRooms());
-        System.out.println(player1.toString());
-        player1.addInventory("Knife");
-        System.out.println(player1.toString());
-        String[] userEntry = prompt.promptAction(">> ");
-        System.out.println(Arrays.toString(userEntry));
-        System.out.println(userEntry.length);
-        System.out.println(userEntry[0] + "," + userEntry[1]);
-//        System.out.println(items.rapunzelItems(userEntry[0], userEntry[1]));
+        Game mygame = new Game();
+        mygame.start();
 
-
-        System.out.println(player1.toString());
-        userEntry = prompt.promptAction(">> ");
-        System.out.println(Arrays.toString(userEntry));
-        System.out.println(userEntry.length);
-        System.out.println(userEntry[0] + "," + userEntry[1]);
-        if (userEntry[0].equals("go")) {
-            if (userEntry[1].equals("north")) {
-                if (player1.getLocation().hasExit("north")) {
-                    player1.setLocation(player1.getLocation().getRoomAt("north"));
-                    System.out.println("Player in: " + player1.getLocation().getName());
-                    System.out.println(player1.getLocation().getDescription());
-                }
-                else{
-                    System.out.println("no");
-                }
-            }
-        }
-//        // put into a movePlayer function that sets the players location and loads the new locations
-//        // description, then restarts the game loop
+////        Room room1 = new Room("Room 1");
+////        System.out.println(room1.getDescription());
+////        Room room2 = new Room("Room 2");
+////        room1.addExit("e", room2);
+//        InputParser prompt = new InputParser(new Scanner(System.in));
+//        WelcomeScreen.getWelcomeMessage();
+////        Story.readFile();
+//        System.out.println("This is gonna be great.");
+//        String userName = prompt.prompt("Enter your name adventurer\n>> ");
+//        Player player1 = new Player(userName, setupRooms());
+//        System.out.println(player1.toString());
+//        player1.addInventory("Knife");
+//        System.out.println(player1.toString());
+//        String[] userEntry = prompt.promptAction(">> ");
+//        System.out.println(Arrays.toString(userEntry));
+//        System.out.println(userEntry.length);
+//        System.out.println(userEntry[0] + "," + userEntry[1]);
+////        System.out.println(items.rapunzelItems(userEntry[0], userEntry[1]));
+//
+//
+//        System.out.println(player1.toString());
+//        userEntry = prompt.promptAction(">> ");
+//        System.out.println(Arrays.toString(userEntry));
+//        System.out.println(userEntry.length);
+//        System.out.println(userEntry[0] + "," + userEntry[1]);
 //        if (userEntry[0].equals("go")) {
-//            if (userEntry[1].equals("e")) {
-//                String currentRoom = player1.getLocation();
-//                // turn this if into a for loop over the rooms checking against descriptions
-//                // if (currentRoom.equals(room[i].getName()))
-//                if (currentRoom.equals(room1.getName())) {
-//                    player1.setLocation(room2);
-//                    System.out.println("Player in: " + player1.getLocation());
+//            if (userEntry[1].equals("north")) {
+//                if (player1.getLocation().hasExit("north")) {
+//                    player1.setLocation(player1.getLocation().getRoomAt("north"));
+//                    System.out.println("Player in: " + player1.getLocation().getName());
+//                    System.out.println(player1.getLocation().getDescription());
+//                }
+//                else{
+//                    System.out.println("no");
 //                }
 //            }
 //        }
-
-
+////        // put into a movePlayer function that sets the players location and loads the new locations
+////        // description, then restarts the game loop
+////        if (userEntry[0].equals("go")) {
+////            if (userEntry[1].equals("e")) {
+////                String currentRoom = player1.getLocation();
+////                // turn this if into a for loop over the rooms checking against descriptions
+////                // if (currentRoom.equals(room[i].getName()))
+////                if (currentRoom.equals(room1.getName())) {
+////                    player1.setLocation(room2);
+////                    System.out.println("Player in: " + player1.getLocation());
+////                }
+////            }
+////        }
+//
+//
     }
 
 // new comment for dev example

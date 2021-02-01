@@ -5,7 +5,7 @@ import org.w3c.dom.ls.LSOutput;
 /**
  * Welcome screen displays a welcome message to the player when the game begins.
  *
- * @author Tyrone Moore
+ * @author Tyrone Moore, Kelson Smith, and Gina Villegas
  * @version 1.0.0
  */
 public class WelcomeScreen {
