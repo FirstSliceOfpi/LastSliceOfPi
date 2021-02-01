@@ -17,7 +17,7 @@ public class Game {
 
     }
 
-     public static Room setupRooms() {
+    public static Room setupRooms() {
         Room room3 = new Room("rapunzel");
         Room room1 = new Room("snow white");
         Room room6 = new Room("hansel and gretel");
@@ -101,16 +101,16 @@ public class Game {
 //        System.out.println(items.roomItems(player1.getLocation(),userEntry[0], userEntry[1]));
 
 
-        if (userEntry[0].equals("look")) {
-            if (userEntry[1].equals("room")) {
-                Room currentRoom = player1.getLocation();
-                // turn this if into a for loop over the rooms checking against descriptions
-                // if (currentRoom.equals(room[i].getName()))
-                if (currentRoom.equals(room1.getName())) {
-                    System.out.println(room1.getDescription());
-                }
-            }
-        }
+//        if (userEntry[0].equals("look")) {
+//            if (userEntry[1].equals("room")) {
+//                Room currentRoom = player1.getLocation();
+//                // turn this if into a for loop over the rooms checking against descriptions
+//                // if (currentRoom.equals(room[i].getName()))
+//                if (currentRoom.equals(room1.getName())) {
+//                    System.out.println(room1.getDescription());
+//                }
+//            }
+//        }
         // put into a movePlayer function that sets the players location and loads the new locations
         // description, then restarts the game loop
         if (userEntry[0].equals("go")) {
@@ -119,8 +119,7 @@ public class Game {
                     player1.setLocation(player1.getLocation().getRoomAt("north"));
                     System.out.println("Player in: " + player1.getLocation().getName());
                     System.out.println(player1.getLocation().getDescription());
-                }
-                else{
+                } else {
                     System.out.println("no");
                 }
             }
@@ -139,15 +138,11 @@ public class Game {
 //            }
 //        }
 
-
-    }
-            }
-        }
         userEntry = prompt.promptAction(">> ");
         System.out.println(Arrays.toString(userEntry));
         System.out.println(userEntry.length);
         System.out.println(userEntry[0] + "," + userEntry[1]);
-        System.out.println(items.roomItems(player1.getLocation(),userEntry[0], userEntry[1]));
+        System.out.println(items.roomItems(player1.getLocation(), userEntry[0], userEntry[1]));
     }
 }
 

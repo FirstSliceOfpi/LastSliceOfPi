@@ -7,12 +7,19 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private Room location;
+    private Integer roomID;
     private ArrayList<String> inventory;
 
     // Constructors
     public Player(String name, Room location) {
         this.name = name;
         this.location = location;
+        this.inventory = new ArrayList<>();
+    }
+
+    public Player(String name, Integer roomID) {
+        this.name = name;
+        this.roomID = roomID;
         this.inventory = new ArrayList<>();
     }
 
