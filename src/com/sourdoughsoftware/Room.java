@@ -21,6 +21,7 @@ public class Room {
 
     public Room(String name) {
         this.name = name;
+        description = Story.readFileArray(0);  // TODO just for testing, should be changed
         this.id = id;
         exits = new HashMap<>();
         roomItems = new ArrayList<>();
