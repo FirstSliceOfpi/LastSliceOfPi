@@ -44,7 +44,9 @@ public class Story {
      * and ArrayIndexOutOfBoundsException
      */
     // TODO: adapt this for XML
-    static void readFileArray(int roomIndex) {
+    static String readFileArray(int roomIndex) {
+
+        String output = "";
 
         String[] roomFiles = {"cinderella.txt",
                               "frogprince.txt",
@@ -60,18 +62,20 @@ public class Story {
         try{
             File myFile = new File("LastSliceOfPi/resources/" + roomFiles[roomIndex]);
             Scanner myReader = new Scanner(myFile);
+            String storyLine = "";
             while(myReader.hasNextLine()) {
-                String storyLine = myReader.nextLine();
-                System.out.println(storyLine);
+                storyLine += myReader.nextLine() + "\n";
             }
             myReader.close();
+            output = storyLine;
         } catch (FileNotFoundException error) {
-            System.out.println("That file is NOT found.");
+            output = "That file is NOT found.";
             error.printStackTrace();
         } catch (ArrayIndexOutOfBoundsException error) {
-            System.out.println("That room is NOT found");
+            output = "That room is NOT found";
             error.printStackTrace();
         }
+        return output;
 
 }
 

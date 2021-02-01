@@ -13,12 +13,13 @@ import java.util.Map;
  */
 public class Room {
     private final String name;
-    private final String description = "Room 1";
+    private final String description;
     private Map<String, Room> exits;
     private List<String> roomItems;
 
     public Room(String name) {
         this.name = name;
+        description = Story.readFileArray(0);  // TODO just for testing, should be changed
         exits = new HashMap<>();
         roomItems = new ArrayList<>();
     }
