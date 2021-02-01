@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Rooms>
+    <room id="3">
+        <roomName>rapunzel</roomName>
+    </room>
+    <room id="1">
+        <roomName>snow white</roomName>
+        <exitWest>rapunzel</exitWest>
+    </room>
+    <room id="2">
+        <roomName>frog prince</roomName>
+    </room>
+</Rooms>

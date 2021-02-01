@@ -12,14 +12,25 @@ import java.util.Map;
  * @version 1.0.0
  */
 public class Room {
-    private final String name;
-    private final String description = "Room 1";
+    private Integer id;
+    private String name;
+    private String description = "Room 1";
     private Map<String, Room> exits;
+    private Map<String, Integer> exitsById;
     private List<String> roomItems;
 
     public Room(String name) {
         this.name = name;
+        this.id = id;
         exits = new HashMap<>();
+        roomItems = new ArrayList<>();
+    }
+
+    public Room() {
+        this.name = name;
+        this.id = id;
+        exits = new HashMap<>();
+        exitsById = new HashMap<>();
         roomItems = new ArrayList<>();
     }
 
@@ -30,6 +41,22 @@ public class Room {
         else {
             throw new IllegalArgumentException("dir must be valid direction and room must not be null");
         }
+    }
+
+    public void addExitbyID(String dir, Integer roomID){
+            exitsById.put(dir.toLowerCase(), roomID);
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -52,7 +79,11 @@ public class Room {
         roomItems.add(item);
     }
 
-//    public void removeFromRoom(String item) {
+    @Override
+    public String toString() {
+        return "Room [id=" + getId() + ", roomName=" + getName() + ", description=" + getDescription() + ", exits=" + exits.toString() + ", exitsByID=" + exitsById.toString();
+    }
+    //    public void removeFromRoom(String item) {
 //        roomItems.
 //    }
 }
