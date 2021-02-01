@@ -108,8 +108,6 @@ public class Game {
         return room0;
     }
 
-
-
     public static void main(String[] args) {
 
         Game mygame = new Game();
@@ -141,14 +139,13 @@ public class Game {
 //        System.out.println(userEntry.length);
 //        System.out.println(userEntry[0] + "," + userEntry[1]);
 //        if (userEntry[0].equals("go")) {
-//            if (userEntry[1].equals("north")) {
-//                if (player1.getLocation().hasExit("north")) {
-//                    player1.setLocation(player1.getLocation().getRoomAt("north"));
-//                    System.out.println("Player in: " + player1.getLocation().getName());
-//                    System.out.println(player1.getLocation().getDescription());
-//                }
-//                else{
-//                    System.out.println("no");
+//            if (userEntry[1].equals("e")) {
+//                String currentRoom = player1.getLocation();
+//                // turn this if into a for loop over the rooms checking against descriptions
+//                // if (currentRoom.equals(room[i].getName()))
+//                if (currentRoom.equals(room1.getName())) {
+//                    player1.setLocation(room2);
+//                    System.out.println("Player in: " + player1.getLocation());
 //                }
 //            }
 //        }

@@ -1,7 +1,10 @@
 package com.sourdoughsoftware;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum Nouns {
     // Story specific items
@@ -15,14 +18,25 @@ public enum Nouns {
     TEA, LOZENGES, TISSUE, NIGHTSTAND, CAPE, SLEEPING_CAP,BASKET, FOOD, PACKAGES,
 
     // Non-takeable things
-    ROOM,
+    ROOM;
 
     // Directions
-    N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST;
-
+    enum DIRECTIONS{N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST};
 
     public static String[] getRapunzel() {
         return new String[]{HAIR.name(), HAIRBRUSH.name(), SILK.name(), BRAID.name()};
     }
+    public static String[] getSnow() {
+        return new String[]{APPLE.name()};
+    }
+    public static String[] getGeneric() {
+        List<String> result = new ArrayList<>();
+        EnumSet.allOf(Nouns.class).forEach(val -> result.add(val.name()));
+        String[] resultArray = new String[Nouns.values().length];
+        resultArray = result.toArray(resultArray);
+        return resultArray;
+
+    }
+
 
 }
