@@ -24,8 +24,8 @@ public class Player {
         return name;
     }
 
-    public String getLocation() {
-        return location.getName();
+    public Room getLocation() {
+        return location;
     }
 
     public void setName(String name) {
