@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Creates a Room to be used to create the game world. Rooms have exits and can also contain items.
- * @author Tyrone Moore
+ * @author Tyrone Moore, Kelson Smith, and Gina Villegas
  * @version 1.0.0
  */
 public class Room {
