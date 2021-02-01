@@ -1,8 +1,11 @@
 package com.sourdoughsoftware;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Nouns {
     // Story specific items
-    HAIRBRUSH, SILK_SKEIN, BRAID, HAIR,
+    HAIRBRUSH, SILK, BRAID, HAIR,
     APPLE, MIRROR, TOOLS,
     GINGERBREAD, OVEN, CAGE, CHEST, TREASURE,
     DOORS, BAG, INSECTS, CRYSTAL_SPHERE,
@@ -15,5 +18,11 @@ public enum Nouns {
     ROOM,
 
     // Directions
-    N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST
+    N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST;
+
+
+    public static String[] getRapunzel() {
+        return new String[]{HAIR.name(), HAIRBRUSH.name(), SILK.name(), BRAID.name()};
+    }
+
 }

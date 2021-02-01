@@ -3,7 +3,6 @@ package com.sourdoughsoftware;
 //import com.sourdoughsoftware.InputParser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Player {
     private String name;

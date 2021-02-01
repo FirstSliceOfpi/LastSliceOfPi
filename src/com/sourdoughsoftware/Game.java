@@ -17,7 +17,7 @@ public class Game {
 
     }
 
-    public static Room setupRooms() {
+     public static Room setupRooms() {
         Room room3 = new Room("rapunzel");
         Room room1 = new Room("snow white");
         Room room6 = new Room("hansel and gretel");
@@ -59,7 +59,7 @@ public class Game {
         room7.addExit("north", room9);
         room7.addExit("east", room8);
         room7.addExit("south", room4);
-        room8.addExit("waet", room7);
+        room8.addExit("west", room7);
         room8.addExit("south", room5);
         room8.addExit("east", room9);
         room7.addExit("north", room7);
@@ -68,8 +68,6 @@ public class Game {
         roomDot.addExit("north", room3);
 
         return room0;
-
-
     }
 
     public static void main(String[] args) {
@@ -91,6 +89,7 @@ public class Game {
         System.out.println(Arrays.toString(userEntry));
         System.out.println(userEntry.length);
         System.out.println(userEntry[0] + "," + userEntry[1]);
+//        System.out.println(items.rapunzelItems(userEntry[0], userEntry[1]));
 
 
         System.out.println(player1.toString());
