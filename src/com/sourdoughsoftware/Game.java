@@ -45,29 +45,30 @@ public class Game {
             String[] userCommands = parser.promptAction(">> ");
             System.out.println(Arrays.toString(userCommands));
             if (userCommands[0].equals("go")) {
-                if (userCommands[1].equals("west")) {
-                    for (Room room : rooms) {
-                        if (room.getId().equals(p1.getLocation())) {
-                            Integer exit = room.getExitByID("west");
-                            if (exit == null) {
-                                System.out.println("You cannot go that way");
-                                break;
-                            }
-                            System.out.println(room.getDescription());
-                            p1.setLocationId(exit);
-                            System.out.println("Player in: " + p1.getLocation());
-                            break;
-                        }
-                    }
-//                if (p1.getLocation().hasExit("north")) {
-//                    p1.setLocation(p1.getLocation().getRoomAt("north"));
-//                    System.out.println("Player in: " + p1.getLocation().getName());
-//                    System.out.println(p1.getLocation().getDescription());
-//                }
-//                else{
-//                        System.out.println("no");
+                RoomChange.changeRoom(p1.getLocation(), userCommands[1], rooms, p1);
+//                if (userCommands[1].equals("west")) {
+//                    for (Room room : rooms) {
+//                        if (room.getId().equals(p1.getLocation())) {
+//                            Integer exit = room.getExitByID("west");
+//                            if (exit == null) {
+//                                System.out.println("You cannot go that way");
+//                                break;
+//                            }
+//                            System.out.println(room.getDescription());
+//                            p1.setLocationId(exit);
+//                            System.out.println("Player in: " + p1.getLocation());
+//                            break;
+//                        }
 //                    }
-                }
+////                if (p1.getLocation().hasExit("north")) {
+////                    p1.setLocation(p1.getLocation().getRoomAt("north"));
+////                    System.out.println("Player in: " + p1.getLocation().getName());
+////                    System.out.println(p1.getLocation().getDescription());
+////                }
+////                else{
+////                        System.out.println("no");
+////                    }
+//                }
             }
             System.out.println("Player in " + p1.getLocation());
             for (Room room : rooms) {
