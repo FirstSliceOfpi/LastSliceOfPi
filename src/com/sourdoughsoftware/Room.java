@@ -19,19 +19,8 @@ public class Room {
     private Map<String, Integer> exitsById;
     private List<String> roomItems;
 
-//    public Room(String name) {
-//        this.name = name;
-//        description = Story.readFileArray(0);  // TODO just for testing, should be changed
-//        this.id = id;
-//        exits = new HashMap<>();
-//        roomItems = new ArrayList<>();
-//    }
-
     public Room() {
-//        this.name = name;
-//        this.id = id;
-//        this.description = description;
-//        exits = new HashMap<>();
+        exits = new HashMap<>();
         exitsById = new HashMap<>();
         roomItems = new ArrayList<>();
     }
