@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Rooms>
+    <room id="0">
+        <roomName>cinderella</roomName>
+        <roomDisplay id="0display">
+            This room smells clean and damp, like it’s just been cleaned.
+            Everything is in its place and very tidy.
+            There is a large, comfortable chair in the corner…maybe take a rest?
+            You wander through the room and see a fancy invitation opened on the table.
+            Near the invitation are two large boxes with beautiful ball gowns inside.
+            Tucked under the chair, you notice what appears to be a glass slipper?
+        </roomDisplay>
+    </room>
+    <room id="1">
+        <roomName>frog prince</roomName>
+        <roomDisplay id="1display">
+            You feel a perfect breeze and find yourself in a bright, airy room with open double doors.
+            It’s an intriguing room with many curiosities and trinkets.
+            You hear a rustling and turn to see a bag of live insects near a chair.
+            On the bookshelf is a sparkling crystal sphere.
+            You hear birds chirping outside, leaves softly rustling and …was that a splash?
+        </roomDisplay>
+        <exitWest>rapunzel</exitWest>
+    </room>
+    <room id="2">
+        <roomName>hansel and gretel</roomName>
+        <roomDisplay id="2display">
+            The delicious smell of fresh, warm gingerbread lures you into the room.
+            There is a hot oven and you can feel the heat,
+            but that gingerbread must be somewhere here.
+            You see a small structure in the corner of the room.
+            Is it a cage?  As you back away, you trip over a heavy,
+            ornate chest on the floor of the room. Could it be treasure?
+        </roomDisplay>
+    </room>
+    <room id="3">
+        <roomName>rapunzel</roomName>
+        <roomDisplay id="3display">
+            You hear beautiful singing in the distance. Enchanted, you follow the sound.
+            You find yourself in a strange room with only a window.
+            In the corner, there is a glint from a golden hairbrush.
+            You see just a portion of a long, golden braid.
+        </roomDisplay>
+    </room>
+    <room id="4">
+        <roomName>red riding hood</roomName>
+        <roomDisplay id="4display">
+            You see the bed in this room, piled high with pillows and blankets.
+            Tea, lozenges and tissue are piled high on the nightstand.
+            On the floor is a small red mound of fabric….a hooded cape.
+            On the table near the door, a sleeping cap in a flowery pattern.
+            On the ground near the table, you see a handled basket, filled with food and packages.
+        </roomDisplay>
+    </room>
+    <room id="5">
+        <roomName>rumplestiltskin</roomName>
+        <roomDisplay id="5display">
+            You can smell the fresh straw from outside the room.
+            It is a large room with immense locked doors.
+            A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
+            There is a HUGE pile of hay completely surrounding the spindle.
+            Under a tarp in the corner, there seems to be stack of gold bars.
+            A heavy book lays on the floor near the spindle and stool….in gold letters “Best Baby Names”…
+        </roomDisplay>
+    </room>
+    <room id="6">
+        <roomName>shoemaker</roomName>
+        <roomDisplay id="6display">
+            This room is crowded with items and smells of leather.
+            There are rows and rows of shoes lined up on the shelves along the wall.
+            There are tools on several work tables placed around the room.
+            You hear some whispering from the closet.
+            There is a pile of folded clothing on a table near a workbench.
+            The clothing is very small sizes, for a child or…?
+        </roomDisplay>
+    </room>
+    <room id="7">
+        <roomName>sleeping beauty</roomName>
+        <roomDisplay id="7display">
+            This room is cozy and dim.
+            There is an odd silence made eerier by the low light in the room.
+            There is a large bed that looks so comfortable, and you feel so tired.
+            Those fluffy pillows look so inviting to your sleepy eyes.
+            You are distracted by a lump in the corner – under a pile of clothing is an old spindle,
+            it’s needle sharp and shining.
+            As you sit, you find a small, wooden box…a first aid kit?
+        </roomDisplay>
+    </room>
+    <room id="8">
+        <roomName>snow white</roomName>
+        <roomDisplay id="8display">
+            As your eyes adjust to the darkness, you find yourself in tall room with stone walls.
+            As your stomach growls, you see a shining red apple on the table, tempting your hunger.
+            An ornate, gold mirror hangs on the wall.
+            When you pass the mirror, you notice no reflection of your image.
+            Isn’t that odd? There are several very small tools strewn across the room.
+        </roomDisplay>
+    </room>
+    <room id="9">
+        <roomName>golden goose</roomName>
+        <roomDisplay id="9display">
+            This room is furnished sparsely, with contents that look worn or handed down.
+            There is an ax propped against the wall near the door.
+            It smells of freshly chopped wood and a fowl?
+            As your eyes adjust to the light of the room,
+            you spot a large nest in the corner near the fireplace.
+            There is not much to see in this sparse room,
+            except is that a golden feather….?
+        </roomDisplay>
+    </room>
+</Rooms>

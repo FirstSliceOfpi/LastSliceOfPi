@@ -3,17 +3,23 @@ package com.sourdoughsoftware;
 //import com.sourdoughsoftware.InputParser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Player {
     private String name;
     private Room location;
+    private Integer roomID;
     private ArrayList<String> inventory;
 
     // Constructors
     public Player(String name, Room location) {
         this.name = name;
         this.location = location;
+        this.inventory = new ArrayList<>();
+    }
+
+    public Player(String name, Integer roomID) {
+        this.name = name;
+        this.roomID = roomID;
         this.inventory = new ArrayList<>();
     }
 
@@ -24,8 +30,8 @@ public class Player {
         return name;
     }
 
-    public String getLocation() {
-        return location.getName();
+    public Room getLocation() {
+        return location;
     }
 
     public void setName(String name) {

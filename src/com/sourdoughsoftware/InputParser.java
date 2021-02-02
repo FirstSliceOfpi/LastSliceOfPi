@@ -24,18 +24,13 @@ public class InputParser {
         while (true) {
             System.out.print(userInput);
             response = scanner.nextLine().split(" ");
-            if (response.length != 2) {
-                System.out.println("Please enter one verb and one noun");
-            }
-            else {
-                String verb= response[0];
+            if (response.length == 2) {
+                String verb = response[0];
                 String noun = response[1];
 
                 if (!isValidVerb(verb)) {
                     System.out.println("Invalid Verb");
-                }
-
-                else if (!isValidNoun(noun)) {
+                } else if (!isValidNoun(noun) && !isValidDirection(noun)) {
                     System.out.println("Invalid Noun");
                 }
                 // // TODO: 1/28/2021 Logic here to check for verb/noun combination
@@ -43,11 +38,11 @@ public class InputParser {
 //                {
 //                    System.out.println("Invalid verb and noun combination");
 //                }
-
-                else{
+                else {
                     break;
                 }
-
+            } else {
+                System.out.println("Please enter one verb and one noun");
             }
         }
 //        System.out.println(Arrays.toString(response));
@@ -66,6 +61,16 @@ public class InputParser {
 
     public boolean isValidNoun(String word) {
         for (Nouns noun : Nouns.values()) {
+//            System.out.println(verb);
+            if (word.equalsIgnoreCase(String.valueOf(noun))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isValidDirection(String word) {
+        for (Nouns.DIRECTIONS noun : Nouns.DIRECTIONS.values()) {
 //            System.out.println(verb);
             if (word.equalsIgnoreCase(String.valueOf(noun))) {
                 return true;
