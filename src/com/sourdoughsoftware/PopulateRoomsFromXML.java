@@ -29,8 +29,8 @@ public class PopulateRoomsFromXML {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-//        Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
-        Document document = builder.parse(new File("/Users/tyronemoore/cs5044-workspace/LastSliceOfPi/resources/Rooms.xml"));
+        Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
+//        Document document = builder.parse(new File("/Users/tyronemoore/cs5044-workspace/LastSliceOfPi/resources/Rooms.xml"));
         document.getDocumentElement().normalize();
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -66,22 +66,22 @@ public class PopulateRoomsFromXML {
             room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitEast").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitNorth")) {
-            room.addExitbyID("west", Integer.parseInt(individualRoom.getElementsByTagName("exitNorth").item(0).getTextContent()));
+            room.addExitbyID("north", Integer.parseInt(individualRoom.getElementsByTagName("exitNorth").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitSouth")) {
-            room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitSouth").item(0).getTextContent()));
+            room.addExitbyID("south", Integer.parseInt(individualRoom.getElementsByTagName("exitSouth").item(0).getTextContent()));
         }
-        if (checkElementLength(individualRoom, "exitNorthWest")) {
-            room.addExitbyID("west", Integer.parseInt(individualRoom.getElementsByTagName("exitNorthwest").item(0).getTextContent()));
+        if (checkElementLength(individualRoom, "exitNorthwest")) {
+            room.addExitbyID("northwest", Integer.parseInt(individualRoom.getElementsByTagName("exitNorthwest").item(0).getTextContent()));
         }
-        if (checkElementLength(individualRoom, "exitNorthEast")) {
-            room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitNortheast").item(0).getTextContent()));
+        if (checkElementLength(individualRoom, "exitNortheast")) {
+            room.addExitbyID("northeast", Integer.parseInt(individualRoom.getElementsByTagName("exitNortheast").item(0).getTextContent()));
         }
-        if (checkElementLength(individualRoom, "exitSouthWest")) {
-            room.addExitbyID("west", Integer.parseInt(individualRoom.getElementsByTagName("exitSouthwest").item(0).getTextContent()));
+        if (checkElementLength(individualRoom, "exitSouthwest")) {
+            room.addExitbyID("southwest", Integer.parseInt(individualRoom.getElementsByTagName("exitSouthwest").item(0).getTextContent()));
         }
-        if (checkElementLength(individualRoom, "exitSouthEast")) {
-            room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitSoutheast").item(0).getTextContent()));
+        if (checkElementLength(individualRoom, "exitSoutheast")) {
+            room.addExitbyID("southeast", Integer.parseInt(individualRoom.getElementsByTagName("exitSoutheast").item(0).getTextContent()));
         }
     }
 
