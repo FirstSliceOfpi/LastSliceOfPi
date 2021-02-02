@@ -20,7 +20,7 @@
             On the bookshelf is a sparkling crystal sphere.
             You hear birds chirping outside, leaves softly rustling and …was that a splash?
         </roomDisplay>
-        <exitWest>rapunzel</exitWest>
+        <exitWest>3</exitWest>
     </room>
     <room id="2">
         <roomName>hansel and gretel</roomName>
