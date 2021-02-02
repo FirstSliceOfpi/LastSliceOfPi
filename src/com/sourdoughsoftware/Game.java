@@ -40,8 +40,8 @@ public class Game {
 //            change game state
 //            inform player of the changes
 //            loop
-
-//            p1.getLocation()
+            String roomDescription = getRoomDescription(p1.getLocation(), rooms);
+            System.out.println("You are in " + roomDescription);
             String[] userCommands = parser.promptAction(">> ");
             System.out.println(Arrays.toString(userCommands));
             if (userCommands[0].equals("go")) {
@@ -49,10 +49,14 @@ public class Game {
                     for (Room room : rooms) {
                         if (room.getId().equals(p1.getLocation())) {
                             Integer exit = room.getExitByID("west");
+                            if (exit == null) {
+                                System.out.println("You cannot go that way");
+                                break;
+                            }
                             System.out.println(room.getDescription());
                             p1.setLocationId(exit);
                             System.out.println("Player in: " + p1.getLocation());
-
+                            break;
                         }
                     }
 //                if (p1.getLocation().hasExit("north")) {
@@ -67,17 +71,32 @@ public class Game {
             }
             System.out.println("Player in " + p1.getLocation());
             for (Room room : rooms) {
-                if (room.getId().equals(p1.getLocation())){
+                if (room.getId().equals(p1.getLocation())) {
                     System.out.println("room id=" + room.getId() + "p1 loc=" + p1.getLocation());
                     String curRoomDesc = room.getDescription();
                     System.out.println(curRoomDesc);
+                    break;
                 }
             }
 
 
-
         } while (!gameOver);
 
+    }
+
+    private String getRoomDescription(Integer playerLocation, List<Room> rooms) {
+        String result = "";
+        for (Room room : rooms) {
+            if (playerLocation.equals(room.getId())) {
+                if (room.getDescription() == null){
+                    room.setDescription("Room " + room.getId() + " is missing a description!");
+                    result = room.getDescription();
+                }
+                else{
+                    result = room.getDescription();
+                }
+            }
+        } return result;
     }
 
 //    public static Room setupRooms() {
