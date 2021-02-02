@@ -30,9 +30,11 @@ public class Player {
         return name;
     }
 
-    public Room getLocation() {
-        return location;
-    }
+//    public Room getLocation() {
+//        return location;
+//    }
+
+    public Integer getLocation() {return roomID;}
 
     public void setName(String name) {
         this.name = name;
@@ -40,6 +42,10 @@ public class Player {
 
     public void setLocation(Room location) {
         this.location = location;
+    }
+
+    public void setLocationId(Integer roomID) {
+        this.roomID = roomID;
     }
 
     public ArrayList<String> getInventory() {

@@ -35,6 +35,8 @@
     </room>
     <room id="3">
         <roomName>rapunzel</roomName>
+        <exitEast>1</exitEast>
+        <description>rapunzel's room</description>
         <roomDisplay id="3display">
             You hear beautiful singing in the distance. Enchanted, you follow the sound.
             You find yourself in a strange room with only a window.
@@ -88,6 +90,8 @@
     </room>
     <room id="8">
         <roomName>snow white</roomName>
+        <exitWest>3</exitWest>
+        <description>snow's room</description>
         <roomDisplay id="8display">
             As your eyes adjust to the darkness, you find yourself in tall room with stone walls.
             As your stomach growls, you see a shining red apple on the table, tempting your hunger.
@@ -95,6 +99,14 @@
             When you pass the mirror, you notice no reflection of your image.
             Isn’t that odd? There are several very small tools strewn across the room.
         </roomDisplay>
+    </room>
+    <room id="2">
+        <roomName>frog prince</roomName>
+        <description>froggie's room</description>
+    </room>
+    <room id="4">
+        <roomName>bobs</roomName>
+        <description>bob's room</description>
     </room>
     <room id="9">
         <roomName>golden goose</roomName>

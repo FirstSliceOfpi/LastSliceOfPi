@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PopulateRoomsFromXML {
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-        List<Room> rooms = parseRoomXML();
-        System.out.println(rooms.toString());
-    }
+//    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
+//        List<Room> rooms = parseRoomXML();
+//        System.out.println(rooms.toString());
+//    }
 
-    private static List<Room> parseRoomXML() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Room> parseRoomXML() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
         Room room = null;
 
@@ -37,8 +37,18 @@ public class PopulateRoomsFromXML {
                 room = new Room();
                 room.setId(Integer.parseInt(individualRoom.getAttribute("id")));
                 room.setName(individualRoom.getElementsByTagName("roomName").item(0).getTextContent());
+                System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
+                room.setDescription(individualRoom.getElementsByTagName("description").item(0).getTextContent());
+                if (individualRoom.getElementsByTagName("items").getLength() != 0) {
+                    System.out.println("Room items" + individualRoom.getElementsByTagName("items").item(0).getTextContent());
+                    String item = individualRoom.getElementsByTagName("items").item(0).getTextContent();
+                    room.addToRoom(item);
+                }
                 if (individualRoom.getElementsByTagName("exitWest").getLength() != 0) {
-                    room.addExitbyID("west", room.getId());
+                    room.addExitbyID("west", Integer.parseInt(individualRoom.getElementsByTagName("exitWest").item(0).getTextContent()));
+                }
+                if (individualRoom.getElementsByTagName("exitEast").getLength() != 0) {
+                    room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitEast").item(0).getTextContent()));
                 }
                 //Add Room to list
                 rooms.add(room);

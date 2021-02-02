@@ -14,23 +14,24 @@ import java.util.Map;
 public class Room {
     private Integer id;
     private String name;
-    private String description = "Room 1";
+    private String description;
     private Map<String, Room> exits;
     private Map<String, Integer> exitsById;
     private List<String> roomItems;
 
-    public Room(String name) {
-        this.name = name;
-        description = Story.readFileArray(0);  // TODO just for testing, should be changed
-        this.id = id;
-        exits = new HashMap<>();
-        roomItems = new ArrayList<>();
-    }
+//    public Room(String name) {
+//        this.name = name;
+//        description = Story.readFileArray(0);  // TODO just for testing, should be changed
+//        this.id = id;
+//        exits = new HashMap<>();
+//        roomItems = new ArrayList<>();
+//    }
 
     public Room() {
-        this.name = name;
-        this.id = id;
-        exits = new HashMap<>();
+//        this.name = name;
+//        this.id = id;
+//        this.description = description;
+//        exits = new HashMap<>();
         exitsById = new HashMap<>();
         roomItems = new ArrayList<>();
     }
@@ -52,6 +53,10 @@ public class Room {
         this.id = id;
     }
 
+    public List<String> getRoomItems() {
+        return roomItems;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -68,8 +73,16 @@ public class Room {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Room getRoomAt(String dir) {
         return exits.get(dir);          // Returns null if dir doesn't exist
+    }
+
+    public Integer getExitByID(String dir) {
+        return exitsById.get(dir);
     }
 
     public boolean hasExit(String dir) {
@@ -82,7 +95,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room [id=" + getId() + ", roomName=" + getName() + ", description=" + getDescription() + ", exits=" + exits.toString() + ", exitsByID=" + exitsById.toString();
+        return "Room [id=" + getId() + ", roomName=" + getName() + ", description=" + getDescription() + ", exitsByID=" + exitsById.toString() + ", roomItems=" + getRoomItems().toString();
     }
     //    public void removeFromRoom(String item) {
 //        roomItems.

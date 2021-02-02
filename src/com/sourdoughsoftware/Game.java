@@ -1,10 +1,15 @@
 package com.sourdoughsoftware;
 
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-//    Maybe this has a board with a list of rooms
+    //    Maybe this has a board with a list of rooms
     private Player p1;
     private InputParser parser;
     private boolean gameOver = false;
@@ -20,12 +25,14 @@ public class Game {
 
     }
 
-    public void start() {
+    public void start() throws IOException, SAXException, ParserConfigurationException {
         WelcomeScreen.getWelcomeMessage();
+        List<Room> rooms = PopulateRoomsFromXML.parseRoomXML();
+        System.out.println(rooms.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
-        p1 = new Player(userName, setupRooms());
-
+//        p1 = new Player(userName, setupRooms());
+        p1 = new Player(userName, 1);
 
         do {
 //            give player description of the scene
@@ -34,81 +41,99 @@ public class Game {
 //            inform player of the changes
 //            loop
 
-            p1.getLocation().getDescription();
+//            p1.getLocation()
             String[] userCommands = parser.promptAction(">> ");
             System.out.println(Arrays.toString(userCommands));
             if (userCommands[0].equals("go")) {
-            if (userCommands[1].equals("north")) {
-                if (p1.getLocation().hasExit("north")) {
-                    p1.setLocation(p1.getLocation().getRoomAt("north"));
-                    System.out.println("Player in: " + p1.getLocation().getName());
-                    System.out.println(p1.getLocation().getDescription());
-                }
-                else{
-                    System.out.println("no");
+                if (userCommands[1].equals("west")) {
+                    for (Room room : rooms) {
+                        if (room.getId().equals(p1.getLocation())) {
+                            Integer exit = room.getExitByID("west");
+                            System.out.println(room.getDescription());
+                            p1.setLocationId(exit);
+                            System.out.println("Player in: " + p1.getLocation());
+
+                        }
+                    }
+//                if (p1.getLocation().hasExit("north")) {
+//                    p1.setLocation(p1.getLocation().getRoomAt("north"));
+//                    System.out.println("Player in: " + p1.getLocation().getName());
+//                    System.out.println(p1.getLocation().getDescription());
+//                }
+//                else{
+//                        System.out.println("no");
+//                    }
                 }
             }
-        }
+            System.out.println("Player in " + p1.getLocation());
+            for (Room room : rooms) {
+                if (room.getId().equals(p1.getLocation())){
+                    System.out.println("room id=" + room.getId() + "p1 loc=" + p1.getLocation());
+                    String curRoomDesc = room.getDescription();
+                    System.out.println(curRoomDesc);
+                }
+            }
+
 
 
         } while (!gameOver);
 
     }
 
-     public static Room setupRooms() {
-        Room room3 = new Room("rapunzel");
-        Room room1 = new Room("snow white");
-        Room room6 = new Room("hansel and gretel");
-        Room room2 = new Room("frog prince");
-        Room room9 = new Room("sleeping beauty");
-        Room room5 = new Room("cinderella");
-        Room room4 = new Room("rumplestiltskin");
-        Room room7 = new Room("little red riding hood");
-        Room room8 = new Room("the shoemaker");
-        Room room0 = new Room("start");
-        Room roomDot = new Room(".");
+//    public static Room setupRooms() {
+//        Room room3 = new Room("rapunzel");
+//        Room room1 = new Room("snow white");
+//        Room room6 = new Room("hansel and gretel");
+//        Room room2 = new Room("frog prince");
+//        Room room9 = new Room("sleeping beauty");
+//        Room room5 = new Room("cinderella");
+//        Room room4 = new Room("rumplestiltskin");
+//        Room room7 = new Room("little red riding hood");
+//        Room room8 = new Room("the shoemaker");
+//        Room room0 = new Room("start");
+//        Room roomDot = new Room(".");
+//
+//        room0.addExit("northwest", room1);
+//        room0.addExit("north", room2);
+//        room0.addExit("northeast", room3);
+//        room1.addExit("west", room3);
+//        room1.addExit("north", room4);
+//        room1.addExit("east", room2);
+//        room1.addExit("southeast", room0);
+//        room2.addExit("north", room5);
+//        room2.addExit("south", room0);
+//        room2.addExit("east", room3);
+//        room2.addExit("west", room1);
+//        room3.addExit("north", room6);
+//        room3.addExit("south", roomDot);
+//        room3.addExit("east", room1);
+//        room3.addExit("west", room2);
+//        room3.addExit("southwest", room0);
+//        room4.addExit("north", room7);
+//        room4.addExit("south", room1);
+//        room4.addExit("east", room5);
+//        room5.addExit("north", room8);
+//        room5.addExit("south", room2);
+//        room5.addExit("east", room6);
+//        room5.addExit("west", room4);
+//        room6.addExit("north", room9);
+//        room6.addExit("south", room3);
+//        room6.addExit("west", room5);
+//        room7.addExit("north", room9);
+//        room7.addExit("east", room8);
+//        room7.addExit("south", room4);
+//        room8.addExit("west", room7);
+//        room8.addExit("south", room5);
+//        room8.addExit("east", room9);
+//        room7.addExit("north", room7);
+//        room7.addExit("west", room8);
+//        room7.addExit("south", room6);
+//        roomDot.addExit("north", room3);
+//
+//        return room0;
+//    }
 
-        room0.addExit("northwest", room1);
-        room0.addExit("north", room2);
-        room0.addExit("northeast", room3);
-        room1.addExit("west", room3);
-        room1.addExit("north", room4);
-        room1.addExit("east", room2);
-        room1.addExit("southeast", room0);
-        room2.addExit("north", room5);
-        room2.addExit("south", room0);
-        room2.addExit("east", room3);
-        room2.addExit("west", room1);
-        room3.addExit("north", room6);
-        room3.addExit("south", roomDot);
-        room3.addExit("east", room1);
-        room3.addExit("west", room2);
-        room3.addExit("southwest", room0);
-        room4.addExit("north", room7);
-        room4.addExit("south", room1);
-        room4.addExit("east", room5);
-        room5.addExit("north", room8);
-        room5.addExit("south", room2);
-        room5.addExit("east", room6);
-        room5.addExit("west", room4);
-        room6.addExit("north", room9);
-        room6.addExit("south", room3);
-        room6.addExit("west", room5);
-        room7.addExit("north", room9);
-        room7.addExit("east", room8);
-        room7.addExit("south", room4);
-        room8.addExit("west", room7);
-        room8.addExit("south", room5);
-        room8.addExit("east", room9);
-        room7.addExit("north", room7);
-        room7.addExit("west", room8);
-        room7.addExit("south", room6);
-        roomDot.addExit("north", room3);
-
-        return room0;
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 
         Game mygame = new Game();
         mygame.start();
