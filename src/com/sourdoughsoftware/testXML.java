@@ -1,15 +1,16 @@
 package com.sourdoughsoftware;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
-import javax.xml.parsers.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-import java.io.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
 
 public class testXML {
 
@@ -47,6 +48,7 @@ public class testXML {
                 Element individualRoom = (Element) node;
                 System.out.println("Room ID: " + individualRoom.getAttribute("id"));
                 System.out.println("Room Name: " + individualRoom.getElementsByTagName("roomName").item(0).getTextContent());
+                System.out.println(individualRoom.getElementsByTagName("roomDisplay").item(0).getTextContent());
                 if (individualRoom.getElementsByTagName("exitWest").getLength() != 0) {
                     System.out.println("Room West Exit: " + individualRoom.getElementsByTagName("exitWest").item(0).getTextContent());
                 }
