@@ -18,10 +18,6 @@ import java.util.List;
  * Builds game rooms from XML file
  */
 public class PopulateRoomsFromXML {
-//    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-//        List<Room> rooms = parseRoomXML();
-//        System.out.println(rooms.toString());
-//    }
 
     public static List<Room> parseRoomXML() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
@@ -29,7 +25,9 @@ public class PopulateRoomsFromXML {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
+        // Uncomment next line on windows systems
         Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
+        // Uncomment next line on *nix systems
 //        Document document = builder.parse(new File("/Users/tyronemoore/cs5044-workspace/LastSliceOfPi/resources/Rooms.xml"));
         document.getDocumentElement().normalize();
         NodeList nList = document.getElementsByTagName("room");
@@ -39,7 +37,7 @@ public class PopulateRoomsFromXML {
                 Element individualRoom = (Element) node;
                 //Create new Room Object
                 room = new Room();
-                room.setId(Integer.parseInt(individualRoom.getAttribute("id")));
+                room.setRoomID(Integer.parseInt(individualRoom.getAttribute("id")));
                 room.setName(individualRoom.getElementsByTagName("roomName").item(0).getTextContent());
                 if (checkElementLength(individualRoom, "description")) {
                     System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());

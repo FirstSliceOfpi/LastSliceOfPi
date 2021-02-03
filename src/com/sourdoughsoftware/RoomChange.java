@@ -4,56 +4,41 @@ import java.util.List;
 
 public class RoomChange {
 
-    public static void changeRoom(Integer id, String response, List<Room> roomList, Player p1) {
-
+    public static String changeRoom(Integer roomID, String response, List<Room> roomList, Player p1) {
+        String result = "";
         switch (response) {
             case "west":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "north":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "south":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "east":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "northwest":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "northeast":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
-            case "southwest":
-                changePlayerLocation(id, response, roomList, p1);
-                break;
             case "southeast":
-                changePlayerLocation(id, response, roomList, p1);
+            case "southwest":
+            case "northeast":
+            case "east":
+            case "south":
+            case "northwest":
+            case "north":
+                result = changePlayerLocation(roomID, response, roomList, p1);
                 break;
-
             default:
 
         }
-
-
+        return result;
     }
 
 
-    private static void changePlayerLocation(Integer id, String response, List<Room> roomList, Player player1) {
-
+    private static String changePlayerLocation(Integer roomID, String response, List<Room> roomList, Player player1) {
+        String result = "";
         for (Room room : roomList) {
-            if (room.getId().equals(id)) {
+            if (room.getRoomID().equals(roomID)) {
                 Integer exit = room.getExitByID(response);
                 if (exit == null) {
-                    System.out.println("You cannot go that way");
+                    result = "You cannot go that way";
                     break;
                 }
                 System.out.println(room.getDescription());
-                player1.setLocationId(exit);
-                System.out.println("Player in: " + player1.getLocation());
+                player1.setPlayerRoomID(exit);
+                result = "Player in: " + player1.getPlayerRoomID();
                 break;
             }
         }
+        return result;
     }
 }
