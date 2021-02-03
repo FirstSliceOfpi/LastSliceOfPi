@@ -4,9 +4,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     //    Maybe this has a board with a list of rooms
@@ -21,9 +19,9 @@ public class Game {
 
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
-        WelcomeScreen.getWelcomeMessage();
+        System.out.println(WelcomeScreen.getWelcomeMessage());
         List<Room> rooms = PopulateRoomsFromXML.parseRoomXML();
-        System.out.println(rooms.toString());
+//        System.out.println(rooms.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
@@ -41,16 +39,9 @@ public class Game {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
-                String newLine = System.getProperty("line.separator");
-                System.out.println(""
-                        .concat(newLine)
-                        .concat("Goal - explore the world using 'go' and a direction, read the story, and figure out the goal.")
-                        .concat(newLine)
-                        .concat("Commands - tie in a function to pull the verb enum here")
-                        .concat(newLine)
-                        .concat("Access this help menu at any time: help or h")
-                        .concat(newLine)
-                        .concat("Quit at any time: quit or q \n"));
+                System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
+                                "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
+                                "help menu at any time: help or h.\nQuit at any time: quit or q.");
             }
             if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
                 setGameOver(true);

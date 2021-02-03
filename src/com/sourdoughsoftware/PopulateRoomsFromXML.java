@@ -40,11 +40,11 @@ public class PopulateRoomsFromXML {
                 room.setRoomID(Integer.parseInt(individualRoom.getAttribute("id")));
                 room.setName(individualRoom.getElementsByTagName("roomName").item(0).getTextContent());
                 if (checkElementLength(individualRoom, "description")) {
-                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
+//                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                     room.setDescription(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                 }
                 if (checkElementLength(individualRoom, "items")) {
-                    System.out.println("Room items" + individualRoom.getElementsByTagName("items").item(0).getTextContent());
+//                    System.out.println("Room items" + individualRoom.getElementsByTagName("items").item(0).getTextContent());
                     String item = individualRoom.getElementsByTagName("items").item(0).getTextContent();
                     room.addToRoom(item);
                 }
