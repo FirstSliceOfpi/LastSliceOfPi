@@ -33,7 +33,6 @@ public class RoomChange {
                     result = "You cannot go that way";
                     break;
                 }
-                System.out.println(room.getDescription());
                 player1.setPlayerRoomID(exit);
                 result = "Player in: " + player1.getPlayerRoomID();
                 break;
