@@ -41,12 +41,20 @@ public class Game {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
-                System.out.println("""
-                        Goal - explore the world using 'go' and a direction, read the story, and figure out the goal.
-                        Commands - tie in a function to pull the verb enum here
-                        Access this help menu at any time: help or h
-                        Quit at any time: quit or q
-                        """);
+                String newLine = System.getProperty("line.separator");
+                System.out.println(""
+                        .concat(newLine)
+                        .concat("Goal - explore the world using 'go' and a direction, read the story, and figure out the goal.")
+                        .concat(newLine)
+                        .concat("Commands - tie in a function to pull the verb enum here")
+                        .concat(newLine)
+                        .concat("Access this help menu at any time: help or h")
+                        .concat(newLine)
+                        .concat("Quit at any time: quit or q \n"));
+            }
+            if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
+                setGameOver(true);
+                System.out.println("Thanks for playing!");
             }
         } while (!gameOver);
 
@@ -67,12 +75,8 @@ public class Game {
         } return result;
     }
 
-
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-
-        Game mygame = new Game();
-        mygame.start();
-
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }
 
