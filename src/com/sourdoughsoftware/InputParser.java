@@ -1,5 +1,8 @@
 package com.sourdoughsoftware;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputParser {
@@ -21,7 +24,17 @@ public class InputParser {
         while (true) {
             System.out.print(userInput);
             response = scanner.nextLine().split(" ");
-            if (response.length == 2) {
+            // TODO: 2/3/2021 replace all of these add methods with an add of the arraylist pulled from verbs
+            List<String> oneVerbCommand = Arrays.asList("help", "h", "quit", "q");
+            if (response.length == 1 && oneVerbCommand.contains(response[0].toLowerCase())) {
+                if (!isValidVerb(response[0])) {
+                    System.out.println("Invalid Verb");
+                }
+                else {
+                    break;
+                }
+            }
+            else if (response.length == 2) {
                 String verb = response[0];
                 String noun = response[1];
 
@@ -38,8 +51,9 @@ public class InputParser {
                 else {
                     break;
                 }
-            } else {
-                System.out.println("Please enter one verb and one noun");
+            }
+            else {
+                System.out.println("Please enter a single verb command or a differetn verb/noun combination.");
             }
         }
         return response;
