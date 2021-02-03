@@ -26,7 +26,7 @@ public class Items {
     }
     public String rapunzelItems(String verb, String noun) {
         // Create map of verb noun interaction
-        interactions.put(Verbs.FEEL.name().toLowerCase(), Nouns.getRapunzel());
+//        interactions.put(Verbs.FEEL.name().toLowerCase(), Nouns.getRapunzel());
         System.out.println(interactions.toString());
         System.out.println(interactions.values());
         System.out.println(Arrays.toString(interactions.get("feel")));
@@ -47,8 +47,8 @@ public class Items {
     }
     public String snowItems(String verb, String noun) {
         // Create map of verb noun interaction
-        interactions.put(Verbs.EAT.name().toLowerCase(), Nouns.getSnow());
-        interactions.put(Verbs.EXAMINE.name().toLowerCase(), Nouns.getGeneric());
+//        interactions.put(Verbs.EAT.name().toLowerCase(), Nouns.getSnow());
+//        interactions.put(Verbs.EXAMINE.name().toLowerCase(), Nouns.getGeneric());
         System.out.println(interactions.toString());
         System.out.println(interactions.values());
         System.out.println(Arrays.toString(interactions.get("eat")));
