@@ -40,6 +40,14 @@ public class Game {
             if (userCommands[0].equals("go")) {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
             }
+            if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
+                System.out.println("""
+                        Goal - explore the world using 'go' and a direction, read the story, and figure out the goal.
+                        Commands - tie in a function to pull the verb enum here
+                        Access this help menu at any time: help or h
+                        Quit at any time: quit or q
+                        """);
+            }
         } while (!gameOver);
 
     }

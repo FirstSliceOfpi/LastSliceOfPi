@@ -13,6 +13,6 @@ public enum Verbs {
     // Sight words
     LOOK, SHOW, INSPECT, EXAMINE,
     // Generic words
-    TAKE, USE, GET, DROP, GO,
+    TAKE, USE, GET, DROP, GO, HELP, H,
 
 }
