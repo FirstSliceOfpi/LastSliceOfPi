@@ -28,7 +28,7 @@ public class PopulateRoomsFromXML {
         // Uncomment next line on windows systems
         Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
         // Uncomment next line on *nix systems
-//        Document document = builder.parse(new File("/Users/tyronemoore/cs5044-workspace/LastSliceOfPi/resources/Rooms.xml"));
+//        Document document = builder.parse(new File("resources/Rooms.xml"));
         document.getDocumentElement().normalize();
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
