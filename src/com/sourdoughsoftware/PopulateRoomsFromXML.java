@@ -43,6 +43,9 @@ public class PopulateRoomsFromXML {
 //                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                     room.setDescription(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                 }
+                if (checkElementLength(individualRoom, "shortDescription")) {
+                    room.setShortDescription(individualRoom.getElementsByTagName("shortDescription").item(0).getTextContent());
+                }
                 if (checkElementLength(individualRoom, "items")) {
 //                    System.out.println("Room items" + individualRoom.getElementsByTagName("items").item(0).getTextContent());
                     String item = individualRoom.getElementsByTagName("items").item(0).getTextContent();

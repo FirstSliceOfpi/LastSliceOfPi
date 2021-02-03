@@ -14,6 +14,7 @@ public class Room {
     private Integer roomID;
     private String name;
     private String description;
+    private String shortDescription;
     private Map<String, Integer> exitsById;
     private List<String> roomItems;
 
@@ -54,7 +55,15 @@ public class Room {
         this.description = description;
     }
 
-//    public Room getRoomAt(String dir) {
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    //    public Room getRoomAt(String dir) {
 //        return exits.get(dir);          // Returns null if dir doesn't exist
 //    }
 

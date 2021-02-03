@@ -38,6 +38,9 @@ public class Game {
             if (userCommands[0].equals("go")) {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
             }
+            if (userCommands[0].equalsIgnoreCase("look")) {
+                System.out.println(LookRoom.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
+            }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
                 System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
                                 "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
