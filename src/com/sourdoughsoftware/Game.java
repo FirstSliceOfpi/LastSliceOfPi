@@ -21,9 +21,9 @@ public class Game {
 
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
-        WelcomeScreen.getWelcomeMessage();
+        System.out.println(WelcomeScreen.getWelcomeMessage());
         List<Room> rooms = PopulateRoomsFromXML.parseRoomXML();
-        System.out.println(rooms.toString());
+//        System.out.println(rooms.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
