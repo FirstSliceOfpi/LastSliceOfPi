@@ -4,9 +4,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     //    Maybe this has a board with a list of rooms
@@ -41,12 +39,13 @@ public class Game {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
-                System.out.println("""
-                        Goal - explore the world using 'go' and a direction, read the story, and figure out the goal.
-                        Commands - tie in a function to pull the verb enum here
-                        Access this help menu at any time: help or h
-                        Quit at any time: quit or q
-                        """);
+                System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
+                                "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
+                                "help menu at any time: help or h.\nQuit at any time: quit or q.");
+            }
+            if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
+                setGameOver(true);
+                System.out.println("Thanks for playing!");
             }
         } while (!gameOver);
 
@@ -67,12 +66,8 @@ public class Game {
         } return result;
     }
 
-
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-
-        Game mygame = new Game();
-        mygame.start();
-
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }
 
