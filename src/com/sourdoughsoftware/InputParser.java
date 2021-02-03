@@ -1,8 +1,5 @@
 package com.sourdoughsoftware;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputParser {
@@ -45,13 +42,11 @@ public class InputParser {
                 System.out.println("Please enter one verb and one noun");
             }
         }
-//        System.out.println(Arrays.toString(response));
         return response;
     }
 
     public boolean isValidVerb(String word) {
         for (Verbs verb : Verbs.values()) {
-//            System.out.println(verb);
             if (word.equalsIgnoreCase(String.valueOf(verb))) {
                 return true;
             }
@@ -61,7 +56,6 @@ public class InputParser {
 
     public boolean isValidNoun(String word) {
         for (Nouns noun : Nouns.values()) {
-//            System.out.println(verb);
             if (word.equalsIgnoreCase(String.valueOf(noun))) {
                 return true;
             }
@@ -71,7 +65,6 @@ public class InputParser {
 
     public boolean isValidDirection(String word) {
         for (Nouns.DIRECTIONS noun : Nouns.DIRECTIONS.values()) {
-//            System.out.println(verb);
             if (word.equalsIgnoreCase(String.valueOf(noun))) {
                 return true;
             }
@@ -79,13 +72,4 @@ public class InputParser {
         return false;
     }
 
-//    public static void main(String[] args) {
-//        InputParser prompt = new InputParser(new Scanner(System.in));
-//        String userEntry = prompt.prompt(">> ");
-////        if (prompt.isValidVerb(userEntry)) {
-//        System.out.println(userEntry);
-////        } else {
-////            System.out.println("Invalid Entry");
-////        }
-//    }
 }
