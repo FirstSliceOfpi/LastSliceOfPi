@@ -25,6 +25,8 @@ public class Game {
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
+        String roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
+        System.out.println(roomDescription);
 
         do {
 //            give player description of the scene
@@ -32,11 +34,11 @@ public class Game {
 //            change game state
 //            inform player of the changes
 //            loop
-            String roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
-            System.out.println(roomDescription);
+
             String[] userCommands = parser.promptAction(">> ");
             if (userCommands[0].equals("go")) {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
+                roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
             if (userCommands[0].equalsIgnoreCase("look")) {
                 System.out.println(LookRoom.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
@@ -45,11 +47,14 @@ public class Game {
                 System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
                                 "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
                                 "help menu at any time: help or h.\nQuit at any time: quit or q.");
+                continue;
             }
             if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
                 setGameOver(true);
                 System.out.println("Thanks for playing!");
+                continue;
             }
+            System.out.println(roomDescription);
         } while (!gameOver);
 
     }
