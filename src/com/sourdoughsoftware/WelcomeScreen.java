@@ -1,7 +1,5 @@
 package com.sourdoughsoftware;
 
-import org.w3c.dom.ls.LSOutput;
-
 /**
  * Welcome screen displays a welcome message to the player when the game begins.
  *
@@ -17,7 +15,7 @@ public class WelcomeScreen {
     /**
      * @return the welcome message
      */
-    public static void getWelcomeMessage() {
-        System.out.println(WELCOME_MESSAGE);
+    public static String getWelcomeMessage() {
+        return WELCOME_MESSAGE;
     }
 }
