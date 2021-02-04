@@ -77,6 +77,33 @@ public class Game {
                 continue;
             }
             if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
+                String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
+                // get room items against player location
+                List<Item> itemsToCheck = getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+
+                // Get player item
+                Item playerItem = new Item();
+                for (Item item : itemsToCheck) {
+                    if (item.getName().equalsIgnoreCase(userCommands[1])) {
+                        playerItem = item;
+                    }
+                }
+                TakeItem.takeItem(p1, rooms, playerItem);
+
+                // check item for verb interaction map
+                for (Item item : itemsToCheck){
+                    if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase())){
+                        message = item.getVerbInteraction().get(userCommands[0].toLowerCase());
+                        break;
+                    }
+                }
+                // output verb interaction message or a failure message
+                System.out.println(message);
+                continue;
+            }
+
+            System.out.println(roomDescription);
+        } while (!gameOver);
                 String message = processInteraction(rooms, userCommands);
                 // output verb interaction message or a failure message
                 System.out.println(message);
