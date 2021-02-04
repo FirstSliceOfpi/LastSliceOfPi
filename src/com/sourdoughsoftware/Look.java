@@ -21,12 +21,14 @@ public class Look {
 
     public static String itemLook(Integer playerRoomID, String response, List<Room> roomList, List<Item> itemList) {
         String result = "What are you looking at?";
+        // This broken nested loop should be refactored into a non nested loop
+        outer:
         for (Item item : itemList) {
             if (item.getName().equalsIgnoreCase(response)) {
                 for (Room room : roomList) {
                     if (playerRoomID.equals(room.getRoomID()) && room.getRoomItems().contains(item)) {
                         result = item.getDescription();
-                        break;
+                        break outer;
                     }
                 }
             }
