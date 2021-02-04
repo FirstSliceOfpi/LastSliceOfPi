@@ -23,9 +23,9 @@ public class objectFromXml {
         List<Room> rooms = new ArrayList<>();
         Room room = null;
         // Uncomment next line on windows systems
-        Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
+//        Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
         // Uncomment next line on *nix systems
-        // Document document = loadXML(new File("resources/Rooms.xml"));
+         Document document = loadXML("resources/Rooms.xml");
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
@@ -53,7 +53,8 @@ public class objectFromXml {
         List<Item> items = new ArrayList<>();
         Item item = null;
 
-        Document document = loadXML("LastSliceOfPi/resources/Items.xml");
+//        Document document = loadXML("LastSliceOfPi/resources/Items.xml");
+        Document document = loadXML("resources/Items.xml");
         NodeList nList = document.getElementsByTagName("item");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
