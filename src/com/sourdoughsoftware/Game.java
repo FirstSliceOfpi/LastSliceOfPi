@@ -77,6 +77,16 @@ public class Game {
                 String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
                 // get room items against player location
                 List<Item> itemsToCheck = getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+
+                // Get player item
+                Item playerItem = new Item();
+                for (Item item : itemsToCheck) {
+                    if (item.getName().equalsIgnoreCase(userCommands[1])) {
+                        playerItem = item;
+                    }
+                }
+                TakeItem.takeItem(p1, rooms, playerItem);
+
                 // check item for verb interaction map
                 for (Item item : itemsToCheck){
                     if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase())){
