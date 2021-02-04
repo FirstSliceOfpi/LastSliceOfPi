@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private Integer roomID;
-    private ArrayList<String> inventory;
+    private ArrayList<Item> inventory;
 
     // Constructors
     public Player(String name, Integer roomID) {
@@ -33,12 +33,12 @@ public class Player {
         this.roomID = roomID;
     }
 
-    public ArrayList<String> getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
-    public ArrayList<String> addInventory(String item) {
-        Player.this.inventory.add(item);
+    public ArrayList<Item> addInventory(Item item) {
+        inventory.add(item);
         return inventory;
     }
 

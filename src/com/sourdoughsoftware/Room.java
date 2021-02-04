@@ -79,6 +79,10 @@ public class Room {
         roomItems.add(item);
     }
 
+    public void removeItem(Item item) {
+        roomItems.remove(item);
+    }
+
     @Override
     public String toString() {
         return "Room [id=" + getRoomID() + ", " +
@@ -87,4 +91,6 @@ public class Room {
                 "exitsByID=" + exitsById.toString() + ", " +
                 "roomItems=" + getRoomItems().toString();
     }
+
+
 }
