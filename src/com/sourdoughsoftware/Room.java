@@ -16,7 +16,7 @@ public class Room {
     private String description;
     private String shortDescription;
     private Map<String, Integer> exitsById;
-    private List<String> roomItems;
+    private List<Item> roomItems;
 
     public Room() {
         exitsById = new HashMap<>();
@@ -31,7 +31,7 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public List<String> getRoomItems() {
+    public List<Item> getRoomItems() {
         return roomItems;
     }
 
@@ -75,12 +75,16 @@ public class Room {
 //        return exits.containsKey(dir);
 //    }
 
-    public void addToRoom(String item) {
+    public void addToRoom(Item item) {
         roomItems.add(item);
     }
 
     @Override
     public String toString() {
-        return "Room [id=" + getRoomID() + ", roomName=" + getName() + ", description=" + getDescription() + ", exitsByID=" + exitsById.toString() + ", roomItems=" + getRoomItems().toString();
+        return "Room [id=" + getRoomID() + ", " +
+                "roomName=" + getName() + ", " +
+                "description=" + getDescription() + ", " +
+                "exitsByID=" + exitsById.toString() + ", " +
+                "roomItems=" + getRoomItems().toString();
     }
 }

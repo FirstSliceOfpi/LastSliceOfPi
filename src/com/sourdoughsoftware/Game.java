@@ -20,8 +20,18 @@ public class Game {
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
         System.out.println(WelcomeScreen.getWelcomeMessage());
-        List<Room> rooms = PopulateRoomsFromXML.parseRoomXML();
-//        System.out.println(rooms.toString());
+        List<Room> rooms = objectFromXml.parseRoom();
+        List<Item> items = objectFromXml.parseItems();
+
+        for (Room room : rooms) {
+            for (Item item : items) {
+                if (room.getDescription().contains(item.getName())){
+                    room.addToRoom(item);
+                }
+            }
+        }
+        System.out.println(rooms.toString());
+//        System.out.println(items.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
@@ -41,12 +51,18 @@ public class Game {
                 roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
             if (userCommands[0].equalsIgnoreCase("look")) {
-                System.out.println(LookRoom.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
+                if (Nouns.getAllDirections().contains(userCommands[1])){
+                    System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
+                }
+                else {
+                    System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
+
+                }
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
                 System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
-                                "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
-                                "help menu at any time: help or h.\nQuit at any time: quit or q.");
+                        "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
+                        "help menu at any time: help or h.\nQuit at any time: quit or q.");
                 continue;
             }
             if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
@@ -63,15 +79,15 @@ public class Game {
         String result = "";
         for (Room room : rooms) {
             if (playerLocation.equals(room.getRoomID())) {
-                if (room.getDescription() == null){
+                if (room.getDescription() == null) {
                     room.setDescription("Room " + room.getRoomID() + " is missing a description!");
                     result = room.getDescription();
-                }
-                else{
+                } else {
                     result = room.getDescription();
                 }
             }
-        } return result;
+        }
+        return result;
     }
 
     public void setGameOver(boolean gameOver) {
