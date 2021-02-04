@@ -3,6 +3,7 @@
     <item id="0">
         <name>hairbrush</name>
         <description>A golden hairbrush, with a soft wood handle.</description>
+        <feel>The hairbrush feels soft yet sturdy.</feel>
     </item>
     <item id="1">
         <name>silkskein</name>
@@ -15,6 +16,7 @@
     <item id="3">
         <name>apple</name>
         <description>That looks like a delicious apple, probably an Envy.</description>
+        <eat>It was an Envy! And also poisoned. Have fun with that!</eat>
     </item>
     <item id="4">
         <name>mirror</name>

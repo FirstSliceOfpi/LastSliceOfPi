@@ -27,7 +27,7 @@ public enum Nouns {
 
     public static List<String> getAllNouns() {
         List<String> result = new ArrayList<>();
-        EnumSet.allOf(Nouns.class).forEach(val -> result.add(val.name()));
+        EnumSet.allOf(Nouns.class).forEach(val -> result.add(val.name().toLowerCase()));
         return result;
     }
 
