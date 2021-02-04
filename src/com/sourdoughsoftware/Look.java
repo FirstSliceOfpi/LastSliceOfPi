@@ -13,6 +13,8 @@ public class Look {
                     result = "Nothing to see here.";
                     break;
                 }
+                player1.setPlayerRoomID(exit);
+
                 result = room.getShortDescription();
             }
         }

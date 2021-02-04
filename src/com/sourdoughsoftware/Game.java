@@ -52,7 +52,23 @@ public class Game {
             }
             if (userCommands[0].equalsIgnoreCase("look")) {
                 if (Nouns.getAllDirections().contains(userCommands[1])){
-                    System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
+                    //
+                    String result = "";
+                    for (Room room : rooms) {
+                        if (room.getRoomID().equals(p1.getPlayerRoomID())) {
+                            Integer temp = p1.getPlayerRoomID();
+                            Integer exit = room.getExitByID(userCommands[1]);
+                            if (exit == null) {
+                                System.out.println("Nothing to see there");
+                                break;
+                            }
+                            p1.setPlayerRoomID(exit);
+                            System.out.println(room.getShortDescription());
+                            p1.setPlayerRoomID(temp);
+                            break;
+                        }
+                    }
+                    //
                 }
                 else {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
