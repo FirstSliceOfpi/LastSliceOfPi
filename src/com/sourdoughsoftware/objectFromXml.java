@@ -17,19 +17,15 @@ import java.util.List;
 /**
  * Builds game rooms from XML file
  */
-public class PopulateRoomsFromXML {
+public class objectFromXml {
 
-    public static List<Room> parseRoomXML() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Room> parseRoom() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
         Room room = null;
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
         // Uncomment next line on windows systems
-        Document document = builder.parse(new File("LastSliceOfPi/resources/Rooms.xml"));
+        Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
         // Uncomment next line on *nix systems
-//        Document document = builder.parse(new File("resources/Rooms.xml"));
-        document.getDocumentElement().normalize();
+        // Document document = loadXML(new File("resources/Rooms.xml"));
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
@@ -46,16 +42,43 @@ public class PopulateRoomsFromXML {
                 if (checkElementLength(individualRoom, "shortDescription")) {
                     room.setShortDescription(individualRoom.getElementsByTagName("shortDescription").item(0).getTextContent());
                 }
-                if (checkElementLength(individualRoom, "items")) {
-//                    System.out.println("Room items" + individualRoom.getElementsByTagName("items").item(0).getTextContent());
-                    String item = individualRoom.getElementsByTagName("items").item(0).getTextContent();
-                    room.addToRoom(item);
-                }
                 checkDirections(room, individualRoom);
                 //Add Room to list
                 rooms.add(room);
             }
         }return rooms;
+    }
+
+    public static List<Item> parseItems() throws ParserConfigurationException, IOException, SAXException {
+        List<Item> items = new ArrayList<>();
+        Item item = null;
+
+        Document document = loadXML("LastSliceOfPi/resources/Items.xml");
+        NodeList nList = document.getElementsByTagName("item");
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node node = nList.item(temp);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element singleItem = (Element) node;
+                //Create new Room Object
+                item = new Item();
+                item.setItemID(Integer.parseInt(singleItem.getAttribute("id")));
+                item.setName(singleItem.getElementsByTagName("name").item(0).getTextContent());
+                if (checkElementLength(singleItem, "description")) {
+//                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
+                    item.setDescription(singleItem.getElementsByTagName("description").item(0).getTextContent());
+                }
+                //Add Room to list
+                items.add(item);
+            }
+        }return items;
+    }
+
+    private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(filename));
+        document.getDocumentElement().normalize();
+        return document;
     }
 
 

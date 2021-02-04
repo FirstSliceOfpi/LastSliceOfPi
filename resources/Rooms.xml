@@ -31,7 +31,7 @@
             You feel a perfect breeze and find yourself in a bright, airy room with open double doors.
             It’s an intriguing room with many curiosities and trinkets.
             You hear a rustling and turn to see a bag of live insects near a chair.
-            On the bookshelf is a sparkling crystal sphere.
+            On the bookshelf is a sparkling crystalsphere.
             You hear birds chirping outside, leaves softly rustling and …was that a splash?
         </description>
         <exitWest>1</exitWest>
@@ -61,7 +61,7 @@
             It is a large room with immense locked doors.
             A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
             There is a HUGE pile of hay completely surrounding the spindle.
-            Under a tarp in the corner, there seems to be stack of gold bars.
+            Under a tarp in the corner, there seems to be stack of goldbars.
             A heavy book lays on the floor near the spindle and stool….in gold letters “Best Baby Names”…
         </description>
         <exitNorth>7</exitNorth>
@@ -77,7 +77,7 @@
             There is a large, comfortable chair in the corner…maybe take a rest?
             You wander through the room and see a fancy invitation opened on the table.
             Near the invitation are two large boxes with beautiful ball gowns inside.
-            Tucked under the chair, you notice what appears to be a glass slipper?
+            Tucked under the chair, you notice what appears to be a glassslipper?
         </description>
         <exitNorth>8</exitNorth>
         <exitSouth>2</exitSouth>
@@ -106,7 +106,7 @@
             You see the bed in this room, piled high with pillows and blankets.
             Tea, lozenges and tissue are piled high on the nightstand.
             On the floor is a small red mound of fabric….a hooded cape.
-            On the table near the door, a sleeping cap in a flowery pattern.
+            On the table near the door, a sleepingcap in a flowery pattern.
             On the ground near the table, you see a handled basket, filled with food and packages.
         </description>
         <exitNorth>9</exitNorth>
@@ -135,10 +135,10 @@
             This room is cozy and dim.
             There is an odd silence made eerier by the low light in the room.
             There is a large bed that looks so comfortable, and you feel so tired.
-            Those fluffy pillows shortDescription so inviting to your sleepy eyes.
+            Those fluffy pillows look so inviting to your sleepy eyes.
             You are distracted by a lump in the corner – under a pile of clothing is an old spindle,
             it’s needle sharp and shining.
-            As you sit, you find a small, wooden box…a first aid kit?
+            As you sit, you find a small, wooden box…a firstaidkit?
         </description>
         <exitNorth>7</exitNorth>
         <exitSouth>6</exitSouth>
@@ -148,13 +148,13 @@
     <room id="10">
         <roomName>golden goose</roomName>
         <description>
-            This room is furnished sparsely, with contents that shortDescription worn or handed down.
+            This room is furnished sparsely, with contents that look worn or handed down.
             There is an ax propped against the wall near the door.
             It smells of freshly chopped wood and a fowl?
             As your eyes adjust to the light of the room,
             you spot a large nest in the corner near the fireplace.
             There is not much to see in this sparse room,
-            except is that a golden feather….?
+            except is that a goldenfeather….?
         </description>
         <exitNorth>3</exitNorth>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
