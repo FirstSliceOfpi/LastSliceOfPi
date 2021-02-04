@@ -3,6 +3,7 @@
     <item id="0">
         <name>hairbrush</name>
         <description>A golden hairbrush, with a soft wood handle.</description>
+        <feel>The hairbrush feels soft yet sturdy.</feel>
     </item>
     <item id="1">
         <name>silkskein</name>
