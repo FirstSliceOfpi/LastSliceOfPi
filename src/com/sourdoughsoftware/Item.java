@@ -1,11 +1,23 @@
 package com.sourdoughsoftware;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Item {
     String response = "You cannot use that item that way.";
 
     private Integer itemID;
     private String name;
     private String description;
+    private Map<String, String> verbInteraction = new HashMap<>();
+
+    public Map<String, String> getVerbInteraction() {
+        return verbInteraction;
+    }
+
+    public void setVerbInteraction(String userVerb, String message) {
+        this.verbInteraction.put(userVerb, message);
+    }
 
     public Integer getItemID() {
         return itemID;
@@ -35,6 +47,7 @@ public class Item {
     public String toString() {
         return "Item[id=" + getItemID() + ", " +
                 "name=" + getName() + ", " +
-                "description=" + getDescription();
+                "description=" + getDescription() + "," +
+                "verbInteractions=" + getVerbInteraction().toString();
     }
 }

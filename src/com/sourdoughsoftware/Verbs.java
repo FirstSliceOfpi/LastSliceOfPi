@@ -6,9 +6,9 @@ import java.util.List;
 
 public enum Verbs {
     // Item specific use words
-    /*
+
     FEEL,
-    EAT,
+    /*EAT,
     OPEN, CLOSE, LOOT,
     SQUISH, RUB,
     SLEEP,
@@ -25,7 +25,7 @@ public enum Verbs {
 
     public static List<String> getAllVerbs() {
         List<String> result = new ArrayList<>();
-        EnumSet.allOf(Verbs.class).forEach(val -> result.add(val.name()));
+        EnumSet.allOf(Verbs.class).forEach(val -> result.add(val.name().toLowerCase()));
         return result;
     }
 }
