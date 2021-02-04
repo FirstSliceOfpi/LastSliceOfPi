@@ -8,14 +8,16 @@ import java.util.stream.Stream;
 
 public enum Nouns {
     // Story specific items
-    HAIRBRUSH, SILK, BRAID, HAIR,
+    HAIRBRUSH, SILK, BRAID,
     APPLE, MIRROR, TOOLS,
     GINGERBREAD, OVEN, CAGE, CHEST, TREASURE,
-    DOORS, BAG, INSECTS, CRYSTAL_SPHERE,
-    BED, SPINDLE, BOX, FIRST_AID_KIT,
-    CHAIR, INVITATION, TABLE, BOXES, GOWNS, GLASS_SLIPPER,
-    STRAW, LOCKED_DOORS,HAY, GOLD_BARS,BOOK,
-    TEA, LOZENGES, TISSUE, NIGHTSTAND, CAPE, SLEEPING_CAP,BASKET, FOOD, PACKAGES,
+    DOORS, BAG, INSECTS, CRYSTALSPHERE,
+    BED, SPINDLE, BOX, FIRSTAIDKIT,
+    CHAIR, INVITATION, TABLE, BOXES, GOWNS, GLASSSLIPPER,
+    STRAW, LOCKEDDOORS,HAY, GOLDBARS,BOOK,
+    TEA, LOZENGES, TISSUE, NIGHTSTAND, CAPE, SLEEPINGCAP,BASKET, FOOD, PACKAGES,
+    SHOES,CLOTHING, WORKBENCH,
+    AX, NEST, GOLDENFEATHER,
 
     // Non-takeable things
     ROOM;
@@ -23,20 +25,15 @@ public enum Nouns {
     // Directions
     enum DIRECTIONS{N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST};
 
-    public static String[] getRapunzel() {
-        return new String[]{HAIR.name(), HAIRBRUSH.name(), SILK.name(), BRAID.name()};
-    }
-    public static String[] getSnow() {
-        return new String[]{APPLE.name()};
-    }
-    public static String[] getGeneric() {
+    public static List<String> getAllNouns() {
         List<String> result = new ArrayList<>();
         EnumSet.allOf(Nouns.class).forEach(val -> result.add(val.name()));
-        String[] resultArray = new String[Nouns.values().length];
-        resultArray = result.toArray(resultArray);
-        return resultArray;
-
+        return result;
     }
 
-
+    public static List<String> getAllDirections() {
+        List<String> result = new ArrayList<>();
+        EnumSet.allOf(Nouns.DIRECTIONS.class).forEach(val -> result.add(val.name().toLowerCase()));
+        return result;
+    }
 }
