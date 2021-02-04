@@ -56,8 +56,8 @@ public class Game {
                 }
                 else {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
-
                 }
+                continue;
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
                 System.out.println("Commands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
@@ -71,11 +71,36 @@ public class Game {
             }
             if (userCommands[0].equalsIgnoreCase("hint")) {
                 System.out.println("You should find something yummy to eat.");
+                continue;
+            }
+            if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
+                String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
+                // get room items against player location
+                List<Item> itemsToCheck = getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+                // check item for verb interaction map
+                for (Item item : itemsToCheck){
+                    if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase())){
+                        message = item.getVerbInteraction().get(userCommands[0].toLowerCase());
+                        break;
+                    }
+                }
+                // output verb interaction message or a failure message
+                System.out.println(message);
+                continue;
             }
 
             System.out.println(roomDescription);
         } while (!gameOver);
+    }
 
+    private List<Item> getPlayerRoomItems(Integer playerRoomID, List<Room> rooms) {
+        List<Item> specificItems = new ArrayList<>();
+        for (Room room : rooms) {
+            if (playerRoomID.equals(room.getRoomID())) {
+                specificItems = room.getRoomItems();
+            }
+        }
+        return specificItems;
     }
 
     private String getRoomDescription(Integer playerLocation, List<Room> rooms) {
