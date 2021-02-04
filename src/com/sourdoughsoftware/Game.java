@@ -60,8 +60,7 @@ public class Game {
                 }
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
-                System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
-                        "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
+                System.out.println("Commands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
                         "help menu at any time: help or h.\nQuit at any time: quit or q.");
                 continue;
             }
@@ -70,6 +69,10 @@ public class Game {
                 System.out.println("Thanks for playing!");
                 continue;
             }
+            if (userCommands[0].equalsIgnoreCase("hint")) {
+                System.out.println("You should find something yummy to eat.");
+            }
+
             System.out.println(roomDescription);
         } while (!gameOver);
 
