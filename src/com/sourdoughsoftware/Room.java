@@ -27,8 +27,9 @@ public class Room {
             exitsById.put(dir.toLowerCase(), roomID);
     }
 
-    public void setRoomID(Integer roomID) {
+    public Room setRoomID(Integer roomID) {
         this.roomID = roomID;
+        return null;
     }
 
     public List<Item> getRoomItems() {
