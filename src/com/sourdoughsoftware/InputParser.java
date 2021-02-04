@@ -25,7 +25,7 @@ public class InputParser {
             System.out.print(userInput);
             response = scanner.nextLine().split(" ");
             // TODO: 2/3/2021 replace all of these add methods with an add of the arraylist pulled from verbs
-            List<String> oneVerbCommand = Arrays.asList("help", "h", "quit", "q");
+            List<String> oneVerbCommand = Arrays.asList("help", "h", "quit", "q", "hint");
             if (response.length == 1 && oneVerbCommand.contains(response[0].toLowerCase())) {
                 if (!isValidVerb(response[0])) {
                     System.out.println("Invalid Verb");
@@ -53,7 +53,7 @@ public class InputParser {
                 }
             }
             else {
-                System.out.println("Please enter a single verb command or a differetn verb/noun combination.");
+                System.out.println("Please enter a single verb command or a different verb/noun combination.");
             }
         }
         return response;
