@@ -8,8 +8,8 @@ public enum Verbs {
     // Item specific use words
 
     FEEL,
-    /*EAT,
-    OPEN, CLOSE, LOOT,
+    EAT,
+    /*OPEN, CLOSE, LOOT,
     SQUISH, RUB,
     SLEEP,
     SIT, READ, MOVE, WEAR,

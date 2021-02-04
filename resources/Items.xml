@@ -16,6 +16,7 @@
     <item id="3">
         <name>apple</name>
         <description>That looks like a delicious apple, probably an Envy.</description>
+        <eat>It was an Envy! And also poisoned. Have fun with that!</eat>
     </item>
     <item id="4">
         <name>mirror</name>
