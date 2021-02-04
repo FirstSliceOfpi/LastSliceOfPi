@@ -21,7 +21,7 @@ public enum Verbs {
 //    SHOW, INSPECT, EXAMINE,
     // Generic words
 //    TAKE, USE, GET, DROP,
-    GO, HELP, H, QUIT, Q;
+    GO, HELP, H, QUIT, Q, HINT;
 
     public static List<String> getAllVerbs() {
         List<String> result = new ArrayList<>();
