@@ -8,22 +8,22 @@ import java.util.stream.Stream;
 
 public enum Nouns {
     // Story specific items
-    HAIRBRUSH, SILK, BRAID,
-    APPLE, MIRROR, TOOLS,
-    GINGERBREAD, OVEN, CAGE, CHEST, TREASURE,
-    DOORS, BAG, INSECTS, CRYSTALSPHERE,
-    BED, SPINDLE, BOX, FIRSTAIDKIT,
-    CHAIR, INVITATION, TABLE, BOXES, GOWNS, GLASSSLIPPER,
-    STRAW, LOCKEDDOORS,HAY, GOLDBARS,BOOK,
-    TEA, LOZENGES, TISSUE, NIGHTSTAND, CAPE, SLEEPINGCAP,BASKET, FOOD, PACKAGES,
-    SHOES,CLOTHING, WORKBENCH,
-    AX, NEST, GOLDENFEATHER,
+    HAIRBRUSH, SILKSKEIN, BRAID, // rapunzel
+    APPLE, MIRROR, TOOLS, // snow white
+    GINGERBREAD, OVEN, CAGE, CHEST, TREASURE, // hansel and gretel
+    DOORS, BAG, INSECTS, CRYSTALSPHERE, // frog pricne
+    BED, SPINDLE, BOX, FIRSTAIDKIT, // sleeping beauty
+    CHAIR, INVITATION, TABLE, BOXES, GOWNS, GLASSSLIPPER, // cinderella
+    STRAW, LOCKEDDOORS,HAY, GOLDBARS,BOOK, // rumplestiltskin
+    TEA, LOZENGES, TISSUE, NIGHTSTAND, CAPE, SLEEPINGCAP,BASKET, FOOD, PACKAGES, // little red
+    SHOES,CLOTHING, WORKBENCH, // the shoemaker
+    AX, NEST, GOLDENFEATHER, // the golden goose
 
     // Non-takeable things
     ROOM;
 
     // Directions
-    enum DIRECTIONS{N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST};
+    enum DIRECTIONS{N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST}
 
     public static List<String> getAllNouns() {
         List<String> result = new ArrayList<>();

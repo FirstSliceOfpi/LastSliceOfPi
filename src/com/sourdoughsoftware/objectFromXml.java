@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Builds game rooms from XML file
+ * Class to load XML files, and methods to parse them for use by game
  */
 public class objectFromXml {
 
     public static List<Room> parseRoom() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
-        Room room = null;
+        Room room;
         // Uncomment next line on windows systems
         Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
         // Uncomment next line on *nix systems
@@ -36,7 +36,6 @@ public class objectFromXml {
                 room.setRoomID(Integer.parseInt(individualRoom.getAttribute("id")));
                 room.setName(individualRoom.getElementsByTagName("roomName").item(0).getTextContent());
                 if (checkElementLength(individualRoom, "description")) {
-//                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                     room.setDescription(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                 }
                 if (checkElementLength(individualRoom, "shortDescription")) {
@@ -52,7 +51,7 @@ public class objectFromXml {
 
     public static List<Item> parseItems() throws ParserConfigurationException, IOException, SAXException {
         List<Item> items = new ArrayList<>();
-        Item item = null;
+        Item item;
 
         // Uncomment next line on windows systems
         Document document = loadXML("LastSliceOfPi/resources/Items.xml");
@@ -68,7 +67,6 @@ public class objectFromXml {
                 item.setItemID(Integer.parseInt(singleItem.getAttribute("id")));
                 item.setName(singleItem.getElementsByTagName("name").item(0).getTextContent());
                 if (checkElementLength(singleItem, "description")) {
-//                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                     item.setDescription(singleItem.getElementsByTagName("description").item(0).getTextContent());
                 }
                 addInteractions(singleItem, item);
@@ -82,11 +80,9 @@ public class objectFromXml {
     private static void addInteractions(Element singleItem, Item item) {
         for (String verb : Verbs.getAllVerbs()) {
             if (checkElementLength(singleItem, verb)) {
-//                    System.out.println(individualRoom.getElementsByTagName("description").item(0).getTextContent());
                 item.setVerbInteraction(verb, singleItem.getElementsByTagName(verb).item(0).getTextContent());
             }
         }
-
     }
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
@@ -96,7 +92,6 @@ public class objectFromXml {
         document.getDocumentElement().normalize();
         return document;
     }
-
 
     private static void checkDirections(Room room, Element individualRoom) {
         if (checkElementLength(individualRoom, "exitWest")) {
