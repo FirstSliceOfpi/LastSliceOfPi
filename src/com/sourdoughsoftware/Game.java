@@ -54,7 +54,12 @@ public class Game {
             if (userCommands[0].equalsIgnoreCase("look") ||
                     userCommands[0].equalsIgnoreCase("show") ||
                     userCommands[0].equalsIgnoreCase("inspect") ||
+                    userCommands[0].equalsIgnoreCase("see") ||
                     userCommands[0].equalsIgnoreCase("examine")) {
+                if (userCommands[1].equalsIgnoreCase("inventory")) {
+                    System.out.println("Your inventory:\n" + p1.getInventory().toString());
+                    continue;
+                }
                 if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
                 } else {
