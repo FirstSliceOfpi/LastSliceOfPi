@@ -42,6 +42,16 @@ public class Player {
         return inventory;
     }
 
+//    // Methods
+//    public String getPrettyInventory() {
+//        for (Item eachItem: inventory) {
+//            for (int i = 0; i < eachItem[0].length(); i++ ) {
+//
+//            }
+//
+//        }
+//    }
+
     @Override
     public String toString() {
         return "Thank you " + getName() + ", I see that you are in " + getPlayerRoomID() + ".\nYour current inventory is: " + getInventory().toString();
