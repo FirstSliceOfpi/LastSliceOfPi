@@ -83,22 +83,46 @@ public class InputParser {
     public String processInteraction(List<Room> rooms, String[] userCommands, Player p1) {
         String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
         // get room items against player location
-        List<Item> itemsToCheck = Utilities.getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+        List<Item> playerRoomItemsToCheck = Utilities.getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+        List<Item> playerInventoryItemsToCheck = p1.getInventory();
 
         if (userCommands[0].equalsIgnoreCase("take") ||
                 userCommands[0].equalsIgnoreCase("get")) {
             // Get player item
             Item playerItem = new Item();
-            for (Item item : itemsToCheck) {
+            for (Item item : playerRoomItemsToCheck) {
                 if (item.getName().equalsIgnoreCase(userCommands[1])) {
                     playerItem = item;
                     break;
                 }
             }
             message = TakeItem.takeItem(p1, rooms, playerItem);
+        } else if (userCommands[0].equalsIgnoreCase("examine")) {
+            boolean found = false;
+            Item foundItem = new Item();
+            for (Item item : playerInventoryItemsToCheck) {
+                if (item.getName().equalsIgnoreCase(userCommands[1])) {
+                    foundItem = item;
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                message = foundItem.getDescription();
+            } else {
+                message = "You aren't holding the " + userCommands[1];
+            }
+
         } else {
             // check item for verb interaction map
-            for (Item item : itemsToCheck) {
+            for (Item item : playerInventoryItemsToCheck) {
+                if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase()) &&
+                        item.getName().equalsIgnoreCase(userCommands[1])) {
+                    message = item.getVerbInteraction().get(userCommands[0].toLowerCase());
+                    break;
+                }
+            }
+            for (Item item : playerRoomItemsToCheck) {
                 if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase()) &&
                         item.getName().equalsIgnoreCase(userCommands[1])) {
                     message = item.getVerbInteraction().get(userCommands[0].toLowerCase());

@@ -17,7 +17,7 @@ public enum Verbs {
     DRINK, // little red riding hood
 
     // Sight words
-    LOOK, SHOW, INSPECT, EXAMINE, SEE,
+    LOOK, SHOW, EXAMINE, SEE,
     // Generic words
     TAKE, GET,
     USE,
