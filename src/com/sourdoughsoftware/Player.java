@@ -1,6 +1,6 @@
 package com.sourdoughsoftware;
 
-//import com.sourdoughsoftware.InputParser;
+//import com.sourdoughsoftware.utility.InputParser;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.utility;
 
 /**
  * Welcome screen displays a welcome message to the player when the game begins.

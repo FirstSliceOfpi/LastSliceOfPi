@@ -1,4 +1,4 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.utility;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
