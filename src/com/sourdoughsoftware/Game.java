@@ -25,13 +25,13 @@ public class Game {
 
         for (Room room : rooms) {
             for (Item item : items) {
-                if (room.getDescription().contains(item.getName())){
+                if (room.getDescription().contains(item.getName())) {
                     room.addToRoom(item);
                 }
             }
         }
-        System.out.println(rooms.toString());
-//        System.out.println(items.toString());
+//        System.out.println(rooms.toString());
+        System.out.println(items.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
@@ -50,11 +50,13 @@ public class Game {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
                 roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
-            if (userCommands[0].equalsIgnoreCase("look")) {
-                if (Nouns.getAllDirections().contains(userCommands[1])){
+            if (userCommands[0].equalsIgnoreCase("look") ||
+                    userCommands[0].equalsIgnoreCase("show") ||
+                    userCommands[0].equalsIgnoreCase("inspect") ||
+                    userCommands[0].equalsIgnoreCase("examine")) {
+                if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
-                }
-                else {
+                } else {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
                 }
                 continue;
@@ -74,26 +76,7 @@ public class Game {
                 continue;
             }
             if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
-                String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
-                // get room items against player location
-                List<Item> itemsToCheck = getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
-
-                // Get player item
-                Item playerItem = new Item();
-                for (Item item : itemsToCheck) {
-                    if (item.getName().equalsIgnoreCase(userCommands[1])) {
-                        playerItem = item;
-                    }
-                }
-                TakeItem.takeItem(p1, rooms, playerItem);
-
-                // check item for verb interaction map
-                for (Item item : itemsToCheck){
-                    if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase())){
-                        message = item.getVerbInteraction().get(userCommands[0].toLowerCase());
-                        break;
-                    }
-                }
+                String message = processInteraction(rooms, userCommands);
                 // output verb interaction message or a failure message
                 System.out.println(message);
                 continue;
@@ -101,6 +84,35 @@ public class Game {
 
             System.out.println(roomDescription);
         } while (!gameOver);
+    }
+
+    private String processInteraction(List<Room> rooms, String[] userCommands) {
+        String message = "You try to " + userCommands[0].toLowerCase() + " the " + userCommands[1].toLowerCase() + " but nothing happens.";
+        // get room items against player location
+        List<Item> itemsToCheck = getPlayerRoomItems(p1.getPlayerRoomID(), rooms);
+
+        if (userCommands[0].equalsIgnoreCase("take") ||
+                userCommands[0].equalsIgnoreCase("get")) {
+            // Get player item
+            Item playerItem = new Item();
+            for (Item item : itemsToCheck) {
+                if (item.getName().equalsIgnoreCase(userCommands[1])) {
+                    playerItem = item;
+                    break;
+                }
+            }
+            message = TakeItem.takeItem(p1, rooms, playerItem);
+        } else {
+            // check item for verb interaction map
+            for (Item item : itemsToCheck) {
+                if (item.getVerbInteraction().containsKey(userCommands[0].toLowerCase()) &&
+                        item.getName().equalsIgnoreCase(userCommands[1])) {
+                    message = item.getVerbInteraction().get(userCommands[0].toLowerCase());
+                    break;
+                }
+            }
+        }
+        return message;
     }
 
     private List<Item> getPlayerRoomItems(Integer playerRoomID, List<Room> rooms) {

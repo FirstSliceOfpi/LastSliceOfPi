@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Item {
-    String response = "You cannot use that item that way.";
-
     private Integer itemID;
     private String name;
     private String description;

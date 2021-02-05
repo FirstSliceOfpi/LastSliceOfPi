@@ -8,10 +8,12 @@
     <item id="1">
         <name>silkskein</name>
         <description>A skein of silk, woven from the smallest of spiders.</description>
+        <feel>It's smooth and soft, and it makes you want to roll around in it.</feel>
     </item>
     <item id="2">
         <name>braid</name>
         <description>An impressively thick, woven braid.</description>
+        <feel>Soft, silky, and well moisturized, yet rugged.</feel>
     </item>
     <item id="3">
         <name>apple</name>
@@ -21,6 +23,7 @@
     <item id="4">
         <name>mirror</name>
         <description>A disturbing lack of a reflection doesn't stare you back in the face.</description>
+        <break>Seventy times seven years of bad luck for you!</break>
     </item>
     <item id="5">
         <name>tools</name>
@@ -29,6 +32,7 @@
     <item id="6">
         <name>gingerbread</name>
         <description>It wants to eat you. I mean it wants you to eat it.</description>
+        <eat>It crumbles in your mouth, cinnamon and sugar filling your nose. You sneeze.</eat>
     </item>
     <item id="7">
         <name>oven</name>
@@ -49,6 +53,7 @@
     <item id="11">
         <name>doors</name>
         <description>These doors are magnificent. They could take you anywhere!</description>
+        <open>The doors creak and moan... and stay shut.</open>
     </item>
     <item id="12">
         <name>bag</name>
@@ -57,6 +62,7 @@
     <item id="13">
         <name>insects</name>
         <description>Little, annoying, biting. Ya know - insects.</description>
+        <squish>In a flurry of activity, you crush the life out of all of the little, helpless, peace loving insects. You monster.</squish>
     </item>
     <item id="14">
         <name>crystalsphere</name>
@@ -66,6 +72,7 @@
     <item id="15">
         <name>bed</name>
         <description>Look at that thread count! Look at design! This is the bed of the century!</description>
+        <sleep>You take a quick snooze, and waken refreshed.</sleep>
     </item>
     <item id="16">
         <name>spindle</name>
@@ -83,12 +90,14 @@
     <item id="19">
         <name>chair</name>
         <description>A chair to some, a bed to others.</description>
+        <sit>You take a long needed rest on this amazing chair.</sit>
     </item>
     <item id="20">
         <name>invitation</name>
         <description>You open the invitation, which you notice is from the prince and NOT addressed to you. Stop
             snooping!
         </description>
+        <read>The invitation contains some highly suspect things, such as 'Prince' and 'Ball' and a reference to some kind of required dress.</read>
     </item>
     <item id="21">
         <name>table</name>
