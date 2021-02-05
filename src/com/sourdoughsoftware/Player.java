@@ -8,6 +8,7 @@ public class Player {
     private String name;
     private Integer roomID;
     private ArrayList<Item> inventory;
+    private ArrayList<String> piecesOfPi;
 
     // Constructors
     public Player(String name, Integer roomID) {

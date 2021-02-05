@@ -18,7 +18,7 @@ public enum Nouns {
     AX, NEST, GOLDENFEATHER, // the golden goose
 
     // Non-takeable things
-    INVENTORY, ROOM;
+    INVENTORY, ROOM, PIVAL;
 
     // Directions
     enum DIRECTIONS{N, S, E, W, NW, NE, SE, SW, NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHEAST, SOUTHWEST}

@@ -45,7 +45,8 @@
         <description>
             You hear beautiful singing in the distance. Enchanted, you follow the sound.
             You find yourself in a strange room with only a window.
-            In the corner, there is a glint from a golden hairbrush.
+            In the corner, there is a glint from single golden hairbrush.
+            Distracted, you stumble over a single silkskein.
             You see just a portion of a long, golden braid.
         </description>
         <exitWest>2</exitWest>
@@ -77,7 +78,7 @@
             There is a large, comfortable chair in the corner…maybe take a rest?
             You wander through the room and see a fancy invitation opened on the table.
             Near the invitation are two large boxes with beautiful ball gowns inside.
-            Tucked under the chair, you notice what appears to be a glassslipper?
+            Tucked under the chair, you notice what appears to be one glassslipper?
         </description>
         <exitNorth>8</exitNorth>
         <exitSouth>2</exitSouth>
