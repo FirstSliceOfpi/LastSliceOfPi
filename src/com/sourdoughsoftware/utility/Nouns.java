@@ -6,10 +6,10 @@ import java.util.List;
 
 public enum Nouns {
     // Story specific items
-    HAIRBRUSH, SILKSKEIN, BRAID, // rapunzel
+    HAIRBRUSH, SILKSKEINS, BRAID, // rapunzel
     APPLE, MIRROR, TOOLS, // snow white
     GINGERBREAD, OVEN, CAGE, CHEST, TREASURE, // hansel and gretel
-    DOORS, BAG, INSECTS, CRYSTALSPHERE, // frog pricne
+    DOORS, BAG, INSECTS, CRYSTALSPHERE, // frog prince
     BED, SPINDLE, BOX, FIRSTAIDKIT, // sleeping beauty
     CHAIR, INVITATION, TABLE, BOXES, GOWNS, GLASSSLIPPER, // cinderella
     STRAW, LOCKEDDOORS,HAY, GOLDBARS,BOOK, // rumplestiltskin

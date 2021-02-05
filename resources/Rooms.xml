@@ -14,10 +14,10 @@
         <roomName>snow white</roomName>
         <description>
             As your eyes adjust to the darkness, you find yourself in tall room with stone walls.
-            As your stomach growls, you see a shining red apple on the table, tempting your hunger.
-            An ornate, gold mirror hangs on the wall.
-            When you pass the mirror, you notice no reflection of your image.
-            Isn’t that odd? There are several very small tools strewn across the room.
+            As your stomach growls, you see a SINGLE shining red apple on the table, tempting your hunger.
+            ONE ornate, gold mirror hangs on the wall.
+            When you pass the ONE mirror, you notice no reflection of your image.
+            Isn’t that odd? There are SEVEN very small tools strewn across the room.
         </description>
         <exitWest>3</exitWest>
         <exitNorth>4</exitNorth>
@@ -31,7 +31,7 @@
             You feel a perfect breeze and find yourself in a bright, airy room with open double doors.
             It’s an intriguing room with many curiosities and trinkets.
             You hear a rustling and turn to see a bag of live insects near a chair.
-            On the bookshelf is a sparkling crystalsphere.
+            On the bookshelf, a sparkling crystalsphere draws your gaze.
             You hear birds chirping outside, leaves softly rustling and …was that a splash?
         </description>
         <exitWest>1</exitWest>
@@ -45,9 +45,9 @@
         <description>
             You hear beautiful singing in the distance. Enchanted, you follow the sound.
             You find yourself in a strange room with only a window.
-            In the corner, there is a glint from single golden hairbrush.
-            Distracted, you stumble over a single silkskein.
-            You see just a portion of a long, golden braid.
+            In the corner, there is a glint from a SINGLE golden hairbrush.
+            Distracted, you stumble over a pile of THREE silkskeins.
+            You see just a portion of ONE long, golden braid.
         </description>
         <exitWest>2</exitWest>
         <exitNorth>6</exitNorth>
@@ -59,7 +59,7 @@
         <roomName>rumplestiltskin</roomName>
         <description>
             You can smell the fresh straw from outside the room.
-            It is a large room with immense locked doors.
+            It is a large room with immense lockeddoors.
             A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
             There is a HUGE pile of hay completely surrounding the spindle.
             Under a tarp in the corner, there seems to be stack of goldbars.
@@ -77,8 +77,8 @@
             Everything is in its place and very tidy.
             There is a large, comfortable chair in the corner…maybe take a rest?
             You wander through the room and see a fancy invitation opened on the table.
-            Near the invitation are two large boxes with beautiful ball gowns inside.
-            Tucked under the chair, you notice what appears to be one glassslipper?
+            Near the invitation are TWO large boxes with beautiful ball gowns inside.
+            Tucked under the chair, you notice what appears to be ONE glassslipper?
         </description>
         <exitNorth>8</exitNorth>
         <exitSouth>2</exitSouth>
@@ -89,7 +89,7 @@
     <room id="6">
         <roomName>hansel and gretel</roomName>
         <description>
-            The delicious smell of fresh, warm gingerbread lures you into the room.
+            The delicious smell FOUR fresh, warm gingerbread cookies lure you into the room.
             There is a hot oven and you can feel the heat,
             but that gingerbread must be somewhere here.
             You see a small structure in the corner of the room.
@@ -104,7 +104,7 @@
     <room id="7">
         <roomName>red riding hood</roomName>
         <description>
-            You see the bed in this room, piled high with pillows and blankets.
+            You see a SINGLE bed in this room, piled high with pillows and blankets.
             Tea, lozenges and tissue are piled high on the nightstand.
             On the floor is a small red mound of fabric….a hooded cape.
             On the table near the door, a sleepingcap in a flowery pattern.
@@ -120,7 +120,7 @@
         <description>
             This room is crowded with items and smells of leather.
             There are rows and rows of shoes lined up on the shelves along the wall.
-            There are tools on several work tables placed around the room.
+            There are SEVEN tools on several work tables placed around the room.
             You hear some whispering from the closet.
             There is a pile of folded clothing on a table near a workbench.
             The clothing is very small sizes, for a child or…?
@@ -135,7 +135,7 @@
         <description>
             This room is cozy and dim.
             There is an odd silence made eerier by the low light in the room.
-            There is a large bed that looks so comfortable, and you feel so tired.
+            The SINGLE bed looks so comfortable, and you feel so tired.
             Those fluffy pillows look so inviting to your sleepy eyes.
             You are distracted by a lump in the corner – under a pile of clothing is an old spindle,
             it’s needle sharp and shining.
