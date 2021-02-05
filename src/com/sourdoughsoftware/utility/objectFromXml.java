@@ -1,5 +1,7 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.utility;
 
+import com.sourdoughsoftware.Item;
+import com.sourdoughsoftware.Room;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

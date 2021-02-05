@@ -1,4 +1,7 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.utility;
+
+import com.sourdoughsoftware.Player;
+import com.sourdoughsoftware.Room;
 
 import java.util.List;
 
