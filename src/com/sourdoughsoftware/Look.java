@@ -4,6 +4,15 @@ import java.util.List;
 
 public class Look {
 
+    /**
+     * This method will allow the player to see a short description of adjoining rooms.
+     * It takes in the following parameters and returns a string to Game.
+     * @param roomID
+     * @param response
+     * @param roomList
+     * @param player1
+     * @return
+     */
     public static String roomLook(Integer roomID, String response, List<Room> roomList, Player player1) {
         String result = "";
         for (Room room : roomList) {
@@ -55,6 +64,15 @@ public class Look {
         return result;
     }
 
+    /**
+     * This method allows the player to look at various items in room.
+     * It takes the following parameters and returns a string to Game.
+     * @param playerRoomID
+     * @param response
+     * @param roomList
+     * @param itemList
+     * @return
+     */
     public static String itemLook(Integer playerRoomID, String response, List<Room> roomList, List<Item> itemList) {
         String result = "What are you looking at?";
         // This broken nested loop should be refactored into a non nested loop
