@@ -51,13 +51,13 @@ public class Game {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
                 roomDescription = Utilities.getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
-            if (userCommands[0].equalsIgnoreCase("look") ||
-                    userCommands[0].equalsIgnoreCase("show") ||
-                    userCommands[0].equalsIgnoreCase("inspect") ||
-                    userCommands[0].equalsIgnoreCase("examine")) {
+            if (userCommands[0].equalsIgnoreCase("look")) {
                 if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
-                } else {
+                } else if (userCommands[1].equalsIgnoreCase("room")){
+                    System.out.println(roomDescription);
+                }
+                else {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
                 }
                 continue;
@@ -79,10 +79,26 @@ public class Game {
             if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
                 String message = parser.processInteraction(rooms, userCommands, p1);
                 // output verb interaction message or a failure message
+                if (message.contains("%s")) {
+                    message = message.format(message, "Explosion");
+                }
                 System.out.println(message);
                 continue;
             }
-
+            /* Function to check message for keywords to trigger win/loss
+            if message.contains("Envy") {gameovaer = true, call win message}
+            if message.contains("poisoned") {gameover = true, call loss}
+            In hansel and gretele
+            when user bake pie commands ->
+            if message.equals("bake") -> call bakepie()
+            bakepie(){
+            check inventory for apple, pan, cinnamon
+            check if oven exists in roomitems
+            if present, output message of "baking in oven"
+            empty player inventory
+            add pie to inventory
+            }
+             */
             System.out.println(roomDescription);
         } while (!gameOver);
     }
