@@ -7,33 +7,39 @@
         <pival>1</pival>
     </item>
     <item id="1">
-        <name>silkskein</name>
+        <name>silkskeins</name>
         <description>A skein of silk, woven from the smallest of spiders.</description>
         <feel>It's smooth and soft, and it makes you want to roll around in it.</feel>
+        <pival>3</pival>
     </item>
     <item id="2">
         <name>braid</name>
         <description>An impressively thick, woven braid.</description>
         <feel>Soft, silky, and well moisturized, yet rugged.</feel>
+        <pival>1</pival>
     </item>
     <item id="3">
         <name>apple</name>
         <description>That looks like a delicious apple, probably an Envy.</description>
         <eat>It was an Envy! And also poisoned. Have fun with that!</eat>
+        <pival>1</pival>
     </item>
     <item id="4">
         <name>mirror</name>
         <description>A disturbing lack of a reflection doesn't stare you back in the face.</description>
         <break>Seventy times seven years of bad luck for you!</break>
+        <pival>1</pival>
     </item>
     <item id="5">
         <name>tools</name>
-        <description>An awl, a hammer, a needle and thread.</description>
+        <description>An awl, a hammer, a needle and thread, a saw, some paper, and a wooden head.</description>
+        <pival>7</pival>
     </item>
     <item id="6">
         <name>gingerbread</name>
         <description>It wants to eat you. I mean it wants you to eat it.</description>
         <eat>It crumbles in your mouth, cinnamon and sugar filling your nose. You sneeze.</eat>
+        <pival>4</pival>
     </item>
     <item id="7">
         <name>oven</name>
@@ -48,10 +54,12 @@
     <item id="9">
         <name>chest</name>
         <description>The chest is so ornate, you don't even think you need to open it.</description>
+        <open>When you open the chest, you notice lots of treasure inside!</open>
     </item>
     <item id="10">
         <name>treasure</name>
-        <description>This is it! This is the treasure you've been looking for! Wait...no....it's not.</description>
+        <description>This is it! These are the NINE secrets of baking!</description>
+        <pival>9</pival>
     </item>
     <item id="11">
         <name>doors</name>
@@ -65,18 +73,21 @@
     <item id="13">
         <name>insects</name>
         <description>Little, annoying, biting. Ya know - insects.</description>
-        <squish>In a flurry of activity, you crush the life out of all of the little, helpless, peace loving insects. You monster.</squish>
+        <squish>In a flurry of activity, you crush the life out of all FIVE of the little, helpless, peace loving insects. You monster.</squish>
+        <pival>5</pival>
     </item>
     <item id="14">
         <name>crystalsphere</name>
-        <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there.
+        <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there. It could be the end. It could just be the best thing - PERIOD.
         </description>
         <rub>You rub the sphere, wishing your secret wish.</rub>
+        <pival>.</pival>
     </item>
     <item id="15">
         <name>bed</name>
         <description>Look at that thread count! Look at design! This is the bed of the century!</description>
         <sleep>You take a quick snooze, and waken refreshed.</sleep>
+        <pival>1</pival>
     </item>
     <item id="16">
         <name>spindle</name>
@@ -89,12 +100,14 @@
     </item>
     <item id="18">
         <name>firstaidkit</name>
-        <description>Bandages, ointment, and a small knife. You could fix many small wounds with this.</description>
+        <description>Bandages, ointment, and a small knife. You could fix SIX small wounds with this.</description>
+        <pival>6</pival>
     </item>
     <item id="19">
         <name>chair</name>
         <description>A chair to some, a bed to others.</description>
-        <sit>You take a long needed rest on this amazing chair.</sit>
+        <sit>You take a long needed rest on this amazing chair, around NINE minutes.</sit>
+        <pival>9</pival>
     </item>
     <item id="20">
         <name>invitation</name>
@@ -110,6 +123,7 @@
     <item id="22">
         <name>boxes</name>
         <description>Large and rectangular, at least they don't remind you of coffins.</description>
+        <pival>2</pival>
     </item>
     <item id="23">
         <name>gowns</name>
