@@ -3,18 +3,38 @@ package com.sourdoughsoftware;
 //import com.sourdoughsoftware.utility.InputParser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private String name;
     private Integer roomID;
-    private ArrayList<Item> inventory;
-    private ArrayList<String> piecesOfPi;
+    private List<Item> inventory;
+    private List<String> piecesOfPi;
 
     // Constructors
     public Player(String name, Integer roomID) {
         this.name = name;
         this.roomID = roomID;
         this.inventory = new ArrayList<>();
+        this.piecesOfPi = new ArrayList<>();
+    }
+
+    public String takeItem(List<Room> rooms, Item item) {
+        String message = "You  see a " + item.getName();
+        for (Room r1 : rooms) {
+            if (this.getPlayerRoomID().equals(r1.getRoomID())) {
+                List<Item> items = r1.getRoomItems();
+                if (items.contains(item)) {
+                    r1.removeItem(item);
+                    this.addInventory(item);
+                    message = "You added a " + item.getName() + " to your inventory.";
+                    System.out.println(r1.getRoomItems().toString());
+                    System.out.println(this.getInventory().toString());
+                    break;
+                }
+            }
+        }
+        return message;
     }
 
     // Accessors
@@ -34,13 +54,21 @@ public class Player {
         this.roomID = roomID;
     }
 
-    public ArrayList<Item> getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
 
-    public ArrayList<Item> addInventory(Item item) {
+    public List<Item> addInventory(Item item) {
         inventory.add(item);
         return inventory;
+    }
+
+    public int sizeOfPi() {
+        return piecesOfPi.size();
+    }
+
+    public boolean piContains(String value) {
+        return piecesOfPi.contains(value);
     }
 
 //    // Methods
