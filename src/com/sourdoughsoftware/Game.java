@@ -52,6 +52,8 @@ public class Game {
                 roomDescription = Utilities.getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
             if (userCommands[0].equalsIgnoreCase("look")) {
+
+
                 if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
                 } else if (userCommands[1].equalsIgnoreCase("room")){
@@ -61,6 +63,13 @@ public class Game {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
                 }
                 continue;
+            }
+            if(userCommands[0].equalsIgnoreCase("show") ||
+                    userCommands[0].equalsIgnoreCase("see")) {
+                if (userCommands[1].equalsIgnoreCase("inventory")) {
+                    System.out.println("Your inventory:\n" + p1.getInventory().toString());
+                    continue;
+                }
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
                 System.out.println("Commands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +

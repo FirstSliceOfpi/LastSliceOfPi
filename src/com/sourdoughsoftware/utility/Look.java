@@ -10,12 +10,10 @@ public class Look {
 
     /**
      * This method will allow the player to see a short description of adjoining rooms.
-     * It takes in the following parameters and returns a string to Game.
-     * @param roomID
-     * @param response
-     * @param roomList
-     * @param player1
-     * @return
+     * It takes in the following parameters and returns a string to Game. It uses a
+     * basic switch statement. TODO: Refactor code to eliminate hard coding.
+     * @param roomID, response, roomList, player1
+     * @return Str result
      */
     public static String roomLook(Integer roomID, String response, List<Room> roomList, Player player1) {
         String result = "";
@@ -71,11 +69,8 @@ public class Look {
     /**
      * This method allows the player to look at various items in room.
      * It takes the following parameters and returns a string to Game.
-     * @param playerRoomID
-     * @param response
-     * @param roomList
-     * @param itemList
-     * @return
+     * @param playerRoomID, response, roomList, itemList
+     * @return result
      */
     public static String itemLook(Integer playerRoomID, String response, List<Room> roomList, List<Item> itemList) {
         String result = "What are you looking at?";
