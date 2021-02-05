@@ -7,6 +7,7 @@ public class Item {
     private Integer itemID;
     private String name;
     private String description;
+    private String pival;
     private Map<String, String> verbInteraction = new HashMap<>();
 
     public Map<String, String> getVerbInteraction() {
@@ -15,6 +16,14 @@ public class Item {
 
     public void setVerbInteraction(String userVerb, String message) {
         this.verbInteraction.put(userVerb, message);
+    }
+
+    public String getPival() {
+        return pival;
+    }
+
+    public void setPival(String pival) {
+        this.pival = pival;
     }
 
     public Integer getItemID() {
@@ -45,7 +54,8 @@ public class Item {
     public String toString() {
         return "Item[id=" + getItemID() + ", " +
                 "name=" + getName() + ", " +
-                "description=" + getDescription() + "," +
+                "description=" + getDescription() + ", " +
+                "pival=" + getPival() + ", " +
                 "verbInteractions=" + getVerbInteraction().toString();
     }
 }

@@ -4,6 +4,7 @@
         <name>hairbrush</name>
         <description>A golden hairbrush, with a soft wood handle.</description>
         <feel>The hairbrush feels soft yet sturdy.</feel>
+        <pival>1</pival>
     </item>
     <item id="1">
         <name>silkskein</name>
@@ -37,6 +38,7 @@
     <item id="7">
         <name>oven</name>
         <description>This oven looks like it could fit anything, like even you!</description>
+<!--        possible keyword for doing an action based on the string response-->
         <bake>bake</bake>
     </item>
     <item id="8">
@@ -116,6 +118,7 @@
     <item id="24">
         <name>glassslipper</name>
         <description>There is just no way this would fit you, right?</description>
+        <pival>1</pival>
     </item>
     <item id="25">
         <name>straw</name>

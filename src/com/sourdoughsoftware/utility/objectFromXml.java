@@ -71,6 +71,9 @@ public class objectFromXml {
                 if (checkElementLength(singleItem, "description")) {
                     item.setDescription(singleItem.getElementsByTagName("description").item(0).getTextContent());
                 }
+                if (checkElementLength(singleItem, "pival")) {
+                    item.setPival(singleItem.getElementsByTagName("pival").item(0).getTextContent());
+                }
                 addInteractions(singleItem, item);
                 //Add Room to list
                 items.add(item);

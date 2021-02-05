@@ -7,21 +7,29 @@ import java.util.List;
 public enum Verbs {
     // Item specific use words
 
-    FEEL, // hairbrush
-    EAT, BREAK, //snow white
-    OPEN, CLOSE, // hansel and gretel
-    SQUISH, RUB, //frog prince
-    SLEEP, // sleeping beauty
-    SIT, READ, MOVE, WEAR, // cinderella
-    SPIN, UNLOCK, // Rumpelstiltskin
-    DRINK, // little red riding hood
+    FEEL, // 0,1,2
+    EAT, // 3,6
+    BREAK, // 4
+    OPEN, // 11
+    CLOSE, //
+    SQUISH, //
+    BAKE, // 7
+    RUB, //
+    SLEEP, //
+    SIT,
+    READ,
+    MOVE,
+    WEAR, //
+    SPIN,
+    UNLOCK, //
+    DRINK, //
 
     // Sight words
     LOOK, SHOW, EXAMINE, SEE,
     // Generic words
     TAKE, GET,
     USE,
-    DROP,
+    DROP, // add ability to remove item from inventory with this?
     GO,
     HELP, H,
     QUIT, Q,

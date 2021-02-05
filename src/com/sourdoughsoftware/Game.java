@@ -52,8 +52,6 @@ public class Game {
                 roomDescription = Utilities.getRoomDescription(p1.getPlayerRoomID(), rooms);
             }
             if (userCommands[0].equalsIgnoreCase("look")) {
-
-
                 if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
                 } else if (userCommands[1].equalsIgnoreCase("room")){
