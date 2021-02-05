@@ -98,27 +98,35 @@ public class objectFromXml {
     private static void checkDirections(Room room, Element individualRoom) {
         if (checkElementLength(individualRoom, "exitWest")) {
             room.addExitbyID("west", Integer.parseInt(individualRoom.getElementsByTagName("exitWest").item(0).getTextContent()));
+            room.addExitbyID("w", Integer.parseInt(individualRoom.getElementsByTagName("exitWest").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitEast")) {
             room.addExitbyID("east", Integer.parseInt(individualRoom.getElementsByTagName("exitEast").item(0).getTextContent()));
+            room.addExitbyID("e", Integer.parseInt(individualRoom.getElementsByTagName("exitEast").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitNorth")) {
             room.addExitbyID("north", Integer.parseInt(individualRoom.getElementsByTagName("exitNorth").item(0).getTextContent()));
+            room.addExitbyID("n", Integer.parseInt(individualRoom.getElementsByTagName("exitNorth").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitSouth")) {
             room.addExitbyID("south", Integer.parseInt(individualRoom.getElementsByTagName("exitSouth").item(0).getTextContent()));
+            room.addExitbyID("s", Integer.parseInt(individualRoom.getElementsByTagName("exitSouth").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitNorthwest")) {
             room.addExitbyID("northwest", Integer.parseInt(individualRoom.getElementsByTagName("exitNorthwest").item(0).getTextContent()));
+            room.addExitbyID("nw", Integer.parseInt(individualRoom.getElementsByTagName("exitNorthwest").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitNortheast")) {
             room.addExitbyID("northeast", Integer.parseInt(individualRoom.getElementsByTagName("exitNortheast").item(0).getTextContent()));
+            room.addExitbyID("ne", Integer.parseInt(individualRoom.getElementsByTagName("exitNortheast").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitSouthwest")) {
             room.addExitbyID("southwest", Integer.parseInt(individualRoom.getElementsByTagName("exitSouthwest").item(0).getTextContent()));
+            room.addExitbyID("sw", Integer.parseInt(individualRoom.getElementsByTagName("exitSouthwest").item(0).getTextContent()));
         }
         if (checkElementLength(individualRoom, "exitSoutheast")) {
             room.addExitbyID("southeast", Integer.parseInt(individualRoom.getElementsByTagName("exitSoutheast").item(0).getTextContent()));
+            room.addExitbyID("se", Integer.parseInt(individualRoom.getElementsByTagName("exitSoutheast").item(0).getTextContent()));
         }
     }
 

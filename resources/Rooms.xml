@@ -109,7 +109,7 @@
             On the table near the door, a sleepingcap in a flowery pattern.
             On the ground near the table, you see a handled basket, filled with food and packages.
         </description>
-        <exitNorth>9</exitNorth>
+        <exitWest>9</exitWest>
         <exitSouth>4</exitSouth>
         <exitEast>8</exitEast>
         <shortDescription>My, but what big ears those are!</shortDescription>
@@ -140,7 +140,7 @@
             it’s needle sharp and shining.
             As you sit, you find a small, wooden box…a firstaidkit?
         </description>
-        <exitNorth>7</exitNorth>
+        <exitEast>7</exitEast>
         <exitSouth>6</exitSouth>
         <exitWest>8</exitWest>
         <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
