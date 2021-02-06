@@ -58,12 +58,13 @@
     <room id="4">
         <roomName>rumplestiltskin</roomName>
         <description>
-            You can smell the fresh straw from outside the room.
-            It is a large room with immense lockeddoors.
+            You can smell the fresh straw from outside the room, but what is the POINT of straw?
+            It is a large room with THREE immense lockeddoors.
             A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
-            There is a HUGE pile of hay completely surrounding the spindle.
-            Under a tarp in the corner, there seems to be stack of goldbars.
-            A heavy book lays on the floor near the spindle and stool….in gold letters “Best Baby Names”…
+            There is a ONE HUGE pile of hay completely surrounding the spindle.
+            Under a tarp in the corner, there seems to be stack of FIVE goldbars.
+            A stack of NINE books lays on the floor near the spindle and stool….
+            the title of the top book, in gold letters, is “Best Baby Names”…
         </description>
         <exitNorth>7</exitNorth>
         <exitEast>5</exitEast>
@@ -105,10 +106,13 @@
         <roomName>red riding hood</roomName>
         <description>
             You see a SINGLE bed in this room, piled high with pillows and blankets.
-            Tea, lozenges and tissue are piled high on the nightstand.
-            On the floor is a small red mound of fabric….a hooded cape.
+            TWO boxes of tea, FOUR lozenges and SIX tissues are piled high on the nightstand,
+            which has EIGHT drawers.
+            On the floor is a small red mound of fabric….THREE hooded capes.
             On the table near the door, a sleepingcap in a flowery pattern.
-            On the ground near the table, you see a handled basket, filled with food and packages.
+            What is the POINT of a sleepingcap?
+            On the ground near the table, you see ONE handled basket,
+            filled with FOUR foods and EIGHT packages.
         </description>
         <exitWest>9</exitWest>
         <exitSouth>4</exitSouth>
@@ -119,10 +123,10 @@
         <roomName>shoemaker</roomName>
         <description>
             This room is crowded with items and smells of leather.
-            There are rows and rows of shoes lined up on the shelves along the wall.
+            There are NINE rows of shoes lined up on the shelves along the wall.
             There are SEVEN tools on several work tables placed around the room.
             You hear some whispering from the closet.
-            There is a pile of folded clothing on a table near a workbench.
+            There are SIX piles of folded clothing on a table near a workbench.
             The clothing is very small sizes, for a child or…?
         </description>
         <exitWest>7</exitWest>
@@ -150,12 +154,13 @@
         <roomName>golden goose</roomName>
         <description>
             This room is furnished sparsely, with contents that look worn or handed down.
-            There is an ax propped against the wall near the door.
+            There is an ax, with SEVEN carved in it, propped against the wall near the door.
             It smells of freshly chopped wood and a fowl?
             As your eyes adjust to the light of the room,
             you spot a large nest in the corner near the fireplace.
+            Very large, like the size of FIVE average nests.
             There is not much to see in this sparse room,
-            except is that a goldenfeather….?
+            except is that a goldenfeather, or THREE….?
         </description>
         <exitNorth>3</exitNorth>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>

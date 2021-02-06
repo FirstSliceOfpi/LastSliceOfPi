@@ -137,84 +137,104 @@
     <item id="25">
         <name>straw</name>
         <description>You can INDEED smell the straw outside, and you wish you couldn't.</description>
+        <pival>.</pival>
     </item>
     <item id="26">
         <name>lockeddoors</name>
         <description>These doors are tightly shut, and there appears to be no keyhole that you can find.</description>
+        <pival>3</pival>
     </item>
     <item id="27">
         <name>hay</name>
         <description>Hey, Listen! It's hay!</description>
+        <pival>1</pival>
     </item>
     <item id="28">
         <name>goldbars</name>
         <description>These just don't seem to fit. Who would leave all this wealth just laying around?</description>
+        <pival>5</pival>
     </item>
     <item id="29">
         <name>book</name>
         <description>You browse through the book. These are indeed the Best Baby Names, and thank goodness none of them
             are yours!
         </description>
+        <pival>9</pival>
     </item>
     <item id="30">
         <name>tea</name>
         <description>Chamomile, or perhaps wolfsbane? You can't quite tell but it smells delicious!</description>
+        <pival>2</pival>
     </item>
     <item id="31">
         <name>lozenges</name>
         <description>Not individually wrapped, not even really individual. Best steer clear.</description>
+        <pival>4</pival>
     </item>
     <item id="32">
         <name>tissue</name>
         <description>Honestly, what a waste of a good tree!</description>
+        <pival>6</pival>
     </item>
     <item id="33">
         <name>nightstand</name>
         <description>It looks more like a nightsit with how short it is.</description>
+        <pival>8</pival>
     </item>
     <item id="34">
         <name>cape</name>
         <description>This is it, the thing you've been missing to complete you're outift and let you take your creed!
         </description>
+        <pival>3</pival>
     </item>
     <item id="35">
         <name>sleepingcap</name>
         <description>This looks just so helpful, if only you were significantly older.</description>
+        <pival>.</pival>
     </item>
     <item id="36">
         <name>basket</name>
         <description>The basket is sturdy and well used, with no frayed edges or holes to be found.</description>
+        <pival>1</pival>
     </item>
     <item id="37">
         <name>food</name>
         <description>This is not the food you're looking for. Move along.</description>
+        <pival>4</pival>
     </item>
     <item id="38">
         <name>packages</name>
         <description>Forrest delivery service - right to your cottage!</description>
+        <pival>5</pival>
     </item>
     <item id="39">
         <name>shoes</name>
         <description>You feel like these shoes could only have been made by tiny elves, or perhaps gremlins.</description>
+        <pival>9</pival>
     </item>
     <item id="40">
         <name>clothing</name>
         <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such finery!</description>
+        <pival>6</pival>
     </item>
     <item id="41">
         <name>workbench</name>
         <description>This husky workbench looks like you could make things on it forever.</description>
+        <pival>1</pival>
     </item>
     <item id="42">
         <name>ax</name>
         <description>A sturdy handle, a sharp blade, why are you splitting hairs over it?</description>
+        <pival>7</pival>
     </item>
     <item id="43">
         <name>nest</name>
         <description>What could possible live in a nest inside a house like this?</description>
+        <pival>5</pival>
     </item>
     <item id="44">
         <name>goldenfeather</name>
         <description>I wager if you took a closer gander, you might get tickled!</description>
+        <pival>3</pival>
     </item>
 </Items>
