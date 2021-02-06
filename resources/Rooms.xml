@@ -8,20 +8,22 @@
         <exitNorthwest>1</exitNorthwest>
         <exitNorth>2</exitNorth>
         <exitNortheast>3</exitNortheast>
+        <shortDescription>This was start. Nothing here.</shortDescription>
     </room>
     <room id="1">
         <roomName>snow white</roomName>
         <description>
             As your eyes adjust to the darkness, you find yourself in tall room with stone walls.
-            As your stomach growls, you see a shining red apple on the table, tempting your hunger.
-            An ornate, gold mirror hangs on the wall.
-            When you pass the mirror, you notice no reflection of your image.
-            Isn’t that odd? There are several very small tools strewn across the room.
+            As your stomach growls, you see a SINGLE shining red apple on the table, tempting your hunger.
+            ONE ornate, gold mirror hangs on the wall.
+            When you pass the ONE mirror, you notice no reflection of your image.
+            Isn’t that odd? There are SEVEN very small tools strewn across the room.
         </description>
         <exitWest>3</exitWest>
         <exitNorth>4</exitNorth>
         <exitEast>2</exitEast>
         <exitSoutheast>0</exitSoutheast>
+        <shortDescription>Is that an apple reflected in a mirror? Because you could use a little snack.</shortDescription>
     </room>
     <room id="2">
         <roomName>frog prince</roomName>
@@ -29,40 +31,45 @@
             You feel a perfect breeze and find yourself in a bright, airy room with open double doors.
             It’s an intriguing room with many curiosities and trinkets.
             You hear a rustling and turn to see a bag of live insects near a chair.
-            On the bookshelf is a sparkling crystal sphere.
+            On the bookshelf, a sparkling crystalsphere draws your gaze.
             You hear birds chirping outside, leaves softly rustling and …was that a splash?
         </description>
         <exitWest>1</exitWest>
         <exitNorth>5</exitNorth>
         <exitEast>3</exitEast>
         <exitSouth>0</exitSouth>
+        <shortDescription>Do you wonder if that tiny crown is waterproof? Also, do you smell amphibians?</shortDescription>
     </room>
     <room id="3">
         <roomName>rapunzel</roomName>
         <description>
             You hear beautiful singing in the distance. Enchanted, you follow the sound.
             You find yourself in a strange room with only a window.
-            In the corner, there is a glint from a golden hairbrush.
-            You see just a portion of a long, golden braid.
+            In the corner, there is a glint from a SINGLE golden hairbrush.
+            Distracted, you stumble over a pile of THREE silkskeins.
+            You see just a portion of ONE long, golden braid.
         </description>
         <exitWest>2</exitWest>
         <exitNorth>6</exitNorth>
         <exitEast>1</exitEast>
         <exitSouth>10</exitSouth>
+        <shortDescription>There is so much hair in this room. And no door in sight.</shortDescription>
     </room>
     <room id="4">
         <roomName>rumplestiltskin</roomName>
         <description>
-            You can smell the fresh straw from outside the room.
-            It is a large room with immense locked doors.
+            You can smell the fresh straw from outside the room, but what is the POINT of straw?
+            It is a large room with THREE immense lockeddoors.
             A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
-            There is a HUGE pile of hay completely surrounding the spindle.
-            Under a tarp in the corner, there seems to be stack of gold bars.
-            A heavy book lays on the floor near the spindle and stool….in gold letters “Best Baby Names”…
+            There is a ONE HUGE pile of hay completely surrounding the spindle.
+            Under a tarp in the corner, there seems to be stack of FIVE goldbars.
+            A stack of NINE books lays on the floor near the spindle and stool….
+            the title of the top book, in gold letters, is “Best Baby Names”…
         </description>
         <exitNorth>7</exitNorth>
         <exitEast>5</exitEast>
         <exitSouth>1</exitSouth>
+        <shortDescription>This room could be worth its weight in gold.</shortDescription>
     </room>
     <room id="5">
         <roomName>cinderella</roomName>
@@ -71,18 +78,19 @@
             Everything is in its place and very tidy.
             There is a large, comfortable chair in the corner…maybe take a rest?
             You wander through the room and see a fancy invitation opened on the table.
-            Near the invitation are two large boxes with beautiful ball gowns inside.
-            Tucked under the chair, you notice what appears to be a glass slipper?
+            Near the invitation are TWO large boxes with beautiful ball gowns inside.
+            Tucked under the chair, you notice what appears to be ONE glassslipper?
         </description>
         <exitNorth>8</exitNorth>
         <exitSouth>2</exitSouth>
         <exitEast>6</exitEast>
         <exitWest>4</exitWest>
+        <shortDescription>Are those keys to a pumpkin carriage?!?!</shortDescription>
     </room>
     <room id="6">
         <roomName>hansel and gretel</roomName>
         <description>
-            The delicious smell of fresh, warm gingerbread lures you into the room.
+            The delicious smell FOUR fresh, warm gingerbread cookies lure you into the room.
             There is a hot oven and you can feel the heat,
             but that gingerbread must be somewhere here.
             You see a small structure in the corner of the room.
@@ -92,60 +100,69 @@
         <exitNorth>9</exitNorth>
         <exitSouth>3</exitSouth>
         <exitWest>5</exitWest>
+        <shortDescription>If you have a sweet tooth, you are going to love this room.</shortDescription>
     </room>
     <room id="7">
         <roomName>red riding hood</roomName>
         <description>
-            You see the bed in this room, piled high with pillows and blankets.
-            Tea, lozenges and tissue are piled high on the nightstand.
-            On the floor is a small red mound of fabric….a hooded cape.
-            On the table near the door, a sleeping cap in a flowery pattern.
-            On the ground near the table, you see a handled basket, filled with food and packages.
+            You see a SINGLE bed in this room, piled high with pillows and blankets.
+            TWO boxes of tea, FOUR lozenges and SIX tissues are piled high on the nightstand,
+            which has EIGHT drawers.
+            On the floor is a small red mound of fabric….THREE hooded capes.
+            On the table near the door, a sleepingcap in a flowery pattern.
+            What is the POINT of a sleepingcap?
+            On the ground near the table, you see ONE handled basket,
+            filled with FOUR foods and EIGHT packages.
         </description>
-        <exitNorth>9</exitNorth>
+        <exitWest>9</exitWest>
         <exitSouth>4</exitSouth>
         <exitEast>8</exitEast>
+        <shortDescription>My, but what big ears those are!</shortDescription>
     </room>
     <room id="8">
         <roomName>shoemaker</roomName>
         <description>
             This room is crowded with items and smells of leather.
-            There are rows and rows of shoes lined up on the shelves along the wall.
-            There are tools on several work tables placed around the room.
+            There are NINE rows of shoes lined up on the shelves along the wall.
+            There are SEVEN tools on several work tables placed around the room.
             You hear some whispering from the closet.
-            There is a pile of folded clothing on a table near a workbench.
+            There are SIX piles of folded clothing on a table near a workbench.
             The clothing is very small sizes, for a child or…?
         </description>
         <exitWest>7</exitWest>
         <exitEast>9</exitEast>
         <exitSouth>5</exitSouth>
+        <shortDescription>Those might be the tiniest shoeprints you've ever seen.</shortDescription>
     </room>
     <room id="9">
         <roomName>sleeping beauty</roomName>
         <description>
             This room is cozy and dim.
             There is an odd silence made eerier by the low light in the room.
-            There is a large bed that looks so comfortable, and you feel so tired.
+            The SINGLE bed looks so comfortable, and you feel so tired.
             Those fluffy pillows look so inviting to your sleepy eyes.
             You are distracted by a lump in the corner – under a pile of clothing is an old spindle,
             it’s needle sharp and shining.
-            As you sit, you find a small, wooden box…a first aid kit?
+            As you sit, you find a small, wooden box…a firstaidkit?
         </description>
-        <exitNorth>7</exitNorth>
+        <exitEast>7</exitEast>
         <exitSouth>6</exitSouth>
         <exitWest>8</exitWest>
+        <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
     </room>
     <room id="10">
         <roomName>golden goose</roomName>
         <description>
             This room is furnished sparsely, with contents that look worn or handed down.
-            There is an ax propped against the wall near the door.
+            There is an ax, with SEVEN carved in it, propped against the wall near the door.
             It smells of freshly chopped wood and a fowl?
             As your eyes adjust to the light of the room,
             you spot a large nest in the corner near the fireplace.
+            Very large, like the size of FIVE average nests.
             There is not much to see in this sparse room,
-            except is that a golden feather….?
+            except is that a goldenfeather, or THREE….?
         </description>
         <exitNorth>3</exitNorth>
+        <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
 </Rooms>

@@ -1,26 +1,14 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.utility;
+
+import com.sourdoughsoftware.Player;
+import com.sourdoughsoftware.Room;
 
 import java.util.List;
 
 public class RoomChange {
-
+// TODO: put changePlayerLocation() to changeRoom() and then move
     public static String changeRoom(Integer roomID, String response, List<Room> roomList, Player p1) {
-        String result = "";
-        switch (response) {
-            case "west":
-            case "southeast":
-            case "southwest":
-            case "northeast":
-            case "east":
-            case "south":
-            case "northwest":
-            case "north":
-                result = changePlayerLocation(roomID, response, roomList, p1);
-                break;
-            default:
-
-        }
-        return result;
+        return changePlayerLocation(roomID, response, roomList, p1);
     }
 
 
@@ -33,9 +21,8 @@ public class RoomChange {
                     result = "You cannot go that way";
                     break;
                 }
-                System.out.println(room.getDescription());
                 player1.setPlayerRoomID(exit);
-                result = "Player in: " + player1.getPlayerRoomID();
+                result = "You are in room: " + player1.getPlayerRoomID();
                 break;
             }
         }
