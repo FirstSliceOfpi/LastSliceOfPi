@@ -1,7 +1,6 @@
 package com.sourdoughsoftware;
 
 import org.xml.sax.SAXException;
-import com.sourdoughsoftware.utility.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -21,23 +20,11 @@ public class Game {
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
         System.out.println(WelcomeScreen.getWelcomeMessage());
-        List<Room> rooms = objectFromXml.parseRoom();
-        List<Item> items = objectFromXml.parseItems();
-
-        for (Room room : rooms) {
-            for (Item item : items) {
-                if (room.getDescription().contains(item.getName())) {
-                    room.addToRoom(item);
-                }
-            }
-        }
+        List<Room> rooms = PopulateRoomsFromXML.parseRoomXML();
 //        System.out.println(rooms.toString());
-        System.out.println(items.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
-        String roomDescription = Utilities.getRoomDescription(p1.getPlayerRoomID(), rooms);
-        System.out.println(roomDescription);
 
         do {
 //            give player description of the scene
@@ -45,71 +32,39 @@ public class Game {
 //            change game state
 //            inform player of the changes
 //            loop
-
+            String roomDescription = getRoomDescription(p1.getPlayerRoomID(), rooms);
+            System.out.println(roomDescription);
             String[] userCommands = parser.promptAction(">> ");
             if (userCommands[0].equals("go")) {
                 System.out.println(RoomChange.changeRoom(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
-                roomDescription = Utilities.getRoomDescription(p1.getPlayerRoomID(), rooms);
-            }
-            if (userCommands[0].equalsIgnoreCase("look")) {
-                if (Nouns.getAllDirections().contains(userCommands[1])) {
-                    System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
-                } else if (userCommands[1].equalsIgnoreCase("room")){
-                    System.out.println(roomDescription);
-                }
-                else {
-                    System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
-                }
-                continue;
-            }
-            if(userCommands[0].equalsIgnoreCase("show") ||
-                    userCommands[0].equalsIgnoreCase("see")) {
-                if (userCommands[1].equalsIgnoreCase("inventory")) {
-                    System.out.println("Your inventory:\n" + p1.getInventory().toString());
-                    continue;
-                }
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
-                System.out.println("Commands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
-                        "help menu at any time: help or h.\nQuit at any time: quit or q.");
-                continue;
+                System.out.println("Goal - explore the world using 'go' and a direction, read the story, and figure " +
+                                "out the goal.\nCommands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
+                                "help menu at any time: help or h.\nQuit at any time: quit or q.");
             }
             if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
                 setGameOver(true);
                 System.out.println("Thanks for playing!");
-                continue;
             }
-            if (userCommands[0].equalsIgnoreCase("hint")) {
-                System.out.println("You should find something yummy to eat.");
-                continue;
-            }
-            if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
-                String message = parser.processInteraction(rooms, userCommands, p1);
-                // output verb interaction message or a failure message
-                if (message.contains("%s")) {
-                    message = message.format(message, "Explosion");
-                }
-                System.out.println(message);
-                continue;
-            }
-            /* Function to check message for keywords to trigger win/loss
-            if message.contains("Envy") {gameovaer = true, call win message}
-            if message.contains("poisoned") {gameover = true, call loss}
-            In hansel and gretele
-            when user bake pie commands ->
-            if message.equals("bake") -> call bakepie()
-            bakepie(){
-            check inventory for apple, pan, cinnamon
-            check if oven exists in roomitems
-            if present, output message of "baking in oven"
-            empty player inventory
-            add pie to inventory
-            }
-             */
-            System.out.println(roomDescription);
         } while (!gameOver);
+
     }
 
+    private String getRoomDescription(Integer playerLocation, List<Room> rooms) {
+        String result = "";
+        for (Room room : rooms) {
+            if (playerLocation.equals(room.getRoomID())) {
+                if (room.getDescription() == null){
+                    room.setDescription("Room " + room.getRoomID() + " is missing a description!");
+                    result = room.getDescription();
+                }
+                else{
+                    result = room.getDescription();
+                }
+            }
+        } return result;
+    }
 
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;

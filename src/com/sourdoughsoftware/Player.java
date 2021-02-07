@@ -1,14 +1,13 @@
 package com.sourdoughsoftware;
 
-//import com.sourdoughsoftware.utility.InputParser;
+//import com.sourdoughsoftware.InputParser;
 
 import java.util.ArrayList;
 
 public class Player {
     private String name;
     private Integer roomID;
-    private ArrayList<Item> inventory;
-    private ArrayList<String> piecesOfPi;
+    private ArrayList<String> inventory;
 
     // Constructors
     public Player(String name, Integer roomID) {
@@ -34,24 +33,14 @@ public class Player {
         this.roomID = roomID;
     }
 
-    public ArrayList<Item> getInventory() {
+    public ArrayList<String> getInventory() {
         return inventory;
     }
 
-    public ArrayList<Item> addInventory(Item item) {
-        inventory.add(item);
+    public ArrayList<String> addInventory(String item) {
+        Player.this.inventory.add(item);
         return inventory;
     }
-
-//    // Methods
-//    public String getPrettyInventory() {
-//        for (Item eachItem: inventory) {
-//            for (int i = 0; i < eachItem[0].length(); i++ ) {
-//
-//            }
-//
-//        }
-//    }
 
     @Override
     public String toString() {
