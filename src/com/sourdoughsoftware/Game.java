@@ -90,6 +90,7 @@ public class Game {
                     message = message.format(message, "Explosion");
                 }
                 System.out.println(message);
+                System.out.println(p1.isHasPi());
                 continue;
             }
             /* Function to check message for keywords to trigger win/loss

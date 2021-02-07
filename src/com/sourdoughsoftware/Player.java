@@ -8,6 +8,7 @@ import java.util.List;
 public class Player {
     private String name;
     private Integer roomID;
+    boolean hasPi = false;
     private List<Item> inventory;
     private List<String> piecesOfPi;
 
@@ -27,14 +28,22 @@ public class Player {
                 if (items.contains(item)) {
                     r1.removeItem(item);
                     this.addInventory(item);
+                    piecesOfPi.add(item.getPival());
                     message = "You added a " + item.getName() + " to your inventory.";
-                    System.out.println(r1.getRoomItems().toString());
-                    System.out.println(this.getInventory().toString());
+                    doesPlayerHavePi();
                     break;
                 }
             }
         }
         return message;
+    }
+
+    public void doesPlayerHavePi() {
+        if (sizeOfPi() >= 3) {
+            if (piContains("3") && piContains("1") && piContains("4")) {
+                setHasPi(true);
+            }
+        }
     }
 
     // Accessors
@@ -71,7 +80,15 @@ public class Player {
         return piecesOfPi.contains(value);
     }
 
-//    // Methods
+    public boolean isHasPi() {
+        return hasPi;
+    }
+
+    public void setHasPi(boolean hasPi) {
+        this.hasPi = hasPi;
+    }
+
+    //    // Methods
 //    public String getPrettyInventory() {
 //        for (Item eachItem: inventory) {
 //            for (int i = 0; i < eachItem[0].length(); i++ ) {
