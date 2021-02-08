@@ -29,8 +29,8 @@ public class Player {
                     r1.removeItem(item);
                     this.addInventory(item);
                     piecesOfPi.add(item.getPival());
-                    message = "You added a " + item.getName() + " to your inventory.";
                     doesPlayerHavePi();
+                    message = "You added a " + item.getName() + " to your inventory.";
                     break;
                 }
             }
