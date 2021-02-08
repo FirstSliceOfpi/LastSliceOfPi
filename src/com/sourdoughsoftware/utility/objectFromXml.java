@@ -25,13 +25,7 @@ public class objectFromXml {
         List<Room> rooms = new ArrayList<>();
         Room room;
         Document document;
-        // Uncomment next line on windows systems
-        String os = System.getProperty("os.name").toLowerCase();
-        if(os.indexOf("win") >= 0) {
-            document = loadXML("LastSliceOfPi/resources/Rooms.xml");
-        } else {
-            document = loadXML("resources/Rooms.xml");
-        }
+            document = loadXML("./resources/Rooms.xml");
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
@@ -60,11 +54,7 @@ public class objectFromXml {
         Item item;
         Document document;
         String os = System.getProperty("os.name").toLowerCase();
-        if(os.indexOf("win") >= 0) {
-            document = loadXML("LastSliceOfPi/resources/Items.xml");
-        } else {
-            document = loadXML("resources/Items.xml");
-        }
+        document = loadXML("./resources/Items.xml");
         NodeList nList = document.getElementsByTagName("item");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
