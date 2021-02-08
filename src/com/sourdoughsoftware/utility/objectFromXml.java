@@ -21,11 +21,12 @@ import java.util.List;
  */
 public class objectFromXml {
 
-    public static List<Room> parseRoom() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Room> parseRoom(ClassLoader cl) throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
         Room room;
         // Uncomment next line on windows systems
-        Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
+        Document document = loadXML(cl, "Rooms.xml");
+//        Document document = loadXML("LastSliceOfPi/resources/Rooms.xml");
         // Uncomment next line on *nix systems
 //         Document document = loadXML("resources/Rooms.xml");
         NodeList nList = document.getElementsByTagName("room");
@@ -51,12 +52,12 @@ public class objectFromXml {
         return rooms;
     }
 
-    public static List<Item> parseItems() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Item> parseItems(ClassLoader cl) throws ParserConfigurationException, IOException, SAXException {
         List<Item> items = new ArrayList<>();
         Item item;
 
         // Uncomment next line on windows systems
-        Document document = loadXML("LastSliceOfPi/resources/Items.xml");
+        Document document = loadXML(cl, "Items.xml");
         // Uncomment next line on *nix systems
 //        Document document = loadXML("resources/Items.xml");
         NodeList nList = document.getElementsByTagName("item");
@@ -90,10 +91,11 @@ public class objectFromXml {
         }
     }
 
-    private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
+    private static Document loadXML(ClassLoader cl, String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File(filename));
+        java.io.InputStream in = cl.getResourceAsStream(filename);
+        Document document = builder.parse(in);
         document.getDocumentElement().normalize();
         return document;
     }

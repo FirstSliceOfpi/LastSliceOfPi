@@ -21,8 +21,9 @@ public class Game {
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
         System.out.println(WelcomeScreen.getWelcomeMessage());
-        List<Room> rooms = objectFromXml.parseRoom();
-        List<Item> items = objectFromXml.parseItems();
+        ClassLoader cl = this.getClass().getClassLoader();
+        List<Room> rooms = objectFromXml.parseRoom(cl);
+        List<Item> items = objectFromXml.parseItems(cl);
 
         for (Room room : rooms) {
             for (Item item : items) {
