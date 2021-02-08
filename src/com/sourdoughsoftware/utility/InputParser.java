@@ -97,6 +97,7 @@ public class InputParser {
                 }
             }
             message = p1.takeItem(rooms, playerItem);
+
         } else if (userCommands[0].equalsIgnoreCase("examine")) {
             boolean found = false;
             Item foundItem = new Item();

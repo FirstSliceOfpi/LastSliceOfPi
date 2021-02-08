@@ -88,7 +88,7 @@ public class Player {
         this.hasPi = hasPi;
     }
 
-    //    // Methods
+//     Methods
 //    public String getPrettyInventory() {
 //        for (Item eachItem: inventory) {
 //            for (int i = 0; i < eachItem[0].length(); i++ ) {
