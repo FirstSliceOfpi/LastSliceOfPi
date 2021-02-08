@@ -24,8 +24,9 @@ public class objectFromXml {
     public static List<Room> parseRoom() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
         Room room;
+        String dir = System.getProperty("user.dir") + "/resources/Rooms.xml";
         Document document;
-            document = loadXML("./resources/Rooms.xml");
+            document = loadXML(dir);
         NodeList nList = document.getElementsByTagName("room");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
@@ -53,8 +54,8 @@ public class objectFromXml {
         List<Item> items = new ArrayList<>();
         Item item;
         Document document;
-        String os = System.getProperty("os.name").toLowerCase();
-        document = loadXML("./resources/Items.xml");
+        String dir = System.getProperty("user.dir") + "/resources/Items.xml";
+        document = loadXML(dir);
         NodeList nList = document.getElementsByTagName("item");
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
