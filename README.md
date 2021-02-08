@@ -7,4 +7,4 @@ Text adventure game
 * Tyrone Moore
 
 ### Jar
-If you want to run the JAR, it it located in the branch 'make_a_jar', and requires Java 15+ in it's compiled jar form.
+If you want to run the JAR, it requires Java 11+ in it's compiled jar form.
