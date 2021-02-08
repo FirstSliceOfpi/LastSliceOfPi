@@ -3,7 +3,12 @@
     <room id="0">
         <roomName>start</roomName>
         <description>
-            The start of our game.
+            You awaken in a circular room, unsure how you got here. Your mouth is dry, and your stomach is empty.
+            The place you are isn't so much a room as just an empty space.
+            Standing in what you think is the 'middle' of this dark area,
+            there appear to be passages to the North, Northwest, and Northeast.
+            They all appear to be the same distance away from you.
+            You don't really want to go anywhere, but you can't stay here.
         </description>
         <exitNorthwest>1</exitNorthwest>
         <exitNorth>2</exitNorth>

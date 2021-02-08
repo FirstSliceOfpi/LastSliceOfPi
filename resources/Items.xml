@@ -45,7 +45,7 @@
         <name>oven</name>
         <description>This oven looks like it could fit anything, like even you!</description>
 <!--        possible keyword for doing an action based on the string response-->
-        <bake>bake</bake>
+        <use>What do you want to do - BAKE a PI?</use>
     </item>
     <item id="8">
         <name>cage</name>
@@ -236,5 +236,9 @@
         <name>goldenfeather</name>
         <description>I wager if you took a closer gander, you might get tickled!</description>
         <pival>7</pival>
+    </item>
+    <item id="100">
+        <name>pi</name>
+        <bake>Attempting to bake a PI</bake>
     </item>
 </Items>
