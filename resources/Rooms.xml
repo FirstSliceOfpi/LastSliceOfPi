@@ -8,7 +8,7 @@
         <exitNorthwest>1</exitNorthwest>
         <exitNorth>2</exitNorth>
         <exitNortheast>3</exitNortheast>
-        <shortDescription>This was start. Nothing here.</shortDescription>
+        <shortDescription>This was where you started. Nothing here.</shortDescription>
     </room>
     <room id="1">
         <roomName>snow white</roomName>
@@ -64,7 +64,7 @@
             There is a ONE HUGE pile of hay completely surrounding the spindle.
             Under a tarp in the corner, there seems to be stack of FIVE goldbars.
             A stack of FOUR books lays on the floor near the spindle and stool…
-            the top reads, in gold letters, “Best Baby Names”…
+            the top book reads, in gold letters, “Best Baby Names”…
         </description>
         <exitNorth>7</exitNorth>
         <exitEast>5</exitEast>
