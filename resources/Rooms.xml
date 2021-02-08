@@ -3,12 +3,17 @@
     <room id="0">
         <roomName>start</roomName>
         <description>
-            The start of our game.
+            You awaken in a circular room, unsure how you got here. Your mouth is dry, and your stomach is empty.
+            The place you are isn't so much a room as just an empty space.
+            Standing in what you think is the 'middle' of this dark area,
+            there appear to be passages to the North, Northwest, and Northeast.
+            They all appear to be the same distance away from you.
+            You don't really want to go anywhere, but you can't stay here.
         </description>
         <exitNorthwest>1</exitNorthwest>
         <exitNorth>2</exitNorth>
         <exitNortheast>3</exitNortheast>
-        <shortDescription>This was start. Nothing here.</shortDescription>
+        <shortDescription>This was where you started. Nothing here.</shortDescription>
     </room>
     <room id="1">
         <roomName>snow white</roomName>
@@ -58,13 +63,13 @@
     <room id="4">
         <roomName>rumplestiltskin</roomName>
         <description>
-            You can smell the fresh straw from outside the room, but what is the POINT of straw?
-            It is a large room with THREE immense lockeddoors.
+            You can smell the fresh straw from outside the room.
+            It is a large room with TWO immense lockeddoors.
             A spindle sits in the center of the room, well worn and  situated near a sturdy stool.
             There is a ONE HUGE pile of hay completely surrounding the spindle.
             Under a tarp in the corner, there seems to be stack of FIVE goldbars.
-            A stack of NINE books lays on the floor near the spindle and stool….
-            the title of the top book, in gold letters, is “Best Baby Names”…
+            A stack of FOUR books lays on the floor near the spindle and stool…
+            the top book reads, in gold letters, “Best Baby Names”…
         </description>
         <exitNorth>7</exitNorth>
         <exitEast>5</exitEast>
@@ -106,13 +111,11 @@
         <roomName>red riding hood</roomName>
         <description>
             You see a SINGLE bed in this room, piled high with pillows and blankets.
-            TWO boxes of tea, FOUR lozenges and SIX tissues are piled high on the nightstand,
-            which has EIGHT drawers.
-            On the floor is a small red mound of fabric….THREE hooded capes.
+            A SINGLE Tea, SIX lozenges and EIGHT tissue are piled high on the nightstand.
+            On the floor is a small mound of fabric…. including a SINGLE red hooded cape.
             On the table near the door, a sleepingcap in a flowery pattern.
             What is the POINT of a sleepingcap?
-            On the ground near the table, you see ONE handled basket,
-            filled with FOUR foods and EIGHT packages.
+            On the ground near the table, you see a TWO handled basket, filled with food and NINE packages.
         </description>
         <exitWest>9</exitWest>
         <exitSouth>4</exitSouth>
@@ -123,10 +126,10 @@
         <roomName>shoemaker</roomName>
         <description>
             This room is crowded with items and smells of leather.
-            There are NINE rows of shoes lined up on the shelves along the wall.
+            There are THREE rows of shoes lined up on the shelves along the wall.
             There are SEVEN tools on several work tables placed around the room.
             You hear some whispering from the closet.
-            There are SIX piles of folded clothing on a table near a workbench.
+            There is a pile of folded clothing on a table near a workbench.
             The clothing is very small sizes, for a child or…?
         </description>
         <exitWest>7</exitWest>
@@ -154,13 +157,13 @@
         <roomName>golden goose</roomName>
         <description>
             This room is furnished sparsely, with contents that look worn or handed down.
-            There is an ax, with SEVEN carved in it, propped against the wall near the door.
+            There is a DOUBLE ax propped against the wall near the door.
             It smells of freshly chopped wood and a fowl?
             As your eyes adjust to the light of the room,
             you spot a large nest in the corner near the fireplace.
-            Very large, like the size of FIVE average nests.
+            It's very large, the size of NINE regular-sized.
             There is not much to see in this sparse room,
-            except is that a goldenfeather, or THREE….?
+            except is that a SEVEN-pound goldenfeather….?
         </description>
         <exitNorth>3</exitNorth>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>

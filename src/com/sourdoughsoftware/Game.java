@@ -32,7 +32,7 @@ public class Game {
             }
         }
 //        System.out.println(rooms.toString());
-        System.out.println(items.toString());
+//        System.out.println(items.toString());
 //        get room description
         String userName = parser.prompt("Enter your name adventurer\n>> ");
         p1 = new Player(userName, 0);
@@ -54,24 +54,23 @@ public class Game {
             if (userCommands[0].equalsIgnoreCase("look")) {
                 if (Nouns.getAllDirections().contains(userCommands[1])) {
                     System.out.println(Look.roomLook(p1.getPlayerRoomID(), userCommands[1], rooms, p1));
-                } else if (userCommands[1].equalsIgnoreCase("room")){
+                } else if (userCommands[1].equalsIgnoreCase("room")) {
                     System.out.println(roomDescription);
-                }
-                else {
+                } else {
                     System.out.println(Look.itemLook(p1.getPlayerRoomID(), userCommands[1], rooms, items));
                 }
                 continue;
             }
-            if(userCommands[0].equalsIgnoreCase("show") ||
+            if (userCommands[0].equalsIgnoreCase("show") ||
                     userCommands[0].equalsIgnoreCase("see")) {
                 if (userCommands[1].equalsIgnoreCase("inventory")) {
-                    System.out.println("Your inventory:\n" + p1.getInventory().toString());
+                    System.out.println("Your inventory:\n" + p1.formatInventory(p1.getInventory()).toString());
                     continue;
                 }
             }
             if (userCommands[0].equalsIgnoreCase("help") || userCommands[0].equalsIgnoreCase("h")) {
                 System.out.println("Commands:\n" + Verbs.getAllVerbs().toString() + "\nAccess this " +
-                        "help menu at any time: help or h.\nQuit at any time: quit or q.");
+                        "help menu at any time: help or h.\nView inventory: show or see inventory.\nQuit at any time: quit or q.");
                 continue;
             }
             if (userCommands[0].equalsIgnoreCase("quit") || userCommands[0].equalsIgnoreCase("q")) {
@@ -86,8 +85,16 @@ public class Game {
             if (Verbs.getAllVerbs().contains(userCommands[0].toLowerCase()) && Nouns.getAllNouns().contains(userCommands[1].toLowerCase())) {
                 String message = parser.processInteraction(rooms, userCommands, p1);
                 // output verb interaction message or a failure message
-                if (message.contains("%s")) {
-                    message = message.format(message, "Explosion");
+                if (message.contains("congratulations")) {
+                    System.out.println(message);
+                    String playagain = parser.prompt("Do you want to run through the maze again? y/n ");
+                    if (playagain.equalsIgnoreCase("y")) {
+                        start();
+                    } else if (playagain.equalsIgnoreCase("n")) {
+                        System.out.println("Thank you for playing, we'll see you next time!");
+                        setGameOver(true);
+                        continue;
+                    }
                 }
                 System.out.println(message);
                 continue;

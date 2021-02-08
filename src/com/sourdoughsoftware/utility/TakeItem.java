@@ -5,7 +5,7 @@ import com.sourdoughsoftware.Player;
 import com.sourdoughsoftware.Room;
 
 import java.util.List;
-//TODO: merge into Player class when refactoring
+
 public class TakeItem {
     public static String takeItem(Player p1, List<Room> rooms, Item item) {
         String message = "You  see a " + item.getName();

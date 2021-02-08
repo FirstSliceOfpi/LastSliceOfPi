@@ -6,7 +6,7 @@ import com.sourdoughsoftware.Room;
 import java.util.List;
 
 public class RoomChange {
-// TODO: put changePlayerLocation() to changeRoom() and then move
+
     public static String changeRoom(Integer roomID, String response, List<Room> roomList, Player p1) {
         return changePlayerLocation(roomID, response, roomList, p1);
     }

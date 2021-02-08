@@ -96,7 +96,8 @@ public class InputParser {
                     break;
                 }
             }
-            message = TakeItem.takeItem(p1, rooms, playerItem);
+            message = p1.takeItem(rooms, playerItem);
+
         } else if (userCommands[0].equalsIgnoreCase("examine")) {
             boolean found = false;
             Item foundItem = new Item();
@@ -113,6 +114,17 @@ public class InputParser {
                 message = "You aren't holding the " + userCommands[1];
             }
 
+        } else if (userCommands[0].equalsIgnoreCase("bake") && userCommands[1].equalsIgnoreCase("pi")) {
+            if (p1.getPlayerRoomID().equals(6)) {
+                if (p1.isHasPi()) {
+                    message = "You bake a PI, and eat it - congratulations!";
+
+                } else {
+                    message = "You don't have enough pieces of PI to bake a PI yet!";
+                }
+            } else {
+                message = "This isn't the right place to try to bake a PI...";
+            }
         } else {
             // check item for verb interaction map
             for (Item item : playerInventoryItemsToCheck) {
