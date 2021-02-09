@@ -7,7 +7,7 @@
         <pival>1</pival>
     </item>
     <item id="1">
-        <name>silkskeins</name>
+        <name>silk skeins</name>
         <description>A skein of silk, woven from the smallest of spiders.</description>
         <feel>It's smooth and soft, and it makes you want to roll around in it.</feel>
         <pival>3</pival>
@@ -77,7 +77,7 @@
         <pival>5</pival>
     </item>
     <item id="14">
-        <name>crystalsphere</name>
+        <name>crystal sphere</name>
         <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there. It could be the end. It could just be the best thing - PERIOD.
         </description>
         <rub>You rub the sphere, wishing your secret wish.</rub>
@@ -99,7 +99,7 @@
         <description>This could be a first aid kit, or it could just be a box.</description>
     </item>
     <item id="18">
-        <name>firstaidkit</name>
+        <name>first aid kit</name>
         <description>Bandages, ointment, and a small knife. You could fix SIX small wounds with this.</description>
         <pival>6</pival>
     </item>
@@ -130,7 +130,7 @@
         <description>A selection of beautiful gowns, all with impossibly small stitching.</description>
     </item>
     <item id="24">
-        <name>glassslipper</name>
+        <name>glass slipper</name>
         <description>There is just no way this would fit you, right?</description>
         <pival>1</pival>
     </item>
@@ -140,7 +140,7 @@
         <pival>3</pival>
     </item>
     <item id="26">
-        <name>lockeddoors</name>
+        <name>locked doors</name>
         <description>These doors are tightly shut, and there appears to be no keyhole that you can find.</description>
         <pival>2</pival>
     </item>
@@ -150,7 +150,7 @@
         <pival>1</pival>
     </item>
     <item id="28">
-        <name>goldbars</name>
+        <name>gold bars</name>
         <description>These just don't seem to fit. Who would leave all this wealth just laying around?</description>
         <pival>5</pival>
     </item>
@@ -177,7 +177,7 @@
         <pival>8</pival>
     </item>
     <item id="33">
-        <name>nightstand</name>
+        <name>night stand</name>
         <description>It looks more like a nightsit with how short it is.</description>
         <pival>1</pival>
     </item>
@@ -188,7 +188,7 @@
         <pival>1</pival>
     </item>
     <item id="35">
-        <name>sleepingcap</name>
+        <name>sleeping cap</name>
         <description>This looks just so helpful, if only you were significantly older.</description>
         <pival>.</pival>
     </item>
@@ -233,12 +233,13 @@
         <pival>9</pival>
     </item>
     <item id="44">
-        <name>goldenfeather</name>
+        <name>golden feather</name>
         <description>I wager if you took a closer gander, you might get tickled!</description>
         <pival>7</pival>
     </item>
     <item id="100">
         <name>pi</name>
         <bake>Attempting to bake a PI</bake>
+        <description>I wager if you took a closer gander, you might get tickled!</description>
     </item>
 </Items>
