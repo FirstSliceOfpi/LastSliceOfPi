@@ -1,6 +1,8 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.dictionary.VerbGroup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -40,6 +42,31 @@ public class XmlParser {
                     String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
 
                     new Noun(name, description);
+
+                }
+            }
+        } catch(ParserConfigurationException | IOException | SAXException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public static void parseVerbs() {
+
+        try {
+            Document document = loadXML("resources/Verbs.xml");
+
+            NodeList nodeList = document.getElementsByTagName("verb");
+
+            for (int current = 0; current < nodeList.getLength(); current++) {
+                Node node = nodeList.item(current);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element currentElement = (Element) node;
+                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
+                    VerbGroup group = VerbGroup.valueOf(currentElement.getElementsByTagName("group").item(0).getTextContent());
+                    new Verb(name, group);
 
                 }
             }
