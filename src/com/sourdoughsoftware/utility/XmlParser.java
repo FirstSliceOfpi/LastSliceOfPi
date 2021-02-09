@@ -1,6 +1,6 @@
 package com.sourdoughsoftware.utility;
 
-import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.Item;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import org.w3c.dom.Document;
@@ -41,7 +41,7 @@ public class XmlParser {
                     String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
                     String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
 
-                    new Noun(name, description);
+                    new Item(name, description);
 
                 }
             }

@@ -3,9 +3,7 @@ package com.sourdoughsoftware;
 //import com.sourdoughsoftware.utility.InputParser;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Player {
     private String name;
@@ -22,24 +20,24 @@ public class Player {
         this.piecesOfPi = new ArrayList<>();
     }
 
-    public String takeItem(List<Room> rooms, Item item) {
-        String message = "You  see a " + item.getName();
-        for (Room r1 : rooms) {
-            if (this.getPlayerRoomID().equals(r1.getRoomID())) {
-                List<Item> items = r1.getRoomItems();
-                if (items.contains(item)) {
-                    r1.removeItem(item);
-                    this.addInventory(item);
-                    piecesOfPi.add(item.getPival());
-                    doesPlayerHavePi();
-                    System.out.println(hasPi);
-                    message = "You added a " + item.getName() + " to your inventory.";
-                    break;
-                }
-            }
-        }
-        return message;
-    }
+//    public String takeItem(List<Room> rooms, Item item) {
+//        String message = "You  see a " + item.getName();
+//        for (Room r1 : rooms) {
+//            if (this.getPlayerRoomID().equals(r1.getRoomID())) {
+//                List<Item> items = r1.getRoomItems();
+//                if (items.contains(item)) {
+//                    r1.removeItem(item);
+//                    this.addInventory(item);
+//                    piecesOfPi.add(item.getPival());
+//                    doesPlayerHavePi();
+//                    System.out.println(hasPi);
+//                    message = "You added a " + item.getName() + " to your inventory.";
+//                    break;
+//                }
+//            }
+//        }
+//        return message;
+//    }
 
     public void doesPlayerHavePi() {
         if (sizeOfPi() >= 3) {
@@ -70,13 +68,13 @@ public class Player {
         return inventory;
     }
 
-    public Map<String, String> formatInventory(List<Item> inv) {
-        Map<String, String> result = new HashMap<>();
-        for (Item item : inv) {
-            result.put(item.getName(), item.getPival());
-        }
-        return result;
-    }
+//    public Map<String, String> formatInventory(List<Item> inv) {
+//        Map<String, String> result = new HashMap<>();
+//        for (Item item : inv) {
+//            result.put(item.getName(), item.getPival());
+//        }
+//        return result;
+//    }
 
     public List<Item> addInventory(Item item) {
         inventory.add(item);

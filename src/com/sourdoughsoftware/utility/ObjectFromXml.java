@@ -65,30 +65,30 @@ public class ObjectFromXml {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element singleItem = (Element) node;
                 //Create new Room Object
-                item = new Item();
-                item.setItemID(Integer.parseInt(singleItem.getAttribute("id")));
-                item.setName(singleItem.getElementsByTagName("name").item(0).getTextContent());
-                if (checkElementLength(singleItem, "description")) {
-                    item.setDescription(singleItem.getElementsByTagName("description").item(0).getTextContent());
-                }
-                if (checkElementLength(singleItem, "pival")) {
-                    item.setPival(singleItem.getElementsByTagName("pival").item(0).getTextContent());
-                }
-                addInteractions(singleItem, item);
-                //Add Room to list
-                items.add(item);
+//                item = new Item();
+//                item.setItemID(Integer.parseInt(singleItem.getAttribute("id")));
+//                item.setName(singleItem.getElementsByTagName("name").item(0).getTextContent());
+//                if (checkElementLength(singleItem, "description")) {
+//                    item.setDescription(singleItem.getElementsByTagName("description").item(0).getTextContent());
+//                }
+//                if (checkElementLength(singleItem, "pival")) {
+//                    item.setPival(singleItem.getElementsByTagName("pival").item(0).getTextContent());
+//                }
+//                addInteractions(singleItem, item);
+//                //Add Room to list
+//                items.add(item);
             }
         }
         return items;
     }
 
-    private static void addInteractions(Element singleItem, Item item) {
-        for (String verb : Verbs.getAllVerbs()) {
-            if (checkElementLength(singleItem, verb)) {
-                item.setVerbInteraction(verb, singleItem.getElementsByTagName(verb).item(0).getTextContent());
-            }
-        }
-    }
+//    private static void addInteractions(Element singleItem, Item item) {
+//        for (String verb : Verbs.getAllVerbs()) {
+//            if (checkElementLength(singleItem, verb)) {
+//                item.setVerbInteraction(verb, singleItem.getElementsByTagName(verb).item(0).getTextContent());
+//            }
+//        }
+//    }
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

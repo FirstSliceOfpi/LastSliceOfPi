@@ -13,10 +13,12 @@ public class Actions {
         }
         if(command.getNoun() == null) {
             return "no noun in input";
-
         }
 
         VerbGroup group = command.getVerb().getGroup();
+        if(group.equals(VerbGroup.MERGE) && command.getTargetNoun() == null) {
+            return "You need two items to merge";
+        }
 
         switch(group) {
             case GRAB:
@@ -24,13 +26,17 @@ public class Actions {
             case MOVE:
                 return move(command.getNoun(), command.getVerb());
             case MERGE:
-                return merge(command.getNoun(), command.getVerb());
+                return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
         }
         return "Bug FOUND";
     }
 
-    private static String merge(Noun noun, Verb verb) {
-        return "YOU " + verb.getName()+ " " + noun.getName();
+    private static String merge(Noun noun, Verb verb, Noun targetNoun) {
+        if(noun.isMergeable() && targetNoun.isMergeable()) {
+            return "YOU " + verb.getName()+ " " + noun.getName();
+        } else {
+            return "you can't merge a " + noun.getName() + " and a " + targetNoun.getName() + " together";
+        }
     }
 
     private static String move(Noun noun, Verb verb) {
@@ -41,6 +47,10 @@ public class Actions {
     }
 
     private static String grab(Noun noun, Verb verb) {
-        return "YOU " + verb.getName() + " " + noun.getName();
+        if(noun.isGrabbale()) {
+            return "YOU " + verb.getName() + " " + noun.getName();
+        } else {
+            return "You can't grab a " + noun.getName();
+        }
     }
 }
