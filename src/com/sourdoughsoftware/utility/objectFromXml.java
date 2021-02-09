@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.utility;
 
+import com.sourdoughsoftware.Enemy;
 import com.sourdoughsoftware.Item;
 import com.sourdoughsoftware.Room;
 import org.w3c.dom.Document;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Class to load XML files, and methods to parse them for use by game
  */
-public class objectFromXml {
+public class objectFromXml implements java.io.Serializable{
 
     public static List<Room> parseRoom() throws ParserConfigurationException, IOException, SAXException {
         List<Room> rooms = new ArrayList<>();
@@ -78,6 +79,35 @@ public class objectFromXml {
         }
         return items;
     }
+
+    public static List<Enemy> parseEnemy() throws ParserConfigurationException, IOException, SAXException {
+        List<Enemy> enemies = new ArrayList<>();
+        Enemy enemy;
+        Document document;
+        String dir = System.getProperty("user.dir") + "/resources/Enemies.xml";
+        document = loadXML(dir);
+        NodeList nList = document.getElementsByTagName("enemy");
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node node = nList.item(temp);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element singleEnemy = (Element) node;
+                //Create new Room Object
+                enemy = new Enemy();
+                enemy.setHp(Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent()));
+                enemy.setName(singleEnemy.getElementsByTagName("name").item(0).getTextContent());
+                enemy.setBackground(singleEnemy.getElementsByTagName("background").item(0).getTextContent());
+                enemy.setWeaponType(singleEnemy.getElementsByTagName("weaponType").item(0).getTextContent());
+                enemy.setEnemyClass(singleEnemy.getElementsByTagName("class").item(0).getTextContent());
+                //addInteractions(singleEnemy, enemy);
+                //Add Room to list
+                enemies.add(enemy);
+            }
+        }
+        return enemies;
+    }
+
+
+
 
     private static void addInteractions(Element singleItem, Item item) {
         for (String verb : Verbs.getAllVerbs()) {

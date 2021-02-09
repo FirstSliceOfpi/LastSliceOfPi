@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Player {
+public class Player implements java.io.Serializable{
     private String name;
     private Integer roomID;
     boolean hasPi = false;

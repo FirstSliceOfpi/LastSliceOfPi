@@ -5,7 +5,7 @@ import com.sourdoughsoftware.Room;
 
 import java.util.List;
 
-public class RoomChange {
+public class RoomChange implements java.io.Serializable{
 
     public static String changeRoom(Integer roomID, String response, List<Room> roomList, Player p1) {
         return changePlayerLocation(roomID, response, roomList, p1);

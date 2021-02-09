@@ -7,11 +7,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.*;
 
-public class Game {
+public class Game implements java.io.Serializable{
     //    Maybe this has a board with a list of rooms
     private Player p1;
     private InputParser parser;
     private boolean gameOver = false;
+    WelcomeScreen w = new WelcomeScreen();
 
     public Game() {
         //setup methods
@@ -20,7 +21,8 @@ public class Game {
 
     // game loop
     public void start() throws IOException, SAXException, ParserConfigurationException {
-        System.out.println(WelcomeScreen.getWelcomeMessage());
+
+        //w.loadingScreen();
         List<Room> rooms = objectFromXml.parseRoom();
         List<Item> items = objectFromXml.parseItems();
 
@@ -115,6 +117,13 @@ public class Game {
              */
             System.out.println(roomDescription);
         } while (!gameOver);
+    }
+
+    public Player getPlayer() {
+        return p1;
+    }
+    public void setPlayer(Player player) {
+        this.p1 = player;
     }
 
 

@@ -3,7 +3,7 @@ package com.sourdoughsoftware;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Item {
+public class Item implements java.io.Serializable{
     private Integer itemID;
     private String name;
     private String description;
