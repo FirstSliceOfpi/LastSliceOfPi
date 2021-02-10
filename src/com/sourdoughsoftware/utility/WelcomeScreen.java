@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Game;
+import com.sourdoughsoftware.interaction.Prompter;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,11 +17,11 @@ import java.util.Scanner;
 public class WelcomeScreen {
     public static final String WELCOME_MESSAGE = "Welcome to \"The Last Slice of Pi\"";
     PrintFiles p = new PrintFiles();
-    InputParser parser;
+    Prompter parser;
     SaveGame save = new SaveGame();
 
     public WelcomeScreen() {
-        parser = new InputParser(new Scanner(System.in));
+        parser = new Prompter(new Scanner(System.in));
     }
 
 

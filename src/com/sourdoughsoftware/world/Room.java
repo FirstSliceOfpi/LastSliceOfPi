@@ -1,4 +1,6 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.world;
+
+import com.sourdoughsoftware.gamepieces.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;

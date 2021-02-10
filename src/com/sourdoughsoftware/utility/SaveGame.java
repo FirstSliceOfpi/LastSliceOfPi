@@ -1,7 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Game;
-import com.sourdoughsoftware.Player;
+import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -24,7 +24,7 @@ public class SaveGame {
 
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            oos.writeObject(game.getPlayer());
+//            oos.writeObject(game.getPlayer());
 
             oos.flush();
             oos.close();
@@ -41,7 +41,7 @@ public class SaveGame {
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             Player player = (Player) ois.readObject();
-            game.setPlayer(player);
+//            game.setPlayer(player);
             ois.close();
         }catch (Exception e) {
             System.out.println("Could not load saved game");
