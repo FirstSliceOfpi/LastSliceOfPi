@@ -68,14 +68,14 @@ public class ItemTreeTest {
         tree.add(item2);
         tree.add(item3);
         assertTrue(tree.getSize() == 3);
-        assertTrue(tree.getRoot().item == item1);
+        assertTrue(tree.getRoot().getItem() == item1);
     }
 
     @Test
     public void addSevenItemsToEmptyTree() {
         Item item = buildTree();
         assertTrue(tree.getSize() == 7);
-        assertTrue(tree.getRoot().item == item);
+        assertTrue(tree.getRoot().getItem() == item);
         assertTrue(tree.height(tree.getRoot()) == 3);
     }
 
@@ -116,4 +116,37 @@ public class ItemTreeTest {
         assertEquals("\n1 \n2 3 \n4 5 6 7 ", tree.toString());
     }
 
+    @Test
+    public void getChildrenTest() {
+        buildTree();
+        Item[] result = new Item[]{item2, item3};
+        Item[] output = new Item[2];
+        Node[] nodes = tree.getChildren(item1);
+        output[0] = nodes[0].getItem();
+        output[1] = nodes[1].getItem();
+        assertArrayEquals(result, output);
+        result[0] = item4;
+        result[1] = item5;
+        nodes = tree.getChildren(item2);
+        output[0] = nodes[0].getItem();
+        output[1] = nodes[1].getItem();
+        assertArrayEquals(result, output);
+    }
+
+    @Test
+    public void getParentAndSiblingTest() {
+        buildTree();
+        Item[] result = new Item[]{item1, item3};
+        Item[] output = new Item[2];
+        Node[] nodes = tree.getParentAndSibling(item2);
+        output[0] = nodes[0].getItem();
+        output[1] = nodes[1].getItem();
+        assertArrayEquals(result, output);
+        result[0] = item3;
+        result[1] = item7;
+        nodes = tree.getParentAndSibling(item6);
+        output[0] = nodes[0].getItem();
+        output[1] = nodes[1].getItem();
+        assertArrayEquals(result, output);
+    }
 }

@@ -25,19 +25,21 @@ public class ItemTree {
     private void insert(Node node, Item item, int value) {
         int id = node.getId();
         if (id < value) {
-            if (node.left == null) {
-                node.left = new Node(item);
-                node.left.setId(++size);
+            if (node.getLeft() == null) {
+                node.setLeft(new Node(item));
+                node.getLeft().setId(++size);
+                node.getLeft().setParent(node);
                 return;
-            } else if (node.right == null) {
-                node.right = new Node(item);
-                node.right.setId(++size);
+            } else if (node.getRight() == null) {
+                node.setRight(new Node(item));
+                node.getRight().setId(++size);
+                node.getRight().setParent(node);
                 return;
             } else {
-                if(node.left.left == null || node.left.right == null) {
-                    insert(node.left, item, value);
+                if(node.getLeft().getLeft() == null || node.getLeft().getRight() == null) {
+                    insert(node.getLeft(), item, value);
                 }else{
-                    insert(node.right, item, value);
+                    insert(node.getRight(), item, value);
                 }
             }
         }
@@ -50,9 +52,9 @@ public class ItemTree {
     private Node DFSHelper(Item item, Node node, Node result) {
         if(node != null){
             if(node.getItem() == item) return node;
-            result = DFSHelper(item, node.left, result);
+            result = DFSHelper(item, node.getLeft(), result);
             if(result.getItem() == item) return result;
-            result = DFSHelper(item, node.right, result);
+            result = DFSHelper(item, node.getRight(), result);
         }
         return result;
     };
@@ -76,8 +78,8 @@ public class ItemTree {
         }
         else if (level > 1)
         {
-            getLevelItems(root.left, level-1, result);
-            getLevelItems(root.right, level-1, result);
+            getLevelItems(root.getLeft(), level-1, result);
+            getLevelItems(root.getRight(), level-1, result);
         }
         return result;
     }
@@ -85,8 +87,8 @@ public class ItemTree {
     public int height(Node root) {
         if (root == null) return 0;
         else {
-            int lheight = height(root.left);
-            int rheight = height(root.right);
+            int lheight = height(root.getLeft());
+            int rheight = height(root.getRight());
 
             if (lheight > rheight) return(lheight+1);
             else return(rheight+1);
@@ -99,6 +101,22 @@ public class ItemTree {
 
     public Node getRoot() {
         return root;
+    }
+
+    public Node[] getChildren(Item item) {
+        Node parent = find(item);
+        return new Node[]{parent.getLeft(), parent.getRight()};
+    }
+
+    public Node[] getParentAndSibling(Item item) {
+        Node firstChild = find(item);
+        Node parent = firstChild.getParent();
+        if(parent.getLeft() != firstChild) {
+            return new Node[]{parent, parent.getLeft()};
+        }else if(parent.getRight() != firstChild) {
+            return new Node[]{parent, parent.getRight()};
+        }
+        return new Node[]{parent};
     }
 
     @Override
@@ -123,6 +141,4 @@ public class ItemTree {
         }
         return false;
     }
-
-
 }

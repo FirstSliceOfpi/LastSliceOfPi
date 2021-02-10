@@ -3,14 +3,15 @@ package com.sourdoughsoftware.utility;
 import com.sourdoughsoftware.Item;
 
 public class Node {
-    Item item;
-    Node left, right;
-    int id;
+    private Item item;
+    private Node left, right, parent;
+    private int id;
     public Node(Item item) {
         this.item = item;
         left = null;
         right = null;
         id = 0;
+        parent = null;
     }
 
     public Node() {
@@ -18,6 +19,7 @@ public class Node {
         left = null;
         right = null;
         id = 0;
+        parent = null;
     }
 
     public int getId() {
@@ -31,6 +33,36 @@ public class Node {
     public Item getItem() {
         return this.item;
     }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Node getParent() {
+        return this.parent;
+    }
+
+    public void setParent(Node node) {
+        this.parent = node;
+    }
+
+    public Node getLeft() {
+        return this.left;
+    }
+
+    public void setLeft(Node node) {
+        this.left = node;
+    }
+
+    public Node getRight() {
+        return this.right;
+    }
+
+    public void setRight(Node node) {
+        this.right = node;
+    }
+
+
 
     @Override
     public String toString() {
