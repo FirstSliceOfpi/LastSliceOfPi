@@ -1,6 +1,6 @@
 package com.sourdoughsoftware.utility;
 
-import com.sourdoughsoftware.Item;
+import com.sourdoughsoftware.gamepieces.Item;
 
 public class Node {
     private Item item;

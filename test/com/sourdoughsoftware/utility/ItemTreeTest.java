@@ -1,6 +1,6 @@
 package com.sourdoughsoftware.utility;
 
-import com.sourdoughsoftware.Item;
+import com.sourdoughsoftware.gamepieces.Item;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,20 +24,13 @@ public class ItemTreeTest {
     }
 
     public Item buildTree() {
-        item1 = new Item();
-        item2 = new Item();
-        item3 = new Item();
-        item4 = new Item();
-        item5 = new Item();
-        item6 = new Item();
-        item7 = new Item();
-        item1.setName("1");
-        item2.setName("2");
-        item3.setName("3");
-        item4.setName("4");
-        item5.setName("5");
-        item6.setName("6");
-        item7.setName("7");
+        item1 = new Item("1","1");
+        item2 = new Item("2", "2");
+        item3 = new Item("3", "3");
+        item4 = new Item("4","4");
+        item5 = new Item("5","5");
+        item6 = new Item("6","6");
+        item7 = new Item("7","7");
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
@@ -50,20 +43,14 @@ public class ItemTreeTest {
 
     @Test
     public void addOneItemToEmptyTree() {
-        Item item = new Item();
-        item.setName("1");
-        tree.add(item);
+        buildTree();
+        tree.add(item1);
         assertEquals(1, tree.getSize());
     }
 
     @Test
     public void addThreeItemsToEmptyTree() {
-        item1 = new Item();
-        item2 = new Item();
-        item3 = new Item();
-        item1.setName("1");
-        item2.setName("2");
-        item3.setName("3");
+        buildTree();
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
