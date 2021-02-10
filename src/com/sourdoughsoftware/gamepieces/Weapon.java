@@ -1,8 +1,8 @@
 package com.sourdoughsoftware.gamepieces;
 
 public class Weapon extends Item{
-    private int attackPoints;
-    private String victory;
+    private final int attackPoints;
+    private final String victory;
     public Weapon(String name, String description, int attackPoints, String victory) {
         super(name, description);
         this.attackPoints = attackPoints;
