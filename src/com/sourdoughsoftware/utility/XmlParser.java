@@ -2,6 +2,7 @@ package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
+import com.sourdoughsoftware.gamepieces.Weapon;
 import com.sourdoughsoftware.world.Room;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
@@ -17,6 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class XmlParser {
@@ -98,6 +100,40 @@ public class XmlParser {
         return enemies;
     }
 
+    public static HashMap<String, Object> parseWeapons() {
+        ItemTree tree = new ItemTree();
+        ArrayList<Weapon> findableWeapons = new ArrayList<>();
+        HashMap<String,Object> result = new HashMap<>();
+        try {
+            Document document = loadXML("resources/Weapons.xml");
+
+            NodeList nodeList = document.getElementsByTagName("weapon");
+
+            for (int current = 0; current < nodeList.getLength(); current++) {
+                Node node = nodeList.item(current);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element currentElement = (Element) node;
+                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
+                    String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
+                    String victory = currentElement.getElementsByTagName("victory").item(0).getTextContent();
+                    String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
+                    String findable = currentElement.getElementsByTagName("findable").item(0).getTextContent();
+                    Weapon weapon = new Weapon(name, description, Integer.parseInt(attackPoints), victory);
+                    tree.add(weapon);
+                    if(findable.equals("true")) {
+                        findableWeapons.add(weapon);
+                    }
+                }
+            }
+        } catch(ParserConfigurationException | IOException | SAXException e) {
+            System.out.println(e.getMessage());
+        }
+        result.put("findableWeapons", findableWeapons);
+        result.put("weaponTree", tree);
+        return result;
+    };
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

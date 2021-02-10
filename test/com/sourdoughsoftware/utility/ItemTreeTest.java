@@ -43,14 +43,16 @@ public class ItemTreeTest {
 
     @Test
     public void addOneItemToEmptyTree() {
-        buildTree();
+        item1 = new Item("1","1");
         tree.add(item1);
         assertEquals(1, tree.getSize());
     }
 
     @Test
     public void addThreeItemsToEmptyTree() {
-        buildTree();
+        item1 = new Item("1","1");
+        item2 = new Item("2","2");
+        item3 = new Item("3","3");
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
@@ -76,6 +78,13 @@ public class ItemTreeTest {
         assertSame(tree.find(item5).getItem(), item5);
         assertSame(tree.find(item6).getItem(), item6);
         assertSame(tree.find(item7).getItem(), item7);
+    }
+
+    @Test
+    public void notFindAnItemInTree() {
+        buildTree();
+        Item item8 = new Item("8","8");
+        assertNotSame(tree.find(item8).getItem(), item8);
     }
 
     @Test
