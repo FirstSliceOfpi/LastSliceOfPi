@@ -1,186 +1,186 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Weapons>
-    <weapon id="">
+    <weapon id="1">
         <name>ham sandwich</name>
         <description>Grandma's homemade ham sandwich.</description>
         <attackPoints>5</attackPoints>
         <victory>The smell of Grandma's ham sandwich causes your attacker to give up and join you for dinner.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="2">
         <name>bazooka</name>
         <description>M20 3.5-Inch Rocket Launcher with 340fps muzzle velocity</description>
         <attackPoints>4</attackPoints>
         <victory>Your attacker has been cut in two with an explosion.  Blood and guts drip from your face.  Oops maybe not so close next time.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="3">
         <name>sea whiz</name>
         <description>MK 15 Phalanx Close-In Weapons System (CIWS) 4500rpm 20mm rounds</description>
         <attackPoints>4</attackPoints>
         <victory>It might be overkill, but it was fun!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="4">
         <name>glock</name>
         <description>9mm with 4 inch barrel and 19 round clip</description>
         <attackPoints>3</attackPoints>
         <victory>Double tap. Bang! Bang! Don't you love that sound?</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="5">
         <name>ak-47</name>
         <description>2300fps with a 16inch barrel, adjustable sights, 75 round magazine</description>
         <attackPoints>3</attackPoints>
         <victory>I sprayed 74 rounds without touching him but that one to the head is all it took.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="6">
         <name>hand grenade</name>
         <description>15 meter casualty radius hand grenade</description>
         <attackPoints>3</attackPoints>
         <victory>Wow! That was cool!  Where did his eyeball go?</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="7">
         <name>crossbow</name>
         <description>300fps automatic loading crossbow</description>
         <attackPoints>3</attackPoints>
         <victory>William Tell has nothing on me.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="8">
         <name>fake dog poop</name>
         <description>Made in China vulcanized rubber dog poop</description>
         <attackPoints>2</attackPoints>
         <victory>The best Amazon sells!  Your attacker will remember that black eye next time</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="9">
         <name>multitool</name>
         <description>Knock-off swiss army knife</description>
         <attackPoints>2</attackPoints>
         <victory>Next time I won't use the spoon first.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="10">
         <name>whistle</name>
         <description>Coach's whistle with 120db of piercing pain</description>
         <attackPoints>2</attackPoints>
         <victory>Reminds me of Ms. Fartle, my high school gym teacher.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="11">
         <name>stink bomb</name>
         <description>Sulfur never smelled so bad.</description>
         <attackPoints>2</attackPoints>
         <victory>Damn! That had unintended consequences.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="12">
         <name>blow dryer</name>
         <description>Your sister's industrial strength blow dryer.</description>
         <attackPoints>2</attackPoints>
         <victory>Your attacker didn't stand a chance with the blow power.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="13">
         <name>wrench</name>
         <description>If you can dodge a wrench, you can dodge a dodge ball.</description>
         <attackPoints>2</attackPoints>
         <victory>Well I guess he can't dodge dodge balls either.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="14">
         <name>claw hammer</name>
         <description>Unrefuted champion in finger smashing.</description>
         <attackPoints>2</attackPoints>
         <victory>Well that is going to leave a mark.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="15">
         <name>bb gun</name>
         <description>Be careful, you'll shoot your eye out.</description>
         <attackPoints>2</attackPoints>
         <victory>Yep, he lost his eye.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="16">
         <name>rubber band</name>
         <description>Your teacher said: "Who did that?" (memories from days past)</description>
         <attackPoints>1</attackPoints>
         <victory>That left a big whelp on your attacker.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="17">
         <name>chocolate puddin' cup</name>
         <description>Can I lick the spoon?</description>
         <attackPoints>1</attackPoints>
         <victory>Now he is going to have to go home and wash his clothes.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="18">
         <name>candy wrapper</name>
         <description>Sour warhead candy wrapper</description>
         <attackPoints>1</attackPoints>
         <victory>What?  How did I even win?</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="19">
         <name>pop can</name>
         <description>Jolt pop can</description>
         <attackPoints>1</attackPoints>
         <victory>Double the caffeine, BEOTCHES!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="20">
         <name>cookie jar</name>
         <description>Storm trooper cookie jar</description>
         <attackPoints>1</attackPoints>
         <victory>Well, looks like I am going to have to buy another cookie jar.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="21">
         <name>plush pony</name>
         <description>My little pony Cheerlie</description>
         <attackPoints>1</attackPoints>
         <victory>Ponies kick butt!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="22">
         <name>rubber duck</name>
         <description>Bert and Ernie's best friend</description>
         <attackPoints>1</attackPoints>
         <victory>I dunno.  That was weird.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="23">
         <name>fish hook</name>
         <description>Treble hook</description>
         <attackPoints>1</attackPoints>
         <victory>Hook, line, and sinker!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="24">
         <name>deck of cards</name>
         <description>52 card pickup</description>
         <attackPoints>1</attackPoints>
         <victory>Gambit style!!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="25">
         <name>canteen</name>
         <description>One drop of whiskey left.</description>
         <attackPoints>1</attackPoints>
         <victory>He was a light weight</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="26">
         <name>hamster</name>
         <description>Cute ball of fluff.</description>
         <attackPoints>1</attackPoints>
         <victory>Mighty mouse has competition.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="27">
         <name>clay pot</name>
         <description>Looks like a spittoon</description>
         <attackPoints>1</attackPoints>
         <victory>Gross.  Just gross.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="28">
         <name>rusty nail</name>
         <description>The sneaky number 10 rusty nail.</description>
         <attackPoints>1</attackPoints>
         <victory>"MF! $#@%" your enemy screams as he steps on your trap.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="29">
         <name>jar of jam</name>
         <description>Tastes like elderberry.</description>
         <attackPoints>1</attackPoints>
         <victory>Now he smells of elderberries.</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="30">
         <name>beaded bracelet</name>
         <description>Awww, someone lost their friendship bracelet.</description>
         <attackPoints>1</attackPoints>
         <victory>Power of friendship!</victory>
     </weapon>
-    <weapon id="">
+    <weapon id="31">
         <name>wet noodle</name>
         <description>Linguini, Fettuccine, Spaghetti, I don't know it is wet and slimy. </description>
         <attackPoints>1</attackPoints>
