@@ -19,7 +19,7 @@ public class ItemTreeTest {
     Item item7;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         tree = new ItemTree();
     }
 
@@ -53,7 +53,7 @@ public class ItemTreeTest {
         Item item = new Item();
         item.setName("1");
         tree.add(item);
-        assertTrue(tree.getSize() == 1);
+        assertEquals(1, tree.getSize());
     }
 
     @Test
@@ -67,28 +67,28 @@ public class ItemTreeTest {
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
-        assertTrue(tree.getSize() == 3);
-        assertTrue(tree.getRoot().getItem() == item1);
+        assertEquals(3, tree.getSize());
+        assertSame(tree.getRoot().getItem(), item1);
     }
 
     @Test
     public void addSevenItemsToEmptyTree() {
         Item item = buildTree();
-        assertTrue(tree.getSize() == 7);
-        assertTrue(tree.getRoot().getItem() == item);
-        assertTrue(tree.height(tree.getRoot()) == 3);
+        assertEquals(7, tree.getSize());
+        assertSame(tree.getRoot().getItem(), item);
+        assertEquals(3, tree.height(tree.getRoot()));
     }
 
     @Test
     public void findAnItemInTree() {
         buildTree();
-        assertTrue(tree.find(item1).getItem() == item1);
-        assertTrue(tree.find(item2).getItem() == item2);
-        assertTrue(tree.find(item3).getItem() == item3);
-        assertTrue(tree.find(item4).getItem() == item4);
-        assertTrue(tree.find(item5).getItem() == item5);
-        assertTrue(tree.find(item6).getItem() == item6);
-        assertTrue(tree.find(item7).getItem() == item7);
+        assertSame(tree.find(item1).getItem(), item1);
+        assertSame(tree.find(item2).getItem(), item2);
+        assertSame(tree.find(item3).getItem(), item3);
+        assertSame(tree.find(item4).getItem(), item4);
+        assertSame(tree.find(item5).getItem(), item5);
+        assertSame(tree.find(item6).getItem(), item6);
+        assertSame(tree.find(item7).getItem(), item7);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class ItemTreeTest {
         Node[] allItems = tree.getAllItemsBFS();
         int id = 0;
         for(Node node : allItems) {
-            assertTrue(node.getId() == ++id);
+            assertEquals(node.getId(), ++id);
         }
     }
 
@@ -106,7 +106,7 @@ public class ItemTreeTest {
         buildTree();
         ArrayList<Node> result = new ArrayList<>();
         ArrayList<Node> nodes = tree.getLevelItems(tree.getRoot(),3,result);
-        assertTrue(nodes.toString().equals("[4, 5, 6, 7]"));
+        assertEquals("[4, 5, 6, 7]", nodes.toString());
     }
 
     @Test

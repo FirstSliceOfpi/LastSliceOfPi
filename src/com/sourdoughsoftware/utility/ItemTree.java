@@ -20,7 +20,7 @@ public class ItemTree {
             return;
         }
         insert(root, item, size+1);
-    };
+    }
 
     private void insert(Node node, Item item, int value) {
         int id = node.getId();
@@ -29,12 +29,10 @@ public class ItemTree {
                 node.setLeft(new Node(item));
                 node.getLeft().setId(++size);
                 node.getLeft().setParent(node);
-                return;
             } else if (node.getRight() == null) {
                 node.setRight(new Node(item));
                 node.getRight().setId(++size);
                 node.getRight().setParent(node);
-                return;
             } else {
                 if(node.getLeft().getLeft() == null || node.getLeft().getRight() == null) {
                     insert(node.getLeft(), item, value);
@@ -47,7 +45,7 @@ public class ItemTree {
 
     public Node find(Item item) {
         return DFSHelper(item, this.root, new Node());
-    };
+    }
 
     private Node DFSHelper(Item item, Node node, Node result) {
         if(node != null){
@@ -57,7 +55,7 @@ public class ItemTree {
             result = DFSHelper(item, node.getRight(), result);
         }
         return result;
-    };
+    }
 
     public Node[] getAllItemsBFS() {
         List<Node> items = new ArrayList<>();
@@ -66,9 +64,8 @@ public class ItemTree {
             ArrayList<Node> result = new ArrayList<>();
             items.addAll(getLevelItems(root, i, result));
         }
-        Node[] nodes = items.toArray(Node[]::new);
-        return nodes;
-    };
+        return items.toArray(Node[]::new);
+    }
 
     public ArrayList<Node> getLevelItems (Node root, int level, ArrayList<Node> result) {
         if (root == null) return result;
@@ -121,16 +118,16 @@ public class ItemTree {
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         Node[] allItemsInTree = getAllItemsBFS();
         for(Node node : allItemsInTree) {
             int id = node.getId();
             if(powerOfTwo(id)) {
-                result += "\n";
+                result.append("\n");
             }
-            result += node.toString() + " ";
+            result.append(node.toString()).append(" ");
         }
-        return result;
+        return result.toString();
     }
 
     private boolean powerOfTwo(int i) {
