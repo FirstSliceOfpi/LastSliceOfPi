@@ -23,6 +23,7 @@ public class Noun implements DictionaryEntry {
     private boolean grabbale = false;
     private boolean useable = false;
     private boolean mergeable = false;
+    private boolean attackable = false;
 
     public Noun(String name, String description) {
 
@@ -91,6 +92,10 @@ public class Noun implements DictionaryEntry {
     public void setMergeable(boolean mergeable) {
         this.mergeable = mergeable;
     }
+
+    public boolean isAttackable() {return attackable;}
+
+    public void setAttackable(boolean attackable){this.attackable = attackable;}
 
     public void setSquishable(boolean squishable) {
         this.squishable = squishable;
