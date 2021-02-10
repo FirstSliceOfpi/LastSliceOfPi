@@ -2,8 +2,9 @@ package com.sourdoughsoftware.dictionary;
 
 public class Noun implements DictionaryEntry {
 
-    String description;
-    String name;
+    private final String name;
+    private final String description;
+
 
     private boolean feelable = false;
     private boolean eatable = false;
@@ -34,10 +35,10 @@ public class Noun implements DictionaryEntry {
     public String getName() {
         return name;
     }
+
     public String getDescription() {
         return description;
     }
-
 
     public boolean isFeelable() {
         return feelable;
@@ -174,7 +175,5 @@ public class Noun implements DictionaryEntry {
     public void setUseable(boolean useable) {
         this.useable = useable;
     }
-
-
 
 }

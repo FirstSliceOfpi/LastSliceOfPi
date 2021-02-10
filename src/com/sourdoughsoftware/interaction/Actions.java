@@ -3,7 +3,7 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
-import com.sourdoughsoftware.utility.Directions;
+import com.sourdoughsoftware.world.Directions;
 
 public class Actions {
     public static String execute(Command command) {

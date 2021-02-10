@@ -9,6 +9,7 @@ import java.util.*;
 public class TextParser {
 
     public static Command parse(String userInput) {
+
         List<String> userInputWords = new ArrayList<>(Arrays.asList(userInput.split(" ")));
 
         Set<Noun> nounCandidates = getNounCandidates(userInputWords);
@@ -23,12 +24,17 @@ public class TextParser {
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
+
         if(nounSet == null) {
             return null;
         }
         Noun noun = null;
 
         Iterator<Noun> setIterator = nounSet.iterator();
+
+//        Set<Noun> availableNouns = new HashSet<>(inventory.getCurrentInventory());
+
+//        nounSet.retainAll(availableNouns);
 
         if(nounSet.size() == 1) {
             noun = setIterator.next();
@@ -43,11 +49,13 @@ public class TextParser {
                 userInputWords.remove(nounNameWord);
             }
         }
+
         return noun;
 
     }
 
     private static Verb getVerb(List<String> userInputWords) {
+
         Dictionary dictionary = Dictionary.INSTANCE;
 
         for(String userInputWord : userInputWords) {
@@ -60,6 +68,7 @@ public class TextParser {
     }
 
     private static Set<Noun> getNounCandidates(List<String> userInputWords) {
+
         Dictionary dictionary = Dictionary.INSTANCE;
         Set<Noun> finalNounCandidates = null;
 
@@ -81,7 +90,6 @@ public class TextParser {
 
             finalNounCandidates.retainAll(currentTargetNounCandidates);
         }
-
 
         return finalNounCandidates;
     }
