@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.utility;
 
+import com.sourdoughsoftware.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.world.Room;
 import com.sourdoughsoftware.dictionary.Verb;
@@ -70,6 +71,33 @@ public class XmlParser {
         }
 
     }
+
+    public static List<Enemy> parseEnemy() throws ParserConfigurationException, IOException, SAXException {
+        List<Enemy> enemies = new ArrayList<>();
+        Enemy enemy;
+        Document document;
+        String dir = System.getProperty("user.dir") + "/resources/Enemies.xml";
+        document = loadXML(dir);
+        NodeList nList = document.getElementsByTagName("enemy");
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node node = nList.item(temp);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element singleEnemy = (Element) node;
+                //Create new Room Object
+                enemy = new Enemy();
+                enemy.setHp(Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent()));
+                enemy.setName(singleEnemy.getElementsByTagName("name").item(0).getTextContent());
+                enemy.setBackground(singleEnemy.getElementsByTagName("background").item(0).getTextContent());
+                enemy.setWeaponType(singleEnemy.getElementsByTagName("weaponType").item(0).getTextContent());
+                enemy.setEnemyClass(singleEnemy.getElementsByTagName("class").item(0).getTextContent());
+                //addInteractions(singleEnemy, enemy);
+                //Add Room to list
+                enemies.add(enemy);
+            }
+        }
+        return enemies;
+    }
+
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Tyrone Moore, Kelson Smith, and Gina Villegas
  * @version 1.0.0
  */
-public class Room {
+public class Room implements java.io.Serializable{
     private Integer roomID;
     private String name;
     private String description;
