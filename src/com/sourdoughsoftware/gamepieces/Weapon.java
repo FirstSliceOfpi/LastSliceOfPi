@@ -16,4 +16,8 @@ public class Weapon extends Item{
     public String getVictory() {
         return this.victory;
     }
+
+    public String toString() {
+        return super.toString();
+    }
 }

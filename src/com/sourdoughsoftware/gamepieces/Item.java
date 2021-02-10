@@ -10,5 +10,8 @@ public class Item extends Noun {
         setDropable(true);
     }
 
+    public String toString() {
+        return this.getName();
+    }
 
 }
