@@ -95,95 +95,111 @@
         <description>Your teacher said: "Who did that?" (memories from days past)</description>
         <attackPoints>1</attackPoints>
         <victory>That left a big whelp on your attacker.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="17">
         <name>chocolate puddin' cup</name>
         <description>Can I lick the spoon?</description>
         <attackPoints>1</attackPoints>
         <victory>Now he is going to have to go home and wash his clothes.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="18">
         <name>candy wrapper</name>
         <description>Sour warhead candy wrapper</description>
         <attackPoints>1</attackPoints>
         <victory>What?  How did I even win?</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="19">
         <name>pop can</name>
         <description>Jolt pop can</description>
         <attackPoints>1</attackPoints>
         <victory>Double the caffeine, BEOTCHES!</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="20">
         <name>cookie jar</name>
         <description>Storm trooper cookie jar</description>
         <attackPoints>1</attackPoints>
         <victory>Well, looks like I am going to have to buy another cookie jar.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="21">
         <name>plush pony</name>
         <description>My little pony Cheerlie</description>
         <attackPoints>1</attackPoints>
         <victory>Ponies kick butt!</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="22">
         <name>rubber duck</name>
         <description>Bert and Ernie's best friend</description>
         <attackPoints>1</attackPoints>
         <victory>I dunno.  That was weird.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="23">
         <name>fish hook</name>
         <description>Treble hook</description>
         <attackPoints>1</attackPoints>
         <victory>Hook, line, and sinker!</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="24">
         <name>deck of cards</name>
         <description>52 card pickup</description>
         <attackPoints>1</attackPoints>
         <victory>Gambit style!!</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="25">
         <name>canteen</name>
         <description>One drop of whiskey left.</description>
         <attackPoints>1</attackPoints>
         <victory>He was a light weight</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="26">
         <name>hamster</name>
         <description>Cute ball of fluff.</description>
         <attackPoints>1</attackPoints>
         <victory>Mighty mouse has competition.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="27">
         <name>clay pot</name>
         <description>Looks like a spittoon</description>
         <attackPoints>1</attackPoints>
         <victory>Gross.  Just gross.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="28">
         <name>rusty nail</name>
         <description>The sneaky number 10 rusty nail.</description>
         <attackPoints>1</attackPoints>
         <victory>"MF! $#@%" your enemy screams as he steps on your trap.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="29">
         <name>jar of jam</name>
         <description>Tastes like elderberry.</description>
         <attackPoints>1</attackPoints>
         <victory>Now he smells of elderberries.</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="30">
         <name>beaded bracelet</name>
         <description>Awww, someone lost their friendship bracelet.</description>
         <attackPoints>1</attackPoints>
         <victory>Power of friendship!</victory>
+        <findable>true</findable>
     </weapon>
     <weapon id="31">
         <name>wet noodle</name>
         <description>Linguini, Fettuccine, Spaghetti, I don't know it is wet and slimy. </description>
         <attackPoints>1</attackPoints>
         <victory>Well at least he slipped on the wet noodle.  That could have ended very differently.</victory>
+        <findable>true</findable>
     </weapon>
 </Weapons>

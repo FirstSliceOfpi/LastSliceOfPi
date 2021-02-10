@@ -18,6 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class XmlParser {
@@ -99,7 +100,10 @@ public class XmlParser {
         return enemies;
     }
 
-    public static void parseWeapons() {
+    public static HashMap<String, Object> parseWeapons() {
+        ItemTree tree = new ItemTree();
+        ArrayList<Weapon> findableWeapons = new ArrayList<>();
+        HashMap<String,Object> result = new HashMap<>();
         try {
             Document document = loadXML("resources/Weapons.xml");
 
@@ -115,13 +119,20 @@ public class XmlParser {
                     String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
                     String victory = currentElement.getElementsByTagName("victory").item(0).getTextContent();
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
-                    new Weapon(name, description, Integer.parseInt(attackPoints), victory);
+                    String findable = currentElement.getElementsByTagName("findable").item(0).getTextContent();
+                    Weapon weapon = new Weapon(name, description, Integer.parseInt(attackPoints), victory);
+                    tree.add(weapon);
+                    if(findable.equals("true")) {
+                        findableWeapons.add(weapon);
+                    }
                 }
             }
         } catch(ParserConfigurationException | IOException | SAXException e) {
             System.out.println(e.getMessage());
         }
-
+        result.put("findableWeapons", findableWeapons);
+        result.put("weaponTree", tree);
+        return result;
     };
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
