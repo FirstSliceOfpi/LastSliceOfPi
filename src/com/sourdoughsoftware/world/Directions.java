@@ -1,4 +1,4 @@
-package com.sourdoughsoftware.utility;
+package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.dictionary.Noun;
 

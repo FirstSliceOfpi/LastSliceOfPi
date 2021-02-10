@@ -1,6 +1,9 @@
 package com.sourdoughsoftware.dictionary;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public enum Dictionary {
     INSTANCE;
@@ -24,9 +27,7 @@ public enum Dictionary {
                     nounResults.add((Noun) entry);
                 }
             }
-
         }
-
     }
 
     public Verb getVerb(String name) {
@@ -36,4 +37,6 @@ public enum Dictionary {
     public Set<Noun> getNounCandidates(String name) {
         return nouns.get(name);
     }
+
+
 }

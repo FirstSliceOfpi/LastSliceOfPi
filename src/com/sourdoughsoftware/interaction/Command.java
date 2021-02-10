@@ -4,8 +4,8 @@ import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 
 public class Command {
-    private Noun noun;
-    private Verb verb;
+    private final Noun noun;
+    private final Verb verb;
     private Noun targetNoun = null;
 
     public Command(Noun noun, Verb verb) {

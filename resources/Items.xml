@@ -4,42 +4,35 @@
         <name>hairbrush</name>
         <description>A golden hairbrush, with a soft wood handle.</description>
         <feel>The hairbrush feels soft yet sturdy.</feel>
-        <pival>1</pival>
     </item>
     <item id="1">
         <name>silk skeins</name>
         <description>A skein of silk, woven from the smallest of spiders.</description>
         <feel>It's smooth and soft, and it makes you want to roll around in it.</feel>
-        <pival>3</pival>
     </item>
     <item id="2">
         <name>braid</name>
         <description>An impressively thick, woven braid.</description>
         <feel>Soft, silky, and well moisturized, yet rugged.</feel>
-        <pival>1</pival>
     </item>
     <item id="3">
         <name>apple</name>
         <description>That looks like a delicious apple, probably an Envy.</description>
         <eat>It was an Envy! And also poisoned. Have fun with that!</eat>
-        <pival>1</pival>
     </item>
     <item id="4">
         <name>mirror</name>
         <description>A disturbing lack of a reflection doesn't stare you back in the face.</description>
         <break>Seventy times seven years of bad luck for you!</break>
-        <pival>1</pival>
     </item>
     <item id="5">
         <name>tools</name>
         <description>An awl, a hammer, a needle and thread, a saw, some paper, and a wooden head.</description>
-        <pival>7</pival>
     </item>
     <item id="6">
         <name>gingerbread</name>
         <description>It wants to eat you. I mean it wants you to eat it.</description>
         <eat>It crumbles in your mouth, cinnamon and sugar filling your nose. You sneeze.</eat>
-        <pival>4</pival>
     </item>
     <item id="7">
         <name>oven</name>
@@ -59,7 +52,6 @@
     <item id="10">
         <name>treasure</name>
         <description>This is it! These are the NINE secrets of baking!</description>
-        <pival>9</pival>
     </item>
     <item id="11">
         <name>doors</name>
@@ -74,20 +66,17 @@
         <name>insects</name>
         <description>Little, annoying, biting. Ya know - insects.</description>
         <squish>In a flurry of activity, you crush the life out of all FIVE of the little, helpless, peace loving insects. You monster.</squish>
-        <pival>5</pival>
     </item>
     <item id="14">
         <name>crystal sphere</name>
         <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there. It could be the end. It could just be the best thing - PERIOD.
         </description>
         <rub>You rub the sphere, wishing your secret wish.</rub>
-        <pival>.</pival>
     </item>
     <item id="15">
         <name>bed</name>
         <description>Look at that thread count! Look at design! This is the bed of the century!</description>
         <sleep>You take a quick snooze, and waken refreshed.</sleep>
-        <pival>1</pival>
     </item>
     <item id="16">
         <name>spindle</name>
@@ -101,13 +90,11 @@
     <item id="18">
         <name>first aid kit</name>
         <description>Bandages, ointment, and a small knife. You could fix SIX small wounds with this.</description>
-        <pival>6</pival>
     </item>
     <item id="19">
         <name>chair</name>
         <description>A chair to some, a bed to others.</description>
         <sit>You take a long needed rest on this amazing chair, around NINE minutes.</sit>
-        <pival>9</pival>
     </item>
     <item id="20">
         <name>invitation</name>
@@ -123,7 +110,6 @@
     <item id="22">
         <name>boxes</name>
         <description>Large and rectangular, at least they don't remind you of coffins.</description>
-        <pival>2</pival>
     </item>
     <item id="23">
         <name>gowns</name>
@@ -132,110 +118,89 @@
     <item id="24">
         <name>glass slipper</name>
         <description>There is just no way this would fit you, right?</description>
-        <pival>1</pival>
     </item>
     <item id="25">
         <name>straw</name>
         <description>You can INDEED smell the straw outside, and you wish you couldn't.</description>
-        <pival>3</pival>
     </item>
     <item id="26">
         <name>locked doors</name>
         <description>These doors are tightly shut, and there appears to be no keyhole that you can find.</description>
-        <pival>2</pival>
     </item>
     <item id="27">
         <name>hay</name>
         <description>Hey, Listen! It's hay!</description>
-        <pival>1</pival>
     </item>
     <item id="28">
         <name>gold bars</name>
         <description>These just don't seem to fit. Who would leave all this wealth just laying around?</description>
-        <pival>5</pival>
     </item>
     <item id="29">
         <name>book</name>
         <description>You browse through the book. These are indeed the Best Baby Names, and thank goodness none of them
             are yours!
         </description>
-        <pival>4</pival>
     </item>
     <item id="30">
         <name>tea</name>
         <description>Chamomile, or perhaps wolfsbane? You can't quite tell but it smells delicious!</description>
-        <pival>1</pival>
     </item>
     <item id="31">
         <name>lozenges</name>
         <description>Not individually wrapped, not even really individual. Best steer clear.</description>
-        <pival>6</pival>
     </item>
     <item id="32">
         <name>tissue</name>
         <description>Honestly, what a waste of a good tree!</description>
-        <pival>8</pival>
     </item>
     <item id="33">
         <name>night stand</name>
         <description>It looks more like a nightsit with how short it is.</description>
-        <pival>1</pival>
     </item>
     <item id="34">
         <name>cape</name>
         <description>This is it, the thing you've been missing to complete you're outift and let you take your creed!
         </description>
-        <pival>1</pival>
     </item>
     <item id="35">
         <name>sleeping cap</name>
         <description>This looks just so helpful, if only you were significantly older.</description>
-        <pival>.</pival>
     </item>
     <item id="36">
         <name>basket</name>
         <description>The basket is sturdy and well used, with no frayed edges or holes to be found.</description>
-        <pival>2</pival>
     </item>
     <item id="37">
         <name>food</name>
         <description>This is not the food you're looking for. Move along.</description>
-        <pival>7</pival>
     </item>
     <item id="38">
         <name>packages</name>
         <description>Forrest delivery service - right to your cottage!</description>
-        <pival>9</pival>
     </item>
     <item id="39">
         <name>shoes</name>
         <description>You feel like these shoes could only have been made by tiny elves, or perhaps gremlins.</description>
-        <pival>3</pival>
     </item>
     <item id="40">
         <name>clothing</name>
         <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such finery!</description>
-        <pival>2</pival>
     </item>
     <item id="41">
         <name>workbench</name>
         <description>This husky workbench looks like you could make things on it forever.</description>
-        <pival>5</pival>
     </item>
     <item id="42">
         <name>ax</name>
         <description>A sturdy handle, a sharp blade, why are you splitting hairs over it?</description>
-        <pival>2</pival>
     </item>
     <item id="43">
         <name>nest</name>
         <description>What could possible live in a nest inside a house like this?</description>
-        <pival>9</pival>
     </item>
     <item id="44">
         <name>golden feather</name>
         <description>I wager if you took a closer gander, you might get tickled!</description>
-        <pival>7</pival>
     </item>
     <item id="100">
         <name>pi</name>
