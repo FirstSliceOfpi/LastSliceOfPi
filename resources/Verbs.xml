@@ -32,4 +32,8 @@
         <name>attack</name>
         <group>ATTACK</group>
     </verb>
+    <verb>
+        <name>wield</name>
+        <group>WIELD</group>
+    </verb>
 </Verbs>

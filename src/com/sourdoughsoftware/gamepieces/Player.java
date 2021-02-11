@@ -37,6 +37,7 @@ public class Player {
 
     public static class Inventory extends Noun {
         List<Noun> inventory = new ArrayList<>();
+        public Weapon currentWeapon;
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
@@ -63,6 +64,12 @@ public class Player {
         public List<Noun> getCurrentInventory() {
             return inventory;
         }
+
+        public Weapon getCurrentWeapon() {
+            return currentWeapon;
+        }
+
+
     }
 
 }

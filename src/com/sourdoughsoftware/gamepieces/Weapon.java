@@ -13,6 +13,7 @@ public class Weapon extends Item{
         super(name, description);
         this.attackPoints = attackPoints;
         this.victory = victory;
+        setWieldable(true);
     }
 
     // return the attackPoints assigned to this weapon

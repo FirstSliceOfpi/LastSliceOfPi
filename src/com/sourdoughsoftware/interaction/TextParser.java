@@ -19,7 +19,8 @@ public class TextParser {
 
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
         Noun targetNoun = getNoun(targetNounCandidates, userInputWords);
-
+        System.out.println(" " + nounCandidates);
+        System.out.println(" " + noun + " " + verb + " " + targetNoun);
         return targetNoun == null ? new Command(noun, verb) : new Command(noun, verb, targetNoun);
     }
 

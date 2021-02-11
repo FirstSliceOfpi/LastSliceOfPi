@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Game;
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.interaction.Prompter;
 import org.xml.sax.SAXException;
 
@@ -15,6 +16,7 @@ import java.util.Scanner;
  * @version 1.0.0
  */
 public class WelcomeScreen {
+    private JukeBox openingCredits = new JukeBox("resources/LifeOfPiSoundTrack/Mr. Blue Sky.wav");
     public static final String WELCOME_MESSAGE = "Welcome to \"The Last Slice of Pi\"";
     PrintFiles p = new PrintFiles();
     Prompter parser;
@@ -34,6 +36,8 @@ public class WelcomeScreen {
 
 
     public void loadingScreen() {
+        openingCredits.startJuke();
+        openingCredits.turnTheDial((float) -10.69);
         p.print("GameLogo");
         System.out.println("Press Enter to continue...");
 
@@ -54,8 +58,9 @@ public class WelcomeScreen {
             myGame.start();
         }else if (gameType.matches("2")) {
             try {
+                GameState savedGame = GameState.getInstance();
                 Game myGame = new Game();
-                save.setGame(myGame);
+                save.setGame(savedGame);
                 save.loadGame();
                 myGame.start();
             }catch (NullPointerException e) {

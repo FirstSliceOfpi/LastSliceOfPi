@@ -1,8 +1,9 @@
 package com.sourdoughsoftware.gamepieces;
 
+import com.sourdoughsoftware.dictionary.Noun;
 import org.w3c.dom.NodeList;
 
-public class Enemy implements java.io.Serializable{
+public class Enemy extends Noun implements java.io.Serializable{
 
 
     private String name;
@@ -13,7 +14,8 @@ public class Enemy implements java.io.Serializable{
 
 
 
-    public Enemy() {
+    public Enemy(String name, String background) {
+        super (name, background);
 
     }
 
@@ -24,6 +26,7 @@ public class Enemy implements java.io.Serializable{
         this.hp = hp;
         this.weaponType = weaponType;
         this.background = background;
+        setAttackable(true);
     }
 
 

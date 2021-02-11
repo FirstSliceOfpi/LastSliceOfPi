@@ -2,17 +2,18 @@ package com.sourdoughsoftware.interaction;
 
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.gamepieces.Weapon;
 
 public class Command {
     private final Noun noun;
     private final Verb verb;
-    private Noun targetNoun = null;
+        private Noun targetNoun = null;
 
     public Command(Noun noun, Verb verb) {
         this.noun = noun;
         this.verb = verb;
     }
-    public Command(Noun noun, Verb verb, Noun targetNoun) {
+       public Command(Noun noun, Verb verb, Noun targetNoun) {
         this(noun, verb);
         this.targetNoun = targetNoun;
     }

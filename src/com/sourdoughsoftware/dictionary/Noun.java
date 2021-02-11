@@ -2,8 +2,8 @@ package com.sourdoughsoftware.dictionary;
 
 public class Noun implements DictionaryEntry {
 
-    private final String name;
-    private final String description;
+    private String name;
+    private String description;
 
 
     private boolean feelable = false;
@@ -24,6 +24,11 @@ public class Noun implements DictionaryEntry {
     private boolean useable = false;
     private boolean mergeable = false;
     private boolean attackable = false;
+    private boolean wieldable = false;
+
+    public Noun() {
+
+    }
 
     public Noun(String name, String description) {
 
@@ -96,6 +101,11 @@ public class Noun implements DictionaryEntry {
     public boolean isAttackable() {return attackable;}
 
     public void setAttackable(boolean attackable){this.attackable = attackable;}
+
+    public boolean isWieldable(){return wieldable;}
+    public void setWieldable(boolean wieldable) {
+        this.wieldable = wieldable;
+    }
 
     public void setSquishable(boolean squishable) {
         this.squishable = squishable;
