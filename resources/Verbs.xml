@@ -33,6 +33,14 @@
         <group>ATTACK</group>
     </verb>
     <verb>
+        <name>examine</name>
+        <group>EXAMINE</group>
+    </verb>
+    <verb>
+        <name>look</name>
+        <group>EXAMINE</group>
+    </verb>
+    <verb>
         <name>wield</name>
         <group>WIELD</group>
     </verb>

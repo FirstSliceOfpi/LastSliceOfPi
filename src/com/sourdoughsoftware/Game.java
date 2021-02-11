@@ -5,6 +5,8 @@ import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.ItemTree;
 import com.sourdoughsoftware.utility.XmlParser;
+import com.sourdoughsoftware.world.Directions;
+import com.sourdoughsoftware.world.World;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,10 +23,12 @@ public class Game {
         XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
-        HashMap<String, Object> weapons = XmlParser.parseWeapons();
-        ItemTree tree = (ItemTree) weapons.get("weaponTree");
+        new Directions();
+        new World();
+        HashMap<String, Object> pies = XmlParser.parsePies();
+        ItemTree tree = (ItemTree) pies.get("pieTree");
         gs.setTree(tree);
-        gs.setFindableWeapons((ArrayList) weapons.get("findableWeapons"));
+        gs.setFindableWeapons((ArrayList) pies.get("findablePies"));
     }
 
     public void start() {
