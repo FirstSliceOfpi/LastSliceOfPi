@@ -5,5 +5,6 @@ public enum VerbGroup {
     MOVE,
     MERGE,
     ATTACK,
-    USE;
+    USE,
+    EXAMINE;
 }

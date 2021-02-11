@@ -32,4 +32,12 @@
         <name>attack</name>
         <group>ATTACK</group>
     </verb>
+    <verb>
+        <name>examine</name>
+        <group>EXAMINE</group>
+    </verb>
+    <verb>
+        <name>look</name>
+        <group>EXAMINE</group>
+    </verb>
 </Verbs>

@@ -8,6 +8,7 @@ import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.world.World;
 
 public class Actions {
     public static String execute(Command command) {
@@ -33,10 +34,16 @@ public class Actions {
                 return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
 //            case ATTACK:
 //                return
+            case EXAMINE:
+                return examine(command);
             default:
                 break;
         }
         return "Bug FOUND";
+    }
+
+    private static String examine(Command command) {
+        return command.getNoun().getDescription();
     }
 
     // merge or combine to weapons for a higher level weapon
@@ -70,7 +77,7 @@ public class Actions {
 
     private static String move(Noun noun, Verb verb) {
         if(noun instanceof Directions.Direction) {
-            return "YOU " + verb.getName() + " " +  noun.getName() + " in current room";
+            return World.changeCurrentRoom((Directions.Direction) noun);
         }
         return "That's not a direction";
     }

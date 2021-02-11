@@ -19,10 +19,21 @@ public class Room implements java.io.Serializable{
     private String shortDescription;
     private Map<String, Integer> exitsById;
     private List<Item> roomItems;
+    private final Map<Directions.Direction, Room> exits = new HashMap<>();
 
-    public Room() {
+
+    public Room(String name, String description) {
+        this.name = name;
+        this.description = description;
         exitsById = new HashMap<>();
         roomItems = new ArrayList<>();
+    }
+    public Map<Directions.Direction, Room> getExits() {
+        return exits;
+    }
+
+    public void createExit(Directions.Direction direction, Room newExit) {
+        exits.put(direction, newExit);
     }
 
     public void addExitbyID(String dir, Integer roomID){
