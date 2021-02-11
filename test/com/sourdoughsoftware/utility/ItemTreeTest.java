@@ -17,6 +17,9 @@ public class ItemTreeTest {
     Item item5;
     Item item6;
     Item item7;
+    Item item8;
+    Item item9;
+    Item item10;
 
     @Before
     public void setUp() {
@@ -31,6 +34,9 @@ public class ItemTreeTest {
         item5 = new Item("5","5");
         item6 = new Item("6","6");
         item7 = new Item("7","7");
+        item8 = new Item("8","8");
+        item9 = new Item("9", "9");
+        item10 = new Item("10","10");
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
@@ -38,6 +44,9 @@ public class ItemTreeTest {
         tree.add(item5);
         tree.add(item6);
         tree.add(item7);
+        tree.add(item8);
+        tree.add(item9);
+        tree.add(item10);
         return item1;
     }
 
@@ -56,16 +65,17 @@ public class ItemTreeTest {
         tree.add(item1);
         tree.add(item2);
         tree.add(item3);
+        System.out.println(tree);
         assertEquals(3, tree.getSize());
         assertSame(tree.getRoot().getItem(), item1);
     }
 
     @Test
-    public void addSevenItemsToEmptyTree() {
+    public void addTenItemsToEmptyTree() {
         Item item = buildTree();
-        assertEquals(7, tree.getSize());
+        assertEquals(10, tree.getSize());
         assertSame(tree.getRoot().getItem(), item);
-        assertEquals(3, tree.height(tree.getRoot()));
+        assertEquals(4, tree.height(tree.getRoot()));
     }
 
     @Test
@@ -109,8 +119,8 @@ public class ItemTreeTest {
     public void toStringTest() {
         buildTree();
         System.out.println(tree);
-        assertEquals("\n1 \n2 3 \n4 5 6 7 ", tree.toString());
-    }
+        assertEquals("\n(1) \n(2) (3) \n(4) (5) (6) (7) \n(8) (9) (10) ", tree.toString());
+        }
 
     @Test
     public void getChildrenTest() {
@@ -124,6 +134,11 @@ public class ItemTreeTest {
         result[0] = item4;
         result[1] = item5;
         nodes = tree.getChildren(item2);
+        output[0] = nodes[0].getItem();
+        output[1] = nodes[1].getItem();
+        assertArrayEquals(result, output);
+        result = new Item[]{item8, item9};
+        nodes = tree.getChildren(item4);
         output[0] = nodes[0].getItem();
         output[1] = nodes[1].getItem();
         assertArrayEquals(result, output);

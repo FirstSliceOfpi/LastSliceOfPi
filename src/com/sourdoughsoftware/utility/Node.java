@@ -68,4 +68,23 @@ public class Node {
     public String toString() {
        return Integer.toString(id);
     }
+
+    public String nodeDetails() {
+        int left = 0;
+        int right = 0;
+        int parent = 0;
+        if(getLeft() != null) {
+            left = getLeft().getId();
+        }
+        if(getRight() != null) {
+            right = getRight().getId();
+        }
+        if(getParent() != null) {
+            parent = getParent().getId();
+        }
+        return "ID: " + Integer.toString(id)
+                + " Left: " + Integer.toString(left)
+                + " Right: " + Integer.toString(right)
+                + " Parent: " + Integer.toString(parent);
+    }
 }
