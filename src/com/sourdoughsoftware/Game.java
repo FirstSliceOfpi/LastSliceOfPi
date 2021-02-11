@@ -22,7 +22,8 @@ public class Game {
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
         HashMap<String, Object> weapons = XmlParser.parseWeapons();
-        gs.setTree((ItemTree) weapons.get("weaponsTree"));
+        ItemTree tree = (ItemTree) weapons.get("weaponTree");
+        gs.setTree(tree);
         gs.setFindableWeapons((ArrayList) weapons.get("findableWeapons"));
     }
 

@@ -9,13 +9,12 @@ import com.sourdoughsoftware.utility.ItemTree;
 import java.util.ArrayList;
 
 public class GameState {
-    static GameState instance = null;
+    private static GameState instance = null;
     private ItemTree tree;
     private ArrayList findableWeapons;
     private Player player = new Player("Edgar");
 
     private GameState() {
-        instance = new GameState();
     }
 
     public ArrayList getFindableWeapons() {
@@ -42,7 +41,8 @@ public class GameState {
         this.tree = tree;
     }
 
-    public static GameState getInstance() {
-        return instance != null ? instance : new GameState();
+    public static GameState getInstance(){
+        instance = instance == null ? new GameState() : instance;
+        return instance;
     }
 }

@@ -6,6 +6,7 @@ import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Weapon;
 import com.sourdoughsoftware.utility.CombineWeapons;
+import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.GameState;
 
@@ -41,13 +42,25 @@ public class Actions {
 
     // merge or combine to weapons for a higher level weapon
     private static String merge(Noun noun, Verb verb, Noun targetNoun) {
-        // TODO: Check to see if the item is in inventory
         GameState gs = GameState.getInstance();
-        Weapon weapon1 = (Weapon) gs.getTree().find(noun.getName()).getItem();
-        Weapon weapon2 = (Weapon) gs.getTree().find(targetNoun.getName()).getItem();
+        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+            return "One or more items are not in your inventory.";
+        }
+        Node weapon1Node = gs.getTree().find(noun.getName());
+        Node weapon2Node = gs.getTree().find(noun.getName());
+        Weapon weapon1 = null;
+        Weapon weapon2 = null;
+        if(weapon1Node != null) {
+            weapon1 = (Weapon) weapon1Node.getItem();
+        }
+        if(weapon2Node != null) {
+            weapon2 = (Weapon) weapon2Node.getItem();
+        }
         Weapon combinedWeapon = CombineWeapons.combine(weapon1, weapon2, gs.getTree());
         if(combinedWeapon != weapon1) {
-            //TODO: Add weapon to inventory and remove the other two weapons
+            gs.getPlayer().getInventory().drop(noun);
+            gs.getPlayer().getInventory().drop(targetNoun);
+            gs.getPlayer().getInventory().add((Noun) combinedWeapon);
             return "YOU " + verb.getName() + "d " + noun.getName()
                     + " and " + targetNoun.getName()
                     + " to make a " + combinedWeapon.getName();
