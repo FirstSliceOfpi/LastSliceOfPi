@@ -1,6 +1,6 @@
 package com.sourdoughsoftware.utility;
 
-import com.sourdoughsoftware.Enemy;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Weapon;
 import com.sourdoughsoftware.world.Room;

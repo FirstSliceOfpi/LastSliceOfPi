@@ -4,7 +4,10 @@ import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Enemy;
+import com.sourdoughsoftware.gamepieces.Weapon;
+import com.sourdoughsoftware.utility.CombineWeapons;
 import com.sourdoughsoftware.world.Directions;
+import com.sourdoughsoftware.GameState;
 
 public class Actions {
     public static String execute(Command command) {
@@ -30,13 +33,23 @@ public class Actions {
                 return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
 //            case ATTACK:
 //                return
+            default:
+                break;
         }
         return "Bug FOUND";
     }
 
     private static String merge(Noun noun, Verb verb, Noun targetNoun) {
-        if(noun.isMergeable() && targetNoun.isMergeable()) {
-            return "YOU " + verb.getName()+ " " + noun.getName();
+        // TODO: Check to see if the item is in inventory
+        GameState gs = GameState.getInstance();
+        Weapon weapon1 = (Weapon) gs.getTree().find(noun.getName()).getItem();
+        Weapon weapon2 = (Weapon) gs.getTree().find(targetNoun.getName()).getItem();
+        Weapon combinedWeapon = CombineWeapons.combine(weapon1, weapon2, gs.getTree());
+        if(combinedWeapon != weapon1) {
+            //TODO: Add weapon to inventory and remove the other two weapons
+            return "YOU " + verb.getName() + "d " + noun.getName()
+                    + " and " + targetNoun.getName()
+                    + " to make a " + combinedWeapon.getName();
         } else {
             return "you can't merge a " + noun.getName() + " and a " + targetNoun.getName() + " together";
         }
