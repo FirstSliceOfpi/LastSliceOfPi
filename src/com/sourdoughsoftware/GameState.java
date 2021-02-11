@@ -1,5 +1,9 @@
 package com.sourdoughsoftware;
-
+/**
+ This class stores the global variables for the state of the game.
+ It is a singleton class accessible by the getInstance() method.
+ It contains getters and setters for the global variables;
+ */
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.utility.ItemTree;
 import java.util.ArrayList;

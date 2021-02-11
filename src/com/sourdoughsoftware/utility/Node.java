@@ -1,4 +1,8 @@
 package com.sourdoughsoftware.utility;
+/**
+ * A node is a vertex in the binary search tree (ItemTree)
+ * Node keeps track of the parent, left, and right nodes
+ */
 
 import com.sourdoughsoftware.gamepieces.Item;
 
@@ -62,13 +66,12 @@ public class Node {
         this.right = node;
     }
 
-
-
     @Override
     public String toString() {
        return Integer.toString(id);
     }
 
+    // Modified toString to expand on output for development purposes
     public String nodeDetails() {
         int left = 0;
         int right = 0;

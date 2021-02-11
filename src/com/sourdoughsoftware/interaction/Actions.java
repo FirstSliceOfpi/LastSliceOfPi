@@ -39,6 +39,7 @@ public class Actions {
         return "Bug FOUND";
     }
 
+    // merge or combine to weapons for a higher level weapon
     private static String merge(Noun noun, Verb verb, Noun targetNoun) {
         // TODO: Check to see if the item is in inventory
         GameState gs = GameState.getInstance();

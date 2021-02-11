@@ -1,7 +1,5 @@
 package com.sourdoughsoftware;
 
-import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.gamepieces.Weapon;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;

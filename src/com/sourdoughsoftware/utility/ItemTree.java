@@ -1,7 +1,10 @@
 package com.sourdoughsoftware.utility;
+/**
+ *  This class is the BST structure for the weapons
+ *  It contains many functions for adding and finding weapons
+ */
 
 import com.sourdoughsoftware.gamepieces.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ public class ItemTree {
     public ItemTree() {
         root = null;
     }
-
+    // add a weapon to the tree
     public void add(Item item) {
         if (root == null) {
             root = new Node(item);
@@ -23,7 +26,7 @@ public class ItemTree {
         newNode.setId(++size);
         insert(root, newNode);
     }
-
+    // helper function for add()
     private Node insert(Node lastNode, Node newNode) {
         int lastValue = lastNode.getId();
         Node left = lastNode.getLeft();
@@ -39,11 +42,12 @@ public class ItemTree {
         }
         return newNode;
     }
-
+    // helper function for insert()
     private Node getNextNode(int lastValue) {
         return find(++lastValue);
     }
 
+    // Weapons can be found by Item object, String name, Node id as an integer
     public Node find(Item item) {
         return DFSHelper(item, this.root, new Node());
     }
@@ -55,7 +59,7 @@ public class ItemTree {
     public Node find(int item) {
         return DFSHelper(item, this.root, new Node());
     }
-
+    // Overloaded DFSHelpers for find functions
     private Node DFSHelper(int item, Node node, Node result) {
         if (node != null) {
             if (node.getId() == item) return node;
@@ -95,6 +99,7 @@ public class ItemTree {
         return result;
     }
 
+    // Performs a bread first search and returns all the Nodes(weapons) in an array
     public Node[] getAllItemsBFS() {
         List<Node> items = new ArrayList<>();
         int height = height(root);
@@ -105,6 +110,8 @@ public class ItemTree {
         return items.toArray(Node[]::new);
     }
 
+    // Helper function for getAllItems but also publicly accessible
+    // to find weapons of a certain level
     public ArrayList<Node> getLevelItems(Node root, int level, ArrayList<Node> result) {
         if (root == null) return result;
         if (level == 1) {
@@ -117,6 +124,7 @@ public class ItemTree {
         return result;
     }
 
+    // returns the height of the tree from the node passed in (typically the root)
     public int height(Node root) {
         if (root == null) return 0;
         else {
@@ -128,6 +136,8 @@ public class ItemTree {
         }
     }
 
+    // Size is used to set the Node id and is also the current
+    // size of the tree
     public int getSize() {
         return size;
     }
@@ -136,11 +146,16 @@ public class ItemTree {
         return root;
     }
 
+    // getChildren is for determining what two items
+    // combine to make the parent item
     public Node[] getChildren(Item item) {
         Node parent = find(item);
         return new Node[]{parent.getLeft(), parent.getRight()};
     }
 
+    // getParentAndSibling is for determining if you
+    // have one item will it combine to make another item
+    // if so then what other item
     public Node[] getParentAndSibling(Item item) {
         Node firstChild = find(item);
         if(firstChild == root) { return new Node[]{firstChild}; }
@@ -154,6 +169,7 @@ public class ItemTree {
         return new Node[]{parent};
     }
 
+    // A version of toString that shows more details for development
     public String treeNodeDetails() {
         StringBuilder result = new StringBuilder();
         Node[] allItemsInTree = getAllItemsBFS();
@@ -181,6 +197,7 @@ public class ItemTree {
         return result.toString();
     }
 
+    // Helps format the binary tree output for visual display on the console
     private boolean powerOfTwo(int i) {
         for (int x = 0; x < 8 && (Math.pow(2, x) < size); x++) {
             if (Math.pow(2, x) == i) {

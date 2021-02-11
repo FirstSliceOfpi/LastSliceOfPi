@@ -1,4 +1,8 @@
 package com.sourdoughsoftware.utility;
+/**
+ * Contains static functions for parsing
+ * various xml documents for game play
+ */
 
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
