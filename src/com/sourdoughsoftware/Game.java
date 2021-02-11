@@ -21,10 +21,10 @@ public class Game {
         XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
-        HashMap<String, Object> weapons = XmlParser.parseWeapons();
-        ItemTree tree = (ItemTree) weapons.get("weaponTree");
+        HashMap<String, Object> pies = XmlParser.parsePies();
+        ItemTree tree = (ItemTree) pies.get("pieTree");
         gs.setTree(tree);
-        gs.setFindableWeapons((ArrayList) weapons.get("findableWeapons"));
+        gs.setFindableWeapons((ArrayList) pies.get("findablePies"));
     }
 
     public void start() {

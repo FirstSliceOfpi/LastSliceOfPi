@@ -6,8 +6,7 @@ package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
-import com.sourdoughsoftware.gamepieces.Weapon;
-import com.sourdoughsoftware.world.Room;
+import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import org.w3c.dom.Document;
@@ -104,14 +103,14 @@ public class XmlParser {
         return enemies;
     }
 
-    public static HashMap<String, Object> parseWeapons() {
+    public static HashMap<String, Object> parsePies() {
         ItemTree tree = new ItemTree();
-        ArrayList<Weapon> findableWeapons = new ArrayList<>();
+        ArrayList<Pie> findablePies = new ArrayList<>();
         HashMap<String,Object> result = new HashMap<>();
         try {
-            Document document = loadXML("resources/Weapons.xml");
+            Document document = loadXML("resources/Pies.xml");
 
-            NodeList nodeList = document.getElementsByTagName("weapon");
+            NodeList nodeList = document.getElementsByTagName("pie");
 
             for (int current = 0; current < nodeList.getLength(); current++) {
                 Node node = nodeList.item(current);
@@ -124,18 +123,18 @@ public class XmlParser {
                     String victory = currentElement.getElementsByTagName("victory").item(0).getTextContent();
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
                     String findable = currentElement.getElementsByTagName("findable").item(0).getTextContent();
-                    Weapon weapon = new Weapon(name, description, Integer.parseInt(attackPoints), victory);
-                    tree.add(weapon);
+                    Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
+                    tree.add(pie);
                     if(findable.equals("true")) {
-                        findableWeapons.add(weapon);
+                        findablePies.add(pie);
                     }
                 }
             }
         } catch(ParserConfigurationException | IOException | SAXException e) {
             System.out.println(e.getMessage());
         }
-        result.put("findableWeapons", findableWeapons);
-        result.put("weaponTree", tree);
+        result.put("findablePies", findablePies);
+        result.put("pieTree", tree);
         return result;
     };
 
