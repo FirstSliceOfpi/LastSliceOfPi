@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Player {
     private String name;
+
+
+    private int hp;
     public Inventory inventory = new Inventory();
 
     public Player(String name) {
@@ -19,6 +22,14 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public Inventory getInventory() {

@@ -28,4 +28,8 @@
         <name>use</name>
         <group>USE</group>
     </verb>
+    <verb>
+        <name>attack</name>
+        <group>ATTACK</group>
+    </verb>
 </Verbs>

@@ -3,6 +3,7 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.world.Directions;
 
 public class Actions {
@@ -27,6 +28,8 @@ public class Actions {
                 return move(command.getNoun(), command.getVerb());
             case MERGE:
                 return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
+//            case ATTACK:
+//                return
         }
         return "Bug FOUND";
     }
@@ -53,4 +56,14 @@ public class Actions {
             return "You can't grab a " + noun.getName();
         }
     }
+
+//    private static String attack(Noun noun,  Enemy enemy) {
+//        if (noun.isAttackable() & enemy.getHp() > 0) {
+//            return "YOU " + noun.getName() + enemy.getName();
+//            int newHP = enemy.getHp() - weapon.getAP();
+//            enemy.setHp(newHP);
+//        }else (noun.isAttackable() & enemy.getHp() < 0) {
+//            return "Cannot attack " + enemy.getName() + ", they are dead ";
+//        }
+//    }
 }

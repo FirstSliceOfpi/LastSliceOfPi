@@ -1,4 +1,4 @@
-package com.sourdoughsoftware;
+package com.sourdoughsoftware.gamepieces;
 
 import org.w3c.dom.NodeList;
 
