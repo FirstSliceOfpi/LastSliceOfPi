@@ -4,7 +4,11 @@ import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Enemy;
+import com.sourdoughsoftware.gamepieces.Weapon;
+import com.sourdoughsoftware.utility.CombineWeapons;
+import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
+import com.sourdoughsoftware.GameState;
 
 public class Actions {
     public static String execute(Command command) {
@@ -30,13 +34,36 @@ public class Actions {
                 return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
 //            case ATTACK:
 //                return
+            default:
+                break;
         }
         return "Bug FOUND";
     }
 
+    // merge or combine to weapons for a higher level weapon
     private static String merge(Noun noun, Verb verb, Noun targetNoun) {
-        if(noun.isMergeable() && targetNoun.isMergeable()) {
-            return "YOU " + verb.getName()+ " " + noun.getName();
+        GameState gs = GameState.getInstance();
+        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+            return "One or more items are not in your inventory.";
+        }
+        Node weapon1Node = gs.getTree().find(noun.getName());
+        Node weapon2Node = gs.getTree().find(noun.getName());
+        Weapon weapon1 = null;
+        Weapon weapon2 = null;
+        if(weapon1Node != null) {
+            weapon1 = (Weapon) weapon1Node.getItem();
+        }
+        if(weapon2Node != null) {
+            weapon2 = (Weapon) weapon2Node.getItem();
+        }
+        Weapon combinedWeapon = CombineWeapons.combine(weapon1, weapon2, gs.getTree());
+        if(combinedWeapon != weapon1) {
+            gs.getPlayer().getInventory().drop(noun);
+            gs.getPlayer().getInventory().drop(targetNoun);
+            gs.getPlayer().getInventory().add((Noun) combinedWeapon);
+            return "YOU " + verb.getName() + "d " + noun.getName()
+                    + " and " + targetNoun.getName()
+                    + " to make a " + combinedWeapon.getName();
         } else {
             return "you can't merge a " + noun.getName() + " and a " + targetNoun.getName() + " together";
         }
