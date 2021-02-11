@@ -1,15 +1,15 @@
 package com.sourdoughsoftware.gamepieces;
 
 /**
- * The Weapon class extends the Item class.
+ * The Pie class extends the Item class.
  * Additional variables are added to a weapon such as attackPoints and victory.
  *
  */
-public class Weapon extends Item{
+public class Pie extends Item{
     private final int attackPoints;
     private final String victory;
 
-    public Weapon(String name, String description, int attackPoints, String victory) {
+    public Pie(String name, String description, int attackPoints, String victory) {
         super(name, description);
         this.attackPoints = attackPoints;
         this.victory = victory;
