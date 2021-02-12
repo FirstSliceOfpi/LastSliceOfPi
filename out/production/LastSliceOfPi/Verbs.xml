@@ -52,4 +52,10 @@
         <name>load</name>
         <group>LOAD</group>
     </verb>
+    <verb>
+        <name>light</name>
+        <group>LIGHT</group>
+    </verb>
+
+
 </Verbs>

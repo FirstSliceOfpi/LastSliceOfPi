@@ -329,40 +329,5 @@
             <Weildable>true</Weildable>
         </modifiers>
     </pie>
-    <pie id="32">
-        <name>Candle</name>
-        <description>wax</description>
-        <attackPoints>0</attackPoints>
-        <victory>na</victory>
-        <modifiers>
-            <Lightable>
-                changeDescription
-                <argument>The candle is lit</argument>
-            </Lightable>
 
-        </modifiers>
-    </pie>
-    <pie id="33">
-        <name>Paper</name>
-        <description>ruled 8x10</description>
-        <attackPoints>0</attackPoints>
-        <victory>na</victory>
-        <modifiers>
-            <Lightable>
-                <action>
-                    PRINT
-                    <argument>You crumpled the paper before lighting it.</argument>
-                </action>
-                <action>
-                    DESTROY
-                    <argument>Paper is a pile of ash.</argument>
-                </action>
-            </Lightable>
-            <Examinable>
-                <action>
-                    PRINT
-                </action>
-            </Examinable>
-        </modifiers>
-    </pie>
 </Weapons>

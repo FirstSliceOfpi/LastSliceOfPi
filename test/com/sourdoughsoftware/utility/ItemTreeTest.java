@@ -4,6 +4,7 @@ import com.sourdoughsoftware.gamepieces.Item;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -47,6 +48,7 @@ public class ItemTreeTest {
         tree.add(item8);
         tree.add(item9);
         tree.add(item10);
+        item10.getAction("light");
         return item1;
     }
 

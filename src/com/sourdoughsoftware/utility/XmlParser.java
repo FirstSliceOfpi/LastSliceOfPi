@@ -127,15 +127,15 @@ public class XmlParser {
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
                     NodeList modifiers = currentElement.getElementsByTagName("modifiers").item(0).getChildNodes();
                     Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
-//                    for(int i = 0; i < modifiers.getLength(); i++) {
-//                        String modifierName = "set" + modifiers.item(i).getNodeName();
-//                        boolean modifierValue = parseBoolean(modifiers.item(i).getNodeValue());
-//                        try {
-//                            pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
-//                        }catch(Exception e) {
-//                            //do nothing
-//                        }
-//                    }
+                    for(int i = 0; i < modifiers.getLength(); i++) {
+                        String modifierName = "set" + modifiers.item(i).getNodeName();
+                        boolean modifierValue = parseBoolean(modifiers.item(i).getTextContent());
+                        try {
+                            pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
+                        }catch(Exception e) {
+                            //do nothing
+                        }
+                    }
                     tree.add(pie);
                     // Left findable pies as an array list for testing purposes
                     if(pie.isFindable()) {

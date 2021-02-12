@@ -51,7 +51,7 @@ public class Actions {
             case EXAMINE:
                 return examine(command.getNoun());
             default:
-                break;
+                command.getNoun().getAction(command.getVerb().getName());
         }
         return "Bug FOUND";
     }
@@ -135,6 +135,15 @@ public class Actions {
             return "You can't grab a " + noun.getName();
         }
     }
+
+    public static void print(String str) {
+        System.out.println(str);
+    }
+
+   public static void changeDescription(String str) {
+        System.out.println(str);
+    }
+
 
 //    private static String attack(Noun noun,  Enemy enemy) {
 //        if (noun.isAttackable() & enemy.getHp() > 0) {
