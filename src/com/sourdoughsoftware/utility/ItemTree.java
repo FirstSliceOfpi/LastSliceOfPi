@@ -5,10 +5,12 @@ package com.sourdoughsoftware.utility;
  */
 
 import com.sourdoughsoftware.gamepieces.Item;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemTree {
+public class ItemTree implements Serializable {
     private Node root;
     private int size = 0;
 

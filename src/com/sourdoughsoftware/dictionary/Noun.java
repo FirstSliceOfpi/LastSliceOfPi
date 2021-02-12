@@ -2,8 +2,8 @@ package com.sourdoughsoftware.dictionary;
 
 public class Noun implements DictionaryEntry {
 
-    private final String name;
-    private final String description;
+    private String name;
+    private String description;
 
 
     private boolean feelable = false;
@@ -26,11 +26,17 @@ public class Noun implements DictionaryEntry {
     private boolean attackable = false;
 
     public Noun(String name, String description) {
-
         this.name = name;
         this.description = description;
         addToDictionary();
     }
+
+    public Noun(Noun noun) {
+        this.name = noun.getName();
+        this.description = noun.getDescription();
+    }
+
+    public Noun() {}
 
     @Override
     public String getName() {
