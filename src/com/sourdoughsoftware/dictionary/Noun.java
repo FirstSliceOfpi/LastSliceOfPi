@@ -40,7 +40,7 @@ public class Noun implements DictionaryEntry {
     public String getDescription() {
         return description;
     }
-
+ //
     public boolean isFeelable() {
         return feelable;
     }
