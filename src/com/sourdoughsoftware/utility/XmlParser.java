@@ -20,9 +20,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static java.lang.Boolean.parseBoolean;
 
 public class XmlParser {
 
@@ -116,16 +120,25 @@ public class XmlParser {
                 Node node = nodeList.item(current);
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-
                     Element currentElement = (Element) node;
                     String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
                     String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
                     String victory = currentElement.getElementsByTagName("victory").item(0).getTextContent();
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
-                    String findable = currentElement.getElementsByTagName("findable").item(0).getTextContent();
+                    NodeList modifiers = currentElement.getElementsByTagName("modifiers").item(0).getChildNodes();
                     Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
+//                    for(int i = 0; i < modifiers.getLength(); i++) {
+//                        String modifierName = "set" + modifiers.item(i).getNodeName();
+//                        boolean modifierValue = parseBoolean(modifiers.item(i).getNodeValue());
+//                        try {
+//                            pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
+//                        }catch(Exception e) {
+//                            //do nothing
+//                        }
+//                    }
                     tree.add(pie);
-                    if(findable.equals("true")) {
+                    // Left findable pies as an array list for testing purposes
+                    if(pie.isFindable()) {
                         findablePies.add(pie);
                     }
                 }

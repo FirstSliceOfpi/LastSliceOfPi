@@ -8,13 +8,13 @@ public class Item extends Noun implements Serializable {
 
     public Item(String name, String description) {
         super(name, description);
-        setGrabbale(true);
+        setGrabable(true);
         setDropable(true);
     }
 
     public Item(Item item) {
         super(item.getName(), item.getDescription());
-        setGrabbale(true);
+        setGrabable(true);
         setDropable(true);
     }
 

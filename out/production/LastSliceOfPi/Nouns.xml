@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Items>
+    <item id="0">
+        <name>candle</name>
+        <description>wax</description>
+        <attackPoints>0</attackPoints>
+        <modifiers/>
+    </item>
+    <item id="1">
+        <name>paper</name>
+        <description>8x10 ruled paper</description>
+        <attackPoints>0</attackPoints>
+        <modifiers>
+            <Lightable>
+                <action>print
+                    <arg>The candle is lit.</arg>
+                </action>
+                <action>changeDescription
+                    <arg>Lit candle</arg>
+                </action>
+            </Lightable>
+        </modifiers>
+    </item>
+</Items>

@@ -37,7 +37,7 @@ public class Actions {
 
         switch(group) {
             case GRAB:
-                return grab(command.getNoun(), command.getVerb());
+                return grab(command.getNoun());
             case MOVE:
                 return move(command.getNoun(), command.getVerb());
             case MERGE:
@@ -128,9 +128,9 @@ public class Actions {
         return "That's not a direction";
     }
 
-    private static String grab(Noun noun, Verb verb) {
-        if(noun.isGrabbale()) {
-            return "YOU " + verb.getName() + " " + noun.getName();
+    private static String grab(Noun noun) {
+        if(noun.isGrabable()) {
+            return GameState.getInstance().getPlayer().getInventory().add(noun);
         } else {
             return "You can't grab a " + noun.getName();
         }

@@ -1,29 +1,55 @@
 package com.sourdoughsoftware.dictionary;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Noun implements DictionaryEntry {
 
     private String name;
     private String description;
 
+//
+//    private boolean feelable = false;
+//    private boolean eatable = false;
+//    private boolean breakable = false;
+//    private boolean openable = false;
+//    private boolean closeable = false;
+//    private boolean squishable = false;
+//    private boolean bakeable = false;
+//    private boolean rubable = false;
+//    private boolean readable = false;
+//    private boolean wearable = false;
+//    private boolean weildable = false;
+//    private boolean drinkable = false;
+//    private boolean examinable = false;
+//    private boolean dropable = false;
+//    private boolean grabable = false;
+//    private boolean useable = false;
+//    private boolean mergeable = false;
+//    private boolean attackable = false;
+//    private boolean findable = false;
+//
+//    private boolean isLightable = false;
+    private HashMap data;
+    {
+        lightable:
+          print: "arg"
+          changeDesription:
 
-    private boolean feelable = false;
-    private boolean eatable = false;
-    private boolean breakable = false;
-    private boolean openable = false;
-    private boolean closeable = false;
-    private boolean squishable = false;
-    private boolean bakeable = false;
-    private boolean rubable = false;
-    private boolean readable = false;
-    private boolean wearable = false;
-    private boolean weildable = false;
-    private boolean drinkable = false;
-    private boolean examinable = false;
-    private boolean dropable = false;
-    private boolean grabbale = false;
-    private boolean useable = false;
-    private boolean mergeable = false;
-    private boolean attackable = false;
+    }
+
+    findAction(String action) {
+        String modifier = data.get(action);
+        if(modifier != null) {
+             listOfMethods = data.get(action).get(modifier).keys();
+             for method
+                    arg = modifier.get(method)
+                    invoke(arg);
+
+        }
+    }
+
 
     public Noun(String name, String description) {
         this.name = name;
@@ -38,6 +64,31 @@ public class Noun implements DictionaryEntry {
 
     public Noun() {}
 
+    isLightable(true,false,null);
+    isLightable(true,true,[[print, this is lit], [changeDescription, my description is change]]);
+    boolean isLightable(boolean lightable, boolean shouldLight, String[] ... args) {
+        if(this.isLightable == true && shouldLight) {
+            for(String[] method : args) {
+                try {
+                    Method meth = this.getClass().getMethod(method[0], String.class);
+                    meth.invoke(meth, method[1]);
+                } catch (Exception e) {
+                    // do nothing
+                }
+            }
+
+        }
+        return lightable;
+    }
+
+    private void print(String str) { return "";}
+
+
+
+
+
+
+
     @Override
     public String getName() {
         return name;
@@ -46,6 +97,10 @@ public class Noun implements DictionaryEntry {
     public String getDescription() {
         return description;
     }
+
+    public boolean isFindable() { return findable; }
+
+    public void setFindable(boolean findable) { this.findable = findable; }
 
     public boolean isFeelable() {
         return feelable;
@@ -171,12 +226,12 @@ public class Noun implements DictionaryEntry {
         this.dropable = dropable;
     }
 
-    public boolean isGrabbale() {
-        return grabbale;
+    public boolean isGrabable() {
+        return grabable;
     }
 
-    public void setGrabbale(boolean grabbale) {
-        this.grabbale = grabbale;
+    public void setGrabable(boolean grabable) {
+        this.grabable = grabable;
     }
 
     public boolean isUseable() {

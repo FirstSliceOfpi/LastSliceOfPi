@@ -11,6 +11,7 @@ public class Pie extends Item{
 
     public Pie(String name, String description, int attackPoints, String victory) {
         super(name, description);
+        setGrabable(true);
         this.attackPoints = attackPoints;
         this.victory = victory;
     }
