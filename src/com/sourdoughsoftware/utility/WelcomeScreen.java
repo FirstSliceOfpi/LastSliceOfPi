@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Game;
+import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import org.xml.sax.SAXException;
 
@@ -17,7 +18,6 @@ import java.util.Scanner;
 public class WelcomeScreen {
     public static final String WELCOME_MESSAGE = "Welcome to \"The Last Slice of Pi\"";
     PrintFiles p = new PrintFiles();
-    SaveGame save = new SaveGame();
 
     /**
      * @return the welcome message
@@ -49,9 +49,9 @@ public class WelcomeScreen {
         }else if (gameType.matches("2")) {
             try {
                 Game myGame = new Game();
-                save.setGame(myGame);
-                save.loadGame();
+                System.out.println(Actions.load());
                 myGame.start();
+
             }catch (NullPointerException e) {
                 splash();
             }

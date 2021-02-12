@@ -1,5 +1,9 @@
 package com.sourdoughsoftware.world;
 
+import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.gamepieces.Item;
+
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 
@@ -18,7 +22,7 @@ public class World {
         winniesTree.createExit(Directions.east, tomorrowLand);
         tomorrowLand.createExit(Directions.south, goofysHouse);
         goofysHouse.createExit(Directions.north, tomorrowLand);
-
+        new Noun("room","All rooms.");
     }
 
     public static String changeCurrentRoom(Directions.Direction direction) {
@@ -26,13 +30,17 @@ public class World {
 
         if(exits.containsKey(direction)){
             currentRoom = exits.get(direction);
-            return ("You have entered the " + currentRoom.getName() + "\n" + currentRoom.getDescription());
+            return "You have entered the " + currentRoom.getName() + "\n" + currentRoom.getDescription();
 
         } else {
             return ("That is not an exit.");
         }
 
     }
+
+    public static Room getCurrentRoom() {
+      return currentRoom;
+    };
 
 
 }

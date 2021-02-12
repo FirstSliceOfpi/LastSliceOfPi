@@ -6,7 +6,6 @@ package com.sourdoughsoftware;
  */
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.utility.ItemTree;
 
 import java.io.*;

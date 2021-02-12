@@ -3,6 +3,7 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
+import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
@@ -48,7 +49,7 @@ public class Actions {
 //            case ATTACK:
 //                return
             case EXAMINE:
-                return examine(command);
+                return examine(command.getNoun());
             default:
                 break;
         }
@@ -78,8 +79,17 @@ public class Actions {
                 : "Your game was not loaded.";
     }
 
-    private static String examine(Command command) {
-        return command.getNoun().getDescription();
+    private static String examine(Noun noun) {
+        StringBuilder result = new StringBuilder(noun.getDescription());
+        result.append("\n");
+        if(noun.getName() == "room") {
+            result.append("You find ");
+            for(Item item : World.getCurrentRoom().getRoomItems()) {
+                result.append(" " + item.getName() +",");
+            }
+            result.append(" in the room.");
+        }
+        return result.toString();
     }
 
     // merge or combine to weapons for a higher level weapon

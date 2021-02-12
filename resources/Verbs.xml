@@ -41,6 +41,10 @@
         <group>EXAMINE</group>
     </verb>
     <verb>
+        <name>explore</name>
+        <group>EXAMINE</group>
+    </verb>
+    <verb>
         <name>save</name>
         <group>SAVE</group>
     </verb>

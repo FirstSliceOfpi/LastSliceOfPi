@@ -41,6 +41,7 @@ public class Player implements Serializable {
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
+            setExaminable(true);
         }
 
         public boolean has(Noun noun) {
