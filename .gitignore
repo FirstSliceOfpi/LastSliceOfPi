@@ -1,3 +1,4 @@
+/.idea
 # Compiled class file
 *.class
 
@@ -27,3 +28,6 @@ hs_err_pid*
 
 # tests
 test/
+/.idea/
+/saved_games/
+
