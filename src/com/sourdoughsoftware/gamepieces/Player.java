@@ -2,10 +2,11 @@ package com.sourdoughsoftware.gamepieces;
 
 import com.sourdoughsoftware.dictionary.Noun;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Serializable {
     private String name;
     private int hp;
 
@@ -35,7 +36,7 @@ public class Player {
         return inventory;
     }
 
-    public static class Inventory extends Noun {
+    public static class Inventory extends Noun implements Serializable{
         List<Noun> inventory = new ArrayList<>();
 
         private Inventory() {

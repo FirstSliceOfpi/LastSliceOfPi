@@ -6,7 +6,9 @@ package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.gamepieces.Item;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
     private Item item;
     private Node left, right, parent;
     private int id;

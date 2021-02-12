@@ -13,10 +13,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Game {
-    private final Prompter prompter = new Prompter(new Scanner(System.in));
     GameState gs = GameState.getInstance();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
@@ -34,7 +32,7 @@ public class Game {
     public void start() {
         boolean gameOver = false;
         while(!gameOver) {
-            System.out.println(Actions.execute(TextParser.parse(prompter.prompt("What do you want to do?"))));
+            System.out.println(Actions.execute(TextParser.parse(Prompter.prompt("What do you want to do?"))));
         }
     }
 

@@ -17,13 +17,7 @@ import java.util.Scanner;
 public class WelcomeScreen {
     public static final String WELCOME_MESSAGE = "Welcome to \"The Last Slice of Pi\"";
     PrintFiles p = new PrintFiles();
-    Prompter parser;
     SaveGame save = new SaveGame();
-
-    public WelcomeScreen() {
-        parser = new Prompter(new Scanner(System.in));
-    }
-
 
     /**
      * @return the welcome message
@@ -48,7 +42,7 @@ public class WelcomeScreen {
     public void splash() throws ParserConfigurationException, SAXException, IOException {
         System.out.println("1. Start new story\n" +
                 "2. Continue from where you left off\n");
-        String gameType = parser.prompt("Please make a selection >>> ");
+        String gameType = Prompter.prompt("Please make a selection >>> ");
         if (gameType.matches("1")) {
             Game myGame = new Game();
             myGame.start();
@@ -66,7 +60,4 @@ public class WelcomeScreen {
             splash();
         }
     }
-
-
-
 }

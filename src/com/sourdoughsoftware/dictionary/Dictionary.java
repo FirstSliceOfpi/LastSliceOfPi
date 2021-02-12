@@ -1,14 +1,15 @@
 package com.sourdoughsoftware.dictionary;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public enum Dictionary {
+public enum Dictionary implements Serializable {
     INSTANCE;
 
-    private final Map<String, Set<Noun>> nouns = new HashMap<>();
+    private Map<String, Set<Noun>> nouns = new HashMap<>();
     private final Map<String, Verb> verbs = new HashMap<>();
 
     public void add(DictionaryEntry entry) {
@@ -38,5 +39,12 @@ public enum Dictionary {
         return nouns.get(name);
     }
 
+    public Map<String, Set<Noun>> getNouns() {
+        return this.nouns;
+    }
+
+    public void setNouns(Map<String,Set<Noun>> nouns) {
+        this.nouns = nouns;
+    }
 
 }

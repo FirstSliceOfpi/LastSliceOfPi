@@ -10,13 +10,22 @@ import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.world.World;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Actions {
     public static String execute(Command command) {
 
         if(command.getVerb() == null) {
             return "no verb in input";
         }
-        if(command.getNoun() == null) {
+        if(command.getNoun() == null
+                && !(command.getVerb().getName().equals("save")
+                || command.getVerb().getName().equals("load"))
+          )
+        {
             return "no noun in input";
         }
 
@@ -32,6 +41,10 @@ public class Actions {
                 return move(command.getNoun(), command.getVerb());
             case MERGE:
                 return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
+            case SAVE:
+                return save();
+            case LOAD:
+                return load();
 //            case ATTACK:
 //                return
             case EXAMINE:
@@ -40,6 +53,29 @@ public class Actions {
                 break;
         }
         return "Bug FOUND";
+    }
+
+    public static String save() {
+        Path path = Paths.get("./saved_games");
+        File dir = new File("./saved_games");
+        if (!Files.exists(path)) {
+            dir.mkdirs();
+        }
+        String fileName = Prompter.prompt("What do you want to name your save file?");
+        File fileToSave = new File(dir, fileName);
+        return GameState.saveGame(fileToSave) ?
+                "Your game -- " + fileToSave + " -- was saved."
+                : "Your game was not saved.";
+    }
+
+    public static String load() {
+        Path path = Paths.get("./saved_games");
+        File dir = new File("./saved_games");
+        String fileName = Prompter.prompt("What game would you like to load?");
+        File fileToLoad = new File(dir, fileName);
+        return GameState.loadGame(fileToLoad) ?
+                "Your game -- " + fileToLoad + " -- was loaded."
+                : "Your game was not loaded.";
     }
 
     private static String examine(Command command) {
