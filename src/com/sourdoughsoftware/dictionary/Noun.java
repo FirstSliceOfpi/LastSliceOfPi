@@ -26,7 +26,7 @@ public class Noun implements DictionaryEntry {
     private boolean attackable = false;
 
     public Noun(String name, String description) {
-        this.name = name;
+        this.name = name.toLowerCase();
         this.description = description;
         addToDictionary();
     }
