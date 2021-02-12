@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.Scanner;
+import com.sourdoughsoftware.utility.PrintFiles;
 
 /**
  * Welcome screen displays a welcome message to the player when the game begins.
