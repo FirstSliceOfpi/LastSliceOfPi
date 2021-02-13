@@ -63,7 +63,8 @@ public class XmlBuilder {
                             if (column.equals("field")) {
                                 field = modElement.getElementsByTagName(value);
                                 if (field.getLength() == 0) {
-                                    modifier = doc.createElement(value);
+                                    modifier = doc.createElement(value.strip());
+                                    System.out.println(modifier);
                                     modElement.appendChild(modifier);
                                 } else {
                                     modifier = field.item(0);
@@ -82,12 +83,9 @@ public class XmlBuilder {
                             }
                         }
                     }
-
                 }
             }
-
             saveXmlFile(doc);
-
         } catch (Exception e) {
             System.out.println(e);
         }

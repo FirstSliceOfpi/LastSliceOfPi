@@ -52,8 +52,8 @@ public class Actions {
                 return examine(command.getNoun());
             default:
                 command.getNoun().getAction(command.getVerb().getName());
+                return "";
         }
-        return "Bug FOUND";
     }
 
     public static String save() {
@@ -140,7 +140,7 @@ public class Actions {
         System.out.println(str);
     }
 
-   public static void changeDescription(String str) {
+    public static void changeDescription(String str) {
         System.out.println(str);
     }
 

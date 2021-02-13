@@ -22,8 +22,12 @@ public class Noun implements DictionaryEntry {
     public ArrayList<String[]> light = null;
 
     public void setAction(String action, ArrayList<String[]> argument) {
+//        for(String[] strArr : argument) {
+//            System.out.println(strArr[0]);
+//            System.out.println(strArr[1]);
+//        }
         try {
-            Field field = this.getClass().getField(action);
+            Field field = this.getClass().getField(action.strip());
             field.set(this,argument);
         }catch(Exception e) {
             System.out.println(e);
@@ -37,8 +41,8 @@ public class Noun implements DictionaryEntry {
             try{
                 Actions act = new Actions();
                 for(String[] action : actions) {
-                    Method method = act.getClass().getMethod(action[0],String.class);
-                    method.invoke(act,action[1]);
+                     Method method = act.getClass().getMethod(action[0].strip(),String.class);
+                     method.invoke(act,action[1].strip());
                 }
             }catch(Exception e) {
                 System.out.println(e);
