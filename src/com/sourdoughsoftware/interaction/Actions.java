@@ -3,6 +3,7 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
+import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
@@ -36,7 +37,7 @@ public class Actions {
 
         switch(group) {
             case GRAB:
-                return grab(command.getNoun(), command.getVerb());
+                return grab(command.getNoun());
             case MOVE:
                 return move(command.getNoun(), command.getVerb());
             case MERGE:
@@ -48,9 +49,9 @@ public class Actions {
 //            case ATTACK:
 //                return
             case EXAMINE:
-                return examine(command);
+                return examine(command.getNoun());
             default:
-                break;
+                command.getNoun().getAction(command.getVerb().getName());
         }
         return "Bug FOUND";
     }
@@ -78,18 +79,27 @@ public class Actions {
                 : "Your game was not loaded.";
     }
 
-    private static String examine(Command command) {
-        return command.getNoun().getDescription();
+    private static String examine(Noun noun) {
+        StringBuilder result = new StringBuilder(noun.getDescription());
+        result.append("\n");
+        if(noun.getName() == "room") {
+            result.append("You find ");
+            for(Item item : World.getCurrentRoom().getRoomItems()) {
+                result.append(" " + item.getName() +",");
+            }
+            result.append(" in the room.");
+        }
+        return result.toString();
     }
 
     // merge or combine to weapons for a higher level weapon
-    private static String merge(Noun noun, Verb verb, Noun targetNoun) {
+    public static String merge(Noun noun, Verb verb, Noun targetNoun) {
         GameState gs = GameState.getInstance();
-        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
-            return "One or more items are not in your inventory.";
-        }
+//        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+//            return "One or more items are not in your inventory.";
+//        }
         Node weapon1Node = gs.getTree().find(noun.getName());
-        Node weapon2Node = gs.getTree().find(noun.getName());
+        Node weapon2Node = gs.getTree().find(targetNoun.getName());
         Pie pie1 = null;
         Pie pie2 = null;
         if(weapon1Node != null) {
@@ -118,13 +128,22 @@ public class Actions {
         return "That's not a direction";
     }
 
-    private static String grab(Noun noun, Verb verb) {
-        if(noun.isGrabbale()) {
-            return "YOU " + verb.getName() + " " + noun.getName();
+    private static String grab(Noun noun) {
+        if(noun.isGrabable()) {
+            return GameState.getInstance().getPlayer().getInventory().add(noun);
         } else {
             return "You can't grab a " + noun.getName();
         }
     }
+
+    public static void print(String str) {
+        System.out.println(str);
+    }
+
+   public static void changeDescription(String str) {
+        System.out.println(str);
+    }
+
 
 //    private static String attack(Noun noun,  Enemy enemy) {
 //        if (noun.isAttackable() & enemy.getHp() > 0) {

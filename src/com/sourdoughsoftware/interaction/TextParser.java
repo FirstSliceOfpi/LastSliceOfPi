@@ -24,7 +24,6 @@ public class TextParser {
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
-
         if(nounSet == null) {
             return null;
         }
