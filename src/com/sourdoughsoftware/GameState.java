@@ -6,6 +6,7 @@ package com.sourdoughsoftware;
  */
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.gamepieces.Player;
+import com.sourdoughsoftware.interaction.Command;
 import com.sourdoughsoftware.utility.ItemTree;
 
 import java.io.*;
@@ -18,6 +19,7 @@ public class GameState implements Serializable{
     private ItemTree tree;
     private ArrayList findableWeapons;
     private Player player = new Player("Edgar");
+    private Command command = null;
 
     private GameState() {
     }
@@ -81,6 +83,14 @@ public class GameState implements Serializable{
 
     public void setTree(ItemTree tree) {
         this.tree = tree;
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    public Command getCommand() {
+        return this.command;
     }
 
     public static GameState getInstance(){

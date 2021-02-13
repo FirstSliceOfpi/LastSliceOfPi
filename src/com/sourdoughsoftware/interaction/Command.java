@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.interaction;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 
@@ -7,14 +8,37 @@ public class Command {
     private final Noun noun;
     private final Verb verb;
     private Noun targetNoun = null;
+    private static Command instance;
 
-    public Command(Noun noun, Verb verb) {
+    private Command() {
+      noun = null;
+      verb = null;
+    }
+
+    private Command(Noun noun, Verb verb) {
         this.noun = noun;
         this.verb = verb;
     }
-    public Command(Noun noun, Verb verb, Noun targetNoun) {
+    private Command(Noun noun, Verb verb, Noun targetNoun) {
         this(noun, verb);
         this.targetNoun = targetNoun;
+    }
+
+    public static Command getInstance() {
+        instance = instance != null ? instance : new Command();
+        return instance;
+    }
+
+    public Command setInstance(Noun noun, Verb verb) {
+        instance = new Command(noun, verb);
+        GameState.getInstance().setCommand(instance);
+        return instance;
+    }
+
+    public Command setInstance(Noun noun, Verb verb, Noun targetNoun) {
+        instance = new Command(noun, verb, targetNoun);
+        GameState.getInstance().setCommand(instance);
+        return instance;
     }
 
     public Noun getNoun() {
