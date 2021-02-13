@@ -21,6 +21,7 @@ public class Game {
         XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
+        XmlParser.parseNouns();
         new Directions();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();

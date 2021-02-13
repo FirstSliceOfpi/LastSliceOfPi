@@ -4,6 +4,7 @@ package com.sourdoughsoftware.utility;
  * various xml documents for game play
  */
 
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.Boolean.parseBoolean;
 
@@ -48,11 +50,73 @@ public class XmlParser {
 
                 }
             }
-        } catch(ParserConfigurationException | IOException | SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             System.out.println(e.getMessage());
         }
 
     }
+
+    public static void parseNouns() {
+        ItemTree tree = new ItemTree();
+        try {
+            Document document = loadXML("resources/Nouns.xml");
+            NodeList nodeList = document.getElementsByTagName("item");
+
+            for (int current = 0; current < nodeList.getLength(); current++) {
+                Node node = nodeList.item(current);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element currentElement = (Element) node;
+                    String name = Objects.requireNonNull(
+                            currentElement.getElementsByTagName("name"))
+                            .item(0).getTextContent();
+                    String description = Objects.requireNonNull(
+                            currentElement.getElementsByTagName("description"))
+                            .item(0).getTextContent();
+                    String attackPoints = Objects.requireNonNull(
+                            currentElement.getElementsByTagName("attackPoints"))
+                            .item(0).getTextContent();
+                    Item noun = new Item(name, description);
+
+                    NodeList modifiers = Objects.requireNonNull(
+                            currentElement.getElementsByTagName("modifiers"))
+                            .item(0).getChildNodes();
+                    ArrayList<String[]> actionList = new ArrayList<>();
+                    for (int i = 0; i < modifiers.getLength(); i++) {
+                        Node modNode = modifiers.item(i);
+                        if(modNode.getNodeType() != Node.ELEMENT_NODE ) { continue; }
+                        Element mod = (Element) modNode;
+                        String modName = mod.getNodeName(); // <light>
+                        actionList = addActions(mod);
+                        noun.setAction(modName, actionList);
+                    }
+                }
+            }
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    ;
+
+    private static ArrayList<String[]> addActions(Element mod) {
+        ArrayList<String[]> actionList = new ArrayList<>();
+        NodeList actions = mod.getElementsByTagName("action");
+        String[] actionArray = null;
+        for (int j = 0; j < actions.getLength(); j++) {
+            Node action = actions.item(j); // <action>
+            NodeList children = action.getChildNodes();
+            String argument = null;
+            for(int i = 0; i < children.getLength(); i++) {
+                if(children.item(i).getNodeType() != 1) { continue; }
+                argument = children.item(i).getTextContent().strip();
+            }
+            actionArray = new String[]{action.getFirstChild().getTextContent().strip(), argument}; // [print, The candle is lit]
+            actionList.add(actionArray);
+        }
+        return actionList;
+    }
+
 
     public static void parseVerbs() {
 
@@ -72,7 +136,7 @@ public class XmlParser {
                     new Verb(name, group);
                 }
             }
-        } catch(ParserConfigurationException | IOException | SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             System.out.println(e.getMessage());
         }
 
@@ -107,7 +171,7 @@ public class XmlParser {
     public static HashMap<String, Object> parsePies() {
         ItemTree tree = new ItemTree();
         ArrayList<Pie> findablePies = new ArrayList<>();
-        HashMap<String,Object> result = new HashMap<>();
+        HashMap<String, Object> result = new HashMap<>();
         try {
             Document document = loadXML("resources/Pies.xml");
 
@@ -124,29 +188,31 @@ public class XmlParser {
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
                     NodeList modifiers = currentElement.getElementsByTagName("modifiers").item(0).getChildNodes();
                     Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
-                    for(int i = 0; i < modifiers.getLength(); i++) {
+                    for (int i = 0; i < modifiers.getLength(); i++) {
                         String modifierName = "set" + modifiers.item(i).getNodeName();
                         boolean modifierValue = parseBoolean(modifiers.item(i).getTextContent());
                         try {
                             pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
-                        }catch(Exception e) {
+                        } catch (Exception e) {
                             //do nothing
                         }
                     }
                     tree.add(pie);
                     // Left findable pies as an array list for testing purposes
-                    if(pie.isFindable()) {
+                    if (pie.isFindable()) {
                         findablePies.add(pie);
                     }
                 }
             }
-        } catch(ParserConfigurationException | IOException | SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             System.out.println(e.getMessage());
         }
         result.put("findablePies", findablePies);
         result.put("pieTree", tree);
         return result;
-    };
+    }
+
+    ;
 
     private static Document loadXML(String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
