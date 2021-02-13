@@ -1,6 +1,9 @@
 package com.sourdoughsoftware.dictionary;
 
+import com.sourdoughsoftware.interaction.Actions;
+
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Noun implements DictionaryEntry {
@@ -40,13 +43,22 @@ public class Noun implements DictionaryEntry {
     }
 
     public ArrayList<String[]> getAction(String verb) {
-        ArrayList<String[]> action = null;
+        ArrayList<String[]> actions = null;
         try {
-            action = (ArrayList<String[]>) this.getClass().getField(verb).get(this);
+            actions = (ArrayList<String[]>) this.getClass().getField(verb).get(this);
+            try{
+                Actions act = new Actions();
+                for(String[] action : actions) {
+                    Method method = act.getClass().getMethod(action[0],String.class);
+                    method.invoke(act,action[1]);
+                }
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
-        return action;
+        return actions;
     }
 
     public Noun(String name, String description) {
