@@ -20,6 +20,7 @@ public class GameState implements Serializable{
     private ArrayList findableWeapons;
     private Player player = new Player("Edgar");
     private Command command = null;
+    private Boolean devMode = false;
 
     private GameState() {
     }
@@ -44,6 +45,13 @@ public class GameState implements Serializable{
         return false;
     }
 
+    public void setDevMode() {
+        devMode = !devMode;
+    }
+
+    public boolean getDevMode() {
+        return devMode;
+    }
     public static boolean loadGame(File fileToLoad) {
         try {
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());

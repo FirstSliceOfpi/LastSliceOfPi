@@ -65,6 +65,10 @@
         <group>QUIT</group>
     </verb>
     <verb>
+        <name>dev</name>
+        <group>DEV</group>
+    </verb>
+    <verb>
         <name>depart</name>
         <group>QUIT</group>
     </verb>

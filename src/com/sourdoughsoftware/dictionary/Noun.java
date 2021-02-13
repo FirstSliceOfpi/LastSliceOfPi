@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.dictionary;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.interaction.Actions;
 
 import java.io.Serializable;
@@ -27,7 +28,7 @@ public class Noun implements DictionaryEntry, Serializable {
             Field field = this.getClass().getField(action.strip());
             field.set(this,argument);
         }catch(Exception e) {
-            System.out.println(e);
+            if(GameState.getInstance().getDevMode()) { System.out.println(e); };
         }
     }
 
@@ -42,10 +43,10 @@ public class Noun implements DictionaryEntry, Serializable {
                      method.invoke(act,action[1].strip());
                 }
             }catch(Exception e) {
-                System.out.println(e);
+                if(GameState.getInstance().getDevMode()) { System.out.println(e); };
             }
         } catch (Exception e) {
-            System.out.println(e);
+            if(GameState.getInstance().getDevMode()) { System.out.println(e); };
         }
         return actions;
     }

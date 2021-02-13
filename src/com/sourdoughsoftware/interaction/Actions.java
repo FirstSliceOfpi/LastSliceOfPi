@@ -20,26 +20,25 @@ import java.nio.file.Paths;
 public class Actions {
     public static String execute(Command command) {
 
-        if(command.getVerb() == null) {
+        if (command.getVerb() == null) {
             return "no verb in input";
         }
-        if(command.getNoun() == null
+        if (command.getNoun() == null
                 && !(command.getVerb().getGroup() == VerbGroup.SAVE
                 || command.getVerb().getGroup() == VerbGroup.LOAD
                 || command.getVerb().getGroup() == VerbGroup.QUIT
-
+                || command.getVerb().getGroup() == VerbGroup.DEV
         )
-          )
-        {
+        ) {
             return "no noun in input";
         }
 
         VerbGroup group = command.getVerb().getGroup();
-        if(group.equals(VerbGroup.MERGE) && command.getTargetNoun() == null) {
+        if (group.equals(VerbGroup.MERGE) && command.getTargetNoun() == null) {
             return "You need two items to merge";
         }
 
-        switch(group) {
+        switch (group) {
             case GRAB:
                 return grab(command.getNoun());
             case MOVE:
@@ -52,6 +51,8 @@ public class Actions {
                 return load();
             case QUIT:
                 return quit();
+            case DEV:
+                return dev();
 //            case ATTACK:
 //                return
             case EXAMINE:
@@ -62,10 +63,17 @@ public class Actions {
         }
     }
 
+    public static String dev() {
+        GameState.getInstance().setDevMode();
+        return GameState.getInstance().getDevMode()
+                ? Colors.ANSI_BLUE + "Dev mode enabled" + Colors.ANSI_RESET
+                : Colors.ANSI_YELLOW + "Dev mode disabled" + Colors.ANSI_RESET;
+    }
+
     public static String quit() {
         String response = Prompter.prompt("Are you sure you want to exit?(Y/N)");
         String cleansedResponse = response.strip().toLowerCase();
-        if(cleansedResponse.equals("y") || cleansedResponse.equals("yes")) {
+        if (cleansedResponse.equals("y") || cleansedResponse.equals("yes")) {
             System.out.println("And they lived happily ever after. The end.");
             System.exit(0);
         }
@@ -81,13 +89,13 @@ public class Actions {
         String fileName = Prompter.prompt("What do you want to name your save file?");
         File fileToSave = new File(dir, fileName);
         return GameState.saveGame(fileToSave) ?
-               "Your game -- " + Colors.ANSI_GREEN + fileToSave + Colors.ANSI_RESET + " -- was saved."
+                "Your game -- " + Colors.ANSI_GREEN + fileToSave + Colors.ANSI_RESET + " -- was saved."
                 : Colors.ANSI_RED + "Your game was not saved." + Colors.ANSI_RESET;
     }
 
     public static String load() {
         File dir = new File("./saved_games");
-        for(String file : dir.list()) {
+        for (String file : dir.list()) {
             System.out.println(Colors.ANSI_BLUE + file + Colors.ANSI_RESET);
         }
         String fileName = Prompter.prompt("What game would you like to load?");
@@ -100,10 +108,10 @@ public class Actions {
     private static String examine(Noun noun) {
         StringBuilder result = new StringBuilder(noun.getDescription());
         result.append("\n");
-        if(noun.getName() == "room") {
+        if (noun.getName() == "room") {
             result.append("You find ");
-            for(Item item : World.getCurrentRoom().getRoomItems()) {
-                result.append(" " + item.getName() +",");
+            for (Item item : World.getCurrentRoom().getRoomItems()) {
+                result.append(" " + item.getName() + ",");
             }
             result.append(" in the room.");
         }
@@ -113,21 +121,23 @@ public class Actions {
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
         GameState gs = GameState.getInstance();
-//        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
-//            return "One or more items are not in your inventory.";
-//        }
+        if (!gs.getDevMode()) {
+            if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+                return "One or more items are not in your inventory.";
+            }
+        }
         Node weapon1Node = gs.getTree().find(noun.getName());
         Node weapon2Node = gs.getTree().find(targetNoun.getName());
         Pie pie1 = null;
         Pie pie2 = null;
-        if(weapon1Node != null) {
+        if (weapon1Node != null) {
             pie1 = (Pie) weapon1Node.getItem();
         }
-        if(weapon2Node != null) {
+        if (weapon2Node != null) {
             pie2 = (Pie) weapon2Node.getItem();
         }
         Pie combinedPie = CombinePies.combine(pie1, pie2, gs.getTree());
-        if(combinedPie != pie1) {
+        if (combinedPie != pie1) {
             gs.getPlayer().getInventory().drop(noun);
             gs.getPlayer().getInventory().drop(targetNoun);
             gs.getPlayer().getInventory().add(combinedPie);
@@ -140,14 +150,14 @@ public class Actions {
     }
 
     private static String move(Noun noun, Verb verb) {
-        if(noun instanceof Directions.Direction) {
+        if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
         return "That's not a direction";
     }
 
     private static String grab(Noun noun) {
-        if(noun.isGrabable()) {
+        if (noun.isGrabable()) {
             return GameState.getInstance().getPlayer().getInventory().add(noun);
         } else {
             return "You can't grab a " + noun.getName();
