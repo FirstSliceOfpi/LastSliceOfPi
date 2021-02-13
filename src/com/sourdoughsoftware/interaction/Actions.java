@@ -156,7 +156,8 @@ public class Actions {
     }
 
     public static void changeDescription(String str) {
-        System.out.println(str);
+        Noun noun = Command.getInstance().getNoun();
+        noun.setDescription(str);
     }
 
 

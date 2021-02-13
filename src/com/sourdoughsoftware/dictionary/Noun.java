@@ -23,10 +23,6 @@ public class Noun implements DictionaryEntry, Serializable {
     public ArrayList<String[]> light = null;
 
     public void setAction(String action, ArrayList<String[]> argument) {
-//        for(String[] strArr : argument) {
-//            System.out.println(strArr[0]);
-//            System.out.println(strArr[1]);
-//        }
         try {
             Field field = this.getClass().getField(action.strip());
             field.set(this,argument);
@@ -76,6 +72,8 @@ public class Noun implements DictionaryEntry, Serializable {
     public String getDescription() {
         return description;
     }
+
+    public void setDescription(String str) { this.description = description; }
 
     public boolean isFindable() {
         return findable;
