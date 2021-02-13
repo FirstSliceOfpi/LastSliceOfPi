@@ -4,7 +4,9 @@ import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 
-public class Command {
+import java.io.Serializable;
+
+public class Command implements Serializable {
     private final Noun noun;
     private final Verb verb;
     private Noun targetNoun = null;
