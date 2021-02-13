@@ -51,7 +51,6 @@ public class WelcomeScreen {
                 Game myGame = new Game();
                 System.out.println(Actions.load());
                 myGame.start();
-
             }catch (NullPointerException e) {
                 splash();
             }
