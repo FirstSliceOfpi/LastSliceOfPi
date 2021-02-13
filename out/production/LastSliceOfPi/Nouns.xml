@@ -5,14 +5,16 @@
         <description>wax</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <Lightable>
+            <light>
                 <action>print
                     <arg>The candle is lit.</arg>
                 </action>
+            </light>
+            <light>
                 <action>changeDescription
                     <arg>Lit candle</arg>
                 </action>
-            </Lightable>
+            </light>
         </modifiers>
     </item>
     <item id="1">
@@ -20,14 +22,14 @@
         <description>8x10 ruled paper</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <Lightable>
+            <light>
                 <action>print
                     <arg>You crumple the paper before lighting</arg>
                 </action>
                 <action>remove
                     <arg>Paper is a pile of ash.</arg>
                 </action>
-            </Lightable>
+            </light>
         </modifiers>
     </item>
 </Items>
