@@ -15,9 +15,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class XmlBuilder {
     private final HashMap<String, ArrayList<HashMap<String, String>>> words;
@@ -54,7 +52,7 @@ public class XmlBuilder {
                 for (int row = 0; row < words.get("modifiers").size(); row++) {
                     Set keys = words.get("modifiers").get(row).keySet();
                     int id = Integer.parseInt(words.get("modifiers").get(row).get("id"));
-                    if (id == i) {
+                    if ((id-1) == i) {
                         NodeList field;
                         Node modifier = null;
                         Node action = null;
@@ -76,15 +74,12 @@ public class XmlBuilder {
                                 if (column.equals("action")) {
                                     action = createActionNode(doc, value, modifier);
                                 }
-                            }
-                        }
-                        for (Object key : keys) {
-                            String value = words.get("modifiers").get(row).get("arg");
-                            if(key.toString().equals("arg")) {
-                                Element arg = doc.createElement("arg");
-                                arg.appendChild(doc.createTextNode(value));
-                                assert action != null;
-                                action.appendChild(arg);
+                                if (key.toString().equals("arg")) {
+                                    Element arg = doc.createElement("arg");
+                                    arg.appendChild(doc.createTextNode(value));
+                                    assert action != null;
+                                    action.appendChild(arg);
+                                }
                             }
                         }
                     }
@@ -106,6 +101,7 @@ public class XmlBuilder {
         modifier.appendChild(action);
         return action;
     }
+
     private void addNodes(Set keys, Document doc, int id, Element item) {
         for (Object key : keys) {
             if (key.toString().equals("id")) continue;
@@ -175,7 +171,7 @@ public class XmlBuilder {
             NodeList rows = (NodeList) xpath.evaluate(expression, table, XPathConstants.NODESET);
             NodeList keys = (NodeList) xpath.evaluate("Cell", rows.item(0), XPathConstants.NODESET);
             // add column keys to a List
-            ArrayList<String> columnKeys = new ArrayList<>();
+            LinkedList<String> columnKeys = new LinkedList<>();
             for (int i = 0; i < keys.getLength(); i++) {
                 String columnName = keys.item(i).getTextContent();
                 columnKeys.add(columnName);
@@ -183,7 +179,7 @@ public class XmlBuilder {
             // add remaining rows
 
             for (int i = 1; i < rows.getLength(); i++) {
-                HashMap<String, String> row = new HashMap<>();
+                LinkedHashMap<String, String> row = new LinkedHashMap<>();
                 NodeList cells = (NodeList) xpath.evaluate("Cell", rows.item(i), XPathConstants.NODESET);
                 // add each cell in the row
                 for (int j = 0; j < cells.getLength(); j++) {

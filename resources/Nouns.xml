@@ -4,7 +4,16 @@
         <name>candle</name>
         <description>wax</description>
         <attackPoints>0</attackPoints>
-        <modifiers/>
+        <modifiers>
+            <Lightable>
+                <action>print
+                    <arg>The candle is lit.</arg>
+                </action>
+                <action>changeDescription
+                    <arg>Lit candle</arg>
+                </action>
+            </Lightable>
+        </modifiers>
     </item>
     <item id="1">
         <name>paper</name>
@@ -13,10 +22,10 @@
         <modifiers>
             <Lightable>
                 <action>print
-                    <arg>The candle is lit.</arg>
+                    <arg>You crumple the paper before lighting</arg>
                 </action>
-                <action>changeDescription
-                    <arg>Lit candle</arg>
+                <action>remove
+                    <arg>Paper is a pile of ash.</arg>
                 </action>
             </Lightable>
         </modifiers>

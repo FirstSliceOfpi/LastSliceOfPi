@@ -17,6 +17,8 @@ public class Noun implements DictionaryEntry {
     private boolean mergeable = false;
     private boolean attackable = false;
     private boolean findable = false;
+    private boolean dropable = false;
+
     public ArrayList<String[]> light = null;
 
     public void setAction(String action, ArrayList<String[]> argument) {
@@ -118,4 +120,11 @@ public class Noun implements DictionaryEntry {
         this.grabable = grabable;
     }
 
+    public boolean isDropable() {
+        return dropable;
+    }
+
+    public void setDropable(boolean dropable) {
+        this.dropable = dropable;
+    }
 }
