@@ -56,7 +56,6 @@ public class XmlBuilder {
                         NodeList field;
                         Node modifier = null;
                         Node action = null;
-                        System.out.println(keys);
                         for (Object key : keys) {
                             String column = key.toString();
                             String value = words.get("modifiers").get(row).get(column);
