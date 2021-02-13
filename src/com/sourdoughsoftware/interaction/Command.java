@@ -1,5 +1,8 @@
 package com.sourdoughsoftware.interaction;
-
+/**
+ The Command instance has the current noun and verb from the user input.
+ A singleton is used to prevent memory leaks and for GameState access.
+ */
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;

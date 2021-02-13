@@ -5,6 +5,7 @@ import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
@@ -80,18 +81,20 @@ public class Actions {
         String fileName = Prompter.prompt("What do you want to name your save file?");
         File fileToSave = new File(dir, fileName);
         return GameState.saveGame(fileToSave) ?
-                "Your game -- " + fileToSave + " -- was saved."
-                : "Your game was not saved.";
+               "Your game -- " + Colors.ANSI_GREEN + fileToSave + Colors.ANSI_RESET + " -- was saved."
+                : Colors.ANSI_RED + "Your game was not saved." + Colors.ANSI_RESET;
     }
 
     public static String load() {
-        Path path = Paths.get("./saved_games");
         File dir = new File("./saved_games");
+        for(String file : dir.list()) {
+            System.out.println(Colors.ANSI_BLUE + file + Colors.ANSI_RESET);
+        }
         String fileName = Prompter.prompt("What game would you like to load?");
         File fileToLoad = new File(dir, fileName);
         return GameState.loadGame(fileToLoad) ?
-                "Your game -- " + fileToLoad + " -- was loaded."
-                : "Your game was not loaded.";
+                "Your game -- " + Colors.ANSI_GREEN + fileToLoad + Colors.ANSI_RESET + " -- was loaded."
+                : Colors.ANSI_RED + "Your game was not loaded." + Colors.ANSI_RESET;
     }
 
     private static String examine(Noun noun) {
