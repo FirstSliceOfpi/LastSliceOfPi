@@ -20,8 +20,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +70,6 @@ public class XmlParser {
                     String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
                     VerbGroup group = VerbGroup.valueOf(currentElement.getElementsByTagName("group").item(0).getTextContent());
                     new Verb(name, group);
-
                 }
             }
         } catch(ParserConfigurationException | IOException | SAXException e) {

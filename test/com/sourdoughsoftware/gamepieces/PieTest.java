@@ -1,5 +1,9 @@
 package com.sourdoughsoftware.gamepieces;
 
+import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.Command;
+import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.ItemTree;
 import com.sourdoughsoftware.utility.XmlParser;
@@ -15,17 +19,19 @@ public class PieTest {
     ItemTree tree;
     ArrayList<Pie> pies;
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         HashMap<String, Object> xmlWeapons = XmlParser.parsePies();
-        tree = (ItemTree) xmlWeapons.get("weaponTree");
-        pies = (ArrayList) xmlWeapons.get("findableWeapons");
+        XmlParser.parseVerbs();
+        tree = (ItemTree) xmlWeapons.get("pieTree");
+        pies = (ArrayList) xmlWeapons.get("findablePies");
+        GameState.getInstance().setTree(tree);
     }
 
     @Test
     public void verifyTreeStructure() {
         assertEquals(31, tree.getSize());
         assertSame(tree.find(pies.get(0)).getId(), 16);
-        assertEquals("ham sandwich", tree.getRoot().getItem().getName());
+        assertEquals("Chess pie", tree.getRoot().getItem().getName());
     }
     @Test
     public void getAttackPoints() {
@@ -36,28 +42,58 @@ public class PieTest {
     @Test
     public void getVictory() {
         Pie pie = (Pie) tree.getRoot().getItem();
-        assertEquals("The smell of Grandma's ham sandwich causes your attacker to give up and join you for dinner.", pie.getVictory());
+        assertEquals("You played Queen's Gambit and your foe resigned.", pie.getVictory());
     }
 
     @Test
     public void combineWeapons() {
-        Pie beadedbracelet = (Pie) tree.find(pies.get(14)).getItem();
-        Pie wetnoodle = (Pie) tree.find(pies.get(15)).getItem();
-        Pie bbgun = CombinePies.combine(beadedbracelet, wetnoodle, tree);
-        assertEquals("bb gun", bbgun.getName());
-        Pie rustynail = (Pie) tree.find(pies.get(12)).getItem();
-        Pie jarofjam = (Pie) tree.find(pies.get(13)).getItem();
-        Pie clawhammer = CombinePies.combine(rustynail, jarofjam, tree);
-        assertEquals("claw hammer", clawhammer.getName());
-        Pie crossbow = CombinePies.combine(bbgun, clawhammer, tree);
-        assertEquals("crossbow", crossbow.getName());
+        Pie butterMilk = (Pie) tree.find(pies.get(14)).getItem();
+        Pie eggs = (Pie) tree.find(pies.get(15)).getItem();
+        Pie butterMilkPie = CombinePies.combine(butterMilk, eggs, tree);
+        assertEquals("Buttermilk pie", butterMilkPie.getName());
+        Pie meringue = (Pie) tree.find(pies.get(12)).getItem();
+        Pie elderberryCurd = (Pie) tree.find(pies.get(13)).getItem();
+        Pie chiffonPie = CombinePies.combine(meringue, elderberryCurd, tree);
+        assertEquals("Chiffon pie", chiffonPie.getName());
+        Pie creamPie = CombinePies.combine(chiffonPie, butterMilkPie, tree);
+        assertEquals("Cream pie", creamPie.getName());
     }
 
     @Test
     public void wontCombineWeapons() {
-        Pie jarofjam = (Pie) tree.find(pies.get(13)).getItem();
-        Pie beadedbracelet = (Pie) tree.find(pies.get(14)).getItem();
-        Pie parent = CombinePies.combine(jarofjam, beadedbracelet, tree);
-        assertEquals("jar of jam", jarofjam.getName());
+        Pie elderberryCurd = (Pie) tree.find(pies.get(13)).getItem();
+        Pie buttermilk = (Pie) tree.find(pies.get(14)).getItem();
+        Pie parent = CombinePies.combine(buttermilk, elderberryCurd, tree);
+        assertEquals("Buttermilk", parent.getName());
+    }
+
+    @Test
+    public void textParserGetNounWithTwoWords() {
+        String userInput = "Buttermilk";
+        Command command = TextParser.parse(userInput);
+        assertEquals(userInput,command.getNoun().getName());
+//        userInput = "Buttermilk pie";
+//        command = TextParser.parse(userInput);
+//        assertEquals(userInput, command.getNoun().getName());
+        userInput = "merge Buttermilk and Eggs";
+        command = TextParser.parse(userInput);
+        assertEquals("Buttermilk", command.getNoun().getName());
+        assertEquals("Eggs", command.getTargetNoun().getName());
+        assertEquals("merge",command.getVerb().getName());
+    }
+
+    @Test
+    public void actionMerge() {
+        String userInput = "merge Buttermilk and Eggs";
+        Command command = TextParser.parse(userInput);
+        assertEquals("Buttermilk", command.getNoun().getName());
+        assertEquals("Eggs", command.getTargetNoun().getName());
+        assertEquals("merge",command.getVerb().getName());
+        String actual = Actions.merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
+        String expected = "YOU " + "merge" + "d " + "Buttermilk"
+                + " and " + "Eggs"
+                + " to make a " + "Buttermilk pie";
+        assertEquals(expected, actual);
+
     }
 }

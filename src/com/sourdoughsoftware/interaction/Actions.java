@@ -93,13 +93,13 @@ public class Actions {
     }
 
     // merge or combine to weapons for a higher level weapon
-    private static String merge(Noun noun, Verb verb, Noun targetNoun) {
+    public static String merge(Noun noun, Verb verb, Noun targetNoun) {
         GameState gs = GameState.getInstance();
-        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
-            return "One or more items are not in your inventory.";
-        }
+//        if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+//            return "One or more items are not in your inventory.";
+//        }
         Node weapon1Node = gs.getTree().find(noun.getName());
-        Node weapon2Node = gs.getTree().find(noun.getName());
+        Node weapon2Node = gs.getTree().find(targetNoun.getName());
         Pie pie1 = null;
         Pie pie2 = null;
         if(weapon1Node != null) {

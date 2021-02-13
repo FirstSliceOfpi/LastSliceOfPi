@@ -1,8 +1,6 @@
 package com.sourdoughsoftware.dictionary;
 
-import com.sourdoughsoftware.interaction.Actions;
-
-import java.lang.reflect.Method;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class Noun implements DictionaryEntry {
@@ -30,35 +28,25 @@ public class Noun implements DictionaryEntry {
     private boolean mergeable = false;
     private boolean attackable = false;
     private boolean findable = false;
-    public ArrayList<String[]> light = new ArrayList<>(){{
-        add(new String[]{"print", "printMe"});
-        add(new String[]{"changeDescription", "changeMe"});
-    }};
+    public ArrayList<String[]> light = null;
 
-    public void setLight(String[][] lightable) {
-        this.light = light; // [["print","printMe"],["changeDesc", "changeMe"]]
-    }
-
-    public void getAction(String verb) {
+    public void setAction(String action, ArrayList<String[]> argument) {
         try {
-            Method method = this.getClass().getMethod("get"+verb,null);
-            ArrayList<String[]> action = (ArrayList) method.invoke(this,null);
-            Actions act = new Actions();
-            for (int i = 0; i < action.size(); i++) {
-                try {
-                    Method meth = act.getClass().getMethod(action.get(i)[0], String.class);
-                    meth.invoke(meth, action.get(i)[1]);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        } catch (Exception e) {
+            Field field = this.getClass().getField(action);
+            field.set(this,argument);
+        }catch(Exception e) {
             System.out.println(e);
         }
     }
 
-    public ArrayList<String[]> getlight(){
-        return light;
+    public ArrayList<String[]> getAction(String verb) {
+        ArrayList<String[]> action = null;
+        try {
+            action = (ArrayList<String[]>) this.getClass().getField(verb).get(this);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return action;
     }
 
     public Noun(String name, String description) {
@@ -74,26 +62,6 @@ public class Noun implements DictionaryEntry {
 
     public Noun() {
     }
-
-//    isLightable(true,false,null);
-//    isLightable(true,true,[[print, this is lit], [changeDescription, my description is change]]);
-//    boolean isLightable(boolean lightable, boolean shouldLight, String[] ... args) {
-//        if(this.isLightable == true && shouldLight) {
-//            for(String[] method : args) {
-//                try {
-//                    Method meth = this.getClass().getMethod(method[0], String.class);
-//                    meth.invoke(meth, method[1]);
-//                } catch (Exception e) {
-//                    // do nothing
-//                }
-//            }
-//
-//        }
-//        return lightable;
-//    }
-//
-//    private void print(String str) { return "";}
-
 
     @Override
     public String getName() {
