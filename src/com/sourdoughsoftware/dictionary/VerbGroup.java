@@ -6,6 +6,7 @@ public enum VerbGroup {
     MERGE,
     SAVE,
     LOAD,
+    QUIT,
     LIGHT,
     ATTACK,
     USE,

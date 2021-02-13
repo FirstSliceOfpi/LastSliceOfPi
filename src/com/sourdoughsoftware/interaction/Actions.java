@@ -23,8 +23,11 @@ public class Actions {
             return "no verb in input";
         }
         if(command.getNoun() == null
-                && !(command.getVerb().getName().equals("save")
-                || command.getVerb().getName().equals("load"))
+                && !(command.getVerb().getGroup() == VerbGroup.SAVE
+                || command.getVerb().getGroup() == VerbGroup.LOAD
+                || command.getVerb().getGroup() == VerbGroup.QUIT
+
+        )
           )
         {
             return "no noun in input";
@@ -46,6 +49,8 @@ public class Actions {
                 return save();
             case LOAD:
                 return load();
+            case QUIT:
+                return quit();
 //            case ATTACK:
 //                return
             case EXAMINE:
@@ -54,6 +59,16 @@ public class Actions {
                 command.getNoun().getAction(command.getVerb().getName());
                 return "";
         }
+    }
+
+    public static String quit() {
+        String response = Prompter.prompt("Are you sure you want to exit?(Y/N)");
+        String cleansedResponse = response.strip().toLowerCase();
+        if(cleansedResponse.equals("y") || cleansedResponse.equals("yes")) {
+            System.out.println("And they lived happily ever after. The end.");
+            System.exit(0);
+        }
+        return "";
     }
 
     public static String save() {

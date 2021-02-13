@@ -53,6 +53,22 @@
         <group>LOAD</group>
     </verb>
     <verb>
+        <name>quit</name>
+        <group>QUIT</group>
+    </verb>
+    <verb>
+        <name>/q</name>
+        <group>QUIT</group>
+    </verb>
+    <verb>
+        <name>end</name>
+        <group>QUIT</group>
+    </verb>
+    <verb>
+        <name>depart</name>
+        <group>QUIT</group>
+    </verb>
+    <verb>
         <name>light</name>
         <group>LIGHT</group>
     </verb>
