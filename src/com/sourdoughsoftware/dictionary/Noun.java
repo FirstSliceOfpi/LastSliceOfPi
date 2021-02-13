@@ -2,11 +2,12 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.interaction.Actions;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class Noun implements DictionaryEntry {
+public class Noun implements DictionaryEntry, Serializable {
 
     private String name;
     private String description;

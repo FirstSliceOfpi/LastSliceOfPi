@@ -4,7 +4,6 @@ package com.sourdoughsoftware.utility;
  * various xml documents for game play
  */
 
-import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
