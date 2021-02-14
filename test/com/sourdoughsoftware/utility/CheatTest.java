@@ -10,7 +10,7 @@ public class CheatTest {
 
     @Test
     public void showCheatArtTest() throws InterruptedException, IOException {
-        Cheat cheat = new Cheat();
+        Cheat cheat = Cheat.getInstance();
         cheat.showCheatArt();
     }
 }

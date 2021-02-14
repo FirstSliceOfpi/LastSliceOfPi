@@ -7,6 +7,7 @@ import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
@@ -196,6 +197,18 @@ public class Actions {
     public static void changeDescription(String str) {
         Noun noun = command.getNoun();
         noun.setDescription(str);
+    }
+
+    public static void cheat(String cheat) {
+        if(cheat.equals("amazon")) {
+            Cheat.getInstance().addAllPiesToInventory();
+        }else if(cheat.equals("tra")) {
+            try {
+                Cheat.getInstance().showCheatArt();
+            }catch(Exception e) {
+                if(gs.getDevMode()) System.out.println(e);
+            }
+        }
     }
 
 
