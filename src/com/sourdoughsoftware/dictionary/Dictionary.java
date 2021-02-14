@@ -9,7 +9,7 @@ import java.util.Set;
 public enum Dictionary implements Serializable {
     INSTANCE;
 
-    private Map<String, Set<Noun>> nouns = new HashMap<>();
+    private final Map<String, Set<Noun>> nouns = new HashMap<>();
     private final Map<String, Verb> verbs = new HashMap<>();
 
     public void add(DictionaryEntry entry) {
@@ -37,14 +37,6 @@ public enum Dictionary implements Serializable {
 
     public Set<Noun> getNounCandidates(String name) {
         return nouns.get(name);
-    }
-
-    public Map<String, Set<Noun>> getNouns() {
-        return this.nouns;
-    }
-
-    public void setNouns(Map<String,Set<Noun>> nouns) {
-        this.nouns = nouns;
     }
 
 }

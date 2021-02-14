@@ -21,10 +21,6 @@
         <group>MERGE</group>
     </verb>
     <verb>
-        <name>merge</name>
-        <group>MERGE</group>
-    </verb>
-    <verb>
         <name>use</name>
         <group>USE</group>
     </verb>
@@ -41,6 +37,7 @@
         <group>EXAMINE</group>
     </verb>
     <verb>
+<<<<<<< HEAD
         <name>explore</name>
         <group>EXAMINE</group>
     </verb>
@@ -78,4 +75,9 @@
     </verb>
 
 
+=======
+        <name>wield</name>
+        <group>WIELD</group>
+    </verb>
+>>>>>>> 390192f4613ddfd0868c3eaaa81b7b621b5c505b
 </Verbs>

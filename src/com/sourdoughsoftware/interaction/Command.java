@@ -6,12 +6,13 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.gamepieces.Pie;
 
 import java.io.Serializable;
 
 public class Command implements Serializable {
-    private final Noun noun;
-    private final Verb verb;
+    private Noun noun;
+    private Verb verb;
     private Noun targetNoun = null;
     private static Command instance;
 
