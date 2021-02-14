@@ -36,6 +36,10 @@ public class Room implements java.io.Serializable{
         exits.put(direction, newExit);
     }
 
+    public void clearItems() {
+        roomItems = new ArrayList();
+    }
+
     public void addExitbyID(String dir, Integer roomID){
             exitsById.put(dir.toLowerCase(), roomID);
     }
@@ -92,7 +96,8 @@ public class Room implements java.io.Serializable{
         Random rand = new Random();
         int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
         int findableWeapon = rand.nextInt(maxSize);
-        int randomNumber = rand.nextInt(maxSize*2);
+        int difficulty = (int) (maxSize*1.5);
+        int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < maxSize-1) {
             addToRoom((Item) GameState.getInstance().getFindableWeapons().get(findableWeapon));
         }
