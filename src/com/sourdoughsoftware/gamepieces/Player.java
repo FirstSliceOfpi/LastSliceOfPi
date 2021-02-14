@@ -50,6 +50,7 @@ public class Player implements Serializable {
         }
 
         public String add(Noun noun) {
+            if(inventory.contains(noun)) { return "Item is already in inventory."; }
             inventory.add(noun);
             return noun.getName() + " is now in your inventory";
         }

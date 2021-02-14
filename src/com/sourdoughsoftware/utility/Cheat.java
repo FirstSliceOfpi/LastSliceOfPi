@@ -1,5 +1,7 @@
 package com.sourdoughsoftware.utility;
 
+import com.sourdoughsoftware.GameState;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,7 +11,10 @@ public class Cheat {
     String filePathAnimatedArt = "Elsa";
 
     public void addAllPiesToInventory() {
-
+        Node[] allItems = GameState.getInstance().getTree().getAllItemsBFS();
+        for(Node node : allItems) {
+            GameState.getInstance().getPlayer().getInventory().add(node.getItem());
+        }
     }
 
     public void doubleAttackPoints() {
