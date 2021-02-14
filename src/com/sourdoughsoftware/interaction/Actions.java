@@ -183,7 +183,7 @@ public class Actions {
 
     public static String show() {
         StringBuilder builder = new StringBuilder();
-        List<Noun> inventory = gs.getPlayer().getInventory().getCurrentInventory();
+        List<Noun> inventory = gs.getInventory();
         for(Noun noun : inventory) {
             builder.append(noun.getName() + "\n");
         }
@@ -237,6 +237,10 @@ public class Actions {
                 return "What are you doing sir? ";
             }
         }return "hmmmm";
+    }
+
+    public static void setGs(GameState GS) {
+        gs = GS;
     }
 
    }

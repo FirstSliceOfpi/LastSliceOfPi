@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.gamepieces;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 
 import java.io.Serializable;
@@ -52,6 +53,7 @@ public class Player implements Serializable {
         public String add(Noun noun) {
             if(inventory.contains(noun)) { return "Item is already in inventory."; }
             inventory.add(noun);
+            GameState.getInstance().setInventory(inventory);
             return noun.getName() + " is now in your inventory";
         }
 

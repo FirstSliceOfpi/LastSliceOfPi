@@ -14,7 +14,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Game {
     GameState gs = GameState.getInstance();
@@ -28,7 +27,6 @@ public class Game {
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();
         ItemTree tree = (ItemTree) pies.get("pieTree");
-        gs = GameState.getInstance();
         gs.setTree(tree);
         gs.setFindableWeapons((ArrayList) pies.get("findablePies"));
     }

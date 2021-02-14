@@ -57,7 +57,10 @@ public class WelcomeScreen {
             myGame.start();
         }else if (gameType.matches("2")) {
             try {
-                GameState savedGame = GameState.getInstance();
+                openingCredits.stopJuke();
+                gameMusic.startJuke();
+                gameMusic.turnTheDial((float) -8);
+                GameState.getInstance();
                 Game myGame = new Game();
                 System.out.println(Actions.load());
                 myGame.start();

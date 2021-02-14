@@ -4,6 +4,7 @@ package com.sourdoughsoftware.utility;
  *  It contains many functions for adding and finding weapons
  */
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Item;
 
 import java.io.Serializable;
