@@ -9,7 +9,7 @@
   <Author>Dustin Morris</Author>
   <LastAuthor>Dustin Morris</LastAuthor>
   <Created>2021-02-12T04:40:18Z</Created>
-  <LastSaved>2021-02-13T08:30:23Z</LastSaved>
+  <LastSaved>2021-02-14T00:02:25Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,6 +20,7 @@
   <WindowWidth>32767</WindowWidth>
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>32767</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -63,12 +64,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -76,7 +75,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="modifiers">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="101"/>
    <Column ss:AutoFitWidth="0" ss:Width="138"/>
@@ -111,6 +110,18 @@
     <Cell><Data ss:Type="String">remove</Data></Cell>
     <Cell><Data ss:Type="String">Paper is a pile of ash.</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">eat</Data></Cell>
+    <Cell><Data ss:Type="String">print</Data></Cell>
+    <Cell><Data ss:Type="String">You at the paper.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">eat</Data></Cell>
+    <Cell><Data ss:Type="String">remove</Data></Cell>
+    <Cell><Data ss:Type="String">Paper is ate.</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -119,11 +130,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
