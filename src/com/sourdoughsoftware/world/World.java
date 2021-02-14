@@ -1,5 +1,7 @@
 package com.sourdoughsoftware.world;
 
+import com.sourdoughsoftware.Game;
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Item;
 
@@ -17,10 +19,7 @@ import java.util.*;
 public class World {
     List<Room> gameMap = new ArrayList<>();
     List<Enemy> enemies = XmlParser.parseEnemy();
-
-    private static Room currentRoom;
-
-
+    static GameState gs = GameState.getInstance();
 
     public World() throws IOException, SAXException, ParserConfigurationException {
         HashMap<String, Enemy> villains = new HashMap<>();
@@ -34,7 +33,7 @@ public class World {
         Room captianHooksShip = new Room("Captain Hook's Ship", "There's lots of crocs in the water!");
         Room winniesTree = new Room("Winnie The Pooh's Tree", "Lots of honey in here.");
         Room goofysHouse = new Room("Goofy's house", "You see Goofy chilling on his couch.");
-        currentRoom = tomorrowLand;
+        gs.setRoom(tomorrowLand);
 
         tomorrowLand.createExit(Directions.east, captianHooksShip);
         captianHooksShip.createExit(Directions.west, tomorrowLand);
@@ -47,11 +46,11 @@ public class World {
 
 
     public static String changeCurrentRoom(Directions.Direction direction) {
-        Map<Directions.Direction, Room> exits = currentRoom.getExits();
-
+        Map<Directions.Direction, Room> exits = gs.getRoom().getExits();
         if(exits.containsKey(direction)){
-            currentRoom = exits.get(direction);
-            return "You have entered the " + currentRoom.getName() + "\n" + currentRoom.getDescription();
+            gs.setRoom(exits.get(direction));
+            gs.getRoom().addItemsToRoomOnEntering();
+            return "You have entered the " + gs.getRoom().getName() + "\n" + gs.getRoom().getDescription();
 
         } else {
             return ("That is not an exit.");
@@ -60,10 +59,5 @@ public class World {
     }
 
     void setEnemies(List<Enemy> enemies) {this.enemies = enemies;}
-
-    public static Room getCurrentRoom() {
-      return currentRoom;
-    };
-
 
 }

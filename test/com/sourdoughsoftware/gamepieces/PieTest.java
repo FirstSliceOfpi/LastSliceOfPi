@@ -70,22 +70,23 @@ public class PieTest {
     @Test
     public void textParserGetNounWithTwoWords() {
         String userInput = "Buttermilk";
-        Command command = TextParser.parse(userInput);
-        assertEquals(userInput,command.getNoun().getName());
+        TextParser.parse(userInput);
+        assertEquals(userInput,Command.getInstance().getNoun().getName());
 //        userInput = "Buttermilk pie";
 //        command = TextParser.parse(userInput);
 //        assertEquals(userInput, command.getNoun().getName());
         userInput = "merge Buttermilk and Eggs";
-        command = TextParser.parse(userInput);
-        assertEquals("Buttermilk", command.getNoun().getName());
-        assertEquals("Eggs", command.getTargetNoun().getName());
-        assertEquals("merge",command.getVerb().getName());
+        TextParser.parse(userInput);
+        assertEquals("Buttermilk", Command.getInstance().getNoun().getName());
+        assertEquals("Eggs", Command.getInstance().getTargetNoun().getName());
+        assertEquals("merge",Command.getInstance().getVerb().getName());
     }
 
     @Test
     public void actionMerge() {
         String userInput = "merge Buttermilk and Eggs";
-        Command command = TextParser.parse(userInput);
+        Command command = Command.getInstance();
+        TextParser.parse(userInput);
         assertEquals("Buttermilk", command.getNoun().getName());
         assertEquals("Eggs", command.getTargetNoun().getName());
         assertEquals("merge",command.getVerb().getName());

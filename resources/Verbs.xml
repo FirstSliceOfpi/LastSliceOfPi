@@ -76,4 +76,8 @@
      <name>wield</name>
         <group>WIELD</group>
     </verb>
+    <verb>
+        <name>show</name>
+        <group>SHOW</group>
+    </verb>
 </Verbs>

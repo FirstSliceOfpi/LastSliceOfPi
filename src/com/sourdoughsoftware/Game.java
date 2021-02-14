@@ -36,7 +36,8 @@ public class Game {
     public void start() {
         boolean gameOver = false;
         while(!gameOver) {
-            System.out.println(Actions.execute(TextParser.parse(Prompter.prompt("What do you want to do?"))));
+            TextParser.parse(Prompter.prompt("What do you want to do?"));
+            System.out.println(Actions.execute());
         }
     }
 

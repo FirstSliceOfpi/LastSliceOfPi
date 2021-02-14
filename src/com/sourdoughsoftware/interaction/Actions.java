@@ -7,21 +7,24 @@ import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.utility.Colors;
-import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.world.Directions;
-import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.world.World;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+
+import static com.sourdoughsoftware.utility.Colors.*;
 
 public class Actions {
-    public static String execute(Command command) {
+    private static GameState gs = GameState.getInstance();
+    private static Command command = gs.getCommand();
+
+    public static String execute() {
 
         if (command.getVerb() == null) {
             return "no verb in input";
@@ -62,6 +65,8 @@ public class Actions {
                 return attack(command.getNoun(),command.getVerb(), command.getTargetNoun());
             case EXAMINE:
                 return examine(command.getNoun());
+            case SHOW:
+                return show();
             default:
                 command.getNoun().getAction(command.getVerb().getName());
                 return "";
@@ -69,15 +74,16 @@ public class Actions {
     }
 
     public static String dev() {
-        GameState.getInstance().setDevMode();
-        return GameState.getInstance().getDevMode()
-                ? Colors.ANSI_BLUE + "Dev mode enabled" + Colors.ANSI_RESET
-                : Colors.ANSI_YELLOW + "Dev mode disabled" + Colors.ANSI_RESET;
+        gs.setDevMode();
+        return gs.getDevMode()
+                ? ANSI_BLUE + "Dev mode enabled" + ANSI_RESET
+                : ANSI_YELLOW + "Dev mode disabled" + ANSI_RESET;
     }
 
     public static String quit() {
         String response = Prompter.prompt("Are you sure you want to exit?(Y/N)");
         String cleansedResponse = response.strip().toLowerCase();
+
         if (cleansedResponse.equals("y") || cleansedResponse.equals("yes")) {
             System.out.println("And they lived happily ever after. The end.");
             System.exit(0);
@@ -93,29 +99,33 @@ public class Actions {
         }
         String fileName = Prompter.prompt("What do you want to name your save file?");
         File fileToSave = new File(dir, fileName);
-        return GameState.saveGame(fileToSave) ?
-                "Your game -- " + Colors.ANSI_GREEN + fileToSave + Colors.ANSI_RESET + " -- was saved."
-                : Colors.ANSI_RED + "Your game was not saved." + Colors.ANSI_RESET;
+        return gs.saveGame(fileToSave) ?
+                "Your game -- " + ANSI_GREEN + fileToSave + ANSI_RESET + " -- was saved."
+                : ANSI_RED + "Your game was not saved." + ANSI_RESET;
     }
 
     public static String load() {
         File dir = new File("./saved_games");
         for (String file : dir.list()) {
-            System.out.println(Colors.ANSI_BLUE + file + Colors.ANSI_RESET);
+            System.out.println(ANSI_BLUE + file + ANSI_RESET);
         }
         String fileName = Prompter.prompt("What game would you like to load?");
         File fileToLoad = new File(dir, fileName);
-        return GameState.loadGame(fileToLoad) ?
-                "Your game -- " + Colors.ANSI_GREEN + fileToLoad + Colors.ANSI_RESET + " -- was loaded."
-                : Colors.ANSI_RED + "Your game was not loaded." + Colors.ANSI_RESET;
+        return gs.loadGame(fileToLoad) ?
+                "Your game -- " + ANSI_GREEN + fileToLoad + ANSI_RESET + " -- was loaded."
+                : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
 
     private static String examine(Noun noun) {
         StringBuilder result = new StringBuilder(noun.getDescription());
         result.append("\n");
+        System.out.println(noun.getName());
         if (noun.getName() == "room") {
-            result.append("You find ");
-            for (Item item : World.getCurrentRoom().getRoomItems()) {
+            if(gs.getRoom().getRoomItems().size() == 0) {
+                return "You find nothing in the room.";
+            }
+            result.append("You find");
+            for (Item item : gs.getRoom().getRoomItems()) {
                 result.append(" " + item.getName() + ",");
             }
             result.append(" in the room.");
@@ -125,7 +135,6 @@ public class Actions {
 
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
-        GameState gs = GameState.getInstance();
         if (!gs.getDevMode()) {
             if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
                 return "One or more items are not in your inventory.";
@@ -155,6 +164,7 @@ public class Actions {
     }
 
     private static String move(Noun noun, Verb verb) {
+        System.out.println(noun.getName());
         if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
@@ -162,7 +172,18 @@ public class Actions {
     }
 
     private static String grab(Noun noun) {
-        return GameState.getInstance().getPlayer().getInventory().add(noun);
+        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
+        gs.getRoom().removeItem((Item) noun);
+        return gs.getPlayer().getInventory().add(noun);
+    }
+
+    public static String show() {
+        StringBuilder builder = new StringBuilder();
+        List<Noun> inventory = gs.getPlayer().getInventory().getCurrentInventory();
+        for(Noun noun : inventory) {
+            builder.append(noun.getName() + "\n");
+        }
+        return builder.toString();
     }
 
     public static void print(String str) {
@@ -170,7 +191,7 @@ public class Actions {
     }
 
     public static void changeDescription(String str) {
-        Noun noun = Command.getInstance().getNoun();
+        Noun noun = command.getNoun();
         noun.setDescription(str);
     }
 

@@ -31,5 +31,5 @@ test/
 /.idea/
 /saved_games/
 *.java
-*.class
+/out/
 /out/
