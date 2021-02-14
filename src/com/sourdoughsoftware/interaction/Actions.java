@@ -127,7 +127,12 @@ public class Actions {
             }
             result.append("You find");
             for (Item item : gs.getRoom().getRoomItems()) {
-                result.append(" " + item.getName() + ",");
+                if (item instanceof Enemy) {
+                    result.append(" " + item.getName() + " ( " + ((Enemy)item).getHp() + " ),");
+                }else {
+                    result.append(" " + item.getName() + ",");
+                }
+
             }
             result.append(" in the room.");
         } else {
@@ -233,6 +238,7 @@ public class Actions {
     }
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+        System.out.println(noun +  " " +  verb.getName() + " " + targetNoun);
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie & noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
@@ -240,6 +246,7 @@ public class Actions {
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - weapon.getAttackPoints();
                     enemy.setHp(newHP);
+                    System.out.println(enemy.getHp());
                     System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
                 }
                 if (enemy.getHp() < 0) {

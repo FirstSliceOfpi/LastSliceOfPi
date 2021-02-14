@@ -22,6 +22,10 @@ public class GameState implements Serializable{
     private static GameState instance = null;
     private ItemTree tree;
     private ArrayList findableWeapons;
+
+
+
+    private ArrayList enemies;
     private Player player = new Player("Edgar");
     private Command command = null;
     private Boolean devMode = false;
@@ -92,6 +96,14 @@ public class GameState implements Serializable{
 
     public void setFindableWeapons(ArrayList findableWeapons) {
         this.findableWeapons = findableWeapons;
+    }
+
+    public ArrayList getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(ArrayList enemies) {
+        this.enemies = enemies;
     }
 
     public Player getPlayer() {
