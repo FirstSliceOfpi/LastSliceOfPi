@@ -117,10 +117,9 @@ public class Actions {
     }
 
     private static String examine(Noun noun) {
-        StringBuilder result = new StringBuilder(noun.getDescription());
+        StringBuilder result = new StringBuilder();
         result.append("\n");
-        System.out.println(noun.getName());
-        if (noun.getName() == "room") {
+        if (noun.getName().equals("room")) {
             if(gs.getRoom().getRoomItems().size() == 0) {
                 return "You find nothing in the room.";
             }
@@ -129,6 +128,8 @@ public class Actions {
                 result.append(" " + item.getName() + ",");
             }
             result.append(" in the room.");
+        } else {
+            result.append(noun.getDescription());
         }
         return result.toString();
     }
@@ -164,7 +165,6 @@ public class Actions {
     }
 
     private static String move(Noun noun, Verb verb) {
-        System.out.println(noun.getName());
         if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
@@ -173,8 +173,11 @@ public class Actions {
 
     private static String grab(Noun noun) {
         if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
-        gs.getRoom().removeItem((Item) noun);
-        return gs.getPlayer().getInventory().add(noun);
+        String success = noun.getName() + " not found in the room.";
+        if(gs.getRoom().removeItem((Item) noun)) {
+            success = gs.getPlayer().getInventory().add(noun);
+        }
+        return success;
     }
 
     public static String show() {

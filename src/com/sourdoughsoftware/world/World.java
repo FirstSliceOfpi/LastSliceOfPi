@@ -27,8 +27,6 @@ public class World {
             villains.put(enemy.getName(),enemy);
         }
         Enemy scar = villains.get("Scar");
-
-
         Room tomorrowLand = new Room("Tomorrow Land", "The land of the future!");
         Room captianHooksShip = new Room("Captain Hook's Ship", "There's lots of crocs in the water!");
         Room winniesTree = new Room("Winnie The Pooh's Tree", "Lots of honey in here.");
