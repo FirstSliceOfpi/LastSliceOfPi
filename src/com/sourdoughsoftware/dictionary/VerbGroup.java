@@ -9,7 +9,6 @@ public enum VerbGroup {
     quit,
     dev,
     attack,
-    use,
     print,
     addToRoom,
     addToInventory,

@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Items>
+    <item id="2">
+        <name>match</name>
+        <description>its a match</description>
+        <attackPoints>0</attackPoints>
+        <modifiers>
+            <light>
+                <action>print
+                    <arg>The match is lit.</arg>
+                </action>
+                <action>changeDescription
+                    <arg>lit match</arg>
+                </action>
+            </light>
+        </modifiers>
+    </item>
     <item id="0">
         <name>candle</name>
         <description>wax</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <light>
+            <light key="match">
                 <action>print
                     <arg>The candle is lit.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>Lit candle</arg>
+                    <arg>lit candle</arg>
                 </action>
             </light>
-            <paint>
-                <action>destroyNoun
-                    <arg>You ate the paper you fool. how fucking dare you</arg>
-                </action>
+            <burn>
                 <action>print
-                    <arg>You paint the candle.</arg>
+                    <arg>The candle is burned.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>this candle is a nice shade of blue</arg>
+                    <arg>burned candle</arg>
                 </action>
-            </paint>
+            </burn>
         </modifiers>
     </item>
     <item id="1">
@@ -38,4 +50,5 @@
             </eat>
         </modifiers>
     </item>
+
 </Items>

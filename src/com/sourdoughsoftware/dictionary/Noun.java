@@ -2,6 +2,7 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.Command;
 import com.sourdoughsoftware.interaction.Event;
 
 import java.io.Serializable;
@@ -35,14 +36,16 @@ public class Noun implements DictionaryEntry, Serializable {
         ArrayList<Event> events = interactions.get(verb);
         Actions act = new Actions();
         if(events == null) {
-            System.out.println("You can't "  + verb + " a " + getName());
             return false;
         }
+
         for(Event event : events) {
+            if(event.key != null && event.key != Command.getNoun()) {
+                return false;
+            }
             try {
                 Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
                 method.invoke(act ,event.message.strip());
-                System.out.println(method.getName());
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
                 return false;

@@ -51,7 +51,11 @@ public class Actions {
             case print:
                 return print(Command.getNoun());
             default:
-                Command.getNoun().getAction(Command.getVerb().getName());
+                if (Command.getTargetNoun() == null) {
+                    Command.getNoun().getAction(Command.getVerb().getName());
+                } else {
+                    Command.getTargetNoun().getAction(Command.getVerb().getName());
+                }
         }
         return ".";
     }
@@ -69,8 +73,14 @@ public class Actions {
     }
 
     public static String changeDescription(String newDescription) {
-        Command.getNoun().setDescription(newDescription);
-        return Command.getNoun().getDescription();
+        Noun noun;
+        if(Command.getTargetNoun() != null) {
+            noun = Command.getTargetNoun();
+        } else {
+            noun = Command.getNoun();
+        }
+        noun.setDescription(newDescription);
+        return noun.getDescription();
     }
 
     public static String dev() {

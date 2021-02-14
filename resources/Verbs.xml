@@ -21,14 +21,6 @@
         <group>merge</group>
     </verb>
     <verb>
-        <name>merge</name>
-        <group>merge</group>
-    </verb>
-    <verb>
-        <name>use</name>
-        <group>use</group>
-    </verb>
-    <verb>
         <name>attack</name>
         <group>attack</group>
     </verb>
