@@ -8,6 +8,7 @@ import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Command;
 import com.sourdoughsoftware.utility.ItemTree;
+import com.sourdoughsoftware.world.Room;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class GameState implements Serializable{
     private Player player = new Player("Edgar");
     private Command command = null;
     private Boolean devMode = false;
+    private Room room = null;
 
     private GameState() {
     }
@@ -45,6 +47,14 @@ public class GameState implements Serializable{
         return false;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public void setDevMode() {
         devMode = !devMode;
     }
@@ -52,6 +62,7 @@ public class GameState implements Serializable{
     public boolean getDevMode() {
         return devMode;
     }
+
     public static boolean loadGame(File fileToLoad) {
         try {
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());
