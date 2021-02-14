@@ -30,4 +30,67 @@
             prey...
         </background>
     </enemy>
+    <enemy>
+        <name>Hades</name>
+        <class>God</class>
+        <hp>200</hp>
+        <weaponType>Eternal Flames</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>Captain Hook</name>
+        <class>Pirate</class>
+        <hp>100</hp>
+        <weaponType>Hook</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>Gaston</name>
+        <class>Brawler</class>
+        <hp>120</hp>
+        <weaponType>Bow</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>Cruella de Vil</name>
+        <class>Witch</class>
+        <hp>110</hp>
+        <weaponType>puppies</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>Shere Khan</name>
+        <class>Monster</class>
+        <hp>220</hp>
+        <weaponType>Claws</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>Ernesto de la Cruz</name>
+        <class>Musician</class>
+        <hp>90</hp>
+        <weaponType>Guitar</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
+    <enemy>
+        <name>King Louie</name>
+        <class>Monster</class>
+        <hp>250</hp>
+        <weaponType>Fists</weaponType>
+        <background>
+            TODO
+        </background>
+    </enemy>
 </enemies>

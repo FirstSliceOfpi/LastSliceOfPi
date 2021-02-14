@@ -38,6 +38,7 @@ public class Player implements Serializable {
 
     public static class Inventory extends Noun implements Serializable{
         List<Noun> inventory = new ArrayList<>();
+        public Pie currentWeapon;
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
@@ -65,6 +66,12 @@ public class Player implements Serializable {
         public List<Noun> getCurrentInventory() {
             return inventory;
         }
+
+        public Pie getCurrentWeapon() {
+            return currentWeapon;
+        }
+
+
     }
 
 }

@@ -21,10 +21,6 @@
         <group>MERGE</group>
     </verb>
     <verb>
-        <name>merge</name>
-        <group>MERGE</group>
-    </verb>
-    <verb>
         <name>use</name>
         <group>USE</group>
     </verb>
@@ -76,6 +72,8 @@
         <name>light</name>
         <group>LIGHT</group>
     </verb>
-
-
+    <verb>
+     <name>wield</name>
+        <group>WIELD</group>
+    </verb>
 </Verbs>

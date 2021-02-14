@@ -1,5 +1,6 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -13,9 +14,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Game {
-    GameState gs;
+    GameState gs = GameState.getInstance();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
         XmlParser.parseItems();
