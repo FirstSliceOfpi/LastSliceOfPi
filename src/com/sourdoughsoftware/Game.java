@@ -1,5 +1,6 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -11,13 +12,12 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private final Prompter prompter = new Prompter(new Scanner(System.in));
     GameState gs = GameState.getInstance();
+    Map<String, Set<Noun>> noun = Noun.dictionary.getNouns();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
         XmlParser.parseItems();

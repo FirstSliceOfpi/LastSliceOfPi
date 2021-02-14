@@ -14,6 +14,8 @@ public class Pie extends Item{
         this.attackPoints = attackPoints;
         this.victory = victory;
         setWieldable(true);
+        setGrabbale(true);
+        setDropable(true);
     }
 
     // return the attackPoints assigned to this weapon

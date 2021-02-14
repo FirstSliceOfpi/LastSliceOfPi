@@ -2,7 +2,7 @@ package com.sourdoughsoftware.interaction;
 
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
-import com.sourdoughsoftware.gamepieces.Weapon;
+import com.sourdoughsoftware.gamepieces.Pie;
 
 public class Command {
     private final Noun noun;

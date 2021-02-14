@@ -8,9 +8,7 @@ import java.util.Set;
 public enum Dictionary {
     INSTANCE;
 
-    public Map<String, Set<Noun>> getNouns() {
-        return nouns;
-    }
+
 
     private final Map<String, Set<Noun>> nouns = new HashMap<>();
     private final Map<String, Verb> verbs = new HashMap<>();
@@ -40,6 +38,10 @@ public enum Dictionary {
 
     public Set<Noun> getNounCandidates(String name) {
         return nouns.get(name);
+    }
+
+    public Map<String, Set<Noun>> getNouns() {
+        return nouns;
     }
 
 

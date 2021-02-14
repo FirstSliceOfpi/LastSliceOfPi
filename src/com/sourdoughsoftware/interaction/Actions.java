@@ -4,6 +4,7 @@ import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
@@ -37,8 +38,6 @@ public class Actions {
                 return wield(command.getNoun(), command.getVerb());
             case ATTACK:
                 return attack(command.getNoun(),command.getVerb(), command.getTargetNoun());
-//            case ATTACK:
-//                return
             case EXAMINE:
                 return examine(command);
             default:
@@ -105,16 +104,16 @@ public class Actions {
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
         if (noun.isAttackable() & targetNoun.isWieldable()) {
-            if (targetNoun instanceof Weapon & noun instanceof Enemy) {
+            if (targetNoun instanceof Pie & noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
-                Weapon weapon = (Weapon) targetNoun;
+                Pie weapon = (Pie) targetNoun;
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - weapon.getAttackPoints();
                     enemy.setHp(newHP);
                     System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
                 }
                 if (enemy.getHp() < 0) {
-                    return ((Weapon) noun).getVictory();
+                    return ((Pie) noun).getVictory();
                 }
             } else {
                 return "What are you doing sir? ";

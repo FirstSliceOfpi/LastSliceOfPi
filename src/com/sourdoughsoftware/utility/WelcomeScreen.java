@@ -17,6 +17,7 @@ import java.util.Scanner;
  */
 public class WelcomeScreen {
     private JukeBox openingCredits = new JukeBox("resources/LifeOfPiSoundTrack/Mr. Blue Sky.wav");
+    private JukeBox gameMusic = new JukeBox("resources/LifeOfPiSoundTrack/Gamemusic.wav");
     public static final String WELCOME_MESSAGE = "Welcome to \"The Last Slice of Pi\"";
     PrintFiles p = new PrintFiles();
     Prompter parser;
@@ -54,6 +55,9 @@ public class WelcomeScreen {
                 "2. Continue from where you left off\n");
         String gameType = parser.prompt("Please make a selection >>> ");
         if (gameType.matches("1")) {
+            openingCredits.stopJuke();
+            gameMusic.startJuke();
+            gameMusic.turnTheDial((float) -8);
             Game myGame = new Game();
             myGame.start();
         }else if (gameType.matches("2")) {

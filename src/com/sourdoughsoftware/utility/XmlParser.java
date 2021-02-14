@@ -90,14 +90,15 @@ public class XmlParser {
                 Element singleEnemy = (Element) node;
                 //Create new Enemy Object
                 String name = singleEnemy.getElementsByTagName("name").item(0).getTextContent();
-                String Background = singleEnemy.getElementsByTagName("background").item(0).getTextContent();
-                enemy = new Enemy(name, Background);
-                enemy.setHp(Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent()));
-                enemy.setWeaponType(singleEnemy.getElementsByTagName("weaponType").item(0).getTextContent());
-                enemy.setEnemyClass(singleEnemy.getElementsByTagName("class").item(0).getTextContent());
+                String background = singleEnemy.getElementsByTagName("background").item(0).getTextContent();
+                int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent());
+                String weaponType = singleEnemy.getElementsByTagName("weaponType").item(0).getTextContent();
+                String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent();
                 //addInteractions(singleEnemy, enemy);
                 //Add Enemy to list
+                enemy = new Enemy(name, enemyClass,hp,weaponType,background);
                 enemies.add(enemy);
+
             }
         }
         return enemies;

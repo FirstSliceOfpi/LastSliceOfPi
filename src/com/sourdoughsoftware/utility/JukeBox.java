@@ -26,6 +26,7 @@ public class JukeBox {
         clip.start();
     }
     void turnTheDial(float volume) {control.setValue(volume);}
+    void stopJuke() {clip.stop();}
 
 
 

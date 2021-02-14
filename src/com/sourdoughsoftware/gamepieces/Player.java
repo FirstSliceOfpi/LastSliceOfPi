@@ -37,7 +37,7 @@ public class Player {
 
     public static class Inventory extends Noun {
         List<Noun> inventory = new ArrayList<>();
-        public Weapon currentWeapon;
+        public Pie currentWeapon;
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
@@ -65,7 +65,7 @@ public class Player {
             return inventory;
         }
 
-        public Weapon getCurrentWeapon() {
+        public Pie getCurrentWeapon() {
             return currentWeapon;
         }
 

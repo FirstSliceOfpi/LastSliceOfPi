@@ -21,10 +21,6 @@
         <group>MERGE</group>
     </verb>
     <verb>
-        <name>merge</name>
-        <group>MERGE</group>
-    </verb>
-    <verb>
         <name>use</name>
         <group>USE</group>
     </verb>
