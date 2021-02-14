@@ -40,7 +40,7 @@ public class TextParser {
         if(nounSet.size() == 1) {
             noun = setIterator.next();
         } else if(nounSet.size() > 1) {
-            setIterator.next();
+//            setIterator.next();
             noun = setIterator.next();
         }
 
