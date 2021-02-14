@@ -9,6 +9,14 @@ import java.util.regex.Pattern;
 
 public class Cheat {
     String filePathAnimatedArt = "Elsa";
+    private static Cheat cheat = null;
+
+    private Cheat() {}
+
+    public static Cheat getInstance() {
+        cheat = cheat == null ? new Cheat() : cheat;
+        return cheat;
+    }
 
     public void addAllPiesToInventory() {
         Node[] allItems = GameState.getInstance().getTree().getAllItemsBFS();

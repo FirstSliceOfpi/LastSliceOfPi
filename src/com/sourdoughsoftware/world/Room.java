@@ -1,8 +1,6 @@
 package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.GameState;
-import com.sourdoughsoftware.dictionary.Dictionary;
-import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Item;
 
 import java.util.*;

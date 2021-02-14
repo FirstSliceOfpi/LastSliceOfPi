@@ -9,6 +9,7 @@ public enum VerbGroup {
     QUIT,
     DEV,
     SHOW,
+    CHEAT,
     LIGHT,
     ATTACK,
     USE,

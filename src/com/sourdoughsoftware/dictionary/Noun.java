@@ -22,6 +22,7 @@ public class Noun implements DictionaryEntry, Serializable {
     private boolean wieldable = false;
 
     public ArrayList<String[]> light = null;
+    public ArrayList<String[]> cheat = null;
 
     public void setAction(String action, ArrayList<String[]> argument) {
         try {

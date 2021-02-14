@@ -80,4 +80,8 @@
         <name>show</name>
         <group>SHOW</group>
     </verb>
+    <verb>
+        <name>cheat</name>
+        <group>CHEAT</group>
+    </verb>
 </Verbs>
