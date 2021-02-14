@@ -37,7 +37,6 @@
         <group>EXAMINE</group>
     </verb>
     <verb>
-<<<<<<< HEAD
         <name>explore</name>
         <group>EXAMINE</group>
     </verb>
@@ -73,11 +72,8 @@
         <name>light</name>
         <group>LIGHT</group>
     </verb>
-
-
-=======
-        <name>wield</name>
+    <verb>
+     <name>wield</name>
         <group>WIELD</group>
     </verb>
->>>>>>> 390192f4613ddfd0868c3eaaa81b7b621b5c505b
 </Verbs>
