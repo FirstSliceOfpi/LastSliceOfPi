@@ -20,7 +20,7 @@ public class TextParser {
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
         Noun targetNoun = getNoun(targetNounCandidates, userInputWords);
 
-        return targetNoun == null ? Command.getInstance().setInstance(noun, verb)
+        return targetNoun == null ? Command.getInstance().setInstance(noun, verb, null)
                 : Command.getInstance().setInstance(noun, verb, targetNoun);
     }
 

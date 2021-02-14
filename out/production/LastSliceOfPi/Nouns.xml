@@ -9,12 +9,21 @@
                 <action>print
                     <arg>The candle is lit.</arg>
                 </action>
-            </light>
-            <light>
                 <action>changeDescription
                     <arg>Lit candle</arg>
                 </action>
             </light>
+            <paint>
+                <action>destroyNoun
+                    <arg>You ate the paper you fool. how fucking dare you</arg>
+                </action>
+                <action>print
+                    <arg>You paint the candle.</arg>
+                </action>
+                <action>changeDescription
+                    <arg>this candle is a nice shade of blue</arg>
+                </action>
+            </paint>
         </modifiers>
     </item>
     <item id="1">
@@ -22,14 +31,11 @@
         <description>8x10 ruled paper</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <light>
-                <action>print
-                    <arg>You crumple the paper before lighting</arg>
+            <eat>
+                <action>destroyNoun
+                    <arg>You ate the paper you fool. how fucking dare you</arg>
                 </action>
-                <action>remove
-                    <arg>Paper is a pile of ash.</arg>
-                </action>
-            </light>
+            </eat>
         </modifiers>
     </item>
 </Items>

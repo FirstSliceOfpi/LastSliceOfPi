@@ -10,9 +10,9 @@ import com.sourdoughsoftware.dictionary.Verb;
 import java.io.Serializable;
 
 public class Command implements Serializable {
-    private final Noun noun;
-    private final Verb verb;
-    private Noun targetNoun = null;
+    private static Noun noun;
+    private static Verb verb;
+    private static Noun targetNoun = null;
     private static Command instance;
 
     private Command() {
@@ -21,12 +21,12 @@ public class Command implements Serializable {
     }
 
     private Command(Noun noun, Verb verb) {
-        this.noun = noun;
-        this.verb = verb;
+        Command.noun = noun;
+        Command.verb = verb;
     }
     private Command(Noun noun, Verb verb, Noun targetNoun) {
         this(noun, verb);
-        this.targetNoun = targetNoun;
+        Command.targetNoun = targetNoun;
     }
 
     public static Command getInstance() {
@@ -46,15 +46,15 @@ public class Command implements Serializable {
         return instance;
     }
 
-    public Noun getNoun() {
+    public static Noun getNoun() {
         return noun;
     }
 
-    public Verb getVerb() {
+    public static Verb getVerb() {
         return verb;
     }
 
-    public Noun getTargetNoun() {
+    public static Noun getTargetNoun() {
         return targetNoun;
     }
 }

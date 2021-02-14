@@ -5,12 +5,10 @@
         <description>wax</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <light>
+            <light key="2">
                 <action>print
                     <arg>The candle is lit.</arg>
                 </action>
-            </light>
-            <light>
                 <action>changeDescription
                     <arg>Lit candle</arg>
                 </action>
@@ -22,12 +20,24 @@
         <description>8x10 ruled paper</description>
         <attackPoints>0</attackPoints>
         <modifiers>
+            <eat>
+                <action>destroyNoun
+                    <arg>You ate the paper you fool. how fucking dare you</arg>
+                </action>
+            </eat>
+        </modifiers>
+    </item>
+    <item id="2">
+        <name>candle</name>
+        <description>wax</description>
+        <attackPoints>0</attackPoints>
+        <modifiers>
             <light>
                 <action>print
-                    <arg>You crumple the paper before lighting</arg>
+                    <arg>The match is lit.</arg>
                 </action>
-                <action>remove
-                    <arg>Paper is a pile of ash.</arg>
+                <action>changeDescription
+                    <arg>lit match</arg>
                 </action>
             </light>
         </modifiers>

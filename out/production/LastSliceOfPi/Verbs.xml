@@ -2,80 +2,74 @@
 <Verbs>
     <verb>
         <name>grab</name>
-        <group>GRAB</group>
+        <group>unique</group>
     </verb>
     <verb>
-        <name>take</name>
-        <group>GRAB</group>
+        <name>drop</name>
+        <group>unique</group>
     </verb>
     <verb>
         <name>move</name>
-        <group>MOVE</group>
+        <group>move</group>
     </verb>
     <verb>
         <name>go</name>
-        <group>MOVE</group>
+        <group>move</group>
     </verb>
     <verb>
         <name>merge</name>
-        <group>MERGE</group>
+        <group>merge</group>
     </verb>
     <verb>
         <name>merge</name>
-        <group>MERGE</group>
+        <group>merge</group>
     </verb>
     <verb>
         <name>use</name>
-        <group>USE</group>
+        <group>use</group>
     </verb>
     <verb>
         <name>attack</name>
-        <group>ATTACK</group>
+        <group>attack</group>
     </verb>
     <verb>
         <name>examine</name>
-        <group>EXAMINE</group>
+        <group>print</group>
     </verb>
     <verb>
         <name>look</name>
-        <group>EXAMINE</group>
+        <group>print</group>
     </verb>
     <verb>
         <name>explore</name>
-        <group>EXAMINE</group>
+        <group>print</group>
     </verb>
     <verb>
         <name>save</name>
-        <group>SAVE</group>
+        <group>save</group>
     </verb>
     <verb>
         <name>load</name>
-        <group>LOAD</group>
+        <group>load</group>
     </verb>
     <verb>
         <name>quit</name>
-        <group>QUIT</group>
+        <group>quit</group>
     </verb>
     <verb>
         <name>/q</name>
-        <group>QUIT</group>
+        <group>quit</group>
     </verb>
     <verb>
         <name>end</name>
-        <group>QUIT</group>
+        <group>quit</group>
     </verb>
     <verb>
         <name>dev</name>
-        <group>DEV</group>
+        <group>dev</group>
     </verb>
     <verb>
         <name>depart</name>
-        <group>QUIT</group>
+        <group>quit</group>
     </verb>
-    <verb>
-        <name>light</name>
-        <group>LIGHT</group>
-    </verb>
-
-
 </Verbs>

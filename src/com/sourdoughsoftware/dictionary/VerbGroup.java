@@ -1,15 +1,22 @@
 package com.sourdoughsoftware.dictionary;
 
 public enum VerbGroup {
-    GRAB,
-    MOVE,
-    MERGE,
-    SAVE,
-    LOAD,
-    QUIT,
-    DEV,
-    LIGHT,
-    ATTACK,
-    USE,
-    EXAMINE;
+    grab,
+    move,
+    merge,
+    save,
+    load,
+    quit,
+    dev,
+    attack,
+    use,
+    print,
+    addToRoom,
+    addToInventory,
+    dropFromRoom,
+    dropFromInventory,
+    changeDescription,
+    unique,
+    destroyNoun,
+    createNoun,
 }
