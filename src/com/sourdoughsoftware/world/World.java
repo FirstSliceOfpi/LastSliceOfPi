@@ -59,4 +59,8 @@ public class World {
 
     void setEnemies(List<Enemy> enemies) {this.enemies = enemies;}
 
+    public static void setGs(GameState GS) {
+        gs = GS;
+    }
+
 }
