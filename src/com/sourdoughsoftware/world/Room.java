@@ -2,6 +2,7 @@ package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Dictionary;
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Item;
 
 import java.util.*;
@@ -92,17 +93,16 @@ public class Room implements java.io.Serializable{
         int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
         int findableWeapon = rand.nextInt(maxSize);
         int randomNumber = rand.nextInt(maxSize*2);
-        System.out.println(randomNumber < maxSize - 1);
         if(randomNumber < maxSize-1) {
             addToRoom((Item) GameState.getInstance().getFindableWeapons().get(findableWeapon));
         }
     }
-    public void addToRoom(Item item) {
-        roomItems.add(item);
+    public boolean addToRoom(Item item) {
+        return roomItems.add(item);
     }
 
-    public void removeItem(Item item) {
-        roomItems.remove(item);
+    public boolean removeItem(Item item) {
+       return roomItems.remove(item);
     }
 
     @Override
