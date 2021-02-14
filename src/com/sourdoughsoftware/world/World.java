@@ -47,9 +47,9 @@ public class World {
 
     public static String changeCurrentRoom(Directions.Direction direction) {
         Map<Directions.Direction, Room> exits = gs.getRoom().getExits();
-
         if(exits.containsKey(direction)){
             gs.setRoom(exits.get(direction));
+            gs.getRoom().addItemsToRoomOnEntering();
             return "You have entered the " + gs.getRoom().getName() + "\n" + gs.getRoom().getDescription();
 
         } else {

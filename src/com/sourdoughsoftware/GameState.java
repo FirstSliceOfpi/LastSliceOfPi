@@ -25,6 +25,7 @@ public class GameState implements Serializable{
     private Room room = null;
 
     private GameState() {
+        command = Command.getInstance();
     }
 
     public GameState(GameState gs) {

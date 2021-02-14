@@ -16,12 +16,13 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static com.sourdoughsoftware.utility.Colors.*;
 
 public class Actions {
     private static GameState gs = GameState.getInstance();
-    private static Command command = Command.getInstance();
+    private static Command command = gs.getCommand();
 
     public static String execute() {
 
@@ -64,6 +65,8 @@ public class Actions {
                 return attack(command.getNoun(),command.getVerb(), command.getTargetNoun());
             case EXAMINE:
                 return examine(command.getNoun());
+            case SHOW:
+                return show();
             default:
                 command.getNoun().getAction(command.getVerb().getName());
                 return "";
@@ -116,8 +119,12 @@ public class Actions {
     private static String examine(Noun noun) {
         StringBuilder result = new StringBuilder(noun.getDescription());
         result.append("\n");
+        System.out.println(noun.getName());
         if (noun.getName() == "room") {
-            result.append("You find ");
+            if(gs.getRoom().getRoomItems().size() == 0) {
+                return "You find nothing in the room.";
+            }
+            result.append("You find");
             for (Item item : gs.getRoom().getRoomItems()) {
                 result.append(" " + item.getName() + ",");
             }
@@ -157,6 +164,7 @@ public class Actions {
     }
 
     private static String move(Noun noun, Verb verb) {
+        System.out.println(noun.getName());
         if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
@@ -164,8 +172,18 @@ public class Actions {
     }
 
     private static String grab(Noun noun) {
-
+        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
+        gs.getRoom().removeItem((Item) noun);
         return gs.getPlayer().getInventory().add(noun);
+    }
+
+    public static String show() {
+        StringBuilder builder = new StringBuilder();
+        List<Noun> inventory = gs.getPlayer().getInventory().getCurrentInventory();
+        for(Noun noun : inventory) {
+            builder.append(noun.getName() + "\n");
+        }
+        return builder.toString();
     }
 
     public static void print(String str) {

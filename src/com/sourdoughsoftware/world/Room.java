@@ -1,11 +1,10 @@
 package com.sourdoughsoftware.world;
 
+import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.gamepieces.Item;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Creates a Room to be used to create the game world. Rooms have exits and can also contain items.
@@ -88,7 +87,16 @@ public class Room implements java.io.Serializable{
 //    public boolean hasExit(String dir) {
 //        return exits.containsKey(dir);
 //    }
-
+    public void addItemsToRoomOnEntering() {
+        Random rand = new Random();
+        int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
+        int findableWeapon = rand.nextInt(maxSize);
+        int randomNumber = rand.nextInt(maxSize*2);
+        System.out.println(randomNumber < maxSize - 1);
+        if(randomNumber < maxSize-1) {
+            addToRoom((Item) GameState.getInstance().getFindableWeapons().get(findableWeapon));
+        }
+    }
     public void addToRoom(Item item) {
         roomItems.add(item);
     }

@@ -21,29 +21,21 @@ public class Command implements Serializable {
       verb = null;
     }
 
-    private Command(Noun noun, Verb verb) {
-        this.noun = noun;
-        this.verb = verb;
-    }
-    private Command(Noun noun, Verb verb, Noun targetNoun) {
-        this(noun, verb);
-        this.targetNoun = targetNoun;
-    }
-
     public static Command getInstance() {
         instance = instance != null ? instance : new Command();
         return instance;
     }
 
     public Command setInstance(Noun noun, Verb verb) {
-        instance = new Command(noun, verb);
-        GameState.getInstance().setCommand(instance);
+        this.noun = noun;
+        this.verb = verb;
         return instance;
     }
 
     public Command setInstance(Noun noun, Verb verb, Noun targetNoun) {
-        instance = new Command(noun, verb, targetNoun);
-        GameState.getInstance().setCommand(instance);
+        this.noun = noun;
+        this.verb = verb;
+        this.targetNoun = targetNoun;
         return instance;
     }
 
