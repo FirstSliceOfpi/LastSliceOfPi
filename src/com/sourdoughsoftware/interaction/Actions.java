@@ -10,6 +10,7 @@ import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
+import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.world.World;
 
@@ -166,10 +167,21 @@ public class Actions {
     }
 
     private static String move(Noun noun, Verb verb) {
+        // Easter Egg
+        if (noun.getName().equals("bananas")) {
+            return printTy();
+        }
         if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
         return "That's not a direction";
+    }
+
+    // Ty Easter Egg
+    private static String printTy() {
+        PrintFiles pf = new PrintFiles();
+        pf.print("ty");
+        return "";
     }
 
     private static String grab(Noun noun) {
