@@ -11,5 +11,6 @@ public enum VerbGroup {
     LIGHT,
     ATTACK,
     USE,
-    EXAMINE;
+    EXAMINE,
+    WIELD;
 }

@@ -1,10 +1,13 @@
 package com.sourdoughsoftware.interaction;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
@@ -53,8 +56,10 @@ public class Actions {
                 return quit();
             case DEV:
                 return dev();
-//            case ATTACK:
-//                return
+            case WIELD:
+                return wield(command.getNoun(), command.getVerb());
+            case ATTACK:
+                return attack(command.getNoun(),command.getVerb(), command.getTargetNoun());
             case EXAMINE:
                 return examine(command.getNoun());
             default:
@@ -157,11 +162,7 @@ public class Actions {
     }
 
     private static String grab(Noun noun) {
-        if (noun.isGrabable()) {
-            return GameState.getInstance().getPlayer().getInventory().add(noun);
-        } else {
-            return "You can't grab a " + noun.getName();
-        }
+        return GameState.getInstance().getPlayer().getInventory().add(noun);
     }
 
     public static void print(String str) {
@@ -174,13 +175,31 @@ public class Actions {
     }
 
 
-//    private static String attack(Noun noun,  Enemy enemy) {
-//        if (noun.isAttackable() & enemy.getHp() > 0) {
-//            return "YOU " + noun.getName() + enemy.getName();
-//            int newHP = enemy.getHp() - weapon.getAP();
-//            enemy.setHp(newHP);
-//        }else (noun.isAttackable() & enemy.getHp() < 0) {
-//            return "Cannot attack " + enemy.getName() + ", they are dead ";
-//        }
-//    }
-}
+    private static String wield(Noun noun, Verb verb) {
+        if (noun.isWieldable()) {
+            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
+        } else {
+            return noun.getName() + " is not a weapon";
+        }
+    }
+
+    private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+        if (noun.isAttackable() & targetNoun.isWieldable()) {
+            if (targetNoun instanceof Pie & noun instanceof Enemy) {
+                Enemy enemy = (Enemy) noun;
+                Pie weapon = (Pie) targetNoun;
+                if (enemy.getHp() > 0) {
+                    int newHP = enemy.getHp() - weapon.getAttackPoints();
+                    enemy.setHp(newHP);
+                    System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
+                }
+                if (enemy.getHp() < 0) {
+                    return ((Pie) noun).getVictory();
+                }
+            } else {
+                return "What are you doing sir? ";
+            }
+        }return "hmmmm";
+    }
+
+   }
