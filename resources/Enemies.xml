@@ -4,7 +4,7 @@
         <name>Maleficent</name>
         <class>Witch</class>
         <hp>120</hp>
-        <weaponType>Staff</weaponType>
+        <foodAlergies>Apple pie</foodAlergies>
         <background>
             The beautiful Mistress Of Evil. She wanders the world lost, seducing men, condemning women. The more
             beautiful you are, the worst your fate will be.
@@ -14,7 +14,7 @@
         <name>Scar</name>
         <class>Monster</class>
         <hp>180</hp>
-        <weaponType>Fangs</weaponType>
+        <foodAlergies>Cherry pie</foodAlergies>
         <background>
             The immortal one, ghost lion of Pride Rock. Story says he still roams the earth, but no has lived to tell
             the tell...
@@ -24,7 +24,7 @@
         <name>Jafar</name>
         <class>Witch</class>
         <hp>130</hp>
-        <weaponType>Staff</weaponType>
+        <foodAlergies>Shoofly pie</foodAlergies>
         <background>
             The sorcerer of shadows, manipulator of kings. Beware his mind control, for the lesser of men have fallen
             prey...
@@ -34,7 +34,7 @@
         <name>Hades</name>
         <class>God</class>
         <hp>200</hp>
-        <weaponType>Eternal Flames</weaponType>
+        <foodAlergies>Strawberry pie</foodAlergies>
         <background>
             TODO
         </background>
@@ -43,7 +43,7 @@
         <name>Captain Hook</name>
         <class>Pirate</class>
         <hp>100</hp>
-        <weaponType>Hook</weaponType>
+        <foodAlergies>Mississippi mud pie</foodAlergies>
         <background>
             TODO
         </background>
@@ -52,7 +52,7 @@
         <name>Gaston</name>
         <class>Brawler</class>
         <hp>120</hp>
-        <weaponType>Bow</weaponType>
+        <foodAlergies>Pumpkin pie</foodAlergies>
         <background>
             TODO
         </background>
@@ -61,7 +61,7 @@
         <name>Cruella de Vil</name>
         <class>Witch</class>
         <hp>110</hp>
-        <weaponType>puppies</weaponType>
+        <foodAlergies>Pecan pie</foodAlergies>
         <background>
             TODO
         </background>
@@ -70,7 +70,7 @@
         <name>Shere Khan</name>
         <class>Monster</class>
         <hp>220</hp>
-        <weaponType>Claws</weaponType>
+        <foodAlergies>Strawberry pie</foodAlergies>
         <background>
             TODO
         </background>
@@ -79,16 +79,16 @@
         <name>Ernesto de la Cruz</name>
         <class>Musician</class>
         <hp>90</hp>
-        <weaponType>Guitar</weaponType>
+        <foodAlergies>Blueberry pie</foodAlergies>
         <background>
             TODO
         </background>
     </enemy>
     <enemy>
         <name>King Louie</name>
-        <class>Monster</class>
+        <class>Lemon meringue pie</class>
         <hp>250</hp>
-        <weaponType>Fists</weaponType>
+        <foodAlergies>Fists</foodAlergies>
         <background>
             TODO
         </background>
