@@ -91,7 +91,7 @@ public class Room implements java.io.Serializable{
             }
 
         });
-        result.setLength(result.length() - 6);
+        result.setLength(result.length() - 4);
         return result.toString();
     }
 
@@ -146,7 +146,7 @@ public class Room implements java.io.Serializable{
 //    }
     public void addItemsToRoomOnEntering() {
         Random rand = new Random();
-        int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
+        int maxSize = GameState.getInstance().getFindableWeapons().size();
         int findableWeapon = rand.nextInt(maxSize);
         int difficulty = (int) (maxSize*1.5);
         int randomNumber = rand.nextInt(difficulty);
