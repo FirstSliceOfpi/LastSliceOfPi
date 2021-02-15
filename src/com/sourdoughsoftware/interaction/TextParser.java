@@ -3,6 +3,8 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.gamepieces.Player;
+import com.sourdoughsoftware.world.World;
 
 import java.util.*;
 
@@ -45,6 +47,11 @@ public class TextParser {
             noun = setIterator.next();
         } else if (nounSet.size() > 1) {
 //            setIterator.next();
+            nounSet.retainAll(World.getCurrentRoom().getItemList());
+            nounSet.retainAll(Player.getPlayer().getInventory().getCurrentInventory());
+            if(nounSet.size() > 1) {
+                System.out.println("STILL AN ISSUE BECAUSE BOTH ITEMS ARE IN THE SAME ROOM AND USER NEEDS TO BE MORE SPECIFIC");
+            }
             noun = setIterator.next();
         }
 

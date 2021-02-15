@@ -1,6 +1,4 @@
 package com.sourdoughsoftware;
-
-import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;

@@ -20,7 +20,6 @@ public class Room implements java.io.Serializable{
     private Map<String, Integer> exitsById;
     private List<Item> roomItems;
     private final Map<Directions.Direction, Room> exits = new HashMap<>();
-    private List<Noun> items = new ArrayList<>();
 
 
 
@@ -36,19 +35,15 @@ public class Room implements java.io.Serializable{
     }
 
     public Noun dropItem(Noun noun) {
-        int i = items.indexOf(noun);
+        int i = roomItems.indexOf(noun);
         if(i == -1) return null;
 
-        Noun dropped = items.get(i);
-        items.remove(noun);
+        Noun dropped = roomItems.get(i);
+        roomItems.remove(noun);
         return dropped;
     }
 
-    public void addItem(Noun noun) {
-        items.add(noun);
-        items.forEach(item -> System.out.println(item.getName()));
-        System.out.println(getName());
-    }
+
 
     public void createExit(Directions.Direction direction, Room newExit) {
         exits.put(direction, newExit);
@@ -108,7 +103,7 @@ public class Room implements java.io.Serializable{
 
     public String getItems() {
         StringBuilder sb = new StringBuilder();
-        items.forEach(item ->sb.append("You see a " + item.getName()+"."));
+        roomItems.forEach(item ->sb.append("You see a " + item.getName()+"."));
         return sb.toString();
     }
 
@@ -130,6 +125,10 @@ public class Room implements java.io.Serializable{
 
     public Integer getExitByID(String dir) {
         return exitsById.get(dir);
+    }
+
+    public List<Item> getItemList() {
+        return roomItems;
     }
 
 //    public boolean hasExit(String dir) {

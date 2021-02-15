@@ -1,13 +1,10 @@
 package com.sourdoughsoftware.world;
 
-import com.sourdoughsoftware.Game;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
-import com.sourdoughsoftware.gamepieces.Item;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.utility.XmlParser;
 import org.xml.sax.SAXException;
