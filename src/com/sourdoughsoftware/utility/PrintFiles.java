@@ -8,7 +8,7 @@ public class PrintFiles {
     public PrintFiles() {
     }
 
-    void print(String fileToRead) {
+    public void print(String fileToRead) {
         if (fileToRead != null) {
             String results = null;
             try {

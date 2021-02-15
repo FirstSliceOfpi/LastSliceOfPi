@@ -5,13 +5,17 @@ package com.sourdoughsoftware;
  It contains getters and setters for the global variables;
  */
 import com.sourdoughsoftware.dictionary.Dictionary;
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Player;
+import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Command;
 import com.sourdoughsoftware.utility.ItemTree;
+import com.sourdoughsoftware.world.Room;
+import com.sourdoughsoftware.world.World;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameState implements Serializable{
@@ -20,28 +24,37 @@ public class GameState implements Serializable{
     private ArrayList findableWeapons;
     private Command command = null;
     private Boolean devMode = false;
+    private Room room = null;
+    private List<Noun> inventory = null;
 
     private GameState() {
+        command = Command.getInstance();
     }
 
-    public GameState(GameState gs) {
-        instance = gs;
-    }
     //create method to save the game
     public static boolean saveGame(File fileToSave) {
+        GameState gs = GameState.getInstance();
         try {
+            gs.setInventory(Player.getPlayer().getInventory().getCurrentInventory());
             FileOutputStream fileStream = new FileOutputStream(fileToSave.getAbsolutePath());
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            HashMap<String, Object> objectToSave = new HashMap<>();
-            objectToSave.put("gameState", GameState.getInstance());
-            objectToSave.put("nouns", Dictionary.INSTANCE.getNouns());
-            objectStream.writeObject(objectToSave);
+            objectStream.writeObject(Dictionary.INSTANCE.getNouns());
+            objectStream.writeObject(GameState.getInstance());
+            System.out.println(GameState.getInstance().getInventory());
             objectStream.close();
             return true;
         } catch (IOException e) {
             System.out.println(e);
         }
         return false;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public void setDevMode() {
@@ -51,13 +64,17 @@ public class GameState implements Serializable{
     public boolean getDevMode() {
         return devMode;
     }
+
     public static boolean loadGame(File fileToLoad) {
         try {
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            HashMap loadedGame = (HashMap) objectStream.readObject();
-            new GameState((GameState) loadedGame.get("gameState"));
-            Dictionary.INSTANCE.setNouns((Map) loadedGame.get("nouns"));
+            Map nouns = (Map) objectStream.readObject();
+            GameState gs = (GameState) objectStream.readObject();
+            GameState.setInstance(gs);
+            Actions.setGs(GameState.getInstance());
+            World.setGs(GameState.getInstance());
+            Dictionary.INSTANCE.setNouns(nouns);
             objectStream.close();
             return true;
         } catch (IOException e) {
@@ -92,8 +109,16 @@ public class GameState implements Serializable{
         return this.command;
     }
 
+    public void setInventory(List<Noun> inventory) { this.inventory = inventory; }
+
+    public List<Noun> getInventory() { return this.inventory; }
+
     public static GameState getInstance(){
         instance = instance == null ? new GameState() : instance;
         return instance;
+    }
+
+    private static void setInstance(GameState gs) {
+        instance = gs;
     }
 }

@@ -40,10 +40,10 @@ public enum Dictionary implements Serializable {
     }
 
     public Map<String, Set<Noun>> getNouns() {
-        return this.nouns;
+        return nouns;
     }
 
-    public void setNouns(Map<String,Set<Noun>> nouns) {
+    public void setNouns(Map nouns) {
         this.nouns = nouns;
     }
 

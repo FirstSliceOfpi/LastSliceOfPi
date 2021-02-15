@@ -1,12 +1,10 @@
 package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Item;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Creates a Room to be used to create the game world. Rooms have exits and can also contain items.
@@ -50,6 +48,10 @@ public class Room implements java.io.Serializable{
 
     public void createExit(Directions.Direction direction, Room newExit) {
         exits.put(direction, newExit);
+    }
+
+    public void clearItems() {
+        roomItems = new ArrayList();
     }
 
     public void addExitbyID(String dir, Integer roomID){
@@ -104,13 +106,22 @@ public class Room implements java.io.Serializable{
 //    public boolean hasExit(String dir) {
 //        return exits.containsKey(dir);
 //    }
-
-    public void addToRoom(Item item) {
-        roomItems.add(item);
+    public void addItemsToRoomOnEntering() {
+        Random rand = new Random();
+        int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
+        int findableWeapon = rand.nextInt(maxSize);
+        int difficulty = (int) (maxSize*1.5);
+        int randomNumber = rand.nextInt(difficulty);
+        if(randomNumber < maxSize-1) {
+            addToRoom((Item) GameState.getInstance().getFindableWeapons().get(findableWeapon));
+        }
+    }
+    public boolean addToRoom(Item item) {
+        return roomItems.add(item);
     }
 
-    public void removeItem(Item item) {
-        roomItems.remove(item);
+    public boolean removeItem(Item item) {
+       return roomItems.remove(item);
     }
 
     @Override

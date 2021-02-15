@@ -8,7 +8,7 @@ import java.util.*;
 
 public class TextParser {
 
-    public static Command parse(String userInput) {
+    public static void parse(String userInput) {
 
         List<String> userInputWords = new ArrayList<>(Arrays.asList(userInput.split(" ")));
 
@@ -26,11 +26,11 @@ public class TextParser {
             noun = temp;
         }
 
-        return Command.getInstance().setInstance(noun, verb, targetNoun);
+        Command.getInstance().setInstance(noun, verb, targetNoun);
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
-        if(nounSet == null) {
+        if (nounSet == null) {
             return null;
         }
         Noun noun = null;
@@ -41,16 +41,16 @@ public class TextParser {
 
 //        nounSet.retainAll(availableNouns);
 
-        if(nounSet.size() == 1) {
+        if (nounSet.size() == 1) {
             noun = setIterator.next();
-        } else if(nounSet.size() > 1) {
-            setIterator.next();
+        } else if (nounSet.size() > 1) {
+//            setIterator.next();
             noun = setIterator.next();
         }
 
-        if(noun != null) {
-            String[]nounNameWords = noun.getName().split(" ");
-            for(String nounNameWord : nounNameWords) {
+        if (noun != null) {
+            String[] nounNameWords = noun.getName().split(" ");
+            for (String nounNameWord : nounNameWords) {
                 userInputWords.remove(nounNameWord);
             }
         }
@@ -63,9 +63,9 @@ public class TextParser {
 
         Dictionary dictionary = Dictionary.INSTANCE;
 
-        for(String userInputWord : userInputWords) {
+        for (String userInputWord : userInputWords) {
             Verb currentVerb = dictionary.getVerb(userInputWord);
-            if(currentVerb != null) {
+            if (currentVerb != null) {
                 return currentVerb;
             }
         }

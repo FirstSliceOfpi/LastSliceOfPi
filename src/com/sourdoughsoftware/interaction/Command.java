@@ -6,6 +6,7 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.gamepieces.Pie;
 
 import java.io.Serializable;
 
@@ -13,6 +14,7 @@ public class Command implements Serializable {
     private static Noun noun;
     private static Verb verb;
     private static Noun targetNoun = null;
+
     private static Command instance;
 
     private Command() {
@@ -29,20 +31,22 @@ public class Command implements Serializable {
         Command.targetNoun = targetNoun;
     }
 
+
     public static Command getInstance() {
         instance = instance != null ? instance : new Command();
         return instance;
     }
 
     public Command setInstance(Noun noun, Verb verb) {
-        instance = new Command(noun, verb);
-        GameState.getInstance().setCommand(instance);
+        this.noun = noun;
+        this.verb = verb;
         return instance;
     }
 
     public Command setInstance(Noun noun, Verb verb, Noun targetNoun) {
-        instance = new Command(noun, verb, targetNoun);
-        GameState.getInstance().setCommand(instance);
+        this.noun = noun;
+        this.verb = verb;
+        this.targetNoun = targetNoun;
         return instance;
     }
 

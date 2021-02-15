@@ -15,7 +15,14 @@ public enum VerbGroup {
     dropFromRoom,
     dropFromInventory,
     changeDescription,
+    getDescription,
     unique,
     destroyNoun,
     createNoun,
+    EXAMINE,
+    SHOW,
+    ATTACK,
+    WIELD,
+    cheat,
+    CHEAT
 }

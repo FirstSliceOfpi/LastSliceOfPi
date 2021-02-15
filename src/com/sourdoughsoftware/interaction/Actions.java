@@ -1,18 +1,23 @@
 package com.sourdoughsoftware.interaction;
 
 import com.sourdoughsoftware.dictionary.Dictionary;
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.utility.Colors;
+import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
+import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.world.Room;
+
 import com.sourdoughsoftware.world.World;
 
 import java.io.File;
@@ -20,9 +25,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.List;
+
+import static com.sourdoughsoftware.utility.Colors.*;
+
 
 public class Actions {
-    public static String execute(Command command) {
+    private static GameState gs = GameState.getInstance();
+    private static Command command = gs.getCommand();
+
+    public static String execute() {
+
         if (Command.getVerb() == null) {
             return "no verb in input";
         }
@@ -46,10 +59,18 @@ public class Actions {
                 return quit();
             case dev:
                 return dev();
-//            case ATTACK:
-//                return
-            case print:
-                return print(Command.getNoun());
+            case getDescription:
+                return getDescription();
+//            case print:
+//                return print();
+            case WIELD:
+                return wield(Command.getNoun(), Command.getVerb());
+            case ATTACK:
+                return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
+//            case EXAMINE:
+//                return print();
+            case SHOW:
+                return show();
             default:
                 if (Command.getTargetNoun() == null) {
                     Command.getNoun().getAction(Command.getVerb().getName());
@@ -72,6 +93,10 @@ public class Actions {
         return name + " created";
     }
 
+    public static String getDescription() {
+        return Command.getNoun().getDescription();
+    }
+
     public static String changeDescription(String newDescription) {
         Noun noun;
         if(Command.getTargetNoun() != null) {
@@ -84,15 +109,16 @@ public class Actions {
     }
 
     public static String dev() {
-        GameState.getInstance().setDevMode();
-        return GameState.getInstance().getDevMode()
-                ? Colors.ANSI_BLUE + "Dev mode enabled" + Colors.ANSI_RESET
-                : Colors.ANSI_YELLOW + "Dev mode disabled" + Colors.ANSI_RESET;
+        gs.setDevMode();
+        return gs.getDevMode()
+                ? ANSI_BLUE + "Dev mode enabled" + ANSI_RESET
+                : ANSI_YELLOW + "Dev mode disabled" + ANSI_RESET;
     }
 
     public static String quit() {
         String response = Prompter.prompt("Are you sure you want to exit?(Y/N)");
         String cleansedResponse = response.strip().toLowerCase();
+
         if (cleansedResponse.equals("y") || cleansedResponse.equals("yes")) {
             System.out.println("And they lived happily ever after. The end.");
             System.exit(0);
@@ -108,35 +134,40 @@ public class Actions {
         }
         String fileName = Prompter.prompt("What do you want to name your save file?");
         File fileToSave = new File(dir, fileName);
-        return GameState.saveGame(fileToSave) ?
-                "Your game -- " + Colors.ANSI_GREEN + fileToSave + Colors.ANSI_RESET + " -- was saved."
-                : Colors.ANSI_RED + "Your game was not saved." + Colors.ANSI_RESET;
+        return gs.saveGame(fileToSave) ?
+                "Your game -- " + ANSI_GREEN + fileToSave + ANSI_RESET + " -- was saved."
+                : ANSI_RED + "Your game was not saved." + ANSI_RESET;
     }
 
     public static String load() {
         File dir = new File("./saved_games");
         for (String file : dir.list()) {
-            System.out.println(Colors.ANSI_BLUE + file + Colors.ANSI_RESET);
+            System.out.println(ANSI_BLUE + file + ANSI_RESET);
         }
         String fileName = Prompter.prompt("What game would you like to load?");
         File fileToLoad = new File(dir, fileName);
-        return GameState.loadGame(fileToLoad) ?
-                "Your game -- " + Colors.ANSI_GREEN + fileToLoad + Colors.ANSI_RESET + " -- was loaded."
-                : Colors.ANSI_RED + "Your game was not loaded." + Colors.ANSI_RESET;
+        return gs.loadGame(fileToLoad) ?
+                "Your game -- " + ANSI_GREEN + fileToLoad + ANSI_RESET + " -- was loaded."
+                : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
 
-    private static String print(Noun noun) {
-        StringBuilder result = new StringBuilder(noun.getDescription());
-        result.append("\n");
-        if (noun.getName() == "room") {
-            result.append("You find ");
-            for (Item item : World.getCurrentRoom().getRoomItems()) {
-                result.append(" " + item.getName() + ",");
-            }
-            result.append(" in the room.");
-        }
-        return result.toString();
-    }
+//    private static String print(Noun noun) {
+//        StringBuilder result = new StringBuilder(noun.getDescription());
+//        result.append("\n");
+//        if (noun.getName().equals("room")) {
+//            if(gs.getRoom().getRoomItems().size() == 0) {
+//                return "You find nothing in the room.";
+//            }
+//            result.append("You find");
+//            for (Item item : gs.getRoom().getRoomItems()) {
+//                result.append(" " + item.getName() + ",");
+//            }
+//            result.append(" in the room.");
+//        } else {
+//            result.append(noun.getDescription());
+//        }
+//        return result.toString();
+//    }
 
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
@@ -147,6 +178,7 @@ public class Actions {
         }
 
         GameState gs = GameState.getInstance();
+
         if (!gs.getDevMode()) {
             if (!Player.getPlayer().getInventory().has(noun) || !Player.getPlayer().getInventory().has(noun)) {
                 return "One or more items are not in your inventory.";
@@ -176,10 +208,38 @@ public class Actions {
     }
 
     private static String move(Noun noun) {
+        if (noun.getName().equals("bananas")) {
+            return printTy();
+        }
         if (noun instanceof Directions.Direction) {
             return World.changeCurrentRoom((Directions.Direction) noun);
         }
         return "That's not a direction";
+    }
+
+    // Ty Easter Egg
+    private static String printTy() {
+        PrintFiles pf = new PrintFiles();
+        pf.print("ty");
+        return "";
+    }
+
+    private static String grab(Noun noun) {
+        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
+        String success = noun.getName() + " not found in the room.";
+        if(gs.getRoom().removeItem((Item) noun)) {
+            success = Player.getPlayer().getInventory().add(noun);
+        }
+        return success;
+    }
+
+    public static String show() {
+        StringBuilder builder = new StringBuilder();
+        List<Noun> inventory = gs.getInventory();
+        for(Noun noun : inventory) {
+            builder.append(noun.getName() + "\n");
+        }
+        return builder.toString();
     }
 
     public static void print(String str) {
@@ -212,15 +272,48 @@ public class Actions {
         return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());
     }
 
+    public static void cheat(String cheat) {
+        if(cheat.equals("amazon")) {
+            Cheat.getInstance().addAllPiesToInventory();
+        }else if(cheat.equals("tra")) {
+            try {
+                Cheat.getInstance().showCheatArt();
+            }catch(Exception e) {
+                if(gs.getDevMode()) System.out.println(e);
+            }
+        }
+    }
 
 
-//    private static String attack(Noun noun,  Enemy enemy) {
-//        if (noun.isAttackable() & enemy.getHp() > 0) {
-//            return "YOU " + noun.getName() + enemy.getName();
-//            int newHP = enemy.getHp() - weapon.getAP();
-//            enemy.setHp(newHP);
-//        }else (noun.isAttackable() & enemy.getHp() < 0) {
-//            return "Cannot attack " + enemy.getName() + ", they are dead ";
-//        }
-//    }
-}
+    private static String wield(Noun noun, Verb verb) {
+        if (noun.isWieldable()) {
+            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
+        } else {
+            return noun.getName() + " is not a weapon";
+        }
+    }
+
+    private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+        if (noun.isAttackable() & targetNoun.isWieldable()) {
+            if (targetNoun instanceof Pie & noun instanceof Enemy) {
+                Enemy enemy = (Enemy) noun;
+                Pie weapon = (Pie) targetNoun;
+                if (enemy.getHp() > 0) {
+                    int newHP = enemy.getHp() - weapon.getAttackPoints();
+                    enemy.setHp(newHP);
+                    System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
+                }
+                if (enemy.getHp() < 0) {
+                    return ((Pie) noun).getVictory();
+                }
+            } else {
+                return "What are you doing sir? ";
+            }
+        }return "hmmmm";
+    }
+
+    public static void setGs(GameState GS) {
+        gs = GS;
+    }
+
+   }

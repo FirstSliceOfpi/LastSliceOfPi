@@ -18,15 +18,16 @@ public class Noun implements DictionaryEntry, Serializable {
     private String name;
     private String description;
 
-    private boolean weildable = false;
     private boolean examinable = false;
     private boolean grabable = false;
     private boolean mergeable = false;
     private boolean attackable = false;
     private boolean findable = false;
     private boolean dropable = false;
+    private boolean wieldable = false;
 
     public HashMap<String, ArrayList<Event>> interactions = new HashMap<>();
+
 
     public void setAction(String verb, ArrayList<Event> events) {
         interactions.put(verb, events);
@@ -95,41 +96,27 @@ public class Noun implements DictionaryEntry, Serializable {
         this.mergeable = mergeable;
     }
 
-    public boolean isAttackable() {
-        return attackable;
-    }
 
-    public void setAttackable(boolean attackable) {
-        this.attackable = attackable;
-    }
+    public boolean isAttackable() {return attackable;}
 
-    public boolean isWeildable() {
-        return weildable;
-    }
+    public void setAttackable(boolean attackable){this.attackable = attackable;}
 
-    public void setWeildable(boolean weildable) {
-        this.weildable = weildable;
-    }
+    public boolean isWieldable(){return wieldable;}
 
-    public boolean isExaminable() {
-        return examinable;
+    public void setWieldable(boolean wieldable) {
+        this.wieldable = wieldable;
     }
 
     public void setExaminable(boolean examinable) {
         this.examinable = examinable;
     }
 
-    public boolean isGrabable() {
-        return grabable;
-    }
+
 
     public void setGrabable(boolean grabable) {
         this.grabable = grabable;
     }
 
-    public boolean isDropable() {
-        return dropable;
-    }
 
     public void setDropable(boolean dropable) {
         this.dropable = dropable;

@@ -26,15 +26,15 @@
     </verb>
     <verb>
         <name>examine</name>
-        <group>print</group>
+        <group>getDescription</group>
     </verb>
     <verb>
         <name>look</name>
-        <group>print</group>
+        <group>getDescription</group>
     </verb>
     <verb>
         <name>explore</name>
-        <group>print</group>
+        <group>getDescription</group>
     </verb>
     <verb>
         <name>save</name>
@@ -63,5 +63,17 @@
     <verb>
         <name>depart</name>
         <group>quit</group>
+    </verb>
+    <verb>
+     <name>wield</name>
+        <group>WIELD</group>
+    </verb>
+    <verb>
+        <name>show</name>
+        <group>SHOW</group>
+    </verb>
+    <verb>
+        <name>cheat</name>
+        <group>CHEAT</group>
     </verb>
 </Verbs>
