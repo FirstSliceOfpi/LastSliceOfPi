@@ -51,11 +51,9 @@ public class Noun implements DictionaryEntry, Serializable {
                 response.append(method.invoke(act ,event.message.strip())+ " ");
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
-                if(e instanceof InvocationTargetException) {
+                if(e instanceof InvocationTargetException && e.getCause() instanceof ChainOfEventException) {
                     return e.getCause().getMessage();
                 }
-            } catch (ChainOfEventException e) {
-                return e.getMessage();
             }
         }
         return response.toString();
