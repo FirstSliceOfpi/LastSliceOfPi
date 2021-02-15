@@ -65,7 +65,7 @@ public class Actions {
 //                return print();
             case WIELD:
                 return wield(Command.getNoun(), Command.getVerb());
-            case ATTACK:
+            case attack:
                 return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
 //            case EXAMINE:
 //                return print();
@@ -92,6 +92,9 @@ public class Actions {
     }
 
     public static String getDescription() {
+        if (Command.getNoun().getName().equals("room")) {
+            return  World.getCurrentRoom().getRoomItems();
+        }
         return Command.getNoun().getDescription();
     }
 
@@ -149,28 +152,28 @@ public class Actions {
                 : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
 
-    private static String examine(Noun noun) {
-        StringBuilder result = new StringBuilder();
-        result.append("\n");
-        if (noun.getName().equals("room")) {
-            if(gs.getRoom().getRoomItems().size() == 0) {
-                return "You find nothing in the room.";
-            }
-            result.append("You find");
-            for (Item item : gs.getRoom().getRoomItems()) {
-                if (item instanceof Enemy) {
-                    result.append(" " + item.getName() + " ( " + ((Enemy)item).getHp() + " ),");
-                }else {
-                    result.append(" " + item.getName() + ",");
-                }
-
-            }
-            result.append(" in the room.");
-        } else {
-            result.append(noun.getDescription());
-        }
-        return result.toString();
-    }
+//    private static String examine(Noun noun) {
+//        StringBuilder result = new StringBuilder();
+//        result.append("\n");
+//        if (noun.getName().equals("room")) {
+//            if(gs.getRoom().getRoomItems().size() == 0) {
+//                return "You find nothing in the room.";
+//            }
+//            result.append("You find");
+//            for (Item item : gs.getRoom().getRoomItems()) {
+//                if (item instanceof Enemy) {
+//                    result.append(" " + item.getName() + " ( " + ((Enemy)item).getHp() + " ),");
+//                }else {
+//                    result.append(" " + item.getName() + ",");
+//                }
+//
+//            }
+//            result.append(" in the room.");
+//        } else {
+//            result.append(noun.getDescription());
+//        }
+//        return result.toString();
+//    }
 
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
@@ -302,7 +305,7 @@ public class Actions {
         }
     }
 
-    private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+    private static String attack(Noun targetNoun, Verb verb, Noun noun) {
         System.out.println(noun +  " " +  verb.getName() + " " + targetNoun);
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie & noun instanceof Enemy) {

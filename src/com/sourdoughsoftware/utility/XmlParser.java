@@ -12,6 +12,7 @@ import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.interaction.Event;
+import com.sourdoughsoftware.world.Room;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -184,6 +185,21 @@ public class XmlParser {
         }
         return enemies;
     }
+//
+//    public static ArrayList<Room> parseRooms() {
+//        ArrayList<Room> rooms = new ArrayList<>();
+//        try{
+//            Document document = loadXML("resources/Rooms.xml");
+//            NodeList nodeList = document.getElementsByTagName("room");
+//            for (int i = 0; i < nodeList.getLength(); i++) {
+//                Node node = nodeList.item(i);
+//
+//                if (node.getNodeType() == Node.ELEMENT_NODE) {
+//                    Element roomElement = (Element) node;
+//                }
+//            }
+//        }
+//    }
 
     public static HashMap<String, Object> parsePies() {
         ItemTree tree = new ItemTree();
