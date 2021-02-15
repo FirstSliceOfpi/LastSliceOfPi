@@ -241,7 +241,8 @@ public class Actions {
 
     public static String show() {
         StringBuilder builder = new StringBuilder();
-        List<Noun> inventory = gs.getInventory();
+        List<Noun> inventory = Player.getPlayer().getInventory().getCurrentInventory();
+        if(inventory.size() == 0) return "No items";
         for(Noun noun : inventory) {
             builder.append(noun.getName() + "\n");
         }
