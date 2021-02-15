@@ -37,22 +37,26 @@ public class TextParser {
         }
         Noun noun = null;
 
-        Iterator<Noun> setIterator = nounSet.iterator();
 
 //        Set<Noun> availableNouns = new HashSet<>(inventory.getCurrentInventory());
 
 //        nounSet.retainAll(availableNouns);
 
+
         if (nounSet.size() == 1) {
-            noun = setIterator.next();
+            noun = nounSet.iterator().next();
         } else if (nounSet.size() > 1) {
-//            setIterator.next();
-            nounSet.retainAll(World.getCurrentRoom().getItemList());
-            nounSet.retainAll(Player.getPlayer().getInventory().getCurrentInventory());
+            Set<Noun> availableNouns = new HashSet<>(Player.getPlayer().getInventory().getCurrentInventory());
+            availableNouns.addAll(World.getCurrentRoom().getItemList());
+
+            nounSet.retainAll(availableNouns);
+
             if(nounSet.size() > 1) {
+                System.out.println(nounSet.size());
                 System.out.println("STILL AN ISSUE BECAUSE BOTH ITEMS ARE IN THE SAME ROOM AND USER NEEDS TO BE MORE SPECIFIC");
             }
-            noun = setIterator.next();
+            System.out.println(nounSet.size() + "WTF" + World.getCurrentRoom().getItems() + " " + Player.getPlayer().getInventory().getCurrentInventory());
+            noun = nounSet.iterator().next();
         }
 
         if (noun != null) {
