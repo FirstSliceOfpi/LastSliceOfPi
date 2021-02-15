@@ -122,7 +122,7 @@ public class Room implements java.io.Serializable, Savable {
             }
 
         });
-        result.setLength(result.length() - 6);
+        result.setLength(result.length() - 4);
         return result.toString();
     }
 
@@ -177,9 +177,9 @@ public class Room implements java.io.Serializable, Savable {
 //    }
     public void addItemsToRoomOnEntering() {
         Random rand = new Random();
-        int maxSize = GameState.getFindableWeapons().size()+1;
+        int maxSize = GameState.getFindableWeapons().size() + 1;
         int findableWeapon = rand.nextInt(maxSize);
-        int difficulty = (int) (maxSize*1.5);
+        int difficulty = (int) (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < maxSize-1) {
             addToRoom((Item) GameState.getFindableWeapons().get(findableWeapon));
