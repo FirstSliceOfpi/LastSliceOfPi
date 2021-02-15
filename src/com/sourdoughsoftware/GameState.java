@@ -23,7 +23,7 @@ public class GameState implements Serializable{
     private ItemTree tree;
     private ArrayList findableWeapons;
     private ArrayList enemies;
-    private Player player = new Player("Edgar");
+//    private Player player = new Player("Edgar");
     private Command command = null;
     private Boolean devMode = false;
     private Room room = null;
@@ -103,13 +103,13 @@ public class GameState implements Serializable{
         this.enemies = enemies;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(String name) {
-        player = new Player(name);
-    }
+//    public Player getPlayer() {
+//        return player;
+//    }
+//
+//    public void setPlayer(String name) {
+//        player = new Player(name);
+//    }
 
     public ItemTree getTree() {
         return tree;
