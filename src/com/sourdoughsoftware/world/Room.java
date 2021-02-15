@@ -5,7 +5,9 @@ import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
+import static com.sourdoughsoftware.utility.Colors.*;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -104,15 +106,23 @@ public class Room implements java.io.Serializable, Savable {
         if(roomItems.size() == 0) {
             return "You find nothing in the room.";
         }
-        result.append("You find: ");
+        String examine = ANSI_GREEN + "Examine" + ANSI_RESET;
+        result.append("You " + examine + " and See: ");
         roomItems.forEach(item -> {
-//            if (item instanceof Enemy) {
-//                result.append(item.getName())
-//            }
-            result.append(item.getName() + " " + item.getDescription() + ", and a ");
+            if (item instanceof Enemy) {
+                String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
+                result.append( ANSI_RESET + ANSI_RED + item.getName() + ANSI_RESET + ANSI_GREEN + " HP: " + ((Enemy) item).getHp()
+                   + ANSI_RESET);
+                result.append(enemyD);
+            }else{
+                String itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
+                result.append(ANSI_RESET+ ANSI_CYAN + "An ingredient: " + ANSI_RESET+ ANSI_BLUE + item.getName() + ANSI_RESET  + "\n "
+                        );
+                result.append(itemD);
+            }
+
         });
         result.setLength(result.length() - 6);
-        result.append(".");
         return result.toString();
     }
 
