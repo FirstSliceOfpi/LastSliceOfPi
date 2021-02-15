@@ -8,13 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable {
+    static Player player = new Player("edgar");
     private String name;
     private int hp;
 
     public Inventory inventory = new Inventory();
 
-    public Player(String name) {
+    private Player(String name) {
         this.name = name;
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 
     public String getName() {

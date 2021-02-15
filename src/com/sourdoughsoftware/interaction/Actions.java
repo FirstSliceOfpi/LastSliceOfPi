@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.interaction;
 
+import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
@@ -7,20 +8,27 @@ import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.gamepieces.Player;
+import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.world.Directions;
+import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.world.Room;
+
 import com.sourdoughsoftware.world.World;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.List;
 
 import static com.sourdoughsoftware.utility.Colors.*;
+
 
 public class Actions {
     private static GameState gs = GameState.getInstance();
@@ -28,51 +36,74 @@ public class Actions {
 
     public static String execute() {
 
-        if (command.getVerb() == null) {
+        if (Command.getVerb() == null) {
             return "no verb in input";
         }
-        if (command.getNoun() == null
-                && !(command.getVerb().getGroup() == VerbGroup.SAVE
-                || command.getVerb().getGroup() == VerbGroup.LOAD
-                || command.getVerb().getGroup() == VerbGroup.QUIT
-                || command.getVerb().getGroup() == VerbGroup.DEV
-        )
-        ) {
+        if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
+                || Command.getVerb().getGroup() == VerbGroup.load
+                || Command.getVerb().getGroup() == VerbGroup.quit
+                || Command.getVerb().getGroup() == VerbGroup.dev)) {
             return "no noun in input";
         }
 
-        VerbGroup group = command.getVerb().getGroup();
-        if (group.equals(VerbGroup.MERGE) && command.getTargetNoun() == null) {
-            return "You need two items to merge";
-        }
-
-        switch (group) {
-            case GRAB:
-                return grab(command.getNoun());
-            case MOVE:
-                return move(command.getNoun(), command.getVerb());
-            case MERGE:
-                return merge(command.getNoun(), command.getVerb(), command.getTargetNoun());
-            case SAVE:
+        switch (Command.getVerb().getGroup()) {
+            case move:
+                return move(Command.getNoun());
+            case merge:
+                return merge(Command.getNoun(), Command.getVerb(), Command.getTargetNoun());
+            case save:
                 return save();
-            case LOAD:
+            case load:
                 return load();
-            case QUIT:
+            case quit:
                 return quit();
-            case DEV:
+            case dev:
                 return dev();
+            case getDescription:
+                return getDescription();
+//            case print:
+//                return print();
             case WIELD:
-                return wield(command.getNoun(), command.getVerb());
+                return wield(Command.getNoun(), Command.getVerb());
             case ATTACK:
-                return attack(command.getNoun(),command.getVerb(), command.getTargetNoun());
-            case EXAMINE:
-                return examine(command.getNoun());
+                return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
+//            case EXAMINE:
+//                return print();
             case SHOW:
                 return show();
             default:
-                command.getNoun().getAction(command.getVerb().getName());
-                return "";
+                if (Command.getTargetNoun() == null) {
+                    return Command.getNoun().getAction(Command.getVerb().getName());
+                } else {
+                    return Command.getTargetNoun().getAction(Command.getVerb().getName());
+                }
         }
+    }
+
+    public static String destroyNoun(String message) {
+        Dictionary.INSTANCE.deleteNoun(Command.getNoun());
+        return message;
+    }
+
+    public static String createNoun(String name) {
+        Noun noun = new Noun(name, "this is a noun");
+        Dictionary.INSTANCE.add(noun);
+        return name + " created";
+    }
+
+    public static String getDescription() {
+        return Command.getNoun().getDescription();
+    }
+
+    public static String changeDescription(String newDescription) {
+        Noun noun;
+        if(Command.getTargetNoun() != null) {
+            noun = Command.getTargetNoun();
+        } else {
+            noun = Command.getNoun();
+        }
+        noun.setDescription(newDescription);
+        return noun.getDescription();
     }
 
     public static String dev() {
@@ -90,7 +121,7 @@ public class Actions {
             System.out.println("And they lived happily ever after. The end.");
             System.exit(0);
         }
-        return "";
+        return "Error in quit";
     }
 
     public static String save() {
@@ -143,8 +174,16 @@ public class Actions {
 
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
+        VerbGroup group = verb.getGroup();
+
+        if (group.equals(VerbGroup.merge) && targetNoun == null) {
+            return "You need two items to merge";
+        }
+
+        GameState gs = GameState.getInstance();
+
         if (!gs.getDevMode()) {
-            if (!gs.getPlayer().getInventory().has(noun) || !gs.getPlayer().getInventory().has(noun)) {
+            if (!Player.getPlayer().getInventory().has(noun) || !Player.getPlayer().getInventory().has(noun)) {
                 return "One or more items are not in your inventory.";
             }
         }
@@ -160,9 +199,9 @@ public class Actions {
         }
         Pie combinedPie = CombinePies.combine(pie1, pie2, gs.getTree());
         if (combinedPie != pie1) {
-            gs.getPlayer().getInventory().drop(noun);
-            gs.getPlayer().getInventory().drop(targetNoun);
-            gs.getPlayer().getInventory().add(combinedPie);
+            Player.getPlayer().getInventory().drop(noun);
+            Player.getPlayer().getInventory().drop(targetNoun);
+            Player.getPlayer().getInventory().add(combinedPie);
             return "YOU " + verb.getName() + "d " + noun.getName()
                     + " and " + targetNoun.getName()
                     + " to make a " + combinedPie.getName();
@@ -171,8 +210,7 @@ public class Actions {
         }
     }
 
-    private static String move(Noun noun, Verb verb) {
-        // Easter Egg
+    private static String move(Noun noun) {
         if (noun.getName().equals("bananas")) {
             return printTy();
         }
@@ -189,14 +227,14 @@ public class Actions {
         return "";
     }
 
-    private static String grab(Noun noun) {
-        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
-        String success = noun.getName() + " not found in the room.";
-        if(gs.getRoom().removeItem((Item) noun)) {
-            success = gs.getPlayer().getInventory().add(noun);
-        }
-        return success;
-    }
+//    private static String grab(Noun noun) {
+//        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
+//        String success = noun.getName() + " not found in the room.";
+//        if(gs.getRoom().removeItem((Item) noun)) {
+//            success = Player.getPlayer().getInventory().add(noun);
+//        }
+//        return success;
+//    }
 
     public static String show() {
         StringBuilder builder = new StringBuilder();
@@ -207,13 +245,40 @@ public class Actions {
         return builder.toString();
     }
 
-    public static void print(String str) {
-        System.out.println(str);
+    public static String print(String str) {
+        return str;
     }
 
-    public static void changeDescription(String str) {
-        Noun noun = command.getNoun();
-        noun.setDescription(str);
+    public static String dropFromRoom(String message) throws ChainOfEventException {
+        Room currentRoom = World.getCurrentRoom();
+        Noun noun = Command.getNoun();
+        noun = currentRoom.dropItem(noun);
+        if(noun == null) {
+            throw new ChainOfEventException("That is not in that room");
+        }
+        return Command.getNoun() + " no longer in " + currentRoom.getName();
+    }
+
+    public static String addToRoom(String message) {
+        Room currentRoom = World.getCurrentRoom();
+        Noun noun = Command.getNoun();
+        currentRoom.addItem(noun);
+        return Command.getNoun() + " is now located in " + currentRoom.getName()+".";
+    }
+
+    public static String dropFromInventory(String message) {
+        Player player = Player.getPlayer();
+        Noun noun = Command.getNoun();
+        player.getInventory().drop(noun);
+        return "You drop the " + noun.getName()+".";
+
+    }
+
+    public static String addToInventory(String str) {
+        Player player = Player.getPlayer();
+        Noun noun = Command.getNoun();
+        player.getInventory().add(noun);
+        return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());
     }
 
     public static void cheat(String cheat) {

@@ -46,4 +46,15 @@ public enum Dictionary implements Serializable {
     public void setNouns(Map nouns) {
         this.nouns = nouns;
     }
+
+    public void deleteNoun(Noun noun) {
+        Set<Noun> nounSet = nouns.get(noun.getName());
+
+        if(nounSet.size() == 1) {
+            nouns.remove(noun.getName());
+        } else {
+            nounSet.remove(noun);
+        }
+    }
+
 }

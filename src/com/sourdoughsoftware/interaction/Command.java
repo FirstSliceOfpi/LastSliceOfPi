@@ -11,15 +11,26 @@ import com.sourdoughsoftware.gamepieces.Pie;
 import java.io.Serializable;
 
 public class Command implements Serializable {
-    private Noun noun;
-    private Verb verb;
-    private Noun targetNoun = null;
+    private static Noun noun;
+    private static Verb verb;
+    private static Noun targetNoun = null;
+
     private static Command instance;
 
     private Command() {
       noun = null;
       verb = null;
     }
+
+    private Command(Noun noun, Verb verb) {
+        Command.noun = noun;
+        Command.verb = verb;
+    }
+    private Command(Noun noun, Verb verb, Noun targetNoun) {
+        this(noun, verb);
+        Command.targetNoun = targetNoun;
+    }
+
 
     public static Command getInstance() {
         instance = instance != null ? instance : new Command();
@@ -39,15 +50,15 @@ public class Command implements Serializable {
         return instance;
     }
 
-    public Noun getNoun() {
+    public static Noun getNoun() {
         return noun;
     }
 
-    public Verb getVerb() {
+    public static Verb getVerb() {
         return verb;
     }
 
-    public Noun getTargetNoun() {
+    public static Noun getTargetNoun() {
         return targetNoun;
     }
 }

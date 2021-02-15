@@ -20,6 +20,7 @@ public class World {
     List<Room> gameMap = new ArrayList<>();
     List<Enemy> enemies = XmlParser.parseEnemy();
     static GameState gs = GameState.getInstance();
+    private static Room currentRoom;
 
     public World() throws IOException, SAXException, ParserConfigurationException {
         HashMap<String, Enemy> villains = new HashMap<>();
@@ -48,22 +49,26 @@ public class World {
         winniesTree.createExit(Directions.east, tomorrowLand);
         tomorrowLand.createExit(Directions.south, goofysHouse);
         goofysHouse.createExit(Directions.north, tomorrowLand);
+        currentRoom = tomorrowLand;
         new Noun("room","All rooms.");
     }
 
 
     public static String changeCurrentRoom(Directions.Direction direction) {
-        Map<Directions.Direction, Room> exits = gs.getRoom().getExits();
+        Map<Directions.Direction, Room> exits = currentRoom.getExits();
         if(exits.containsKey(direction)){
-            gs.getRoom().clearItems();
-            gs.setRoom(exits.get(direction));
-            gs.getRoom().addItemsToRoomOnEntering();
-            return "You have entered the " + gs.getRoom().getName() + "\n" + gs.getRoom().getDescription();
+            currentRoom = exits.get(direction);
+            currentRoom.addItemsToRoomOnEntering();
+            return "You have entered the " + currentRoom.getName() + "\n" + currentRoom.getDescription();
 
         } else {
             return ("That is not an exit.");
         }
 
+    }
+
+    public static Room getCurrentRoom() {
+        return currentRoom;
     }
 
     void setEnemies(List<Enemy> enemies) {this.enemies = enemies;}
