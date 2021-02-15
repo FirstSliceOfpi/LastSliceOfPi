@@ -83,7 +83,13 @@ public class Room implements java.io.Serializable{
     }
 
     public String getDescription() {
-        return description;
+        return description + " " + getItems();
+    }
+
+    public String getItems() {
+        StringBuilder sb = new StringBuilder();
+        items.forEach(item ->sb.append("You see a " + item.getName()+"."));
+        return sb.toString();
     }
 
     public void setDescription(String description) {
