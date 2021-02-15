@@ -31,22 +31,15 @@ public class Command implements Serializable {
         Command.targetNoun = targetNoun;
     }
 
-
     public static Command getInstance() {
         instance = instance != null ? instance : new Command();
         return instance;
     }
 
-    public Command setInstance(Noun noun, Verb verb) {
-        this.noun = noun;
-        this.verb = verb;
-        return instance;
-    }
-
     public Command setInstance(Noun noun, Verb verb, Noun targetNoun) {
-        this.noun = noun;
-        this.verb = verb;
-        this.targetNoun = targetNoun;
+        Command.noun = noun;
+        Command.verb = verb;
+        Command.targetNoun = targetNoun;
         return instance;
     }
 
