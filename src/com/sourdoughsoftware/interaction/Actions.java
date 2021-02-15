@@ -262,7 +262,7 @@ public class Actions {
     public static String addToRoom(String message) {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        currentRoom.addItem(noun);
+        currentRoom.addToRoom((Item) noun);
         return Command.getNoun() + " is now located in " + currentRoom.getName()+".";
     }
 
@@ -303,16 +303,18 @@ public class Actions {
     }
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
-        System.out.println(noun +  " " +  verb.getName() + " " + targetNoun);
+        StringBuilder response = new StringBuilder();
+
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie & noun instanceof Enemy) {
-                Enemy enemy = (Enemy) noun;
-                Pie weapon = (Pie) targetNoun;
+                Enemy enemy = (Enemy) targetNoun;
+                Pie weapon = (Pie) noun;
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - weapon.getAttackPoints();
                     enemy.setHp(newHP);
-                    System.out.println(enemy.getHp());
-                    System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
+                    response.append("You " + verb.getName() + enemy.getName() + " with " + targetNoun.getName() + "."
+                            + enemy.getName() + " has " + enemy.getHp() +" hp");
+
                 }
                 if (enemy.getHp() < 0) {
                     return ((Pie) noun).getVictory();
@@ -320,7 +322,7 @@ public class Actions {
             } else {
                 return "What are you doing sir? ";
             }
-        }return "hmmmm";
+        }return response.toString();
     }
 
     public static void setGs(GameState GS) {
