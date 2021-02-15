@@ -58,8 +58,9 @@ public class World {
         Map<Directions.Direction, Room> exits = currentRoom.getExits();
         if(exits.containsKey(direction)){
             currentRoom = exits.get(direction);
+            currentRoom.clearItems();
             currentRoom.addItemsToRoomOnEntering();
-            return "You have entered the " + currentRoom.getName() + "\n" + currentRoom.getDescription();
+            return "You have entered the ";
 
         } else {
             return ("That is not an exit.");
