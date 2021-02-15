@@ -73,17 +73,15 @@ public class Actions {
                 return show();
             default:
                 if (Command.getTargetNoun() == null) {
-                    Command.getNoun().getAction(Command.getVerb().getName());
+                    return Command.getNoun().getAction(Command.getVerb().getName());
                 } else {
-                    Command.getTargetNoun().getAction(Command.getVerb().getName());
+                    return Command.getTargetNoun().getAction(Command.getVerb().getName());
                 }
         }
-        return ".";
     }
 
     public static String destroyNoun(String message) {
         Dictionary.INSTANCE.deleteNoun(Command.getNoun());
-        System.out.println(message);
         return message;
     }
 
@@ -123,7 +121,7 @@ public class Actions {
             System.out.println("And they lived happily ever after. The end.");
             System.exit(0);
         }
-        return "";
+        return "Error in quit";
     }
 
     public static String save() {
@@ -224,14 +222,14 @@ public class Actions {
         return "";
     }
 
-    private static String grab(Noun noun) {
-        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
-        String success = noun.getName() + " not found in the room.";
-        if(gs.getRoom().removeItem((Item) noun)) {
-            success = Player.getPlayer().getInventory().add(noun);
-        }
-        return success;
-    }
+//    private static String grab(Noun noun) {
+//        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
+//        String success = noun.getName() + " not found in the room.";
+//        if(gs.getRoom().removeItem((Item) noun)) {
+//            success = Player.getPlayer().getInventory().add(noun);
+//        }
+//        return success;
+//    }
 
     public static String show() {
         StringBuilder builder = new StringBuilder();
@@ -242,33 +240,39 @@ public class Actions {
         return builder.toString();
     }
 
-    public static void print(String str) {
-        System.out.println(str);
+    public static String print(String str) {
+        return str;
     }
 
-    public static void dropFromRoom(String message) {
+    public static String dropFromRoom(String message) {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        currentRoom.dropItem(noun);
+        noun = currentRoom.dropItem(noun);
+        if(noun == null) {
+            return "That's not in the room.";
+        }
+        return Command.getNoun() + " no longer in " + currentRoom.getName();
     }
 
-    public static void addToRoom(String message) {
+    public static String addToRoom(String message) {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
         currentRoom.addItem(noun);
+        return Command.getNoun() + " is now located in " + currentRoom.getName()+".";
     }
 
-    public static void dropFromInventory(String message) {
+    public static String dropFromInventory(String message) {
         Player player = Player.getPlayer();
         Noun noun = Command.getNoun();
         player.getInventory().drop(noun);
+        return "You drop the " + noun.getName()+".";
+
     }
 
     public static String addToInventory(String str) {
         Player player = Player.getPlayer();
         Noun noun = Command.getNoun();
         player.getInventory().add(noun);
-        player.getInventory().getCurrentInventory().forEach(noun1 -> System.out.println(noun1.getName()));
         return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());
     }
 

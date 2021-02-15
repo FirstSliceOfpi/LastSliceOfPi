@@ -33,26 +33,28 @@ public class Noun implements DictionaryEntry, Serializable {
         interactions.put(verb, events);
     }
 
-    public boolean getAction(String verb) {
+    public String getAction(String verb) {
+        StringBuilder response = new StringBuilder();
         ArrayList<Event> events = interactions.get(verb);
         Actions act = new Actions();
         if(events == null) {
-            return false;
+            return null;
         }
 
         for(Event event : events) {
             if(event.key != null && event.key != Command.getNoun()) {
-                return false;
+                response.append("You can't " + Command.getVerb().getName() + " a " + getName());
             }
             try {
                 Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
-                method.invoke(act ,event.message.strip());
+                response.append(method.invoke(act ,event.message.strip())+ " ");
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
-                return false;
+                System.out.println(event.verbGroup);
+                return "Error";
             }
         }
-        return true;
+        return response.toString();
     }
 
     public Noun(String name, String description) {
