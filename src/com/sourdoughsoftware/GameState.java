@@ -22,7 +22,6 @@ public class GameState implements Serializable{
     private static GameState instance = null;
     private ItemTree tree;
     private ArrayList findableWeapons;
-    private Player player = new Player("Edgar");
     private Command command = null;
     private Boolean devMode = false;
     private Room room = null;
@@ -36,7 +35,7 @@ public class GameState implements Serializable{
     public static boolean saveGame(File fileToSave) {
         GameState gs = GameState.getInstance();
         try {
-            gs.setInventory(gs.getPlayer().getInventory().getCurrentInventory());
+            gs.setInventory(Player.getPlayer().getInventory().getCurrentInventory());
             FileOutputStream fileStream = new FileOutputStream(fileToSave.getAbsolutePath());
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
             objectStream.writeObject(Dictionary.INSTANCE.getNouns());
@@ -92,14 +91,6 @@ public class GameState implements Serializable{
 
     public void setFindableWeapons(ArrayList findableWeapons) {
         this.findableWeapons = findableWeapons;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(String name) {
-        player = new Player(name);
     }
 
     public ItemTree getTree() {

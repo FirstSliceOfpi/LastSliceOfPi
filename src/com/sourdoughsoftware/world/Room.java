@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.world;
 
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Item;
 
@@ -18,6 +19,9 @@ public class Room implements java.io.Serializable{
     private Map<String, Integer> exitsById;
     private List<Item> roomItems;
     private final Map<Directions.Direction, Room> exits = new HashMap<>();
+    private List<Noun> items = new ArrayList<>();
+
+
 
 
     public Room(String name, String description) {
@@ -28,6 +32,18 @@ public class Room implements java.io.Serializable{
     }
     public Map<Directions.Direction, Room> getExits() {
         return exits;
+    }
+
+    public Noun dropItem(Noun noun) {
+        Noun dropped = items.get(items.indexOf(noun));
+        items.remove(noun);
+        return dropped;
+    }
+
+    public void addItem(Noun noun) {
+        items.add(noun);
+        items.forEach(item -> System.out.println(item.getName()));
+        System.out.println(getName());
     }
 
     public void createExit(Directions.Direction direction, Room newExit) {

@@ -4,11 +4,14 @@ package com.sourdoughsoftware.utility;
  * various xml documents for game play
  */
 
+import com.sourdoughsoftware.dictionary.Dictionary;
+import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.dictionary.Verb;
 import com.sourdoughsoftware.dictionary.VerbGroup;
+import com.sourdoughsoftware.interaction.Event;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -56,6 +59,8 @@ public class XmlParser {
     }
 
     public static void parseNouns() {
+        HashMap<String, Noun> temp = new HashMap<>();
+
         ItemTree tree = new ItemTree();
         try {
             Document document = loadXML("resources/Nouns.xml");
@@ -66,6 +71,7 @@ public class XmlParser {
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element currentElement = (Element) node;
+
                     String name = Objects.requireNonNull(
                             currentElement.getElementsByTagName("name"))
                             .item(0).getTextContent();
@@ -76,18 +82,29 @@ public class XmlParser {
                             currentElement.getElementsByTagName("attackPoints"))
                             .item(0).getTextContent();
                     Item noun = new Item(name, description);
+                    temp.put(name, noun);
 
                     NodeList modifiers = Objects.requireNonNull(
                             currentElement.getElementsByTagName("modifiers"))
                             .item(0).getChildNodes();
-                    ArrayList<String[]> actionList = new ArrayList<>();
+
+                    ArrayList<Event> eventsList;
+
                     for (int i = 0; i < modifiers.getLength(); i++) {
                         Node modNode = modifiers.item(i);
+
                         if(modNode.getNodeType() != Node.ELEMENT_NODE ) { continue; }
                         Element mod = (Element) modNode;
+                        String key = ((Element) modNode).getAttribute("key");
+                        Noun keyNoun = temp.get(key);
+
+
                         String modName = mod.getNodeName(); // <light>
-                        actionList = addActions(mod);
-                        noun.setAction(modName, actionList);
+                        if(Dictionary.INSTANCE.getVerb(modName) == null) {
+                            new Verb(modName, VerbGroup.unique);
+                        }
+                        eventsList = addActions(mod, keyNoun);
+                        noun.setAction(modName, eventsList);
                     }
                 }
             }
@@ -98,10 +115,10 @@ public class XmlParser {
 
     ;
 
-    private static ArrayList<String[]> addActions(Element mod) {
-        ArrayList<String[]> actionList = new ArrayList<>();
+    private static ArrayList<Event> addActions(Element mod, Noun key) {
+        ArrayList<Event> eventList = new ArrayList<>();
         NodeList actions = mod.getElementsByTagName("action");
-        String[] actionArray = null;
+        Event event = null;
         for (int j = 0; j < actions.getLength(); j++) {
             Node action = actions.item(j); // <action>
             NodeList children = action.getChildNodes();
@@ -110,10 +127,10 @@ public class XmlParser {
                 if(children.item(i).getNodeType() != 1) { continue; }
                 argument = children.item(i).getTextContent().strip();
             }
-            actionArray = new String[]{action.getFirstChild().getTextContent().strip(), argument}; // [print, The candle is lit]
-            actionList.add(actionArray);
+            event = new Event(VerbGroup.valueOf(action.getFirstChild().getTextContent().strip()), argument, key); // [print, The candle is lit]
+            eventList.add(event);
         }
-        return actionList;
+        return eventList;
     }
 
 

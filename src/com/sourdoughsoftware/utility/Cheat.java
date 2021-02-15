@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,7 +22,7 @@ public class Cheat {
     public void addAllPiesToInventory() {
         Node[] allItems = GameState.getInstance().getTree().getAllItemsBFS();
         for(Node node : allItems) {
-            GameState.getInstance().getPlayer().getInventory().add(node.getItem());
+            Player.getPlayer().getInventory().add(node.getItem());
         }
     }
 

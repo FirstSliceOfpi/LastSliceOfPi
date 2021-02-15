@@ -2,11 +2,16 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.Command;
+import com.sourdoughsoftware.interaction.Event;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Noun implements DictionaryEntry, Serializable {
 
@@ -21,35 +26,33 @@ public class Noun implements DictionaryEntry, Serializable {
     private boolean dropable = false;
     private boolean wieldable = false;
 
-    public ArrayList<String[]> light = null;
-    public ArrayList<String[]> cheat = null;
+    public HashMap<String, ArrayList<Event>> interactions = new HashMap<>();
 
-    public void setAction(String action, ArrayList<String[]> argument) {
-        try {
-            Field field = this.getClass().getField(action.strip());
-            field.set(this,argument);
-        }catch(Exception e) {
-            if(GameState.getInstance().getDevMode()) { System.out.println(e); };
-        }
+
+    public void setAction(String verb, ArrayList<Event> events) {
+        interactions.put(verb, events);
     }
 
-    public ArrayList<String[]> getAction(String verb) {
-        ArrayList<String[]> actions = null;
-        try {
-            actions = (ArrayList<String[]>) this.getClass().getField(verb).get(this);
-            try{
-                Actions act = new Actions();
-                for(String[] action : actions) {
-                     Method method = act.getClass().getMethod(action[0].strip(),String.class);
-                     method.invoke(act,action[1].strip());
-                }
-            }catch(Exception e) {
-                if(GameState.getInstance().getDevMode()) { System.out.println(e); };
-            }
-        } catch (Exception e) {
-            if(GameState.getInstance().getDevMode()) { System.out.println(e); };
+    public boolean getAction(String verb) {
+        ArrayList<Event> events = interactions.get(verb);
+        Actions act = new Actions();
+        if(events == null) {
+            return false;
         }
-        return actions;
+
+        for(Event event : events) {
+            if(event.key != null && event.key != Command.getNoun()) {
+                return false;
+            }
+            try {
+                Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
+                method.invoke(act ,event.message.strip());
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
+                return false;
+            }
+        }
+        return true;
     }
 
     public Noun(String name, String description) {
@@ -75,7 +78,7 @@ public class Noun implements DictionaryEntry, Serializable {
         return description;
     }
 
-    public void setDescription(String str) { this.description = description; }
+    public void setDescription(String description) { this.description = description; }
 
     public boolean isFindable() {
         return findable;

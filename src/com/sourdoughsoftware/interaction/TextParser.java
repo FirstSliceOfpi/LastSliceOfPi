@@ -20,12 +20,13 @@ public class TextParser {
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
         Noun targetNoun = getNoun(targetNounCandidates, userInputWords);
 
-        if (targetNoun == null) {
-            Command.getInstance().setInstance(noun, verb);
-        } else {
-            Command.getInstance().setInstance(noun, verb, targetNoun);
+        if(userInputWords.contains("with") && targetNoun != null) {
+            Noun temp = targetNoun;
+            targetNoun = noun;
+            noun = temp;
         }
 
+        Command.getInstance().setInstance(noun, verb, targetNoun);
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
