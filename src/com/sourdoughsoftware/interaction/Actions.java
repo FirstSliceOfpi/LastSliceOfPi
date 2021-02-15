@@ -149,23 +149,28 @@ public class Actions {
                 : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
 
-//    private static String print(Noun noun) {
-//        StringBuilder result = new StringBuilder(noun.getDescription());
-//        result.append("\n");
-//        if (noun.getName().equals("room")) {
-//            if(gs.getRoom().getRoomItems().size() == 0) {
-//                return "You find nothing in the room.";
-//            }
-//            result.append("You find");
-//            for (Item item : gs.getRoom().getRoomItems()) {
-//                result.append(" " + item.getName() + ",");
-//            }
-//            result.append(" in the room.");
-//        } else {
-//            result.append(noun.getDescription());
-//        }
-//        return result.toString();
-//    }
+    private static String examine(Noun noun) {
+        StringBuilder result = new StringBuilder();
+        result.append("\n");
+        if (noun.getName().equals("room")) {
+            if(gs.getRoom().getRoomItems().size() == 0) {
+                return "You find nothing in the room.";
+            }
+            result.append("You find");
+            for (Item item : gs.getRoom().getRoomItems()) {
+                if (item instanceof Enemy) {
+                    result.append(" " + item.getName() + " ( " + ((Enemy)item).getHp() + " ),");
+                }else {
+                    result.append(" " + item.getName() + ",");
+                }
+
+            }
+            result.append(" in the room.");
+        } else {
+            result.append(noun.getDescription());
+        }
+        return result.toString();
+    }
 
     // merge or combine to weapons for a higher level weapon
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
@@ -298,6 +303,7 @@ public class Actions {
     }
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+        System.out.println(noun +  " " +  verb.getName() + " " + targetNoun);
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie & noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
@@ -305,6 +311,7 @@ public class Actions {
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - weapon.getAttackPoints();
                     enemy.setHp(newHP);
+                    System.out.println(enemy.getHp());
                     System.out.println("YOU " + verb.getName()+ enemy.getName() + " with" + targetNoun.getName());
                 }
                 if (enemy.getHp() < 0) {

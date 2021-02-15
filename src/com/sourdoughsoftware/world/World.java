@@ -33,7 +33,16 @@ public class World {
         Room winniesTree = new Room("Winnie The Pooh's Tree", "Lots of honey in here.");
         Room goofysHouse = new Room("Goofy's house", "You see Goofy chilling on his couch.");
         gs.setRoom(tomorrowLand);
-
+        gameMap.add(tomorrowLand);
+        gameMap.add(captianHooksShip);
+        gameMap.add(winniesTree);
+        gameMap.add(goofysHouse);
+        for (Room room : gameMap) {
+            int index = (int) (Math.random() * enemies.size());
+            Enemy enemy = enemies.remove(index);
+            room.addToRoom(enemy);
+        }
+        System.out.println("Enemy added to room");
         tomorrowLand.createExit(Directions.east, captianHooksShip);
         captianHooksShip.createExit(Directions.west, tomorrowLand);
         tomorrowLand.createExit(Directions.west, winniesTree);

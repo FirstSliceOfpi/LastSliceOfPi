@@ -2,6 +2,7 @@ package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 
 import java.util.*;
@@ -54,7 +55,13 @@ public class Room implements java.io.Serializable{
     }
 
     public void clearItems() {
-        roomItems = new ArrayList();
+        ArrayList items = new ArrayList();
+        for (Item item : roomItems) {
+            if (item instanceof Enemy) {
+                items.add(item);
+            }
+        }
+        roomItems = items;
     }
 
     public void addExitbyID(String dir, Integer roomID){
