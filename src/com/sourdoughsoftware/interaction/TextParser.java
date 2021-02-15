@@ -55,7 +55,6 @@ public class TextParser {
                 System.out.println(nounSet.size());
                 System.out.println("STILL AN ISSUE BECAUSE BOTH ITEMS ARE IN THE SAME ROOM AND USER NEEDS TO BE MORE SPECIFIC");
             }
-            System.out.println(nounSet.size() + "WTF" + World.getCurrentRoom().getItems() + " " + Player.getPlayer().getInventory().getCurrentInventory());
             noun = nounSet.iterator().next();
         }
 

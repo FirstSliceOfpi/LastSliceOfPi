@@ -1,4 +1,5 @@
 package com.sourdoughsoftware;
+import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -22,6 +23,7 @@ public class Game {
         XmlParser.parseEnemy();
         XmlParser.parseNouns();
         new Directions();
+        Player.getPlayer();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();
         ItemTree tree = (ItemTree) pies.get("pieTree");
