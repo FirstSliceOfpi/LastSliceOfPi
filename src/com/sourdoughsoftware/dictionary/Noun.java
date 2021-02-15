@@ -2,6 +2,7 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Command;
 import com.sourdoughsoftware.interaction.Event;
 
@@ -50,8 +51,11 @@ public class Noun implements DictionaryEntry, Serializable {
                 response.append(method.invoke(act ,event.message.strip())+ " ");
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
-                System.out.println(event.verbGroup);
-                return "Error";
+                if(e instanceof InvocationTargetException) {
+                    return e.getCause().getMessage();
+                }
+            } catch (ChainOfEventException e) {
+                return e.getMessage();
             }
         }
         return response.toString();

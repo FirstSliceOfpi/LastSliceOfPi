@@ -244,12 +244,12 @@ public class Actions {
         return str;
     }
 
-    public static String dropFromRoom(String message) {
+    public static String dropFromRoom(String message) throws Exception {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
         noun = currentRoom.dropItem(noun);
         if(noun == null) {
-            return "That's not in the room.";
+            throw new Exception("That is not in that room");
         }
         return Command.getNoun() + " no longer in " + currentRoom.getName();
     }

@@ -35,7 +35,10 @@ public class Room implements java.io.Serializable{
     }
 
     public Noun dropItem(Noun noun) {
-        Noun dropped = items.get(items.indexOf(noun));
+        int i = items.indexOf(noun);
+        if(i == -1) return null;
+
+        Noun dropped = items.get(i);
         items.remove(noun);
         return dropped;
     }
