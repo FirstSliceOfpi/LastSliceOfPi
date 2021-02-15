@@ -93,9 +93,9 @@ public class Actions {
 
     public static String getDescription() {
         if (Command.getNoun().getName().equals("room")) {
-            return  World.getCurrentRoom().getRoomItems();
+            return  World.getCurrentRoom().getRoomItems() + ANSI_RESET;
         }
-        return Command.getNoun().getDescription();
+        return Command.getNoun().getDescription() + ANSI_RESET;
     }
 
     public static String changeDescription(String newDescription) {
