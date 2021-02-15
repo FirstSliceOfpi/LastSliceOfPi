@@ -51,14 +51,14 @@ public class WelcomeScreen {
         String gameType = Prompter.prompt("Please make a selection >>> ");
         if (gameType.matches("1")) {
             openingCredits.stopJuke();
-            gameMusic.startJuke();
+//            gameMusic.startJuke();
             gameMusic.turnTheDial((float) -8);
             Game myGame = new Game();
             myGame.start();
         }else if (gameType.matches("2")) {
             try {
                 openingCredits.stopJuke();
-                gameMusic.startJuke();
+//                gameMusic.startJuke();
                 gameMusic.turnTheDial((float) -8);
                 GameState.getInstance();
                 Game myGame = new Game();

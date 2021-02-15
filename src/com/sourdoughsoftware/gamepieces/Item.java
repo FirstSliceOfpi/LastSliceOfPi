@@ -13,7 +13,7 @@ public class Item extends Noun implements Serializable {
         super(name, description);
         setGrabable(true);
         setDropable(true);
-        this.setAction("grab", new ArrayList<>(){{add(new Event(VerbGroup.addToInventory, "added to inventory"));add(new Event(VerbGroup.dropFromRoom, "dropped from room"));}});
+        this.setAction("grab", new ArrayList<>(){{add(new Event(VerbGroup.dropFromRoom, "dropped from room"));add(new Event(VerbGroup.addToInventory, "added to inventory"));}});
         this.setAction("drop", new ArrayList<>(){{add(new Event(VerbGroup.dropFromInventory, "dropped to inventory"));add(new Event(VerbGroup.addToRoom, "add from room"));}});
 
     }
