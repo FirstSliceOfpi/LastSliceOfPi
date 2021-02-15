@@ -31,8 +31,6 @@ import static com.sourdoughsoftware.utility.Colors.*;
 
 
 public class Actions {
-    private static GameState gs = GameState.getInstance();
-    private static Command command = gs.getCommand();
 
     public static String execute() {
 
@@ -81,7 +79,7 @@ public class Actions {
     }
 
     public static String destroyNoun(String message) {
-        Dictionary.INSTANCE.deleteNoun(Command.getNoun());
+       // Dictionary.INSTANCE.deleteNoun(Command.getNoun());
         return message;
     }
 
@@ -110,8 +108,8 @@ public class Actions {
     }
 
     public static String dev() {
-        gs.setDevMode();
-        return gs.getDevMode()
+        GameState.setDevMode();
+        return GameState.getDevMode()
                 ? ANSI_BLUE + "Dev mode enabled" + ANSI_RESET
                 : ANSI_YELLOW + "Dev mode disabled" + ANSI_RESET;
     }
@@ -135,7 +133,7 @@ public class Actions {
         }
         String fileName = Prompter.prompt("What do you want to name your save file?");
         File fileToSave = new File(dir, fileName);
-        return gs.saveGame(fileToSave) ?
+        return GameState.saveGame(fileToSave) ?
                 "Your game -- " + ANSI_GREEN + fileToSave + ANSI_RESET + " -- was saved."
                 : ANSI_RED + "Your game was not saved." + ANSI_RESET;
     }
@@ -147,7 +145,7 @@ public class Actions {
         }
         String fileName = Prompter.prompt("What game would you like to load?");
         File fileToLoad = new File(dir, fileName);
-        return gs.loadGame(fileToLoad) ?
+        return GameState.loadGame(fileToLoad) ?
                 "Your game -- " + ANSI_GREEN + fileToLoad + ANSI_RESET + " -- was loaded."
                 : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
@@ -183,15 +181,13 @@ public class Actions {
             return "You need two items to merge";
         }
 
-        GameState gs = GameState.getInstance();
-
-        if (!gs.getDevMode()) {
+        if (!GameState.getDevMode()) {
             if (!Player.getPlayer().getInventory().has(noun) || !Player.getPlayer().getInventory().has(noun)) {
                 return "One or more items are not in your inventory.";
             }
         }
-        Node weapon1Node = gs.getTree().find(noun.getName());
-        Node weapon2Node = gs.getTree().find(targetNoun.getName());
+        Node weapon1Node = GameState.getTree().find(noun.getName());
+        Node weapon2Node = GameState.getTree().find(targetNoun.getName());
         Pie pie1 = null;
         Pie pie2 = null;
         if (weapon1Node != null) {
@@ -200,7 +196,7 @@ public class Actions {
         if (weapon2Node != null) {
             pie2 = (Pie) weapon2Node.getItem();
         }
-        Pie combinedPie = CombinePies.combine(pie1, pie2, gs.getTree());
+        Pie combinedPie = CombinePies.combine(pie1, pie2, GameState.getTree());
         if (combinedPie != pie1) {
             Player.getPlayer().getInventory().drop(noun);
             Player.getPlayer().getInventory().drop(targetNoun);
@@ -292,7 +288,7 @@ public class Actions {
             try {
                 Cheat.getInstance().showCheatArt();
             }catch(Exception e) {
-                if(gs.getDevMode()) System.out.println(e);
+                if(GameState.getDevMode()) System.out.println(e);
             }
         }
     }
@@ -326,10 +322,6 @@ public class Actions {
                 return "What are you doing sir? ";
             }
         }return response.toString();
-    }
-
-    public static void setGs(GameState GS) {
-        gs = GS;
     }
 
    }

@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.world;
 
+import com.sourdoughsoftware.Savable;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Enemy;
@@ -12,24 +13,54 @@ import java.util.*;
  * @author Tyrone Moore, Kelson Smith, and Gina Villegas
  * @version 1.0.0
  */
-public class Room implements java.io.Serializable{
+public class Room implements java.io.Serializable, Savable {
     private Integer roomID;
     private String name;
     private String description;
     private String shortDescription;
     private Map<String, Integer> exitsById;
     private List<Item> roomItems;
-    private final Map<Directions.Direction, Room> exits = new HashMap<>();
-
-
-
+    private Map<Directions.Direction, Room> exits = new HashMap<>();
 
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
         exitsById = new HashMap<>();
         roomItems = new ArrayList<>();
+        saveClass();
     }
+
+    public void saveClass() {
+        GameState.addSavable(this);
+    }
+
+    public HashMap<String, Object> getSaveFields() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("roomID", roomID);
+        result.put("name", name);
+        result.put("description", description);
+        result.put("shortDescription", shortDescription);
+        result.put("exitsById", exitsById);
+        result.put("roomItems", roomItems);
+        result.put("exits", exits);
+        return result;
+    }
+
+    public boolean setSaveFields(HashMap<String, Object> result) {
+        try {
+            result.put("roomID", roomID);
+            result.put("name", name);
+            result.put("description", description);
+            result.put("shortDescription", shortDescription);
+            result.put("exitsById", exitsById);
+            result.put("roomItems", roomItems);
+            result.put("exits", exits);
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
     public Map<Directions.Direction, Room> getExits() {
         return exits;
     }
@@ -136,12 +167,12 @@ public class Room implements java.io.Serializable{
 //    }
     public void addItemsToRoomOnEntering() {
         Random rand = new Random();
-        int maxSize = GameState.getInstance().getFindableWeapons().size()+1;
+        int maxSize = GameState.getFindableWeapons().size()+1;
         int findableWeapon = rand.nextInt(maxSize);
         int difficulty = (int) (maxSize*1.5);
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < maxSize-1) {
-            addToRoom((Item) GameState.getInstance().getFindableWeapons().get(findableWeapon));
+            addToRoom((Item) GameState.getFindableWeapons().get(findableWeapon));
         }
     }
     public boolean addToRoom(Item item) {

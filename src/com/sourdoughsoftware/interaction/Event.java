@@ -3,7 +3,9 @@ package com.sourdoughsoftware.interaction;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.VerbGroup;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
     public VerbGroup verbGroup;
     public String message;
     public Noun key = null;

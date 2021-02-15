@@ -50,7 +50,7 @@ public class Noun implements DictionaryEntry, Serializable {
                 Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
                 response.append(method.invoke(act ,event.message.strip())+ " ");
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                if(GameState.getInstance().getDevMode()) { e.printStackTrace(); };
+                if(GameState.getDevMode()) { e.printStackTrace(); };
                 if(e instanceof InvocationTargetException && e.getCause() instanceof ChainOfEventException) {
                     return e.getCause().getMessage();
                 }

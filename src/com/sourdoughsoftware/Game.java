@@ -1,5 +1,6 @@
 package com.sourdoughsoftware;
-import com.sourdoughsoftware.gamepieces.Player;
+
+import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -15,7 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
-    GameState gs = GameState.getInstance();
+    private ItemTree tree = new ItemTree();
+    private ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
         XmlParser.parseItems();
@@ -23,18 +25,15 @@ public class Game {
         XmlParser.parseEnemy();
         XmlParser.parseNouns();
         new Directions();
-        Player.getPlayer();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();
-        ItemTree tree = (ItemTree) pies.get("pieTree");
-        gs.setTree(tree);
-        gs.setFindableWeapons((ArrayList) pies.get("findablePies"));
+        GameState.setTree((ItemTree) pies.get("pieTree"));
+        GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
     }
 
     public void start() {
         boolean gameOver = false;
         while(!gameOver) {
-            System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
         }

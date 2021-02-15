@@ -60,7 +60,6 @@ public class WelcomeScreen {
                 openingCredits.stopJuke();
 //                gameMusic.startJuke();
                 gameMusic.turnTheDial((float) -8);
-                GameState.getInstance();
                 Game myGame = new Game();
                 System.out.println(Actions.load());
                 myGame.start();

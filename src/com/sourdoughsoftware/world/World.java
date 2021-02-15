@@ -16,7 +16,6 @@ import java.util.*;
 public class World {
     List<Room> gameMap = new ArrayList<>();
     List<Enemy> enemies = XmlParser.parseEnemy();
-    static GameState gs = GameState.getInstance();
     private static Room currentRoom;
 
     public World() throws IOException, SAXException, ParserConfigurationException {
@@ -29,7 +28,7 @@ public class World {
         Room captianHooksShip = new Room("Captain Hook's Ship", "There's lots of crocs in the water!");
         Room winniesTree = new Room("Winnie The Pooh's Tree", "Lots of honey in here.");
         Room goofysHouse = new Room("Goofy's house", "You see Goofy chilling on his couch.");
-        gs.setRoom(tomorrowLand);
+        currentRoom = tomorrowLand;
         gameMap.add(tomorrowLand);
         gameMap.add(captianHooksShip);
         gameMap.add(winniesTree);
@@ -48,6 +47,23 @@ public class World {
         goofysHouse.createExit(Directions.north, tomorrowLand);
         currentRoom = tomorrowLand;
         new Noun("room","All rooms.");
+    }
+
+    public HashMap<String, Object> getSaveFields() {
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        result.put("gameMap", gameMap);
+        result.put("enemies", enemies);
+        return result;
+    }
+
+    public boolean setSaveFields(HashMap<String, Object> result) {
+        try {
+            gameMap = (List<Room>) result.get("gameMap");
+            enemies = (List<Enemy>) result.get("enemies");
+        }catch(Exception e) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -70,9 +86,5 @@ public class World {
     }
 
     void setEnemies(List<Enemy> enemies) {this.enemies = enemies;}
-
-    public static void setGs(GameState GS) {
-        gs = GS;
-    }
 
 }

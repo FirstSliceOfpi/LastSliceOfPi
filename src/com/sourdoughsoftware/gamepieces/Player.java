@@ -1,25 +1,24 @@
 package com.sourdoughsoftware.gamepieces;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.Savable;
 import com.sourdoughsoftware.dictionary.Noun;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class Player implements Serializable {
-    static Player player = new Player("edgar");
+public class Player implements Serializable, Savable {
     private String name;
     private int hp;
+    static Player player = new Player("edgar");
 
     public Inventory inventory = new Inventory();
 
-    private Player(String name) {
+    public Player(String name) {
         this.name = name;
-    }
-
-    public static Player getPlayer() {
-        return player;
+        saveClass();
     }
 
     public String getName() {
@@ -42,13 +41,39 @@ public class Player implements Serializable {
         return inventory;
     }
 
-    public static class Inventory extends Noun implements Serializable{
+    public HashMap<String, Object> getSaveFields() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("hp", hp);
+        return result;
+    }
+
+    public boolean setSaveFields(HashMap<String, Object> result) {
+        try {
+            name = (String) result.get("name");
+            hp = (Integer) result.get("hp");
+        }catch(Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public void saveClass() {
+        GameState.addSavable(this);
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static class Inventory extends Noun implements Serializable, Savable {
         List<Noun> inventory = new ArrayList<>();
-        public Pie currentWeapon;
+        private Pie currentWeapon;
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
             setExaminable(true);
+            saveClass();
         }
 
         public boolean has(Noun noun) {
@@ -58,7 +83,6 @@ public class Player implements Serializable {
         public String add(Noun noun) {
             if(inventory.contains(noun)) { return "Item is already in inventory."; }
             inventory.add(noun);
-            GameState.getInstance().setInventory(inventory);
             return noun.getName() + " is now in your inventory";
         }
 
@@ -79,7 +103,26 @@ public class Player implements Serializable {
             return currentWeapon;
         }
 
+        public HashMap<String, Object> getSaveFields() {
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("inventory", inventory);
+            result.put("currentWeapon", currentWeapon);
+            return result;
+        }
 
+        public boolean setSaveFields(HashMap<String, Object> result) {
+            try {
+                inventory = (List<Noun>) result.get("inventory");
+                currentWeapon = (Pie) result.get("currentWeapon");
+            }catch(Exception e) {
+                return false;
+            }
+            return true;
+        }
+
+        public void saveClass() {
+            GameState.addSavable(this);
+        }
     }
 
 }

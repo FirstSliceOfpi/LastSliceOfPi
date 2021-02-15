@@ -27,8 +27,9 @@ public class TextParser {
             targetNoun = noun;
             noun = temp;
         }
-
-        Command.getInstance().setInstance(noun, verb, targetNoun);
+        Command.setNoun(noun);
+        Command.setVerb(verb);
+        Command.setTargetNoun(targetNoun);
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {

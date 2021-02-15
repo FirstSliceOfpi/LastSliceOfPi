@@ -20,7 +20,7 @@ public class Cheat {
     }
 
     public void addAllPiesToInventory() {
-        Node[] allItems = GameState.getInstance().getTree().getAllItemsBFS();
+        Node[] allItems = GameState.getTree().getAllItemsBFS();
         for(Node node : allItems) {
             Player.getPlayer().getInventory().add(node.getItem());
         }

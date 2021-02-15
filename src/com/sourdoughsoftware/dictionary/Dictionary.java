@@ -1,16 +1,19 @@
 package com.sourdoughsoftware.dictionary;
 
+import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.Savable;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public enum Dictionary implements Serializable {
+public enum Dictionary implements Serializable, Savable {
     INSTANCE;
 
     private Map<String, Set<Noun>> nouns = new HashMap<>();
-    private final Map<String, Verb> verbs = new HashMap<>();
+    private Map<String, Verb> verbs = new HashMap<>();
 
     public void add(DictionaryEntry entry) {
 
@@ -43,18 +46,24 @@ public enum Dictionary implements Serializable {
         return nouns;
     }
 
-    public void setNouns(Map nouns) {
-        this.nouns = nouns;
-    }
-
-    public void deleteNoun(Noun noun) {
-        Set<Noun> nounSet = nouns.get(noun.getName());
-
-        if(nounSet.size() == 1) {
-            nouns.remove(noun.getName());
-        } else {
-            nounSet.remove(noun);
+    public boolean setSaveFields(HashMap<String, Object> result) {
+        try {
+            nouns = (Map<String, Set<Noun>>) result.get("nouns");
+            verbs = (Map<String, Verb>) result.get("verbs");
+        }catch (Exception e) {
+            return false;
         }
+        return true;
     }
 
+    public HashMap<String, Object> getSaveFields() {
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        result.put("nouns", nouns);
+        result.put("verbs", verbs);
+        return result;
+    }
+
+    public void saveClass() {
+        GameState.addSavable(this);
+    }
 }
