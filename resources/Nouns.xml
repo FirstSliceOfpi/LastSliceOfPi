@@ -7,10 +7,10 @@
         <modifiers>
             <light>
                 <action>print
-                    <arg>The match is lit.</arg>
+                    <arg>You strike the match on the bottom of your boot.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>lit match</arg>
+                    <arg>This match is burning with a bright blue flame.</arg>
                 </action>
             </light>
         </modifiers>
@@ -22,20 +22,20 @@
         <modifiers>
             <light key="match">
                 <action>print
-                    <arg>The candle is lit.</arg>
+                    <arg>You light the candle.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>lit candle</arg>
+                    <arg>This candle is burning bright.</arg>
                 </action>
             </light>
-            <burn>
+            <bite>
                 <action>print
-                    <arg>The candle is burned.</arg>
+                    <arg>You take a bite of off the candle.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>burned candle</arg>
+                    <arg>The candle has a chunk of it missing.</arg>
                 </action>
-            </burn>
+            </bite>
         </modifiers>
     </item>
     <item id="1">
@@ -45,7 +45,7 @@
         <modifiers>
             <eat>
                 <action>destroyNoun
-                    <arg>You ate the paper you fool. how fucking dare you</arg>
+                    <arg>You ate the paper you fool. How fucking dare you</arg>
                 </action>
             </eat>
         </modifiers>
