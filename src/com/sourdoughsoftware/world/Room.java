@@ -68,8 +68,21 @@ public class Room implements java.io.Serializable{
         return null;
     }
 
-    public List<Item> getRoomItems() {
-        return roomItems;
+    public String getRoomItems() {
+        StringBuilder result = new StringBuilder();
+        if(roomItems.size() == 0) {
+            return "You find nothing in the room.";
+        }
+        result.append("You find: ");
+        roomItems.forEach(item -> {
+//            if (item instanceof Enemy) {
+//                result.append(item.getName())
+//            }
+            result.append(item.getName() + " " + item.getDescription() + ", and a ");
+        });
+        result.setLength(result.length() - 6);
+        result.append(".");
+        return result.toString();
     }
 
     public Integer getRoomID() {

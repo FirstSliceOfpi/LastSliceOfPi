@@ -32,6 +32,7 @@ public class Game {
     public void start() {
         boolean gameOver = false;
         while(!gameOver) {
+            System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
         }
