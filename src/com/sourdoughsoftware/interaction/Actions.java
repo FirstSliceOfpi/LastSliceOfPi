@@ -306,13 +306,17 @@ public class Actions {
     }
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+        if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
+            return "Attack who with what?";
+        }
+        int WEAPON_MULTIPLIER = 10;
         StringBuilder response = new StringBuilder();
         if (noun.isAttackable() & targetNoun.isWieldable()) {
-            if (targetNoun instanceof Pie & noun instanceof Enemy) {
+            if (targetNoun instanceof Pie && noun instanceof Enemy) {
                 Enemy enemy = (Enemy) targetNoun;
                 Pie weapon = (Pie) noun;
                 if (enemy.getHp() > 0) {
-                    int newHP = enemy.getHp() - weapon.getAttackPoints();
+                    int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
                     enemy.setHp(newHP);
                     response.append("You " + verb.getName() + enemy.getName() + " with " + targetNoun.getName() + "."
                             + enemy.getName() + " has " + enemy.getHp() +" hp");
