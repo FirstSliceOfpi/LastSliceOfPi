@@ -50,25 +50,35 @@ public class TextParser {
         } else if (nounSet.size() > 1) {
             Set<Noun> availableNouns = new HashSet<>(GameState.getPlayer().getInventory().getCurrentInventory());
             availableNouns.addAll(World.getCurrentRoom().getItemList());
-            System.out.println(nounSet);
             nounSet.retainAll(availableNouns);
-
             if(nounSet.size() > 1) {
-                System.out.println(nounSet.size());
-                System.out.println("STILL AN ISSUE BECAUSE BOTH ITEMS ARE IN THE SAME ROOM AND USER NEEDS TO BE MORE SPECIFIC");
+                StringBuilder sb = new StringBuilder();
+                Noun[] nouns = nounSet.toArray(new Noun[0]);
+                sb.append("Which similar ingredient?");
+                for(int i = 0; i < nouns.length; i++) {
+                    sb.append("\n");
+                    sb.append(i+1);
+                    sb.append(") ");
+                    sb.append(nouns[i].getName());
+                }
+                String response = Prompter.prompt(sb.toString());
+                int resp = Integer.parseInt(response.trim());
+                if(resp <= nouns.length) {
+                    noun = nouns[resp-1];
+                }else{
+                    noun = null;
+                }
+            } else {
+                noun = nounSet.iterator().next();
             }
-            noun = nounSet.iterator().next();
         }
-
         if (noun != null) {
             String[] nounNameWords = noun.getName().split(" ");
             for (String nounNameWord : nounNameWords) {
                 userInputWords.remove(nounNameWord);
             }
         }
-
         return noun;
-
     }
 
     private static Verb getVerb(List<String> userInputWords) {

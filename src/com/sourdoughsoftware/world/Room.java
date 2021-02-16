@@ -147,7 +147,20 @@ public class Room implements java.io.Serializable, Savable {
 
     public String getItems() {
         StringBuilder sb = new StringBuilder();
-        roomItems.forEach(item ->sb.append("You see a " + item.getName()+"."));
+        for(int i = 0; i < roomItems.size(); i++) {
+                if(!roomItems.get(i).getClass().getSimpleName().equals("Enemy")) {
+                    sb.append("\nYou see a ");
+                    sb.append(roomItems.get(i).getName());
+                    sb.append(".\n");
+                } else {
+                    Enemy enemy = (Enemy) roomItems.get(i);
+                    sb.append("\n");
+                    sb.append(enemy.getName());
+                    sb.append(" is waiting. (hp: ");
+                    sb.append(enemy.getHp());
+                    sb.append(")");
+                }
+        }
         return sb.toString();
     }
 
