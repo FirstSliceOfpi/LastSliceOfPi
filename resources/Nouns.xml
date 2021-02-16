@@ -76,4 +76,17 @@
             </cheat>
         </modifiers>
     </item>
+    <item id="3">
+        <name>power</name>
+        <description>Powered Up!</description>
+        <attackPoints>0</attackPoints>
+        <modifiers>
+            <cheat>
+                <action>
+                    cheat
+                    <arg>power me</arg>
+                </action>
+            </cheat>
+        </modifiers>
+    </item>
 </Items>

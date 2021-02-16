@@ -39,8 +39,9 @@ public class WelcomeScreen {
     }
 
     public void splash() throws ParserConfigurationException, SAXException, IOException {
-        String gameType = Prompter.prompt("1. Start new story\n" +
-                "2. Continue from where you left off\n" + "Please make a selection >>> ");
+        String begin = "\n1. Start new story\n" +
+                "2. Continue from where you left off\n";
+        String gameType = Prompter.prompt(begin);
         if (gameType.matches("1")) {
             openingCredits.stopJuke();
 //            gameMusic.startJuke();
@@ -55,11 +56,10 @@ public class WelcomeScreen {
                 Game myGame = new Game();
                 Prompter.prompt(Actions.load());
                 myGame.start();
-            }catch (NullPointerException e) {
+            }catch (Exception e) {
                 splash();
             }
         }else {
-            System.out.println("Invalid selection, please choose either 1 or 2.");
             splash();
         }
     }

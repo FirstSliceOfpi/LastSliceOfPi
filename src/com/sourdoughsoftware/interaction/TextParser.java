@@ -39,12 +39,6 @@ public class TextParser {
         }
         Noun noun = null;
 
-
-//        Set<Noun> availableNouns = new HashSet<>(inventory.getCurrentInventory());
-
-//        nounSet.retainAll(availableNouns);
-
-
         if (nounSet.size() == 1) {
             noun = nounSet.iterator().next();
         } else if (nounSet.size() > 1) {
