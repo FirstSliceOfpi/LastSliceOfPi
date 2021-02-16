@@ -25,7 +25,9 @@ public class Room implements java.io.Serializable, Savable {
     private String shortDescription;
     private Map<String, Integer> exitsById;
     private List<Item> roomItems;
-    private Map<Directions.Direction, Room> exits = new HashMap<>();
+    Map<String, Room> roomExits = new HashMap<>();
+    public Map<Directions.Direction, Room> exits = new HashMap<>();
+    public Map<String, String> roomList = new HashMap<>();
 
     public Room(String name, String description) {
         this.name = name;
@@ -66,8 +68,8 @@ public class Room implements java.io.Serializable, Savable {
         return true;
     }
 
-    public Map<Directions.Direction, Room> getExits() {
-        return exits;
+    public Map<String, Room> getExits() {
+        return roomExits;
     }
 
     public Noun dropItem(Noun noun) {
