@@ -5,112 +5,161 @@
         <description>Southern cuisine at its finest.  Corn meal and sugar.</description>
         <attackPoints>5</attackPoints>
         <victory>You played Queen's Gambit and your foe resigned.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="2">
         <name>Lemon meringue pie</name>
         <description>Citrus smelling dessert that is sure to delight.</description>
         <attackPoints>4</attackPoints>
         <victory>With the classic pie in the face maneuver, lemon meringue blinds your enemy.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="3">
         <name>Key lime pie</name>
         <description>The subtle taste of key lime blends well with the sweetened milk and egg whites.</description>
         <attackPoints>4</attackPoints>
         <victory>Your enemy pauses to eat the pie, completely unaware of the sweetened milk.  He suffers bad gas and bloating from lactose intolerance.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="4">
         <name>Blueberry pie</name>
         <description>There is no place like Blueberry Hill blueberry pies.</description>
         <attackPoints>3</attackPoints>
         <victory>Just like Violet Beauregard, your enemy blows up like a blueberry and floats away.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="5">
         <name>Strawberry pie</name>
         <description>But don't forget, in the meantime, that it is the season for strawberries.</description>
         <attackPoints>3</attackPoints>
         <victory>You jammed the strawberry pie in your enemies face.  Now it is strawberry jam.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="6">
         <name>Shoofly pie</name>
         <description>Sticky, ooey gooey molasses pie.</description>
         <attackPoints>3</attackPoints>
         <victory>Your throw the pie at your enemies feet and he is stuck in the molasses.  You can escape.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="7">
         <name>Cream pie</name>
         <description>Cream, sugar, wheat, flour, and eggs.  What more could you want?</description>
         <attackPoints>3</attackPoints>
         <victory>You offer your enemy a slice of pie knowing he has a gluten intolerance.  Your enemy suffers.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="8">
         <name>Mississippi mud pie</name>
         <description>Chocolate on top of chocolate on top of chocolate, can I have more chocolate?</description>
         <attackPoints>2</attackPoints>
         <victory>You discover your enemy is allergic to chocolate.  The mud pie you gave him gives him mud butt.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="9">
         <name>Cherry pie</name>
         <description>She's my cherry pie\u1F3B5</description>
         <attackPoints>2</attackPoints>
-        <victory></victory>
-        <findable>false</findable>
+        <victory>I say violence is necessary.  It is as American as cherry pie.</victory>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="10">
         <name>Pumpkin pie</name>
         <description>You can still see the crooked smile of the jack-o-lantern baked in the pie.</description>
         <attackPoints>2</attackPoints>
         <victory>Dispatching you enemy was easy as pie!</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="11">
         <name>Banoffe pie</name>
         <description>The Brits are coming! Banana and toffee pie.</description>
         <attackPoints>2</attackPoints>
         <victory>The redcoats may have lost but you won.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="12">
         <name>Apple pie</name>
         <description>"This one time, at band camp!"</description>
         <attackPoints>2</attackPoints>
         <victory>"What's my name! Say my name b$#$%"</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="13">
         <name>Pecan pie</name>
         <description>I only have pie for you.</description>
         <attackPoints>2</attackPoints>
         <victory>Your enemy dies of a nut allergy.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="14">
         <name>Chiffon pie</name>
         <description>I only have pies for you.</description>
         <attackPoints>2</attackPoints>
         <victory>You want a piece of me!</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="15">
         <name>Buttermilk pie</name>
         <description>Cut my pie into 4 pieces.  I don't think I could eat eight.</description>
         <attackPoints>2</attackPoints>
         <victory>Why do cows have hooves? Because they lactose.</victory>
-        <findable>false</findable>
+        <modifiers>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="16">
         <name>Chocolate</name>
         <description>Hershey's bar</description>
         <attackPoints>1</attackPoints>
         <victory>There is nothing better than a friend, unless it is a friend with chocolate.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="17">
         <name>Chocolate crust</name>
@@ -119,42 +168,66 @@
             And it always feels good.</description>
         <attackPoints>1</attackPoints>
         <victory>What kind of monster could possibly hate chocolate?</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="18">
         <name>Cherry</name>
         <description>Pretty please! With a cherry on top!</description>
         <attackPoints>1</attackPoints>
         <victory>Life is simple.  It is either cherry red or midnight blue.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="19">
         <name>Sugar</name>
         <description></description>
         <attackPoints>1</attackPoints>
         <victory>Pour some sugar on me! \u1F3B5</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="20">
         <name>Pumpkin</name>
         <description>A discarded jack-o-lantern.</description>
         <attackPoints>1</attackPoints>
         <victory>I would say the first thing you need is a pumpkin. --Cinderella</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="21">
         <name>Butter</name>
         <description>The only thing better than butter is more butter.</description>
         <attackPoints>1</attackPoints>
         <victory>Eat butter first, eat butter last, and live a 100 years past. Except your enemy.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="22">
         <name>Bananas</name>
         <description>Never make eye contact with anyone while eating a banana.  Looking at you Ty.</description>
         <attackPoints>1</attackPoints>
         <victory>Time flies like an arrow, fruit flies like a banana</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="23">
         <name>Toffee</name>
@@ -162,62 +235,99 @@
         <attackPoints>1</attackPoints>
         <victory>“Never forget,' says Sugar Daddy, 'we are a nation built on sugar. It is our history and it is the source of our prosperity, now and in the future.'
             This is true. Our entire nation sits on reclaimed land made from sugar. Ours is an island that rose out of the sea, built on a hard core of toffee.”</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="24">
         <name>Apple</name>
         <description>Millions saw the apple fall but Newton was the one who asked why.</description>
         <attackPoints>1</attackPoints>
         <victory>An apple a day keeps anyone away, if you throw it hard enough</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="25">
         <name>Raisins</name>
         <description>Every box of raisins is a tragic tale of grapes that could have been wine.</description>
         <attackPoints>1</attackPoints>
         <victory>Raisin cookies that look like chocolate chip cookies is the main reason I have trust issues.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="26">
         <name>Pecans</name>
         <description>In the South, the street value of these shelled pecans is roughly that of crack cocaine.</description>
         <attackPoints>1</attackPoints>
         <victory>Kipling said that Success and Failure are both imposters, and we should all listen to Kipling, if only because none of us are likely to know anybody else named Rudyard. But having been bitten in my life by the jaws of both victory and defeat, I must rush to add that success is to failure as butter pecan ice cream is to death.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="27">
         <name>Caramel</name>
         <description>Caramels are only a fad.  Chocolate is a permanent thing.</description>
         <attackPoints>1</attackPoints>
         <victory>Martin, at my age, eroticism is reduced to enjoying caramel custard and looking at widows' necks.' - Senor Sempere.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="28">
         <name>Meringue</name>
         <description>The meringue is perfect crispy brown on top, melts in the mouth; the lemon tart, custardy; the crust breaks away</description>
         <attackPoints>1</attackPoints>
         <victory>What tempts you Pippa?</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="29">
         <name>Elderberry curd</name>
         <description>Tastes like elderberry.</description>
         <attackPoints>1</attackPoints>
         <victory>Now he smells of elderberries.</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="30">
         <name>Buttermilk</name>
         <description>If there is a whisk there is away.</description>
         <attackPoints>1</attackPoints>
         <victory>Just beat it!</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
     <pie id="31">
         <name>Eggs</name>
         <description>Truth and eggs are useful only when fresh.</description>
         <attackPoints>1</attackPoints>
         <victory>You stymie your enemy with the classic "What comes first, the chicken or the egg!"</victory>
-        <findable>true</findable>
+        <modifiers>
+            <Findable>true</Findable>
+            <Grabable>true</Grabable>
+            <Wieldable>true</Wieldable>
+        </modifiers>
     </pie>
+
 </Weapons>

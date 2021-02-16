@@ -6,18 +6,24 @@ package com.sourdoughsoftware.gamepieces;
  *
  */
 public class Pie extends Item{
-    private final int attackPoints;
+    private int attackPoints;
     private final String victory;
 
     public Pie(String name, String description, int attackPoints, String victory) {
         super(name, description);
+        setGrabable(true);
         this.attackPoints = attackPoints;
         this.victory = victory;
+        setWieldable(true);
+        setDropable(true);
     }
 
     // return the attackPoints assigned to this weapon
     public int getAttackPoints() {
         return this.attackPoints;
+    }
+    public void setAttackPoints(int i) {
+        attackPoints = i;
     }
 
     // return the victory phrase when beating an enemy with this weapon

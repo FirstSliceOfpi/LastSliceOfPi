@@ -4,37 +4,35 @@ package com.sourdoughsoftware;
  It is a singleton class accessible by the getInstance() method.
  It contains getters and setters for the global variables;
  */
-import com.sourdoughsoftware.dictionary.Dictionary;
+
+
+import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.utility.ItemTree;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class GameState implements Serializable{
-    private static GameState instance = null;
-    private ItemTree tree;
-    private ArrayList findableWeapons;
-    private Player player = new Player("Edgar");
+    private static Boolean devMode = false;
+    private static ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
+    private static ArrayList<Savable> savedClasses = new ArrayList<>();
+    private static ItemTree tree = new ItemTree();
+    private static Player player = new Player("edgar");
 
-    private GameState() {
+    public static void addSavable(Savable savableClass) {
+        savedClasses.add(savableClass);
     }
 
-    public GameState(GameState gs) {
-        instance = gs;
-    }
     //create method to save the game
     public static boolean saveGame(File fileToSave) {
         try {
             FileOutputStream fileStream = new FileOutputStream(fileToSave.getAbsolutePath());
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            HashMap<String, Object> objectToSave = new HashMap<>();
-            objectToSave.put("gameState", GameState.getInstance());
-            objectToSave.put("nouns", Dictionary.INSTANCE.getNouns());
-            objectStream.writeObject(objectToSave);
+            for(int i = 0; i < savedClasses.size(); i++) {
+                objectStream.writeObject(savedClasses.get(i).getSaveFields());
+            }
             objectStream.close();
             return true;
         } catch (IOException e) {
@@ -43,13 +41,23 @@ public class GameState implements Serializable{
         return false;
     }
 
+
+    public static void setDevMode() {
+        devMode = !devMode;
+    }
+
+    public static boolean getDevMode() {
+        return devMode;
+    }
+
     public static boolean loadGame(File fileToLoad) {
         try {
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            HashMap loadedGame = (HashMap) objectStream.readObject();
-            new GameState((GameState) loadedGame.get("gameState"));
-            Dictionary.INSTANCE.setNouns((Map) loadedGame.get("nouns"));
+            for(int i = 0; i < savedClasses.size(); i++) {
+                HashMap<String, Object> fields = (HashMap<String, Object>)objectStream.readObject();
+                savedClasses.get(i).setSaveFields(fields);
+            }
             objectStream.close();
             return true;
         } catch (IOException e) {
@@ -60,32 +68,26 @@ public class GameState implements Serializable{
         return false;
     }
 
-    public ArrayList getFindableWeapons() {
+    public static ArrayList<Pie> getFindableWeapons() {
         return findableWeapons;
     }
 
-    public void setFindableWeapons(ArrayList findableWeapons) {
-        this.findableWeapons = findableWeapons;
+    public static void setFindableWeapons(ArrayList<Pie> findable) {
+        findableWeapons = findable;
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(String name) {
-        player = new Player(name);
-    }
-
-    public ItemTree getTree() {
+    public static ItemTree getTree() {
         return tree;
     }
 
-    public void setTree(ItemTree tree) {
-        this.tree = tree;
+    public static void setTree(ItemTree tre) {
+        tree = tre;
     }
 
-    public static GameState getInstance(){
-        instance = instance == null ? new GameState() : instance;
-        return instance;
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player playr) {
+        player = playr;
     }
 }

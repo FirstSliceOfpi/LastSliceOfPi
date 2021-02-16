@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.Game;
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.FileInputStream;
@@ -9,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class SaveGame {
-    private Game game;
+    private GameState gameState;
 
     public SaveGame() {
     }
@@ -25,6 +26,7 @@ public class SaveGame {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 //            oos.writeObject(game.getPlayer());
+            oos.writeObject(gameState);
 
             oos.flush();
             oos.close();
@@ -48,8 +50,8 @@ public class SaveGame {
         }
     }
 
-    void setGame(Game game) {
-        this.game = game;
+    void setGame(GameState gameState) {
+        this.gameState = gameState;
     }
 }
 

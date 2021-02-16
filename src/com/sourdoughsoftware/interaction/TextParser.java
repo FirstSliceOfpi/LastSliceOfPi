@@ -1,14 +1,17 @@
 package com.sourdoughsoftware.interaction;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
+import com.sourdoughsoftware.gamepieces.Player;
+import com.sourdoughsoftware.world.World;
 
 import java.util.*;
 
 public class TextParser {
 
-    public static Command parse(String userInput) {
+    public static void parse(String userInput) {
 
         List<String> userInputWords = new ArrayList<>(Arrays.asList(userInput.split(" ")));
 
@@ -20,47 +23,64 @@ public class TextParser {
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
         Noun targetNoun = getNoun(targetNounCandidates, userInputWords);
 
-        return targetNoun == null ? new Command(noun, verb) : new Command(noun, verb, targetNoun);
+        if(userInputWords.contains("with") && targetNoun != null) {
+            Noun temp = targetNoun;
+            targetNoun = noun;
+            noun = temp;
+        }
+        Command.setNoun(noun);
+        Command.setVerb(verb);
+        Command.setTargetNoun(targetNoun);
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
-
-        if(nounSet == null) {
+        if (nounSet == null) {
             return null;
         }
         Noun noun = null;
-
-        Iterator<Noun> setIterator = nounSet.iterator();
-
-//        Set<Noun> availableNouns = new HashSet<>(inventory.getCurrentInventory());
-
-//        nounSet.retainAll(availableNouns);
-
-        if(nounSet.size() == 1) {
-            noun = setIterator.next();
-        } else if(nounSet.size() > 1) {
-            setIterator.next();
-            noun = setIterator.next();
+        if (nounSet.size() == 1) {
+            noun = nounSet.iterator().next();
+        } else if (nounSet.size() > 1) {
+            Set<Noun> availableNouns = new HashSet<>(GameState.getPlayer().getInventory().getCurrentInventory());
+            availableNouns.addAll(World.getCurrentRoom().getItemList());
+            nounSet.retainAll(availableNouns);
+            if(nounSet.size() > 1) {
+                StringBuilder sb = new StringBuilder();
+                Noun[] nouns = nounSet.toArray(new Noun[0]);
+                sb.append("Which similar ingredient?");
+                for(int i = 0; i < nouns.length; i++) {
+                    sb.append("\n");
+                    sb.append(i+1);
+                    sb.append(") ");
+                    sb.append(nouns[i].getName());
+                }
+                String response = Prompter.prompt(sb.toString());
+                int resp = Integer.parseInt(response.trim());
+                if(resp <= nouns.length) {
+                    noun = nouns[resp-1];
+                }else{
+                    noun = null;
+                }
+            } else {
+                noun = nounSet.iterator().next();
+            }
         }
-
-        if(noun != null) {
-            String[]nounNameWords = noun.getName().split(" ");
-            for(String nounNameWord : nounNameWords) {
+        if (noun != null) {
+            String[] nounNameWords = noun.getName().split(" ");
+            for (String nounNameWord : nounNameWords) {
                 userInputWords.remove(nounNameWord);
             }
         }
-
         return noun;
-
     }
 
     private static Verb getVerb(List<String> userInputWords) {
 
         Dictionary dictionary = Dictionary.INSTANCE;
 
-        for(String userInputWord : userInputWords) {
+        for (String userInputWord : userInputWords) {
             Verb currentVerb = dictionary.getVerb(userInputWord);
-            if(currentVerb != null) {
+            if (currentVerb != null) {
                 return currentVerb;
             }
         }

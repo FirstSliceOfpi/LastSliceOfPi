@@ -1,6 +1,8 @@
 package com.sourdoughsoftware.dictionary;
 
-public class Verb implements DictionaryEntry {
+import java.io.Serializable;
+
+public class Verb implements DictionaryEntry, Serializable {
     private final String name;
     private final VerbGroup group;
 

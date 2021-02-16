@@ -1,32 +1,66 @@
 package com.sourdoughsoftware.dictionary;
 
-public class Noun implements DictionaryEntry {
+import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
+import com.sourdoughsoftware.interaction.Command;
+import com.sourdoughsoftware.interaction.Event;
+
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class Noun implements DictionaryEntry, Serializable {
 
     private String name;
     private String description;
 
-
-    private boolean feelable = false;
-    private boolean eatable = false;
-    private boolean breakable = false;
-    private boolean openable = false;
-    private boolean closeable = false;
-    private boolean squishable = false;
-    private boolean bakeable = false;
-    private boolean rubable = false;
-    private boolean readable = false;
-    private boolean wearable = false;
-    private boolean weildable = false;
-    private boolean drinkable = false;
     private boolean examinable = false;
-    private boolean dropable = false;
-    private boolean grabbale = false;
-    private boolean useable = false;
+    private boolean grabable = false;
     private boolean mergeable = false;
     private boolean attackable = false;
+    private boolean findable = false;
+    private boolean dropable = false;
+    private boolean wieldable = false;
+
+    public HashMap<String, ArrayList<Event>> interactions = new HashMap<>();
+
+
+    public void setAction(String verb, ArrayList<Event> events) {
+        interactions.put(verb, events);
+    }
+
+    public String getAction(String verb) {
+        StringBuilder response = new StringBuilder();
+        ArrayList<Event> events = interactions.get(verb);
+        Actions act = new Actions();
+        if(events == null) {
+            return null;
+        }
+
+        for(Event event : events) {
+            if(event.key != null && event.key != Command.getNoun()) {
+                response.append("You can't " + Command.getVerb().getName() + " a " + getName());
+            }
+            try {
+                Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
+                response.append(method.invoke(act ,event.message.strip())+ " ");
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                if(GameState.getDevMode()) { e.printStackTrace(); };
+                if(e instanceof InvocationTargetException && e.getCause() instanceof ChainOfEventException) {
+                    return e.getCause().getMessage();
+                }
+            }
+        }
+        return response.toString();
+    }
 
     public Noun(String name, String description) {
-        this.name = name;
+        this.name = name.toLowerCase();
         this.description = description;
         addToDictionary();
     }
@@ -36,7 +70,8 @@ public class Noun implements DictionaryEntry {
         this.description = noun.getDescription();
     }
 
-    public Noun() {}
+    public Noun() {
+    }
 
     @Override
     public String getName() {
@@ -47,48 +82,14 @@ public class Noun implements DictionaryEntry {
         return description;
     }
 
-    public boolean isFeelable() {
-        return feelable;
+    public void setDescription(String description) { this.description = description; }
+
+    public boolean isFindable() {
+        return findable;
     }
 
-    public void setFeelable(boolean feelable) {
-        this.feelable = feelable;
-    }
-
-    public boolean isEatable() {
-        return eatable;
-    }
-
-    public void setEatable(boolean eatable) {
-        this.eatable = eatable;
-    }
-
-    public boolean isBreakable() {
-        return breakable;
-    }
-
-    public void setBreakable(boolean breakable) {
-        this.breakable = breakable;
-    }
-
-    public boolean isOpenable() {
-        return openable;
-    }
-
-    public void setOpenable(boolean openable) {
-        this.openable = openable;
-    }
-
-    public boolean isCloseable() {
-        return closeable;
-    }
-
-    public void setCloseable(boolean closeable) {
-        this.closeable = closeable;
-    }
-
-    public boolean isSquishable() {
-        return squishable;
+    public void setFindable(boolean findable) {
+        this.findable = findable;
     }
 
     public boolean isMergeable() {
@@ -99,92 +100,29 @@ public class Noun implements DictionaryEntry {
         this.mergeable = mergeable;
     }
 
+
     public boolean isAttackable() {return attackable;}
 
     public void setAttackable(boolean attackable){this.attackable = attackable;}
 
-    public void setSquishable(boolean squishable) {
-        this.squishable = squishable;
-    }
+    public boolean isWieldable(){return wieldable;}
 
-    public boolean isBakeable() {
-        return bakeable;
-    }
-
-    public void setBakeable(boolean bakeable) {
-        this.bakeable = bakeable;
-    }
-
-    public boolean isRubable() {
-        return rubable;
-    }
-
-    public void setRubable(boolean rubable) {
-        this.rubable = rubable;
-    }
-
-    public boolean isReadable() {
-        return readable;
-    }
-
-    public void setReadable(boolean readable) {
-        this.readable = readable;
-    }
-
-    public boolean isWearable() {
-        return wearable;
-    }
-
-    public void setWearable(boolean wearable) {
-        this.wearable = wearable;
-    }
-
-    public boolean isWeildable() {
-        return weildable;
-    }
-
-    public void setWeildable(boolean weildable) {
-        this.weildable = weildable;
-    }
-
-    public boolean isDrinkable() {
-        return drinkable;
-    }
-
-    public void setDrinkable(boolean drinkable) {
-        this.drinkable = drinkable;
-    }
-
-    public boolean isExaminable() {
-        return examinable;
+    public void setWieldable(boolean wieldable) {
+        this.wieldable = wieldable;
     }
 
     public void setExaminable(boolean examinable) {
         this.examinable = examinable;
     }
 
-    public boolean isDropable() {
-        return dropable;
+
+
+    public void setGrabable(boolean grabable) {
+        this.grabable = grabable;
     }
+
 
     public void setDropable(boolean dropable) {
         this.dropable = dropable;
     }
-
-    public boolean isGrabbale() {
-        return grabbale;
-    }
-
-    public void setGrabbale(boolean grabbale) {
-        this.grabbale = grabbale;
-    }
-
-    public boolean isUseable() {
-        return useable;
-    }
-
-    public void setUseable(boolean useable) {
-        this.useable = useable;
-    }
-
 }
