@@ -46,9 +46,8 @@ public class WelcomeScreen {
     }
 
     public void splash() throws ParserConfigurationException, SAXException, IOException {
-        System.out.println("1. Start new story\n" +
-                "2. Continue from where you left off\n");
-        String gameType = Prompter.prompt("Please make a selection >>> ");
+        String gameType = Prompter.prompt("1. Start new story\n" +
+                "2. Continue from where you left off\n" + "Please make a selection >>> ");
         if (gameType.matches("1")) {
             openingCredits.stopJuke();
 //            gameMusic.startJuke();
