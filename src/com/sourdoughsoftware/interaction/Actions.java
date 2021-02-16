@@ -84,6 +84,11 @@ public class Actions {
         }
     }
 
+    public static String use(String str) {
+        dropFromInventory(str);
+        return str;
+    }
+
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
         Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));

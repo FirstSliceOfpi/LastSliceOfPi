@@ -76,6 +76,7 @@ public class World implements Savable {
             currentRoom = exits.get(direction);
             currentRoom.clearItems();
             currentRoom.addItemsToRoomOnEntering(0);
+            currentRoom.addGenericsToRoomOnEntering(0);
             return "You have entered the ";
 
         } else {

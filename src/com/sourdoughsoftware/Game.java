@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class Game {
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
-        XmlParser.parseItems();
+//        XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
         XmlParser.parseNouns();

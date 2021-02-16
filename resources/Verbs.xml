@@ -80,4 +80,48 @@
         <name>help</name>
         <group>help</group>
     </verb>
+    <verb>
+        <name>use</name>
+        <group>use</group>
+    </verb>
+    <verb>
+        <name>open</name>
+        <group>open</group>
+    </verb>
+    <verb>
+        <name>read</name>
+        <group>getDescription</group>
+    </verb>
+    <verb>
+        <name>sit</name>
+        <group>no_destroy_use</group>
+    </verb>
+    <verb>
+        <name>sleep</name>
+        <group>no_destroy_use</group>
+    </verb>
+    <verb>
+        <name>rub</name>
+        <group>no_destroy_use</group>
+    </verb>
+    <verb>
+        <name>squish</name>
+        <group>change</group>
+    </verb>
+    <verb>
+        <name>eat</name>
+        <group>use</group>
+    </verb>
+    <verb>
+        <name>break</name>
+        <group>use</group>
+    </verb>
+    <verb>
+        <name>feel</name>
+        <group>no_destroy_use</group>
+    </verb>
+    <verb>
+        <name>remove</name>
+        <group>use</group>
+    </verb>
 </Verbs>
