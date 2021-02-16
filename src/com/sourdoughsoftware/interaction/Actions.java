@@ -184,7 +184,7 @@ public class Actions {
         }
 
         if (!GameState.getDevMode()) {
-            if (!Player.getPlayer().getInventory().has(noun) || !Player.getPlayer().getInventory().has(noun)) {
+            if (!GameState.getPlayer().getInventory().has(noun) || !GameState.getPlayer().getInventory().has(noun)) {
                 return "One or more items are not in your inventory.";
             }
         }
@@ -200,9 +200,9 @@ public class Actions {
         }
         Pie combinedPie = CombinePies.combine(pie1, pie2, GameState.getTree());
         if (combinedPie != pie1) {
-            Player.getPlayer().getInventory().drop(noun);
-            Player.getPlayer().getInventory().drop(targetNoun);
-            Player.getPlayer().getInventory().add(combinedPie);
+            GameState.getPlayer().getInventory().drop(noun);
+            GameState.getPlayer().getInventory().drop(targetNoun);
+            GameState.getPlayer().getInventory().add(combinedPie);
             return "YOU " + verb.getName() + "d " + noun.getName()
                     + " and " + targetNoun.getName()
                     + " to make a " + combinedPie.getName();
@@ -239,7 +239,7 @@ public class Actions {
 
     public static String show() {
         StringBuilder builder = new StringBuilder();
-        List<Noun> inventory = Player.getPlayer().getInventory().getCurrentInventory();
+        List<Noun> inventory = GameState.getPlayer().getInventory().getCurrentInventory();
         if(inventory.size() == 0) return "No items";
         for(Noun noun : inventory) {
             builder.append(noun.getName() + "\n");
@@ -269,7 +269,7 @@ public class Actions {
     }
 
     public static String dropFromInventory(String message) {
-        Player player = Player.getPlayer();
+        Player player = GameState.getPlayer();
         Noun noun = Command.getNoun();
         player.getInventory().drop(noun);
         return "You drop the " + noun.getName()+".";
@@ -277,7 +277,7 @@ public class Actions {
     }
 
     public static String addToInventory(String str) {
-        Player player = Player.getPlayer();
+        Player player = GameState.getPlayer();
         Noun noun = Command.getNoun();
         player.getInventory().add(noun);
         return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());

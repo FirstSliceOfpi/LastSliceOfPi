@@ -185,7 +185,7 @@ public class Room implements java.io.Serializable, Savable {
         int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < difficulty) {
-            if(!Player.getPlayer().getInventory().has(GameState.getFindableWeapons().get(randomNumber))) {
+            if(!GameState.getPlayer().getInventory().has(GameState.getFindableWeapons().get(randomNumber))) {
                 addToRoom(GameState.getFindableWeapons().get(findableWeapon));
             }else if (tries < 3){
                 ++tries;

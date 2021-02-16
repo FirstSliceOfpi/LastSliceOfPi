@@ -1,6 +1,7 @@
 package com.sourdoughsoftware;
 
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -27,6 +28,7 @@ public class Game {
         HashMap<String, Object> pies = XmlParser.parsePies();
         GameState.setTree((ItemTree) pies.get("pieTree"));
         GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
+        GameState.setPlayer(new Player("edgar"));
     }
 
     public void start() {

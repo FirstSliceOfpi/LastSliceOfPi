@@ -1,5 +1,6 @@
 package com.sourdoughsoftware.interaction;
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.dictionary.Verb;
@@ -47,9 +48,9 @@ public class TextParser {
         if (nounSet.size() == 1) {
             noun = nounSet.iterator().next();
         } else if (nounSet.size() > 1) {
-            Set<Noun> availableNouns = new HashSet<>(Player.getPlayer().getInventory().getCurrentInventory());
+            Set<Noun> availableNouns = new HashSet<>(GameState.getPlayer().getInventory().getCurrentInventory());
             availableNouns.addAll(World.getCurrentRoom().getItemList());
-
+            System.out.println(nounSet);
             nounSet.retainAll(availableNouns);
 
             if(nounSet.size() > 1) {

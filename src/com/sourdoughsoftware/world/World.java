@@ -1,6 +1,7 @@
 package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.Savable;
 import com.sourdoughsoftware.dictionary.Noun;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.*;
 
-public class World {
+public class World implements Savable {
     List<Room> gameMap = new ArrayList<>();
     List<Enemy> enemies = XmlParser.parseEnemy();
     private static Room currentRoom;
@@ -46,12 +47,14 @@ public class World {
         goofysHouse.createExit(Directions.north, tomorrowLand);
         currentRoom = tomorrowLand;
         new Noun("room","All rooms.");
+        saveClass();
     }
 
     public HashMap<String, Object> getSaveFields() {
         HashMap<String, Object> result = new HashMap<String, Object>();
         result.put("gameMap", gameMap);
         result.put("enemies", enemies);
+        result.put("currentRoom", currentRoom);
         return result;
     }
 
@@ -59,6 +62,7 @@ public class World {
         try {
             gameMap = (List<Room>) result.get("gameMap");
             enemies = (List<Enemy>) result.get("enemies");
+            currentRoom = (Room) result.get("currentRoom");
         }catch(Exception e) {
             return false;
         }
@@ -85,5 +89,9 @@ public class World {
     }
 
     void setEnemies(List<Enemy> enemies) {this.enemies = enemies;}
+
+    public void saveClass() {
+        GameState.addSavable(this);
+    }
 
 }
