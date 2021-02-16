@@ -27,8 +27,9 @@ public class Cheat {
         return "Your items have been delivered.";
     }
 
-    public void doubleAttackPoints() {
-
+    public String doubleAttackPoints() {
+        GameState.getFindableWeapons().forEach(pie -> pie.setAttackPoints(2*pie.getAttackPoints()));
+        return "Powered Up!";
     }
 
     public String showCheatArt() throws InterruptedException, IOException {

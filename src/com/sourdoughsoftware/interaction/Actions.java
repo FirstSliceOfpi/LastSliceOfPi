@@ -41,7 +41,8 @@ public class Actions {
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
                 || Command.getVerb().getGroup() == VerbGroup.dev
-                || Command.getVerb().getGroup() == VerbGroup.SHOW)) {
+                || Command.getVerb().getGroup() == VerbGroup.SHOW
+        )) {
             return "no noun in input";
         }
 
@@ -292,6 +293,8 @@ public class Actions {
             }catch(Exception e) {
                 if(GameState.getDevMode()) System.out.println(e);
             }
+        }else if(cheat.equals("power me")){
+            return Cheat.getInstance().doubleAttackPoints();
         }
         return "Can not perform that cheat.";
     }
