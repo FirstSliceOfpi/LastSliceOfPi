@@ -21,6 +21,10 @@
         <group>merge</group>
     </verb>
     <verb>
+        <name>feed</name>
+        <group>feed</group>
+    </verb>
+    <verb>
         <name>attack</name>
         <group>attack</group>
     </verb>

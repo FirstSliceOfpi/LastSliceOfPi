@@ -21,6 +21,7 @@ public enum VerbGroup {
     createNoun,
     EXAMINE,
     show,
+    feed,
     ATTACK,
     wield,
     cheat,

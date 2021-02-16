@@ -30,5 +30,5 @@ test/
 /.idea/
 /saved_games/
 *.java
-
+/out
 

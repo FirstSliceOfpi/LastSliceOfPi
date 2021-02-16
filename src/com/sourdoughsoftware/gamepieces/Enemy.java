@@ -2,10 +2,14 @@ package com.sourdoughsoftware.gamepieces;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.dictionary.VerbGroup;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Command;
+import com.sourdoughsoftware.interaction.Event;
 import org.w3c.dom.NodeList;
+
+import java.util.ArrayList;
 
 public class Enemy extends Item implements java.io.Serializable{
 
@@ -15,7 +19,7 @@ public class Enemy extends Item implements java.io.Serializable{
     private int hp;
     private String weaponType;
     private String background;
-
+    private String pie;
 
 
 
@@ -25,14 +29,17 @@ public class Enemy extends Item implements java.io.Serializable{
     }
 
     // Single ctor
-    public Enemy(String name, String enemyClass, int hp, String weaponType, String background) {
+    public Enemy(String name, String enemyClass, int hp, String pie, String background) {
         super(name, background);
 //        this.name = name;
         this.enemyClass = enemyClass;
         this.hp = hp;
-        this.weaponType = weaponType;
         this.background = background;
+        this.pie = pie;
         setAttackable(true);
+//        this.setAction("feed", new ArrayList<>(){{add(new Event(VerbGroup.feed, "Im hungry"));}});
+
+
     }
 
 
@@ -49,6 +56,14 @@ public class Enemy extends Item implements java.io.Serializable{
 
     public String getEnemyClass() {
         return enemyClass;
+    }
+
+    public String feed(Pie pie) {
+        if(this.pie.equals(pie.getName())) {
+            return getName() + " loved it. Ate it in one bite.";
+        } else {
+            return "thats not what " + getName() + " wants";
+        }
     }
 
     public void setEnemyClass(String enemyClass) {
