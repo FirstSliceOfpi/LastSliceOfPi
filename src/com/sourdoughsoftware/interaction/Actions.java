@@ -40,7 +40,8 @@ public class Actions {
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
-                || Command.getVerb().getGroup() == VerbGroup.dev)) {
+                || Command.getVerb().getGroup() == VerbGroup.dev
+                || Command.getVerb().getGroup() == VerbGroup.SHOW)) {
             return "no noun in input";
         }
 
