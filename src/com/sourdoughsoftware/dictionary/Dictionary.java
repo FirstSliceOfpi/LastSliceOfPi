@@ -51,6 +51,7 @@ public enum Dictionary implements Serializable, Savable {
             nouns = (Map<String, Set<Noun>>) result.get("nouns");
             verbs = (Map<String, Verb>) result.get("verbs");
         }catch (Exception e) {
+            System.out.println(e);
             return false;
         }
         return true;

@@ -22,7 +22,7 @@ public class Cheat {
     public String addAllPiesToInventory() {
         Node[] allItems = GameState.getTree().getAllItemsBFS();
         for(Node node : allItems) {
-            Player.getPlayer().getInventory().add(node.getItem());
+            GameState.getPlayer().getInventory().add(node.getItem());
         }
         return "Your items have been delivered.";
     }

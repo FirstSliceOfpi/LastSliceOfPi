@@ -12,7 +12,6 @@ import java.util.List;
 public class Player implements Serializable, Savable {
     private String name;
     private int hp;
-    static Player player = new Player("edgar");
 
     public Inventory inventory = new Inventory();
 
@@ -60,10 +59,6 @@ public class Player implements Serializable, Savable {
 
     public void saveClass() {
         GameState.addSavable(this);
-    }
-
-    public static Player getPlayer() {
-        return player;
     }
 
     public static class Inventory extends Noun implements Serializable, Savable {

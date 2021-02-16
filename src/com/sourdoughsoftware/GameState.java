@@ -7,6 +7,7 @@ package com.sourdoughsoftware;
 
 
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.utility.ItemTree;
 
 import java.io.*;
@@ -18,6 +19,7 @@ public class GameState implements Serializable{
     private static ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
     private static ArrayList<Savable> savedClasses = new ArrayList<>();
     private static ItemTree tree = new ItemTree();
+    private static Player player = new Player("edgar");
 
     public static void addSavable(Savable savableClass) {
         savedClasses.add(savableClass);
@@ -79,5 +81,13 @@ public class GameState implements Serializable{
 
     public static void setTree(ItemTree tre) {
         tree = tre;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player playr) {
+        player = playr;
     }
 }
