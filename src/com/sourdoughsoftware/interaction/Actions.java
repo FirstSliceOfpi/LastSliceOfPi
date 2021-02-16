@@ -140,6 +140,7 @@ public class Actions {
 
     public static String load() {
         File dir = new File("./saved_games");
+        if(Objects.isNull(dir) || Objects.isNull(dir.list())) { return "No saved games."; }
         for (String file : dir.list()) {
             System.out.println(ANSI_BLUE + file + ANSI_RESET);
         }

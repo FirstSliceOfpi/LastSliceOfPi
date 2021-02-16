@@ -35,14 +35,7 @@ public class WelcomeScreen {
         openingCredits.startJuke();
         openingCredits.turnTheDial((float) -10.69);
         p.print("GameLogo");
-        System.out.println("Press Enter to continue...");
-
-        try {
-            System.in.read();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Prompter.prompt("Press Enter to continue...");
     }
 
     public void splash() throws ParserConfigurationException, SAXException, IOException {
@@ -60,7 +53,7 @@ public class WelcomeScreen {
 //                gameMusic.startJuke();
                 gameMusic.turnTheDial((float) -8);
                 Game myGame = new Game();
-                System.out.println(Actions.load());
+                Prompter.prompt(Actions.load());
                 myGame.start();
             }catch (NullPointerException e) {
                 splash();
