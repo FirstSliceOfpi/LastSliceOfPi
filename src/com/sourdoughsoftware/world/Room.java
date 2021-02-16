@@ -5,6 +5,9 @@ import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
+import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.gamepieces.Player;
+
 import static com.sourdoughsoftware.utility.Colors.*;
 
 import java.sql.SQLOutput;
@@ -114,7 +117,7 @@ public class Room implements java.io.Serializable, Savable {
                 result.append( ANSI_RESET + ANSI_RED + item.getName() + ANSI_RESET + ANSI_GREEN + " HP: " + ((Enemy) item).getHp()
                    + ANSI_RESET);
                 result.append(enemyD);
-            }else{
+            }else if(item instanceof Pie){
                 String itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
                 result.append(ANSI_RESET+ ANSI_CYAN + "An ingredient: " + ANSI_RESET+ ANSI_BLUE + item.getName() + ANSI_RESET  + "\n "
                         );
@@ -175,14 +178,19 @@ public class Room implements java.io.Serializable, Savable {
 //    public boolean hasExit(String dir) {
 //        return exits.containsKey(dir);
 //    }
-    public void addItemsToRoomOnEntering() {
+    public void addItemsToRoomOnEntering(int tries) {
         Random rand = new Random();
-        int maxSize = GameState.getFindableWeapons().size() + 1;
+        int maxSize = GameState.getFindableWeapons().size();
         int findableWeapon = rand.nextInt(maxSize);
-        int difficulty = (int) (maxSize*1);
+        int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
-        if(randomNumber < maxSize-1) {
-            addToRoom((Item) GameState.getFindableWeapons().get(findableWeapon));
+        if(randomNumber < difficulty) {
+            if(!Player.getPlayer().getInventory().has(GameState.getFindableWeapons().get(randomNumber))) {
+                addToRoom(GameState.getFindableWeapons().get(findableWeapon));
+            }else if (tries < 3){
+                ++tries;
+                addItemsToRoomOnEntering(tries);
+            }
         }
     }
     public boolean addToRoom(Item item) {

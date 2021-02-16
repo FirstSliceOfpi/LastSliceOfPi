@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
-    private ItemTree tree = new ItemTree();
-    private ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
         XmlParser.parseItems();

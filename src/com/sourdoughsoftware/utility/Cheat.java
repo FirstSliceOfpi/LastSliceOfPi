@@ -19,18 +19,19 @@ public class Cheat {
         return cheat;
     }
 
-    public void addAllPiesToInventory() {
+    public String addAllPiesToInventory() {
         Node[] allItems = GameState.getTree().getAllItemsBFS();
         for(Node node : allItems) {
             Player.getPlayer().getInventory().add(node.getItem());
         }
+        return "Your items have been delivered.";
     }
 
     public void doubleAttackPoints() {
 
     }
 
-    public void showCheatArt() throws InterruptedException, IOException {
+    public String showCheatArt() throws InterruptedException, IOException {
             String[] art = new String[0];
             try {
                 art = Files.readString(Path.of("resources", filePathAnimatedArt)).split(Pattern.quote("\\n"),-1);
@@ -49,6 +50,7 @@ public class Cheat {
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
                 }
             }
+            return "Elsa.";
     }
 
 }

@@ -70,8 +70,8 @@ public class GameState implements Serializable{
         return findableWeapons;
     }
 
-    public static void setFindableWeapons(ArrayList<Pie> findableWeapons) {
-        findableWeapons = findableWeapons;
+    public static void setFindableWeapons(ArrayList<Pie> findable) {
+        findableWeapons = findable;
     }
     public static ItemTree getTree() {
         return tree;

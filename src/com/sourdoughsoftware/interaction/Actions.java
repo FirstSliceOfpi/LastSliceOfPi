@@ -40,7 +40,8 @@ public class Actions {
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
-                || Command.getVerb().getGroup() == VerbGroup.dev)) {
+                || Command.getVerb().getGroup() == VerbGroup.dev
+                || Command.getVerb().getGroup() == VerbGroup.SHOW)) {
             return "no noun in input";
         }
 
@@ -140,6 +141,7 @@ public class Actions {
 
     public static String load() {
         File dir = new File("./saved_games");
+        if(Objects.isNull(dir) || Objects.isNull(dir.list())) { return "No saved games."; }
         for (String file : dir.list()) {
             System.out.println(ANSI_BLUE + file + ANSI_RESET);
         }
@@ -281,16 +283,17 @@ public class Actions {
         return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());
     }
 
-    public static void cheat(String cheat) {
+    public static String cheat(String cheat) {
         if(cheat.equals("amazon")) {
-            Cheat.getInstance().addAllPiesToInventory();
+           return Cheat.getInstance().addAllPiesToInventory();
         }else if(cheat.equals("tra")) {
             try {
-                Cheat.getInstance().showCheatArt();
+               return Cheat.getInstance().showCheatArt();
             }catch(Exception e) {
                 if(GameState.getDevMode()) System.out.println(e);
             }
         }
+        return "Can not perform that cheat.";
     }
 
 
