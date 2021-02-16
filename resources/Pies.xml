@@ -7,7 +7,7 @@
         <victory>You played Queen's Gambit and your foe resigned.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="2">
@@ -17,7 +17,7 @@
         <victory>With the classic pie in the face maneuver, lemon meringue blinds your enemy.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="3">
@@ -27,7 +27,7 @@
         <victory>Your enemy pauses to eat the pie, completely unaware of the sweetened milk.  He suffers bad gas and bloating from lactose intolerance.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="4">
@@ -37,7 +37,7 @@
         <victory>Just like Violet Beauregard, your enemy blows up like a blueberry and floats away.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="5">
@@ -47,7 +47,7 @@
         <victory>You jammed the strawberry pie in your enemies face.  Now it is strawberry jam.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="6">
@@ -57,7 +57,7 @@
         <victory>Your throw the pie at your enemies feet and he is stuck in the molasses.  You can escape.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="7">
@@ -67,7 +67,7 @@
         <victory>You offer your enemy a slice of pie knowing he has a gluten intolerance.  Your enemy suffers.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="8">
@@ -77,7 +77,7 @@
         <victory>You discover your enemy is allergic to chocolate.  The mud pie you gave him gives him mud butt.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="9">
@@ -87,7 +87,7 @@
         <victory>I say violence is necessary.  It is as American as cherry pie.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="10">
@@ -97,7 +97,7 @@
         <victory>Dispatching you enemy was easy as pie!</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="11">
@@ -107,7 +107,7 @@
         <victory>The redcoats may have lost but you won.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="12">
@@ -117,7 +117,7 @@
         <victory>"What's my name! Say my name b$#$%"</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="13">
@@ -127,7 +127,7 @@
         <victory>Your enemy dies of a nut allergy.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="14">
@@ -137,7 +137,7 @@
         <victory>You want a piece of me!</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="15">
@@ -147,7 +147,7 @@
         <victory>Why do cows have hooves? Because they lactose.</victory>
         <modifiers>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="16">
@@ -158,7 +158,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="17">
@@ -171,7 +171,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="18">
@@ -182,7 +182,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="19">
@@ -193,7 +193,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="20">
@@ -204,7 +204,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="21">
@@ -215,7 +215,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="22">
@@ -226,7 +226,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="23">
@@ -238,7 +238,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="24">
@@ -249,7 +249,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="25">
@@ -260,7 +260,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="26">
@@ -271,7 +271,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="27">
@@ -282,7 +282,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="28">
@@ -293,7 +293,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="29">
@@ -304,7 +304,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="30">
@@ -315,7 +315,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
     <pie id="31">
@@ -326,7 +326,7 @@
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>
-            <Weildable>true</Weildable>
+            <Wieldable>true</Wieldable>
         </modifiers>
     </pie>
 

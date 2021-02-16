@@ -38,7 +38,6 @@ public class World {
             Enemy enemy = enemies.remove(index);
             room.addToRoom(enemy);
         }
-        System.out.println("Enemy added to room");
         tomorrowLand.createExit(Directions.east, captianHooksShip);
         captianHooksShip.createExit(Directions.west, tomorrowLand);
         tomorrowLand.createExit(Directions.west, winniesTree);
@@ -72,7 +71,7 @@ public class World {
         if(exits.containsKey(direction)){
             currentRoom = exits.get(direction);
             currentRoom.clearItems();
-            currentRoom.addItemsToRoomOnEntering();
+            currentRoom.addItemsToRoomOnEntering(0);
             return "You have entered the ";
 
         } else {

@@ -283,16 +283,17 @@ public class Actions {
         return Objects.requireNonNullElseGet(str, () -> "You grabbed " + noun.getName());
     }
 
-    public static void cheat(String cheat) {
+    public static String cheat(String cheat) {
         if(cheat.equals("amazon")) {
-            Cheat.getInstance().addAllPiesToInventory();
+           return Cheat.getInstance().addAllPiesToInventory();
         }else if(cheat.equals("tra")) {
             try {
-                Cheat.getInstance().showCheatArt();
+               return Cheat.getInstance().showCheatArt();
             }catch(Exception e) {
                 if(GameState.getDevMode()) System.out.println(e);
             }
         }
+        return "Can not perform that cheat.";
     }
 
 

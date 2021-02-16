@@ -4,6 +4,7 @@ package com.sourdoughsoftware.utility;
  * various xml documents for game play
  */
 
+import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.gamepieces.Enemy;
@@ -222,12 +223,13 @@ public class XmlParser {
                     NodeList modifiers = currentElement.getElementsByTagName("modifiers").item(0).getChildNodes();
                     Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
                     for (int i = 0; i < modifiers.getLength(); i++) {
+                        if(modifiers.item(i).getNodeType() != Node.ELEMENT_NODE) { continue; }
                         String modifierName = "set" + modifiers.item(i).getNodeName();
                         boolean modifierValue = parseBoolean(modifiers.item(i).getTextContent());
                         try {
                             pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
                         } catch (Exception e) {
-                            //do nothing
+                            if(GameState.getDevMode()) System.out.println(e);
                         }
                     }
                     tree.add(pie);
@@ -238,7 +240,7 @@ public class XmlParser {
                 }
             }
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            System.out.println(e.getMessage());
+            if(GameState.getDevMode()) System.out.println(e.getMessage());
         }
         result.put("findablePies", findablePies);
         result.put("pieTree", tree);
