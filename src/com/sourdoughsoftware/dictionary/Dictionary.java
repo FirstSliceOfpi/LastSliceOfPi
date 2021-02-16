@@ -46,6 +46,8 @@ public enum Dictionary implements Serializable, Savable {
         return nouns;
     }
 
+    public Map<String, Verb> getVerbs() { return verbs; }
+
     public boolean setSaveFields(HashMap<String, Object> result) {
         try {
             nouns = (Map<String, Set<Noun>>) result.get("nouns");

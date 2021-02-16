@@ -24,6 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Objects;
 import java.util.List;
 
@@ -41,7 +42,8 @@ public class Actions {
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
                 || Command.getVerb().getGroup() == VerbGroup.dev
-                || Command.getVerb().getGroup() == VerbGroup.SHOW
+                || Command.getVerb().getGroup() == VerbGroup.show
+                || Command.getVerb().getGroup() == VerbGroup.help
         )) {
             return "no noun in input";
         }
@@ -63,14 +65,16 @@ public class Actions {
                 return getDescription();
 //            case print:
 //                return print();
-            case WIELD:
+            case wield:
                 return wield(Command.getNoun(), Command.getVerb());
             case attack:
                 return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
 //            case EXAMINE:
 //                return print();
-            case SHOW:
+            case show:
                 return show();
+            case help:
+                return help();
             default:
                 if (Command.getTargetNoun() == null) {
                     return Command.getNoun().getAction(Command.getVerb().getName());
@@ -78,6 +82,14 @@ public class Actions {
                     return Command.getTargetNoun().getAction(Command.getVerb().getName());
                 }
         }
+    }
+
+    public static String help() {
+        StringBuilder sb = new StringBuilder("Try these nouns: \n");
+        Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
+        sb.append("----verbs----\n");
+        Dictionary.INSTANCE.getVerbs().keySet().forEach(word-> sb.append(word).append("\n"));
+        return sb.toString();
     }
 
     public static String destroyNoun(String message) {

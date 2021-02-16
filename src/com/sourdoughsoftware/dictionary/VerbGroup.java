@@ -20,9 +20,9 @@ public enum VerbGroup {
     destroyNoun,
     createNoun,
     EXAMINE,
-    SHOW,
+    show,
     ATTACK,
-    WIELD,
+    wield,
     cheat,
-    CHEAT
+    help
 }
