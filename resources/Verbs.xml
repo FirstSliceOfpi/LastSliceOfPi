@@ -66,14 +66,18 @@
     </verb>
     <verb>
      <name>wield</name>
-        <group>WIELD</group>
+        <group>wield</group>
     </verb>
     <verb>
         <name>show</name>
-        <group>SHOW</group>
+        <group>show</group>
     </verb>
     <verb>
         <name>cheat</name>
-        <group>CHEAT</group>
+        <group>cheat</group>
+    </verb>
+    <verb>
+        <name>help</name>
+        <group>help</group>
     </verb>
 </Verbs>
