@@ -10,9 +10,22 @@
             They all appear to be the same distance away from you.
             You don't really want to go anywhere, but you can't stay here.
         </description>
-        <exitNorthwest>1</exitNorthwest>
-        <exitNorth>2</exitNorth>
-        <exitNortheast>3</exitNortheast>
+       <exit>
+           <compass>north</compass>
+           <rose>red riding hood</rose>
+       </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>rapunzel</rose>
+        </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>snow white</rose>
+        </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>cinderella</rose>
+        </exit>
         <shortDescription>This was where you started. Nothing here.</shortDescription>
     </room>
     <room id="1">
@@ -24,10 +37,14 @@
             When you pass the ONE mirror, you notice no reflection of your image.
             Isn’t that odd? There are SEVEN very small tools strewn across the room.
         </description>
-        <exitWest>3</exitWest>
-        <exitNorth>4</exitNorth>
-        <exitEast>2</exitEast>
-        <exitSoutheast>0</exitSoutheast>
+      <exit>
+          <compass>north</compass>
+          <rose>frog prince</rose>
+      </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>start</rose>
+        </exit>
         <shortDescription>Is that an apple reflected in a mirror? Because you could use a little snack.</shortDescription>
     </room>
     <room id="2">
@@ -39,10 +56,14 @@
             On the bookshelf, a sparkling crystalsphere draws your gaze.
             You hear birds chirping outside, leaves softly rustling and …was that a splash?
         </description>
-        <exitWest>1</exitWest>
-        <exitNorth>5</exitNorth>
-        <exitEast>3</exitEast>
-        <exitSouth>0</exitSouth>
+       <exit>
+           <compass>east</compass>
+           <rose>shoemaker</rose>
+       </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>snow white</rose>
+        </exit>
         <shortDescription>Do you wonder if that tiny crown is waterproof? Also, do you smell amphibians?</shortDescription>
     </room>
     <room id="3">
@@ -54,10 +75,14 @@
             Distracted, you stumble over a pile of THREE silkskeins.
             You see just a portion of ONE long, golden braid.
         </description>
-        <exitWest>2</exitWest>
-        <exitNorth>6</exitNorth>
-        <exitEast>1</exitEast>
-        <exitSouth>10</exitSouth>
+        <exit>
+            <compass>east</compass>
+            <rose>rumplestiltskin</rose>
+        </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>sleeping beauty</rose>
+        </exit>
         <shortDescription>There is so much hair in this room. And no door in sight.</shortDescription>
     </room>
     <room id="4">
@@ -71,9 +96,10 @@
             A stack of FOUR books lays on the floor near the spindle and stool…
             the top book reads, in gold letters, “Best Baby Names”…
         </description>
-        <exitNorth>7</exitNorth>
-        <exitEast>5</exitEast>
-        <exitSouth>1</exitSouth>
+        <exit>
+            <compass>east</compass>
+            <rose>rapunzel</rose>
+        </exit>
         <shortDescription>This room could be worth its weight in gold.</shortDescription>
     </room>
     <room id="5">
@@ -86,10 +112,14 @@
             Near the invitation are TWO large boxes with beautiful ball gowns inside.
             Tucked under the chair, you notice what appears to be ONE glassslipper?
         </description>
-        <exitNorth>8</exitNorth>
-        <exitSouth>2</exitSouth>
-        <exitEast>6</exitEast>
-        <exitWest>4</exitWest>
+        <exit>
+            <compass>north</compass>
+            <rose>hansel and gretel</rose>
+        </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>start</rose>
+        </exit>
         <shortDescription>Are those keys to a pumpkin carriage?!?!</shortDescription>
     </room>
     <room id="6">
@@ -102,9 +132,10 @@
             Is it a cage?  As you back away, you trip over a heavy,
             ornate chest on the floor of the room. Could it be treasure?
         </description>
-        <exitNorth>9</exitNorth>
-        <exitSouth>3</exitSouth>
-        <exitWest>5</exitWest>
+        <exit>
+            <compass>south</compass>
+            <rose>cinderella</rose>
+        </exit>
         <shortDescription>If you have a sweet tooth, you are going to love this room.</shortDescription>
     </room>
     <room id="7">
@@ -117,9 +148,10 @@
             What is the POINT of a sleepingcap?
             On the ground near the table, you see a TWO handled basket, filled with food and NINE packages.
         </description>
-        <exitWest>9</exitWest>
-        <exitSouth>4</exitSouth>
-        <exitEast>8</exitEast>
+        <exit>
+            <compass>south</compass>
+            <rose>start</rose>
+        </exit>
         <shortDescription>My, but what big ears those are!</shortDescription>
     </room>
     <room id="8">
@@ -132,9 +164,14 @@
             There is a pile of folded clothing on a table near a workbench.
             The clothing is very small sizes, for a child or…?
         </description>
-        <exitWest>7</exitWest>
-        <exitEast>9</exitEast>
-        <exitSouth>5</exitSouth>
+       <exit>
+           <compass>west</compass>
+           <rose>frog prince</rose>
+       </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>golden goose</rose>
+        </exit>
         <shortDescription>Those might be the tiniest shoeprints you've ever seen.</shortDescription>
     </room>
     <room id="9">
@@ -148,9 +185,10 @@
             it’s needle sharp and shining.
             As you sit, you find a small, wooden box…a firstaidkit?
         </description>
-        <exitEast>7</exitEast>
-        <exitSouth>6</exitSouth>
-        <exitWest>8</exitWest>
+        <exit>
+            <compass>north</compass>
+            <rose>rapunzel</rose>
+        </exit>
         <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
     </room>
     <room id="10">
@@ -165,7 +203,10 @@
             There is not much to see in this sparse room,
             except is that a SEVEN-pound goldenfeather….?
         </description>
-        <exitNorth>3</exitNorth>
+        <exit>
+            <compass>north</compass>
+            <rose>shoemaker</rose>
+        </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
 </Rooms>
