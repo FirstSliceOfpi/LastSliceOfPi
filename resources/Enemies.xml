@@ -4,7 +4,7 @@
         <name>Maleficent</name>
         <class>Witch</class>
         <hp>120</hp>
-        <foodAlergies>Apple pie</foodAlergies>
+        <foodAlergies>apple pie</foodAlergies>
         <background>
             The beautiful Mistress Of Evil. She wanders the world lost, seducing men, condemning women. The more
             beautiful you are, the worst your fate will be.
@@ -14,7 +14,7 @@
         <name>Scar</name>
         <class>Monster</class>
         <hp>180</hp>
-        <foodAlergies>Cherry pie</foodAlergies>
+        <foodAlergies>cherry pie</foodAlergies>
         <background>
             The immortal one, ghost lion of Pride Rock. Story says he still roams the earth, but no has lived to tell
             the tell...
@@ -24,7 +24,7 @@
         <name>Jafar</name>
         <class>Witch</class>
         <hp>130</hp>
-        <foodAlergies>Shoofly pie</foodAlergies>
+        <foodAlergies>shoofly pie</foodAlergies>
         <background>
             The sorcerer of shadows, manipulator of kings. Beware his mind control, for the lesser of men have fallen
             prey...
@@ -34,7 +34,7 @@
         <name>Hades</name>
         <class>God</class>
         <hp>200</hp>
-        <foodAlergies>Strawberry pie</foodAlergies>
+        <foodAlergies>strawberry pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -44,7 +44,7 @@
         <name>Captain Hook</name>
         <class>Pirate</class>
         <hp>100</hp>
-        <foodAlergies>Mississippi mud pie</foodAlergies>
+        <foodAlergies>mississippi mud pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -54,7 +54,7 @@
         <name>Gaston</name>
         <class>Brawler</class>
         <hp>120</hp>
-        <foodAlergies>Pumpkin pie</foodAlergies>
+        <foodAlergies>pumpkin pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -64,7 +64,7 @@
         <name>Cruella de Vil</name>
         <class>Witch</class>
         <hp>110</hp>
-        <foodAlergies>Pecan pie</foodAlergies>
+        <foodAlergies>pecan pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -74,7 +74,7 @@
         <name>Shere Khan</name>
         <class>Monster</class>
         <hp>220</hp>
-        <foodAlergies>Strawberry pie</foodAlergies>
+        <foodAlergies>strawberry pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -84,7 +84,7 @@
         <name>Ernesto de la Cruz</name>
         <class>Musician</class>
         <hp>90</hp>
-        <foodAlergies>Blueberry pie</foodAlergies>
+        <foodAlergies>blueberry pie</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
@@ -94,7 +94,7 @@
         <name>King Louie</name>
         <class>Lemon meringue pie</class>
         <hp>250</hp>
-        <foodAlergies>Fists</foodAlergies>
+        <foodAlergies>fists</foodAlergies>
         <background>
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
