@@ -8,6 +8,7 @@ import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.ItemTree;
+import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.utility.XmlParser;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.world.World;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
+    PrintFiles p = new PrintFiles();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
 //        XmlParser.parseItems();
@@ -36,15 +38,25 @@ public class Game {
     public void start() throws ChainOfEventException {
         boolean gameOver = false;
         while(!gameOver) {
+            System.out.println(Enemy.getTotalEnemies() + " " + Enemy.getTotalEnemiesHungry() + " " + Enemy.getTotalEnemiesAlive());
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
-            if(Enemy.getTotalEnemiesAlive() + Enemy.getTotalEnemiesHungry() == Enemy.getTotalEnemies()) {
+            if (Enemy.getTotalEnemiesHungry() == 0){
+                p.print("goodEnding");
+                gameOver = true;
+            }else if (Enemy.getTotalEnemiesAlive() == 0) {
+                p.print("badEnding");
+                gameOver = true;
+            }else if (Enemy.getTotalEnemiesAlive() + Enemy.getTotalEnemiesHungry() == Enemy.getTotalEnemies()) {
+                p.print("GameLogo");
+                System.out.println("Guess you do what you want huh?");
                 gameOver = true;
             }
         }
 
         //TODO print an ending picture
+//        p.print("GameLogo");
     }
 
 }

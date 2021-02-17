@@ -22,8 +22,7 @@ public class Enemy extends Item implements java.io.Serializable{
 
     public Enemy(String name, String background) {
         super(name, background);
-        totalEnemiesAlive++;
-        totalEnemiesHungry++;
+
 
     }
 
@@ -31,9 +30,7 @@ public class Enemy extends Item implements java.io.Serializable{
     public Enemy(String name, String enemyClass, int hp, String pie, String background, String deadtext) {
         super(name, background);
 //        this.name = name;
-        totalEnemiesAlive++;
-        totalEnemiesHungry++;
-        totalEnemies++;
+
         
         this.enemyClass = enemyClass;
         this.hp = hp;
@@ -69,6 +66,15 @@ public class Enemy extends Item implements java.io.Serializable{
     public static int getTotalEnemies() {
         return totalEnemies;
     }
+    public static void incrementEnemiesAlive() {
+        totalEnemiesAlive++;
+    }
+    public static void incrementEnemiesHungry() {
+        totalEnemiesHungry++;
+    }
+    public static void incrementTotalEnemies() {
+        totalEnemies++;
+    }
 
     public static void decrementEnemiesAlive() {
         totalEnemiesAlive--;
@@ -88,7 +94,7 @@ public class Enemy extends Item implements java.io.Serializable{
         }
         if(this.pie.equals(pie.getName())) {
             fed = true;
-            totalEnemiesHungry++;
+            totalEnemiesHungry--;
             GameState.getCookBook().addRecipe();
             return getName() + " loved it. Ate it in one bite.";
         } else {
