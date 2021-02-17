@@ -177,9 +177,10 @@ public class XmlParser {
                 int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent());
                 String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent();
                 String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent();
+                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent();
                 //addInteractions(singleEnemy, enemy);
                 //Add Enemy to list
-                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background);
+                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background,deadtext);
                 enemies.add(enemy);
 
             }

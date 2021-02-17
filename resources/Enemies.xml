@@ -9,6 +9,9 @@
             The beautiful Mistress Of Evil. She wanders the world lost, seducing men, condemning women. The more
             beautiful you are, the worst your fate will be.
         </background>
+        <deadtext>
+            She lies there, yet a smile spreads across her wickedly beautiful smile...
+        </deadtext>
     </enemy>
     <enemy>
         <name>Scar</name>
@@ -19,6 +22,9 @@
             The immortal one, ghost lion of Pride Rock. Story says he still roams the earth, but no has lived to tell
             the tell...
         </background>
+        <deadtext>
+            Simba would be proud. Here lies Scar, forever may he lay...
+        </deadtext>
     </enemy>
     <enemy>
         <name>Jafar</name>
@@ -29,6 +35,9 @@
             The sorcerer of shadows, manipulator of kings. Beware his mind control, for the lesser of men have fallen
             prey...
         </background>
+        <deadtext>
+            Jafar sends you an eternal death stare as he fades from existence...
+        </deadtext>
     </enemy>
     <enemy>
         <name>Hades</name>
@@ -39,6 +48,9 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            Like a candle under the strongest lid, Hades flames burns no more....
+        </deadtext>
     </enemy>
     <enemy>
         <name>Captain Hook</name>
@@ -49,6 +61,10 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
     <enemy>
         <name>Gaston</name>
@@ -59,6 +75,10 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
     <enemy>
         <name>Cruella de Vil</name>
@@ -69,6 +89,10 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
     <enemy>
         <name>Shere Khan</name>
@@ -79,6 +103,10 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
     <enemy>
         <name>Ernesto de la Cruz</name>
@@ -89,6 +117,10 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
     <enemy>
         <name>King Louie</name>
@@ -99,5 +131,9 @@
             TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
             Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
         </background>
+        <deadtext>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida.
+        </deadtext>
     </enemy>
 </enemies>

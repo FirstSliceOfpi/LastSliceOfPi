@@ -3,6 +3,7 @@ package com.sourdoughsoftware;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.ItemTree;
@@ -30,7 +31,7 @@ public class Game {
         GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
     }
 
-    public void start() {
+    public void start() throws ChainOfEventException {
         boolean gameOver = false;
         while(!gameOver) {
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
