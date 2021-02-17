@@ -33,7 +33,7 @@ import static com.sourdoughsoftware.utility.Colors.*;
 
 public class Actions {
 
-    public static String execute() {
+    public static String execute() throws ChainOfEventException {
 
         if (Command.getVerb() == null) {
             return "no verb in input";
@@ -274,7 +274,12 @@ public class Actions {
     public static String dropFromRoom(String message) throws ChainOfEventException {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        noun = currentRoom.dropItem(noun);
+        if (noun instanceof Pie) {
+            noun = currentRoom.dropItem(noun);
+        }
+        if (noun instanceof Enemy) {
+            noun = currentRoom.dropEnemy(noun);
+        }
         if(noun == null) {
             throw new ChainOfEventException("That is not in that room");
         }
@@ -338,7 +343,9 @@ public class Actions {
         return ((Enemy) targetNoun).feed((Pie) noun);
     }
 
-    private static String attack(Noun targetNoun, Verb verb, Noun noun) {
+
+    private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
+
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
         }
@@ -354,9 +361,10 @@ public class Actions {
                     response.append("You " + verb.getName() + " " + enemy.getName() + " with " + targetNoun.getName() + "."
                            + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
-                } //TODO: Create Enemy victory message to place here
+                } //DONE: Create Enemy victory message to place here
                 if (enemy.getHp() < 0) {
-                    return ((Pie) noun).getVictory();
+                    dropFromRoom("bye");
+                    return ((Enemy) noun).getDeadtext();
                 }
             } else {
                 return "What are you doing sir? ";

@@ -79,6 +79,16 @@ public class Room implements java.io.Serializable, Savable {
         return dropped;
     }
 
+    public Noun dropEnemy(Noun noun) {
+        Enemy enemy = (Enemy) noun;
+        int e = roomItems.indexOf(noun);
+        if (e == -1) return null;
+
+        Noun dropped = roomItems.get(e);
+        roomItems.remove(enemy);
+        return dropped;
+    }
+
 
 
     public void createExit(Directions.Direction direction, Room newExit) {

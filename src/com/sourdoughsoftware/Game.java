@@ -4,6 +4,7 @@ import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.ItemTree;
@@ -32,7 +33,7 @@ public class Game {
         GameState.setCookBook(new CookBook());
     }
 
-    public void start() {
+    public void start() throws ChainOfEventException {
         boolean gameOver = false;
         while(!gameOver) {
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
