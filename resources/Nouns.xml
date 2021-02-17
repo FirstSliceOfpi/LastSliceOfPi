@@ -64,6 +64,19 @@
         </modifiers>
     </item>
     <item id="2">
+        <name>super power</name>
+        <description>Homelander Style</description>
+        <attackPoints>0</attackPoints>
+        <modifiers>
+            <cheat>
+                <action>
+                    cheat
+                    <arg>super power</arg>
+                </action>
+            </cheat>
+        </modifiers>
+    </item>
+    <item id="2">
         <name>tra</name>
         <description>Art is backwards.</description>
         <attackPoints>0</attackPoints>
