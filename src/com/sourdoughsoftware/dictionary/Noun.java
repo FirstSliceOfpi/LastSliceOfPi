@@ -39,6 +39,9 @@ public class Noun implements DictionaryEntry, Serializable {
         ArrayList<Event> events = interactions.get(verb);
         Actions act = new Actions();
         Noun key = null;
+        if(!Command.getVerb().getName().equals("cheat")) {
+            if(Actions.checkIfAvailable() != null) return Actions.checkIfAvailable();
+        }
         if(events == null) {
             return "You can't " + Command.getVerb().getName() + " a " + getName();
         }

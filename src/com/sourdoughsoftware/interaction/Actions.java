@@ -36,6 +36,7 @@ public class Actions {
         if (Command.getVerb() == null) {
             return "no verb in input";
         }
+
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
@@ -90,7 +91,6 @@ public class Actions {
     }
 
     public static String reward(String str) {
-
         Noun noun = Dictionary.INSTANCE.getNoun(str);
 
         if(noun== null) {
@@ -358,7 +358,6 @@ public class Actions {
     }
 
     public static String feed(Noun noun, Noun targetNoun) {
-
         if(!(noun instanceof Pie)) {
             return noun.getName() +  " isn't even edible. jeez do we gotta hold your hand through this whole game? play smart";
         }
@@ -398,6 +397,16 @@ public class Actions {
                 return "What are you doing sir? ";
             }
         }return response.toString();
+    }
+
+    public static String checkIfAvailable() {
+        if(Command.getTargetNoun() != null && !World.getCurrentRoom().has(Command.getTargetNoun()) && !GameState.getPlayer().getInventory().has(Command.getTargetNoun())) {
+            return Command.getTargetNoun() + " isn't here";
+        }
+        if(Command.getNoun() != null && !World.getCurrentRoom().has(Command.getNoun()) && !GameState.getPlayer().getInventory().has(Command.getNoun())) {
+            return Command.getNoun() + " isn't here";
+        }
+        return null;
     }
 
    }

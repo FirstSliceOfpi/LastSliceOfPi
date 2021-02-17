@@ -39,6 +39,7 @@ public class TextParser {
         if (nounSet == null || nounSet.size() == 0) {
             return null;
         }
+
         Noun noun = null;
         if (nounSet.size() == 1) {
             noun = nounSet.iterator().next();
