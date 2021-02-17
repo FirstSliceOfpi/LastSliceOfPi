@@ -27,8 +27,8 @@ public class CookBook {
 
     private void addRecipe() {
         Random rand = new Random();
-        int index = rand.nextInt(recipes.size());
         if(recipes.size() >0) {
+            int index = rand.nextInt(recipes.size());
             String recipe = recipes.get(index);
             currentRecipes.add(recipe);
             recipes.remove(index);
