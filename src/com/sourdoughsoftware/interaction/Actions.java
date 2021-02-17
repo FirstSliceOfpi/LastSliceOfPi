@@ -333,7 +333,7 @@ public class Actions {
         return ((Enemy) targetNoun).feed((Pie) noun);
     }
 
-    private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+    private static String attack(Noun targetNoun, Verb verb, Noun noun) {
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
         }

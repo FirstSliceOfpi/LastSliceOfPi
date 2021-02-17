@@ -1,16 +1,5 @@
 package com.sourdoughsoftware.gamepieces;
 
-import com.sourdoughsoftware.GameState;
-import com.sourdoughsoftware.dictionary.Noun;
-import com.sourdoughsoftware.dictionary.VerbGroup;
-import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.interaction.Actions;
-import com.sourdoughsoftware.interaction.Command;
-import com.sourdoughsoftware.interaction.Event;
-import org.w3c.dom.NodeList;
-
-import java.util.ArrayList;
-
 public class Enemy extends Item implements java.io.Serializable{
 
 
@@ -20,11 +9,16 @@ public class Enemy extends Item implements java.io.Serializable{
     private String weaponType;
     private String background;
     private String pie;
+    private boolean fed = false;
+    private static int totalEnemiesAlive = 0;
+    private static int totalEnemiesHungry = 0;
 
 
 
     public Enemy(String name, String background) {
         super(name, background);
+        totalEnemiesAlive++;
+        totalEnemiesHungry++;
 
     }
 
@@ -32,6 +26,8 @@ public class Enemy extends Item implements java.io.Serializable{
     public Enemy(String name, String enemyClass, int hp, String pie, String background) {
         super(name, background);
 //        this.name = name;
+        totalEnemiesAlive++;
+        totalEnemiesHungry++;
         this.enemyClass = enemyClass;
         this.hp = hp;
         this.background = background;
@@ -54,15 +50,28 @@ public class Enemy extends Item implements java.io.Serializable{
 //        this.name = name;
 //    }
 
+    public static int getTotalEnemiesAlive() {
+        return totalEnemiesAlive;
+    }
+
+    public static int getTotalEnemiesHungry() {
+        return totalEnemiesHungry;
+    }
+
     public String getEnemyClass() {
         return enemyClass;
     }
 
     public String feed(Pie pie) {
+        if(fed) {
+            return getName() + " is full from the " + this.pie + " still.";
+        }
         if(this.pie.equals(pie.getName())) {
+            fed = true;
+            totalEnemiesHungry++;
             return getName() + " loved it. Ate it in one bite.";
         } else {
-            return "thats not what " + getName() + " wants";
+            return "That's not what " + getName() + " wants.";
         }
     }
 
