@@ -319,6 +319,8 @@ public class Actions {
             }
         }else if(cheat.equals("power me")){
             return Cheat.getInstance().doubleAttackPoints();
+        } else if(cheat.equals("super power")){
+            return Cheat.getInstance().doubleAllAP();
         }
         return "Can not perform that cheat.";
     }

@@ -1,11 +1,13 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Cheat {
@@ -30,6 +32,15 @@ public class Cheat {
     public String doubleAttackPoints() {
         GameState.getFindableWeapons().forEach(pie -> pie.setAttackPoints(2*pie.getAttackPoints()));
         return "Powered Up!";
+    }
+
+    public String doubleAllAP() {
+        Arrays.stream(GameState.getTree().getAllItemsBFS()).map(node->{
+            Pie pie = (Pie) node.getItem();
+            pie.setAttackPoints(2*pie.getAttackPoints());
+            return null;
+        });
+        return "Super Powered!";
     }
 
     public String showCheatArt() throws InterruptedException, IOException {
