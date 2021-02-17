@@ -6,6 +6,7 @@ package com.sourdoughsoftware;
  */
 
 
+import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.utility.ItemTree;
@@ -20,6 +21,7 @@ public class GameState implements Serializable{
     private static ArrayList<Savable> savedClasses = new ArrayList<>();
     private static ItemTree tree = new ItemTree();
     private static Player player = new Player("edgar");
+    private static CookBook cookBook = null;
 
     public static void addSavable(Savable savableClass) {
         savedClasses.add(savableClass);
@@ -41,6 +43,13 @@ public class GameState implements Serializable{
         return false;
     }
 
+    public static void setCookBook(CookBook book) {
+        cookBook = book;
+    }
+
+    public static CookBook getCookBook() {
+        return cookBook;
+    }
 
     public static void setDevMode() {
         devMode = !devMode;

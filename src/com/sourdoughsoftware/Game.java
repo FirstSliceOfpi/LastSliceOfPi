@@ -1,11 +1,14 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.gamepieces.Enemy;
+import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
 import com.sourdoughsoftware.utility.ItemTree;
+import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.utility.XmlParser;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.world.World;
@@ -17,9 +20,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
+    PrintFiles p = new PrintFiles();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
-        XmlParser.parseItems();
+//        XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
         XmlParser.parseNouns();
@@ -28,15 +32,31 @@ public class Game {
         HashMap<String, Object> pies = XmlParser.parsePies();
         GameState.setTree((ItemTree) pies.get("pieTree"));
         GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
+        GameState.setCookBook(new CookBook());
     }
 
-    public void start() {
+    public void start() throws ChainOfEventException {
         boolean gameOver = false;
         while(!gameOver) {
+            System.out.println(Enemy.getTotalEnemies() + " " + Enemy.getTotalEnemiesHungry() + " " + Enemy.getTotalEnemiesAlive());
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
+            if (Enemy.getTotalEnemiesHungry() == 0){
+                p.print("goodEnding");
+                gameOver = true;
+            }else if (Enemy.getTotalEnemiesAlive() == 0) {
+                p.print("badEnding");
+                gameOver = true;
+            }else if (Enemy.getTotalEnemiesAlive() + Enemy.getTotalEnemiesHungry() == Enemy.getTotalEnemies()) {
+                p.print("GameLogo");
+                System.out.println("Guess you do what you want huh?");
+                gameOver = true;
+            }
         }
+
+        //TODO print an ending picture
+//        p.print("GameLogo");
     }
 
 }

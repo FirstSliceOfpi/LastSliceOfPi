@@ -3,6 +3,7 @@ package com.sourdoughsoftware.utility;
 import com.sourdoughsoftware.Game;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import org.xml.sax.SAXException;
 
@@ -30,7 +31,6 @@ public class WelcomeScreen {
         return WELCOME_MESSAGE;
     }
 
-
     public void loadingScreen() {
         openingCredits.startJuke();
         openingCredits.turnTheDial((float) -10.69);
@@ -38,7 +38,7 @@ public class WelcomeScreen {
         Prompter.prompt("Press Enter to continue...");
     }
 
-    public void splash() throws ParserConfigurationException, SAXException, IOException {
+    public void splash() throws ParserConfigurationException, SAXException, IOException, ChainOfEventException {
         String begin = "\n1. Start new story\n" +
                 "2. Continue from where you left off\n";
         String gameType = Prompter.prompt(begin);

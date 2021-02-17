@@ -34,31 +34,31 @@ import static java.lang.Boolean.parseBoolean;
 
 public class XmlParser {
 
-    public static void parseItems() {
-
-        try {
-            Document document = loadXML("resources/Items.xml");
-
-            NodeList nodeList = document.getElementsByTagName("item");
-
-            for (int current = 0; current < nodeList.getLength(); current++) {
-                Node node = nodeList.item(current);
-
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-
-                    Element currentElement = (Element) node;
-                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
-                    String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
-
-                    new Item(name, description);
-
-                }
-            }
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
+//    public static void parseItems() {
+//
+//        try {
+//            Document document = loadXML("resources/Items.xml");
+//
+//            NodeList nodeList = document.getElementsByTagName("item");
+//
+//            for (int current = 0; current < nodeList.getLength(); current++) {
+//                Node node = nodeList.item(current);
+//
+//                if (node.getNodeType() == Node.ELEMENT_NODE) {
+//
+//                    Element currentElement = (Element) node;
+//                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
+//                    String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
+//
+//                    new Item(name, description);
+//
+//                }
+//            }
+//        } catch (ParserConfigurationException | IOException | SAXException e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//    }
 
     public static void parseNouns() {
         HashMap<String, Noun> temp = new HashMap<>();
@@ -83,7 +83,15 @@ public class XmlParser {
                     String attackPoints = Objects.requireNonNull(
                             currentElement.getElementsByTagName("attackPoints"))
                             .item(0).getTextContent();
+                    boolean findable = parseBoolean(Objects.requireNonNull(
+                            currentElement.getElementsByTagName("Findable"))
+                            .item(0).getTextContent());
                     Item noun = new Item(name, description);
+                    try {
+                        noun.setFindable(findable);
+                    } catch (Exception e) {
+                        if (GameState.getDevMode()) System.out.println(e);
+                    }
                     temp.put(name, noun);
 
                     NodeList modifiers = Objects.requireNonNull(
@@ -120,6 +128,7 @@ public class XmlParser {
     private static ArrayList<Event> addActions(Element mod, Noun key) {
         ArrayList<Event> eventList = new ArrayList<>();
         NodeList actions = mod.getElementsByTagName("action");
+        if(actions.getLength() == 0) return eventList;
         Event event = null;
         for (int j = 0; j < actions.getLength(); j++) {
             Node action = actions.item(j); // <action>
@@ -129,7 +138,8 @@ public class XmlParser {
                 if(children.item(i).getNodeType() != 1) { continue; }
                 argument = children.item(i).getTextContent().strip();
             }
-            event = new Event(VerbGroup.valueOf(action.getFirstChild().getTextContent().strip()), argument, key); // [print, The candle is lit]
+            String verb = action.getFirstChild().getTextContent().strip();
+            event = new Event(VerbGroup.valueOf(verb), argument, key); // [print, The candle is lit]
             eventList.add(event);
         }
         return eventList;
@@ -177,35 +187,59 @@ public class XmlParser {
                 int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent());
                 String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent();
                 String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent();
+                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent();
                 //addInteractions(singleEnemy, enemy);
                 //Add Enemy to list
-                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background);
+                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background,deadtext);
                 enemies.add(enemy);
 
             }
         }
         return enemies;
     }
-//
-//    public static ArrayList<Room> parseRooms() {
-//        ArrayList<Room> rooms = new ArrayList<>();
-//        try{
-//            Document document = loadXML("resources/Rooms.xml");
-//            NodeList nodeList = document.getElementsByTagName("room");
-//            for (int i = 0; i < nodeList.getLength(); i++) {
-//                Node node = nodeList.item(i);
-//
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                    Element roomElement = (Element) node;
-//                }
-//            }
-//        }
-//    }
+
+    public static ArrayList<Room> parseRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        try{
+            Document document = loadXML("resources/Rooms.xml");
+            NodeList nodeList = document.getElementsByTagName("room");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element roomElement = (Element) node;
+//                    String roomID = roomElement.getElementsByTagName("roomID").item(0).getTextContent();
+                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent();
+                    String description = roomElement.getElementsByTagName("description").item(0).getTextContent();
+
+                    Room room = new Room(name,description);
+                    for (int j =0; j< roomElement.getElementsByTagName("exit").getLength(); j++) {
+                        Element el = (Element) roomElement.getElementsByTagName("exit").item(j);
+
+                        String direction = el.getElementsByTagName("compass").item(0).getTextContent();
+                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent();
+
+                        room.roomList.put(direction,directionName);
+                    }
+                    rooms.add(room);
+
+                }
+            }
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
 
     public static HashMap<String, Object> parsePies() {
         ItemTree tree = new ItemTree();
         ArrayList<Pie> findablePies = new ArrayList<>();
         HashMap<String, Object> result = new HashMap<>();
+        HashMap<String, Noun> temp = new HashMap<>();
         try {
             Document document = loadXML("resources/Pies.xml");
 
@@ -222,14 +256,35 @@ public class XmlParser {
                     String attackPoints = currentElement.getElementsByTagName("attackPoints").item(0).getTextContent();
                     NodeList modifiers = currentElement.getElementsByTagName("modifiers").item(0).getChildNodes();
                     Pie pie = new Pie(name, description, Integer.parseInt(attackPoints), victory);
+                    temp.put("name", pie);
                     for (int i = 0; i < modifiers.getLength(); i++) {
                         if(modifiers.item(i).getNodeType() != Node.ELEMENT_NODE) { continue; }
-                        String modifierName = "set" + modifiers.item(i).getNodeName();
-                        boolean modifierValue = parseBoolean(modifiers.item(i).getTextContent());
-                        try {
-                            pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
-                        } catch (Exception e) {
-                            if(GameState.getDevMode()) System.out.println(e);
+                        String modiName = modifiers.item(i).getNodeName();
+                        if(!(modiName.equals("Wieldable") || modiName.equals("Findable") || modiName.equals("Grabable"))) {
+                            ArrayList<Event> eventsList;
+                                Node modNode = modifiers.item(i);
+
+                                if(modNode.getNodeType() != Node.ELEMENT_NODE ) { continue; }
+                                Element mod = (Element) modNode;
+                                String key = ((Element) modNode).getAttribute("key");
+                                Noun keyNoun = temp.get(key);
+
+                                String modName = mod.getNodeName(); // <light>
+                                if(Dictionary.INSTANCE.getVerb(modName) == null) {
+                                    new Verb(modName, VerbGroup.unique);
+                                }
+                                eventsList = addActions(mod, keyNoun);
+                                pie.setAction(modName, eventsList);
+                                continue;
+                            }
+                        else {
+                            String modifierName = "set" + modiName;
+                            boolean modifierValue = parseBoolean(modifiers.item(i).getTextContent());
+                            try {
+                                pie.getClass().getMethod(modifierName, Boolean.TYPE).invoke(pie, modifierValue);
+                            } catch (Exception e) {
+                                if (GameState.getDevMode()) System.out.println(e);
+                            }
                         }
                     }
                     tree.add(pie);

@@ -33,7 +33,7 @@ import static com.sourdoughsoftware.utility.Colors.*;
 
 public class Actions {
 
-    public static String execute() {
+    public static String execute() throws ChainOfEventException {
 
         if (Command.getVerb() == null) {
             return "no verb in input";
@@ -65,6 +65,8 @@ public class Actions {
                 return getDescription();
 //            case print:
 //                return print();
+            case feed:
+                return feed(Command.getNoun(), Command.getTargetNoun());
             case wield:
                 return wield(Command.getNoun(), Command.getVerb());
             case attack:
@@ -82,6 +84,11 @@ public class Actions {
                     return Command.getTargetNoun().getAction(Command.getVerb().getName());
                 }
         }
+    }
+
+    public static String use(String str) {
+        dropFromInventory(str);
+        return str;
     }
 
     public static String help() {
@@ -267,7 +274,12 @@ public class Actions {
     public static String dropFromRoom(String message) throws ChainOfEventException {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        noun = currentRoom.dropItem(noun);
+        if (noun instanceof Pie) {
+            noun = currentRoom.dropItem(noun);
+        }
+        if (Command.getTargetNoun() instanceof Enemy) {
+            noun = currentRoom.dropEnemy(Command.getTargetNoun());
+        }
         if(noun == null) {
             throw new ChainOfEventException("That is not in that room");
         }
@@ -307,6 +319,8 @@ public class Actions {
             }
         }else if(cheat.equals("power me")){
             return Cheat.getInstance().doubleAttackPoints();
+        } else if(cheat.equals("super power")){
+            return Cheat.getInstance().doubleAllAP();
         }
         return "Can not perform that cheat.";
     }
@@ -320,11 +334,26 @@ public class Actions {
         }
     }
 
-    private static String attack(Noun noun, Verb verb, Noun targetNoun) {
+    public static String feed(Noun noun, Noun targetNoun) {
+
+        if(!(noun instanceof Pie)) {
+            return noun.getName() +  " isn't even edible. jeez do we gotta hold your hand through this whole game? play smart";
+        }
+        if(!(targetNoun instanceof Enemy)) {
+            return "Oh yeah? You're gonna feed a " + targetNoun + " some " + noun +"? You feel dumb right now huh";
+        }
+        return ((Enemy) targetNoun).feed((Pie) noun);
+    }
+
+
+    private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
+        if(!World.getCurrentRoom().has(noun)) {
+            return noun.getName() + " isn't here.";
+        }
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
         }
-        int WEAPON_MULTIPLIER = 10;
+        int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
@@ -336,9 +365,11 @@ public class Actions {
                     response.append("You " + verb.getName() + " " + enemy.getName() + " with " + targetNoun.getName() + "."
                            + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
-                } //TODO: Create Enemy victory message to place here
-                if (enemy.getHp() < 0) {
-                    return ((Pie) noun).getVictory();
+                } //DONE: Create Enemy victory message to place here
+                if (enemy.getHp() <= 0) {
+                    dropFromRoom("bye");
+                    GameState.getCookBook().addRecipe();
+                    return ((Enemy) noun).getDeadtext();
                 }
             } else {
                 return "What are you doing sir? ";

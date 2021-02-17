@@ -118,6 +118,15 @@ public class Player implements Serializable, Savable {
         public void saveClass() {
             GameState.addSavable(this);
         }
+        public String getDescription() {
+            StringBuilder builder = new StringBuilder();
+            if(inventory.size() == 0) return "No items";
+            for(Noun noun : inventory) {
+                builder.append(noun.getName() + "\n");
+            }
+            return builder.toString();
+        }
     }
+
 
 }

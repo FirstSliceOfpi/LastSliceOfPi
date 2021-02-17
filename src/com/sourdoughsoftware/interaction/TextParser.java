@@ -23,18 +23,20 @@ public class TextParser {
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
         Noun targetNoun = getNoun(targetNounCandidates, userInputWords);
 
-        if(userInputWords.contains("with") && targetNoun != null) {
+
+        if((verb != null && verb.getName().equals("feed") && !userInputWords.contains("to"))||(userInputWords.contains("with") && targetNoun != null)) {
             Noun temp = targetNoun;
             targetNoun = noun;
             noun = temp;
         }
+
         Command.setNoun(noun);
         Command.setVerb(verb);
         Command.setTargetNoun(targetNoun);
     }
 
     private static Noun getNoun(Set<Noun> nounSet, List<String> userInputWords) {
-        if (nounSet == null) {
+        if (nounSet == null || nounSet.size() == 0) {
             return null;
         }
         Noun noun = null;
@@ -62,7 +64,9 @@ public class TextParser {
                     noun = null;
                 }
             } else {
-                noun = nounSet.iterator().next();
+                if(!(nounSet.size() == 0)) {
+                    noun = nounSet.iterator().next();
+                }
             }
         }
         if (noun != null) {
