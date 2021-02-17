@@ -65,6 +65,8 @@ public class Actions {
                 return getDescription();
 //            case print:
 //                return print();
+            case feed:
+                return feed(Command.getNoun(), Command.getTargetNoun());
             case wield:
                 return wield(Command.getNoun(), Command.getVerb());
             case attack:
@@ -325,6 +327,17 @@ public class Actions {
         }
     }
 
+    public static String feed(Noun noun, Noun targetNoun) {
+
+        if(!(noun instanceof Pie)) {
+            return noun.getName() +  " isn't even edible. jeez do we gotta hold your hand through this whole game? play smart";
+        }
+        if(!(targetNoun instanceof Enemy)) {
+            return "Oh yeah? You're gonna feed a " + targetNoun + " some " + noun +"? You feel dumb right now huh";
+        }
+        return ((Enemy) targetNoun).feed((Pie) noun);
+    }
+
     private static String attack(Noun noun, Verb verb, Noun targetNoun) {
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
@@ -333,15 +346,15 @@ public class Actions {
         StringBuilder response = new StringBuilder();
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
-                Enemy enemy = (Enemy) targetNoun;
-                Pie weapon = (Pie) noun;
+                Enemy enemy = (Enemy) noun;
+                Pie weapon = (Pie) targetNoun;
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
                     enemy.setHp(newHP);
-                    response.append("You " + verb.getName() + enemy.getName() + " with " + targetNoun.getName() + "."
-                            + enemy.getName() + " has " + enemy.getHp() +" hp");
+                    response.append("You " + verb.getName() + " " + enemy.getName() + " with " + targetNoun.getName() + "."
+                           + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
-                }
+                } //TODO: Create Enemy victory message to place here
                 if (enemy.getHp() < 0) {
                     return ((Pie) noun).getVictory();
                 }

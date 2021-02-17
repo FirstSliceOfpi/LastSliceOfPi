@@ -188,21 +188,43 @@ public class XmlParser {
         }
         return enemies;
     }
-//
-//    public static ArrayList<Room> parseRooms() {
-//        ArrayList<Room> rooms = new ArrayList<>();
-//        try{
-//            Document document = loadXML("resources/Rooms.xml");
-//            NodeList nodeList = document.getElementsByTagName("room");
-//            for (int i = 0; i < nodeList.getLength(); i++) {
-//                Node node = nodeList.item(i);
-//
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                    Element roomElement = (Element) node;
-//                }
-//            }
-//        }
-//    }
+
+    public static ArrayList<Room> parseRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        try{
+            Document document = loadXML("resources/Rooms.xml");
+            NodeList nodeList = document.getElementsByTagName("room");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element roomElement = (Element) node;
+//                    String roomID = roomElement.getElementsByTagName("roomID").item(0).getTextContent();
+                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent();
+                    String description = roomElement.getElementsByTagName("description").item(0).getTextContent();
+
+                    Room room = new Room(name,description);
+                    for (int j =0; j< roomElement.getElementsByTagName("exit").getLength(); j++) {
+                        Element el = (Element) roomElement.getElementsByTagName("exit").item(j);
+
+                        String direction = el.getElementsByTagName("compass").item(0).getTextContent();
+                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent();
+
+                        room.roomList.put(direction,directionName);
+                    }
+                    rooms.add(room);
+
+                }
+            }
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
 
     public static HashMap<String, Object> parsePies() {
         ItemTree tree = new ItemTree();
