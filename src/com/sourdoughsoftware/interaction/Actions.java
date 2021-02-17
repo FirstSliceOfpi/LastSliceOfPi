@@ -24,9 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
-import java.util.Objects;
-import java.util.List;
+import java.util.*;
 
 import static com.sourdoughsoftware.utility.Colors.*;
 
@@ -91,6 +89,26 @@ public class Actions {
         return str;
     }
 
+    public static String reward(String str) {
+
+        Noun noun = Dictionary.INSTANCE.getNoun(str);
+
+        if(noun== null) {
+
+            return "Carry on my wayward son";
+        } else  {
+            System.out.println(noun.getName());
+            if(Command.getTargetNoun() == null) {
+                Command.setTargetNoun(Command.getNoun());
+            }
+            Command.setNoun(noun);
+            addToInventory("");
+            return "You have been rewarded a " + noun.getName()+". ";
+        }
+
+
+    }
+
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
         Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
@@ -100,8 +118,9 @@ public class Actions {
     }
 
     public static String destroyNoun(String message) {
-       // Dictionary.INSTANCE.deleteNoun(Command.getNoun());
-        return message;
+        Dictionary.INSTANCE.deleteNoun(Command.getTargetNoun());
+
+        return Command.getTargetNoun().getName() + " " + message;
     }
 
     public static String createNoun(String name) {

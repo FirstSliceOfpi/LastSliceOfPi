@@ -128,4 +128,8 @@
         <name>remove</name>
         <group>use</group>
     </verb>
+    <verb>
+        <name>reward</name>
+        <group>reward</group>
+    </verb>
 </Verbs>

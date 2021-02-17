@@ -5,14 +5,22 @@
         <description>its a match</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <kick>
+            <light>
                 <action>print
                     <arg>You strike the match on the bottom of your boot.</arg>
                 </action>
                 <action>changeDescription
                     <arg>This match is burning with a bright blue flame.</arg>
                 </action>
-            </kick>
+            </light>
+            <eat>
+                <action>print
+                    <arg>You eat the match.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>got digested. You're crazy dawg.</arg>
+                </action>
+            </eat>
         </modifiers>
     </item>
     <item id="0">
@@ -26,6 +34,12 @@
                 </action>
                 <action>changeDescription
                     <arg>This candle is burning bright.</arg>
+                </action>
+                <action>reward
+                    <arg>eggs</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>is burned to ashes.</arg>
                 </action>
             </light>
             <bite>
@@ -207,8 +221,11 @@
                     <action>print
                         <arg>When you open the chest, you notice lots of treasure inside!</arg>
                     </action>
-                    <action>addToInventory
-                        <arg>When you open the chest, you notice lots of treasure inside!</arg>
+                    <action>reward
+                        <arg>pumpkin pie</arg>
+                    </action>
+                    <action>destroyNoun
+                        <arg> disappears into thin air.</arg>
                     </action>
                 </open>
             </modifiers>
