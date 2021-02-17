@@ -25,7 +25,7 @@ public class CookBook {
         }
     }
 
-    private void addRecipe() {
+    public void addRecipe() {
         Random rand = new Random();
         if(recipes.size() >0) {
             int index = rand.nextInt(recipes.size());
@@ -46,6 +46,10 @@ public class CookBook {
             cookBook.append(i).append(") ").append(currentRecipes.get(i));
         }
         return cookBook.toString();
+    }
+
+    public String getDescription() {
+        return getRecipes();
     }
 
 }
