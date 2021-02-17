@@ -127,10 +127,12 @@ public class Room implements java.io.Serializable, Savable {
         result.append("You " + examine + " and See: ");
         roomItems.forEach(item -> {
             if (item instanceof Enemy) {
-                String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
-                result.append( ANSI_RESET + ANSI_RED + item.getName() + ANSI_RESET + ANSI_GREEN + " HP: " + ((Enemy) item).getHp()
-                   + ANSI_RESET);
-                result.append(enemyD);
+                if (roomItems.contains(item)) {
+                    String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
+                    result.append( ANSI_RESET + ANSI_RED + item.getName() + ANSI_RESET + ANSI_GREEN + " HP: " + ((Enemy) item).getHp()
+                            + ANSI_RESET);
+                    result.append(enemyD);
+                }
             }else if(item instanceof Pie){
                 String itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
                 result.append(ANSI_RESET+ ANSI_CYAN + "An ingredient: " + ANSI_RESET+ ANSI_BLUE + item.getName() + ANSI_RESET  + "\n "
@@ -228,7 +230,10 @@ public class Room implements java.io.Serializable, Savable {
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < difficulty) {
             Noun[] items = Dictionary.INSTANCE.getGenericItems().toArray(new Noun[0]);
-            if(!GameState.getPlayer().getInventory().has(items[randomNumber]) && items[randomNumber] instanceof Item) {
+            if(!GameState.getPlayer().getInventory().has(items[randomNumber])
+                    && items[randomNumber] instanceof Item
+                    && items[randomNumber].isFindable()
+            ) {
                 addToRoom((Item) items[randomNumber]);
             }else if (tries < 3){
                 ++tries;

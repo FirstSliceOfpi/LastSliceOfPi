@@ -391,7 +391,7 @@ public class Actions {
                 if (enemy.getHp() <= 0) {
                     dropFromRoom("bye");
                     GameState.getCookBook().addRecipe();
-                    return ((Enemy) noun).getDeadtext();
+                    return enemy.getDeadtext();
                 }
             } else {
                 return "What are you doing sir? ";

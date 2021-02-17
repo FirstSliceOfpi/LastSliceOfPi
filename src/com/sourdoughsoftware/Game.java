@@ -7,12 +7,14 @@ import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
+import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.ItemTree;
 import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.utility.XmlParser;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.world.World;
 import org.xml.sax.SAXException;
+import static com.sourdoughsoftware.utility.Colors.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class Game {
         boolean gameOver = false;
         while(!gameOver) {
             System.out.println(Enemy.getTotalEnemies() + " " + Enemy.getTotalEnemiesHungry() + " " + Enemy.getTotalEnemiesAlive());
-            System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
+            System.out.println(ANSI_YELLOW + World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n" + ANSI_RESET);
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
             if (Enemy.getTotalEnemiesHungry() == 0){
