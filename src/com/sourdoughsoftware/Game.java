@@ -1,7 +1,8 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.gamepieces.Enemy;
+import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 public class Game {
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
-        XmlParser.parseItems();
+//        XmlParser.parseItems();
         XmlParser.parseVerbs();
         XmlParser.parseEnemy();
         XmlParser.parseNouns();
@@ -29,6 +30,7 @@ public class Game {
         HashMap<String, Object> pies = XmlParser.parsePies();
         GameState.setTree((ItemTree) pies.get("pieTree"));
         GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
+        GameState.setCookBook(new CookBook());
     }
 
     public void start() throws ChainOfEventException {
@@ -37,6 +39,10 @@ public class Game {
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
+            if(Enemy.getTotalEnemiesHungry() == 0 || Enemy.getTotalEnemiesAlive() == 0) {
+                System.out.println(Enemy.getTotalEnemiesAlive() + "HELLO");
+                gameOver = true;
+            }
         }
     }
 

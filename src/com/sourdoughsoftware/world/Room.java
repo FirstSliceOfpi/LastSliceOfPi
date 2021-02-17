@@ -1,16 +1,14 @@
 package com.sourdoughsoftware.world;
 
 import com.sourdoughsoftware.Savable;
+import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.gamepieces.Player;
-
 import static com.sourdoughsoftware.utility.Colors.*;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -100,7 +98,7 @@ public class Room implements java.io.Serializable, Savable {
     public void clearItems() {
         ArrayList items = new ArrayList();
         for (Item item : roomItems) {
-            if (item instanceof Enemy) {
+            if (!(item instanceof Pie)) {
                 items.add(item);
             }
         }
@@ -218,6 +216,23 @@ public class Room implements java.io.Serializable, Savable {
             }
         }
     }
+
+    public void addGenericsToRoomOnEntering(int tries) {
+        Random rand = new Random();
+        int maxSize = Dictionary.INSTANCE.getGenericItems().size();
+        int difficulty = (maxSize*1);
+        int randomNumber = rand.nextInt(difficulty);
+        if(randomNumber < difficulty) {
+            Noun[] items = Dictionary.INSTANCE.getGenericItems().toArray(new Noun[0]);
+            if(!GameState.getPlayer().getInventory().has(items[randomNumber]) && items[randomNumber] instanceof Item) {
+                addToRoom((Item) items[randomNumber]);
+            }else if (tries < 3){
+                ++tries;
+                addItemsToRoomOnEntering(tries);
+            }
+        }
+    }
+
     public boolean addToRoom(Item item) {
         return roomItems.add(item);
     }

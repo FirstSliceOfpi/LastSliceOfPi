@@ -2,6 +2,10 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.Savable;
+import com.sourdoughsoftware.gamepieces.Enemy;
+import com.sourdoughsoftware.gamepieces.Item;
+import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.world.Room;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -14,6 +18,7 @@ public enum Dictionary implements Serializable, Savable {
 
     private Map<String, Set<Noun>> nouns = new HashMap<>();
     private Map<String, Verb> verbs = new HashMap<>();
+    private HashSet<Noun> genericItems = new HashSet<>();
 
     public void add(DictionaryEntry entry) {
 
@@ -22,6 +27,7 @@ public enum Dictionary implements Serializable, Savable {
         for (String entryNameWord : entryNameWords) {
             if (entry instanceof Verb) {
                 verbs.put(entryNameWord, (Verb) entry);
+                continue;
             } else {
                 Set<Noun> nounResults = nouns.get(entryNameWord);
 
@@ -31,7 +37,15 @@ public enum Dictionary implements Serializable, Savable {
                     nounResults.add((Noun) entry);
                 }
             }
+            if(!(entry instanceof Pie || entry instanceof Room || entry instanceof Enemy)) {
+                assert entry instanceof Noun;
+                genericItems.add((Noun) entry);
+            }
         }
+    }
+
+    public HashSet<Noun> getGenericItems() {
+        return genericItems;
     }
 
     public Verb getVerb(String name) {

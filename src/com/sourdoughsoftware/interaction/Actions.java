@@ -86,6 +86,11 @@ public class Actions {
         }
     }
 
+    public static String use(String str) {
+        dropFromInventory(str);
+        return str;
+    }
+
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
         Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
@@ -338,7 +343,9 @@ public class Actions {
         return ((Enemy) targetNoun).feed((Pie) noun);
     }
 
-    private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException {
+
+    private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
+
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
         }
