@@ -39,11 +39,12 @@ public class Game {
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
-            if(Enemy.getTotalEnemiesHungry() == 0 || Enemy.getTotalEnemiesAlive() == 0) {
-                System.out.println(Enemy.getTotalEnemiesAlive() + "HELLO");
+            if(Enemy.getTotalEnemiesAlive() + Enemy.getTotalEnemiesHungry() == Enemy.getTotalEnemies()) {
                 gameOver = true;
             }
         }
+
+        //TODO print an ending picture
     }
 
 }

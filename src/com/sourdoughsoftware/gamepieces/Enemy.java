@@ -15,6 +15,7 @@ public class Enemy extends Item implements java.io.Serializable{
     private boolean fed = false;
     private static int totalEnemiesAlive = 0;
     private static int totalEnemiesHungry = 0;
+    private static int totalEnemies = 0;
 
 
 
@@ -32,6 +33,8 @@ public class Enemy extends Item implements java.io.Serializable{
 //        this.name = name;
         totalEnemiesAlive++;
         totalEnemiesHungry++;
+        totalEnemies++;
+        
         this.enemyClass = enemyClass;
         this.hp = hp;
         this.background = background;
@@ -61,6 +64,14 @@ public class Enemy extends Item implements java.io.Serializable{
 
     public static int getTotalEnemiesHungry() {
         return totalEnemiesHungry;
+    }
+
+    public static int getTotalEnemies() {
+        return totalEnemies;
+    }
+
+    public static void decrementEnemiesAlive() {
+        totalEnemiesAlive--;
     }
 
     public String getEnemyClass() {
