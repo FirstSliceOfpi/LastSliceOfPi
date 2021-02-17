@@ -5,14 +5,14 @@
         <description>its a match</description>
         <attackPoints>0</attackPoints>
         <modifiers>
-            <light>
+            <kick>
                 <action>print
                     <arg>You strike the match on the bottom of your boot.</arg>
                 </action>
                 <action>changeDescription
                     <arg>This match is burning with a bright blue flame.</arg>
                 </action>
-            </light>
+            </kick>
         </modifiers>
     </item>
     <item id="0">
@@ -191,7 +191,12 @@
             <attackPoints>0</attackPoints>
             <modifiers>
                 <open>
-                    print<arg>When you open the chest, you notice lots of treasure inside!</arg>
+                    <action>print
+                        <arg>When you open the chest, you notice lots of treasure inside!</arg>
+                    </action>
+                    <action>addToInventory
+                        <arg>When you open the chest, you notice lots of treasure inside!</arg>
+                    </action>
                 </open>
             </modifiers>
         </item>

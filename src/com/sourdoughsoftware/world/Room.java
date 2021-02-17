@@ -89,6 +89,7 @@ public class Room implements java.io.Serializable, Savable {
         System.out.println(noun.getName() + e);
         Noun dropped = roomItems.get(e);
         roomItems.remove(noun);
+        Enemy.decrementEnemiesAlive();
         return dropped;
     }
 
