@@ -47,7 +47,7 @@ public class GameState implements Serializable{
         cookBook = book;
     }
 
-    public CookBook getCookBook() {
+    public static CookBook getCookBook() {
         return cookBook;
     }
 

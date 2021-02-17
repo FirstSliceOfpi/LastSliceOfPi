@@ -1,5 +1,7 @@
 package com.sourdoughsoftware.gamepieces;
 
+import com.sourdoughsoftware.GameState;
+
 public class Enemy extends Item implements java.io.Serializable{
 
 
@@ -76,6 +78,7 @@ public class Enemy extends Item implements java.io.Serializable{
         if(this.pie.equals(pie.getName())) {
             fed = true;
             totalEnemiesHungry++;
+            GameState.getCookBook().addRecipe();
             return getName() + " loved it. Ate it in one bite.";
         } else {
             return "That's not what " + getName() + " wants.";
