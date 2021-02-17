@@ -11,9 +11,11 @@ public class Enemy extends Item implements java.io.Serializable{
     private String weaponType;
     private String background;
     private String pie;
+    private String deadtext;
     private boolean fed = false;
     private static int totalEnemiesAlive = 0;
     private static int totalEnemiesHungry = 0;
+
 
 
 
@@ -25,7 +27,7 @@ public class Enemy extends Item implements java.io.Serializable{
     }
 
     // Single ctor
-    public Enemy(String name, String enemyClass, int hp, String pie, String background) {
+    public Enemy(String name, String enemyClass, int hp, String pie, String background, String deadtext) {
         super(name, background);
 //        this.name = name;
         totalEnemiesAlive++;
@@ -34,6 +36,7 @@ public class Enemy extends Item implements java.io.Serializable{
         this.hp = hp;
         this.background = background;
         this.pie = pie;
+        this.deadtext = deadtext;
         setAttackable(true);
 //        this.setAction("feed", new ArrayList<>(){{add(new Event(VerbGroup.feed, "Im hungry"));}});
 
@@ -62,6 +65,10 @@ public class Enemy extends Item implements java.io.Serializable{
 
     public String getEnemyClass() {
         return enemyClass;
+    }
+
+    public String getDeadtext() {
+        return deadtext;
     }
 
     public String feed(Pie pie) {

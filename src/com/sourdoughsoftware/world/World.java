@@ -65,7 +65,7 @@ public class World implements Savable {
                 case "hansel and gretel":
                     room.addToRoom(enemies.get(6));
                     break;
-                case "red riding hood<":
+                case "red riding hood":
                     room.addToRoom(enemies.get(7));
                     break;
                 case "shoemaker":
@@ -80,24 +80,6 @@ public class World implements Savable {
             }
 
         }
-//        Enemy scar = villains.get("Scar");
-//        Room tomorrowLand = new Room("Tomorrow Land", "The land of the future!");
-//        Room captianHooksShip = new Room("Captain Hook's Ship", "There's lots of crocs in the water!");
-//        Room winniesTree = new Room("Winnie The Pooh's Tree", "Lots of honey in here.");
-//        Room goofysHouse = new Room("Goofy's house", "You see Goofy chilling on his couch.");
-//        currentRoom = tomorrowLand;
-//        gameMap.add(tomorrowLand);
-//        gameMap.add(captianHooksShip);
-//        gameMap.add(winniesTree);
-//        gameMap.add(goofysHouse);
-
-//        tomorrowLand.createExit(Directions.east, captianHooksShip);
-//        captianHooksShip.createExit(Directions.west, tomorrowLand);
-//        tomorrowLand.createExit(Directions.west, winniesTree);
-//        winniesTree.createExit(Directions.east, tomorrowLand);
-//        tomorrowLand.createExit(Directions.south, goofysHouse);
-//        goofysHouse.createExit(Directions.north, tomorrowLand);
-//        currentRoom = tomorrowLand;
         new Noun("room","All rooms.");
         saveClass();
     }
