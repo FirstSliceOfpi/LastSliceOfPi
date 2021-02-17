@@ -49,9 +49,16 @@ public class World implements Savable {
 //                    break;
                 case "snow white":
                     room.addToRoom(enemies.get(1));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+
                     break;
                 case "frog prince":
                     room.addToRoom(enemies.get(2));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
                     break;
                 case "rapunzel":
                     room.addToRoom(enemies.get(3));
