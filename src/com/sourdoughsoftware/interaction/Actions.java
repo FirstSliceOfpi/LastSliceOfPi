@@ -94,10 +94,8 @@ public class Actions {
         Noun noun = Dictionary.INSTANCE.getNoun(str);
 
         if(noun== null) {
-
             return "Carry on my wayward son";
         } else  {
-            System.out.println(noun.getName());
             if(Command.getTargetNoun() == null) {
                 Command.setTargetNoun(Command.getNoun());
             }
@@ -118,9 +116,15 @@ public class Actions {
     }
 
     public static String destroyNoun(String message) {
-        Dictionary.INSTANCE.deleteNoun(Command.getTargetNoun());
+        Noun noun = null;
+        if(Command.getTargetNoun() == null) {
+            noun = Command.getNoun();
+        } else {
+            noun = Command.getTargetNoun();
+        }
+        Dictionary.INSTANCE.deleteNoun(noun);
 
-        return Command.getTargetNoun().getName() + " " + message;
+        return noun.getName() + " " + message;
     }
 
     public static String createNoun(String name) {
