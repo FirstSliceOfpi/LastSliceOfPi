@@ -1,8 +1,8 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
@@ -38,6 +38,10 @@ public class Game {
             System.out.println(World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n");
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
+            if(Enemy.getTotalEnemiesHungry() == 0 || Enemy.getTotalEnemiesAlive() == 0) {
+                System.out.println(Enemy.getTotalEnemiesAlive() + "HELLO");
+                gameOver = true;
+            }
         }
     }
 
