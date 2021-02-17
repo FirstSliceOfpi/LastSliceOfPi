@@ -277,8 +277,8 @@ public class Actions {
         if (noun instanceof Pie) {
             noun = currentRoom.dropItem(noun);
         }
-        if (noun instanceof Enemy) {
-            noun = currentRoom.dropEnemy(noun);
+        if (Command.getTargetNoun() instanceof Enemy) {
+            noun = currentRoom.dropEnemy(Command.getTargetNoun());
         }
         if(noun == null) {
             throw new ChainOfEventException("That is not in that room");
@@ -345,11 +345,13 @@ public class Actions {
 
 
     private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
-
+        if(!World.getCurrentRoom().has(noun)) {
+            return noun.getName() + " isn't here.";
+        }
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
             return "Attack who with what?";
         }
-        int WEAPON_MULTIPLIER = 10;
+        int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
         if (noun.isAttackable() & targetNoun.isWieldable()) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
@@ -362,8 +364,9 @@ public class Actions {
                            + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
                 } //DONE: Create Enemy victory message to place here
-                if (enemy.getHp() < 0) {
+                if (enemy.getHp() <= 0) {
                     dropFromRoom("bye");
+                    GameState.getCookBook().addRecipe();
                     return ((Enemy) noun).getDeadtext();
                 }
             } else {

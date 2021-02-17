@@ -31,7 +31,6 @@ public class WelcomeScreen {
         return WELCOME_MESSAGE;
     }
 
-
     public void loadingScreen() {
         openingCredits.startJuke();
         openingCredits.turnTheDial((float) -10.69);
