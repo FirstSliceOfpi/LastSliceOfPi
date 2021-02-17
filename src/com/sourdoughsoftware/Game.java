@@ -1,5 +1,6 @@
 package com.sourdoughsoftware;
 
+import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 import com.sourdoughsoftware.interaction.Actions;
@@ -28,6 +29,7 @@ public class Game {
         HashMap<String, Object> pies = XmlParser.parsePies();
         GameState.setTree((ItemTree) pies.get("pieTree"));
         GameState.setFindableWeapons((ArrayList<Pie>) pies.get("findablePies"));
+        GameState.setCookBook(new CookBook());
     }
 
     public void start() {
