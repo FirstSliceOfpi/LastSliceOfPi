@@ -25,5 +25,9 @@ public enum VerbGroup {
     ATTACK,
     wield,
     cheat,
-    help
+    help,
+    use,
+    no_destroy_use,
+    change,
+    open
 }
