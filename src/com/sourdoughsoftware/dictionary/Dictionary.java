@@ -8,10 +8,8 @@ import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.world.Room;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
 
 public enum Dictionary implements Serializable, Savable {
     INSTANCE;
@@ -59,6 +57,19 @@ public enum Dictionary implements Serializable, Savable {
     public Map<String, Set<Noun>> getNouns() {
         return nouns;
     }
+    public Noun getNoun(String str) {
+        String[] words = str.split(" ");
+        Set<Noun> nounCandidates = new HashSet<>();
+        Arrays.stream(words).forEach(word -> {
+            nounCandidates.addAll(nouns.get(word));
+        });
+        for(Noun noun : nounCandidates) {
+            if(noun.getName().equals(str)) {
+                return noun;
+            }
+        }
+        return null;
+    }
 
     public Map<String, Verb> getVerbs() { return verbs; }
 
@@ -78,6 +89,19 @@ public enum Dictionary implements Serializable, Savable {
         result.put("nouns", nouns);
         result.put("verbs", verbs);
         return result;
+    }
+
+    public void deleteNoun(Noun noun) {
+        String[] words = noun.getName().split(" ");
+
+        Arrays.stream(words).forEach(word -> {
+            Set<Noun> i = nouns.get(word);
+            if(i.size() == 1) {
+                nouns.remove(word);
+            } else {
+                nouns.get(word).remove(noun);
+            }
+        });
     }
 
     public void saveClass() {
