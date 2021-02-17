@@ -228,7 +228,10 @@ public class Room implements java.io.Serializable, Savable {
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < difficulty) {
             Noun[] items = Dictionary.INSTANCE.getGenericItems().toArray(new Noun[0]);
-            if(!GameState.getPlayer().getInventory().has(items[randomNumber]) && items[randomNumber] instanceof Item) {
+            if(!GameState.getPlayer().getInventory().has(items[randomNumber])
+                    && items[randomNumber] instanceof Item
+                    && items[randomNumber].isFindable()
+            ) {
                 addToRoom((Item) items[randomNumber]);
             }else if (tries < 3){
                 ++tries;

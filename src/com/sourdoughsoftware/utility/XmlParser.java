@@ -83,7 +83,15 @@ public class XmlParser {
                     String attackPoints = Objects.requireNonNull(
                             currentElement.getElementsByTagName("attackPoints"))
                             .item(0).getTextContent();
+                    boolean findable = parseBoolean(Objects.requireNonNull(
+                            currentElement.getElementsByTagName("Findable"))
+                            .item(0).getTextContent());
                     Item noun = new Item(name, description);
+                    try {
+                        noun.setFindable(findable);
+                    } catch (Exception e) {
+                        if (GameState.getDevMode()) System.out.println(e);
+                    }
                     temp.put(name, noun);
 
                     NodeList modifiers = Objects.requireNonNull(
