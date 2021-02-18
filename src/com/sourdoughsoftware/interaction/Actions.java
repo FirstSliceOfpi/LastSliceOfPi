@@ -402,7 +402,6 @@ public class Actions {
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
         if (noun.isAttackable()
-                && targetNoun.isWieldable()
                 && GameState.getPlayer().getInventory().has(targetNoun)) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
@@ -421,7 +420,7 @@ public class Actions {
                     return enemy.getDeadtext();
                 }
             } else {
-                return "What are you doing sir? ";
+                return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + targetNoun.getName()+". Try using food you savage.";
             }
         }else {
             return "Item not in inventory.";
