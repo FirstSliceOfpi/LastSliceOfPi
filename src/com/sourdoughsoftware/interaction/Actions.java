@@ -135,6 +135,14 @@ public class Actions {
         return name + " created";
     }
 
+    public static String destroyAll(String message) {
+        GameState.getPlayer().getInventory()
+                .getCurrentInventory().forEach(item->
+                    GameState.getPlayer().getInventory().drop(item)
+                );
+        return message;
+    }
+
     public static String getDescription() {
         if (Command.getNoun().getName().equals("room")) {
             return  World.getCurrentRoom().getRoomItems() + ANSI_RESET;
