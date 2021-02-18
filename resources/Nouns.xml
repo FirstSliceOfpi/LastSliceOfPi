@@ -147,7 +147,7 @@
                         <arg>Whoa there! Control your anger.</arg>
                     </action>
                     <action>
-                        remove
+                        use
                         <arg>Hairbrush is gone.</arg>
                     </action>
                 </break>
