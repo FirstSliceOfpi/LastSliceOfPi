@@ -83,10 +83,18 @@ public class Room implements java.io.Serializable, Savable {
         return roomItems.contains(noun);
     }
 
+    public boolean remove(Item item) {
+        int i = roomItems.indexOf(item);
+        if(i != -1) {
+           roomItems.remove(item);
+           return true;
+        }
+        return false;
+    }
+
     public Noun dropEnemy(Noun noun) {
         int e = roomItems.indexOf(noun);
         if (e == -1) return null;
-        System.out.println(noun.getName() + e);
         Noun dropped = roomItems.get(e);
         roomItems.remove(noun);
         Enemy.decrementEnemiesAlive();
@@ -124,7 +132,7 @@ public class Room implements java.io.Serializable, Savable {
             return "You find nothing in the room.";
         }
         String examine = ANSI_GREEN + "Examine" + ANSI_RESET;
-        result.append("You " + examine + " and See: ");
+        result.append("You " + examine + " and See: \n");
         roomItems.forEach(item -> {
             if (item instanceof Enemy) {
                 if (roomItems.contains(item)) {
@@ -133,12 +141,17 @@ public class Room implements java.io.Serializable, Savable {
                             + ANSI_RESET);
                     result.append(enemyD);
                 }
+
             }else if(item instanceof Pie){
                 String itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
-                result.append(ANSI_RESET+ ANSI_CYAN + "An ingredient: " + ANSI_RESET+ ANSI_BLUE + item.getName() + ANSI_RESET  + "\n "
-                        );
+                result.append(ANSI_RESET + ANSI_CYAN + "An ingredient: " + ANSI_RESET + ANSI_BLUE).append(item.getName()).append(ANSI_RESET).append("\n ");
+                result.append(itemD);
+            }else {
+                String itemD = ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
+                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + item.getName() + ANSI_RESET);
                 result.append(itemD);
             }
+            result.append("\n");
 
         });
         result.setLength(result.length() - 4);
@@ -158,26 +171,7 @@ public class Room implements java.io.Serializable, Savable {
     }
 
     public String getDescription() {
-        return description + " " + getItems();
-    }
-
-    public String getItems() {
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < roomItems.size(); i++) {
-                if(!roomItems.get(i).getClass().getSimpleName().equals("Enemy")) {
-                    sb.append("\nYou see a ");
-                    sb.append(roomItems.get(i).getName());
-                    sb.append(".\n");
-                } else {
-                    Enemy enemy = (Enemy) roomItems.get(i);
-                    sb.append("\n");
-                    sb.append(enemy.getName());
-                    sb.append(" is waiting. (hp: ");
-                    sb.append(enemy.getHp());
-                    sb.append(")");
-                }
-        }
-        return sb.toString();
+        return name + "\n" + description + " " + getRoomItems();
     }
 
     public void setDescription(String description) {

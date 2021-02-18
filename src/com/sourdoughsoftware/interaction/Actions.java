@@ -34,7 +34,7 @@ public class Actions {
     public static String execute() throws ChainOfEventException {
 
         if (Command.getVerb() == null) {
-            return "no verb in input";
+            return "What do you want me to do?";
         }
 
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
@@ -44,7 +44,7 @@ public class Actions {
                 || Command.getVerb().getGroup() == VerbGroup.show
                 || Command.getVerb().getGroup() == VerbGroup.help
         )) {
-            return "no noun in input";
+            return "That doesn't make sense.";
         }
 
         switch (Command.getVerb().getGroup()) {
@@ -96,6 +96,8 @@ public class Actions {
         if(noun== null) {
             return "Carry on my wayward son";
         } else  {
+            System.out.println(Command.getNoun().getName());
+            World.getCurrentRoom().remove((Item) Command.getNoun());
             if(Command.getTargetNoun() == null) {
                 Command.setTargetNoun(Command.getNoun());
             }
@@ -259,7 +261,7 @@ public class Actions {
             return printTy();
         }
         if (noun instanceof Directions.Direction) {
-            return World.changeCurrentRoom((Directions.Direction) noun);
+            return World.changeCurrentRoom((Directions.Direction) noun) + "\n" + World.getCurrentRoom().getDescription();
         }
         return "That's not a direction";
     }
@@ -358,6 +360,12 @@ public class Actions {
     }
 
     public static String feed(Noun noun, Noun targetNoun) {
+        if(!World.getCurrentRoom().has(targetNoun)) {
+            return targetNoun.getName() + " not in this room.";
+        }
+        if(!GameState.getPlayer().getInventory().has(noun)) {
+            return "You don't have that!";
+        }
         if(!(noun instanceof Pie)) {
             return noun.getName() +  " isn't even edible. jeez do we gotta hold your hand through this whole game? play smart";
         }
@@ -369,7 +377,7 @@ public class Actions {
 
 
     private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
-        if(!World.getCurrentRoom().has(noun)) {
+        if(!World.getCurrentRoom().has(noun) && noun instanceof Enemy) {
             return noun.getName() + " isn't here.";
         }
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
@@ -377,10 +385,13 @@ public class Actions {
         }
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
-        if (noun.isAttackable() & targetNoun.isWieldable()) {
+        if (noun.isAttackable()
+                && targetNoun.isWieldable()
+                && GameState.getPlayer().getInventory().has(targetNoun)) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
                 Pie weapon = (Pie) targetNoun;
+                GameState.getPlayer().getInventory().drop(targetNoun);
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
                     enemy.setHp(newHP);
@@ -396,7 +407,11 @@ public class Actions {
             } else {
                 return "What are you doing sir? ";
             }
-        }return response.toString();
+        }else {
+            return "Item not in inventory.";
+        }
+
+        return response.toString();
     }
 
     public static String checkIfAvailable() {

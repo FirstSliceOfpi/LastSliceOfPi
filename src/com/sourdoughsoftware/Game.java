@@ -40,8 +40,17 @@ public class Game {
     public void start() throws ChainOfEventException {
         boolean gameOver = false;
         while(!gameOver) {
-            System.out.println(Enemy.getTotalEnemies() + " " + Enemy.getTotalEnemiesHungry() + " " + Enemy.getTotalEnemiesAlive());
-            System.out.println(ANSI_YELLOW + World.getCurrentRoom().getName() + "\n" + World.getCurrentRoom().getDescription() + "\n" + ANSI_RESET);
+            if(GameState.getDevMode()) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Total Enemies: ");
+                sb.append(Enemy.getTotalEnemies());
+                sb.append(" Total Hungry: ");
+                sb.append(Enemy.getTotalEnemiesHungry());
+                sb.append(" Total Alive: ");
+                sb.append(Enemy.getTotalEnemiesAlive());
+                System.out.println(sb);
+            }
+            System.out.println("\n" + ANSI_YELLOW + World.getCurrentRoom().getName() + "\n" + ANSI_RESET);
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
             if (Enemy.getTotalEnemiesHungry() == 0){
