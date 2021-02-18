@@ -24,9 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
-import java.util.Objects;
-import java.util.List;
+import java.util.*;
 
 import static com.sourdoughsoftware.utility.Colors.*;
 
@@ -36,8 +34,9 @@ public class Actions {
     public static String execute() throws ChainOfEventException {
 
         if (Command.getVerb() == null) {
-            return "no verb in input";
+            return "What do you want me to do?";
         }
+
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
                 || Command.getVerb().getGroup() == VerbGroup.load
                 || Command.getVerb().getGroup() == VerbGroup.quit
@@ -45,7 +44,7 @@ public class Actions {
                 || Command.getVerb().getGroup() == VerbGroup.show
                 || Command.getVerb().getGroup() == VerbGroup.help
         )) {
-            return "no noun in input";
+            return "That doesn't make sense.";
         }
 
         switch (Command.getVerb().getGroup()) {
@@ -91,6 +90,25 @@ public class Actions {
         return str;
     }
 
+    public static String reward(String str) {
+        Noun noun = Dictionary.INSTANCE.getNoun(str);
+
+        if(noun== null) {
+            return "Carry on my wayward son";
+        } else  {
+            System.out.println(Command.getNoun().getName());
+            World.getCurrentRoom().remove((Item) Command.getNoun());
+            if(Command.getTargetNoun() == null) {
+                Command.setTargetNoun(Command.getNoun());
+            }
+            Command.setNoun(noun);
+            addToInventory("");
+            return "You have been rewarded a " + noun.getName()+". ";
+        }
+
+
+    }
+
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
         Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
@@ -100,8 +118,15 @@ public class Actions {
     }
 
     public static String destroyNoun(String message) {
-       // Dictionary.INSTANCE.deleteNoun(Command.getNoun());
-        return message;
+        Noun noun = null;
+        if(Command.getTargetNoun() == null) {
+            noun = Command.getNoun();
+        } else {
+            noun = Command.getTargetNoun();
+        }
+        Dictionary.INSTANCE.deleteNoun(noun);
+
+        return noun.getName() + " " + message;
     }
 
     public static String createNoun(String name) {
@@ -236,7 +261,7 @@ public class Actions {
             return printTy();
         }
         if (noun instanceof Directions.Direction) {
-            return World.changeCurrentRoom((Directions.Direction) noun);
+            return World.changeCurrentRoom((Directions.Direction) noun) + "\n" + World.getCurrentRoom().getDescription();
         }
         return "That's not a direction";
     }
@@ -335,7 +360,12 @@ public class Actions {
     }
 
     public static String feed(Noun noun, Noun targetNoun) {
-
+        if(!World.getCurrentRoom().has(targetNoun)) {
+            return targetNoun.getName() + " not in this room.";
+        }
+        if(!GameState.getPlayer().getInventory().has(noun)) {
+            return "You don't have that!";
+        }
         if(!(noun instanceof Pie)) {
             return noun.getName() +  " isn't even edible. jeez do we gotta hold your hand through this whole game? play smart";
         }
@@ -347,7 +377,7 @@ public class Actions {
 
 
     private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
-        if(!World.getCurrentRoom().has(noun)) {
+        if(!World.getCurrentRoom().has(noun) && noun instanceof Enemy) {
             return noun.getName() + " isn't here.";
         }
         if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
@@ -355,10 +385,13 @@ public class Actions {
         }
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
-        if (noun.isAttackable() & targetNoun.isWieldable()) {
+        if (noun.isAttackable()
+                && targetNoun.isWieldable()
+                && GameState.getPlayer().getInventory().has(targetNoun)) {
             if (targetNoun instanceof Pie && noun instanceof Enemy) {
                 Enemy enemy = (Enemy) noun;
                 Pie weapon = (Pie) targetNoun;
+                GameState.getPlayer().getInventory().drop(targetNoun);
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
                     enemy.setHp(newHP);
@@ -369,12 +402,26 @@ public class Actions {
                 if (enemy.getHp() <= 0) {
                     dropFromRoom("bye");
                     GameState.getCookBook().addRecipe();
-                    return ((Enemy) noun).getDeadtext();
+                    return enemy.getDeadtext();
                 }
             } else {
                 return "What are you doing sir? ";
             }
-        }return response.toString();
+        }else {
+            return "Item not in inventory.";
+        }
+
+        return response.toString();
+    }
+
+    public static String checkIfAvailable() {
+        if(Command.getTargetNoun() != null && !World.getCurrentRoom().has(Command.getTargetNoun()) && !GameState.getPlayer().getInventory().has(Command.getTargetNoun())) {
+            return Command.getTargetNoun() + " isn't here";
+        }
+        if(Command.getNoun() != null && !World.getCurrentRoom().has(Command.getNoun()) && !GameState.getPlayer().getInventory().has(Command.getNoun())) {
+            return Command.getNoun() + " isn't here";
+        }
+        return null;
     }
 
    }

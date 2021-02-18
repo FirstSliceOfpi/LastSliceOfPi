@@ -29,5 +29,6 @@ public enum VerbGroup {
     use,
     no_destroy_use,
     change,
-    open
+    open,
+    reward;
 }

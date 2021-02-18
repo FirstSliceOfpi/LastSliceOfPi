@@ -38,13 +38,21 @@ public class Noun implements DictionaryEntry, Serializable {
         StringBuilder response = new StringBuilder();
         ArrayList<Event> events = interactions.get(verb);
         Actions act = new Actions();
+        Noun key = null;
+        if(!Command.getVerb().getName().equals("cheat")) {
+            if(Actions.checkIfAvailable() != null) return Actions.checkIfAvailable();
+        }
         if(events == null) {
-            return null;
+            return "You can't " + Command.getVerb().getName() + " a " + getName();
         }
 
         for(Event event : events) {
-            if(event.key != null && event.key != Command.getNoun()) {
-                response.append("You can't " + Command.getVerb().getName() + " a " + getName());
+            if(event.key != null && key == null) {
+                key = Command.getNoun();
+            }
+
+            if(event.key != null && event.key != key && Command.getTargetNoun() != null) {
+                return "You can't " + Command.getVerb().getName() + " a " + getName() + " with a " + key.getName();
             }
             try {
                 Method method = act.getClass().getMethod(event.verbGroup.toString().strip(), String.class);
