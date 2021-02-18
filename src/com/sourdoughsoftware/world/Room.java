@@ -22,7 +22,7 @@ public class Room implements java.io.Serializable, Savable {
     private String description;
     private String shortDescription;
     private Map<String, Integer> exitsById;
-    private List<Item> roomItems;
+    private List<Noun> roomItems;
     Map<String, Room> roomExits = new HashMap<>();
     public Map<Directions.Direction, Room> exits = new HashMap<>();
     public Map<String, String> roomList = new HashMap<>();
@@ -109,7 +109,7 @@ public class Room implements java.io.Serializable, Savable {
 
     public void clearItems() {
         ArrayList items = new ArrayList();
-        for (Item item : roomItems) {
+        for (Noun item : roomItems) {
             if (!(item instanceof Pie)) {
                 items.add(item);
             }
@@ -147,8 +147,8 @@ public class Room implements java.io.Serializable, Savable {
                 result.append(ANSI_RESET + ANSI_CYAN + "An ingredient: " + ANSI_RESET + ANSI_BLUE).append(item.getName()).append(ANSI_RESET).append("\n ");
                 result.append(itemD);
             }else {
-                String itemD = ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
-                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + item.getName() + ANSI_RESET);
+                String itemD = ANSI_RESET + ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
+                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + ANSI_RESET + ANSI_GREEN + item.getName() + ANSI_RESET);
                 result.append(itemD);
             }
             result.append("\n");
@@ -194,7 +194,7 @@ public class Room implements java.io.Serializable, Savable {
         return exitsById.get(dir);
     }
 
-    public List<Item> getItemList() {
+    public List<Noun> getItemList() {
         return roomItems;
     }
 
@@ -236,7 +236,7 @@ public class Room implements java.io.Serializable, Savable {
         }
     }
 
-    public boolean addToRoom(Item item) {
+    public boolean addToRoom(Noun item) {
         return roomItems.add(item);
     }
 

@@ -1,8 +1,9 @@
 package com.sourdoughsoftware.gamepieces;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.dictionary.Noun;
 
-public class Enemy extends Item implements java.io.Serializable{
+public class Enemy extends Noun implements java.io.Serializable{
 
 
 //    private String name;
@@ -16,9 +17,6 @@ public class Enemy extends Item implements java.io.Serializable{
     private static int totalEnemiesAlive = 0;
     private static int totalEnemiesHungry = 0;
     private static int totalEnemies = 0;
-
-
-
 
     public Enemy(String name, String background) {
         super(name, background);
