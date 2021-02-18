@@ -16,12 +16,12 @@ import java.util.*;
 
 public class World implements Savable {
     List<Room> gameMap = new ArrayList<>();
-    List<Enemy> enemies = XmlParser.parseEnemy();
     List<Room> rooms = XmlParser.parseRooms();
+    List<Enemy> enemies = XmlParser.parseEnemy();
+
     private static Room currentRoom;
 
     public World() throws IOException, SAXException, ParserConfigurationException {
-        XmlParser.parseRooms();
         currentRoom = rooms.get(0);
 
         HashMap<String, Enemy> villains = new HashMap<>();
@@ -103,7 +103,31 @@ public class World implements Savable {
                     Enemy.incrementTotalEnemies();
                     break;
                 case "golden goose":
+                    room.addToRoom(enemies.get(10));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "sheriff woody":
+                    room.addToRoom(enemies.get(13));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "aladdin":
+                    room.addToRoom(enemies.get(12));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "narnia":
                     room.addToRoom(enemies.get(9));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "elsa":
+                    room.addToRoom(enemies.get(11));
                     Enemy.incrementEnemiesAlive();
                     Enemy.incrementEnemiesHungry();
                     Enemy.incrementTotalEnemies();
@@ -137,6 +161,7 @@ public class World implements Savable {
 
     public static String changeCurrentRoom(Directions.Direction direction) {
         Map<String, Room> exits = currentRoom.getExits();
+
         if(exits.containsKey(direction.getName())){
             currentRoom = exits.get(direction.getName());
             currentRoom.clearItems();

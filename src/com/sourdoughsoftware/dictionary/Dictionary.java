@@ -16,7 +16,7 @@ public enum Dictionary implements Serializable, Savable {
 
     private Map<String, Set<Noun>> nouns = new HashMap<>();
     private Map<String, Verb> verbs = new HashMap<>();
-    private HashSet<Noun> genericItems = new HashSet<>();
+    private ArrayList<Noun> allNouns = new ArrayList<>();
 
     public void add(DictionaryEntry entry) {
 
@@ -25,31 +25,22 @@ public enum Dictionary implements Serializable, Savable {
         for (String entryNameWord : entryNameWords) {
             if (entry instanceof Verb) {
                 verbs.put(entryNameWord, (Verb) entry);
-                continue;
             } else {
                 Set<Noun> nounResults = nouns.get(entryNameWord);
-
+                allNouns.add((Noun) entry);
                 if (nounResults == null) {
                     nouns.put(entryNameWord, new HashSet<>(){{add((Noun) entry);}});
                 } else {
                     nounResults.add((Noun) entry);
                 }
-            }
-            if(!(entry instanceof Pie || entry instanceof Room || entry instanceof Enemy)) {
-                try{
-                    Pie item = (Pie) entry;
-                }catch(Exception e) {
-                    assert entry instanceof Noun;
-                    genericItems.add((Noun) entry);
-                }
+
             }
         }
     }
 
-    public HashSet<Noun> getGenericItems() {
-        return genericItems;
+    public ArrayList<Noun> getAllNouns() {
+        return allNouns;
     }
-
     public Verb getVerb(String name) {
         return verbs.get(name);
     }

@@ -96,8 +96,7 @@ public class Actions {
         if(noun== null) {
             return "Carry on my wayward son";
         } else  {
-            System.out.println(Command.getNoun().getName());
-            World.getCurrentRoom().remove((Item) Command.getNoun());
+            World.getCurrentRoom().dropItem(Command.getNoun());
             if(Command.getTargetNoun() == null) {
                 Command.setTargetNoun(Command.getNoun());
             }
@@ -273,9 +272,12 @@ public class Actions {
             return printTy();
         }
         if (noun instanceof Directions.Direction) {
-            return World.changeCurrentRoom((Directions.Direction) noun) + "\n" + World.getCurrentRoom().getDescription();
+            return World.changeCurrentRoom((Directions.Direction) noun) +
+                    " " + ANSI_YELLOW +
+                    World.getCurrentRoom().getDescription() +
+                    ANSI_RESET;
         }
-        return "That's not a direction";
+        return "That's not a direction \n";
     }
 
     // Ty Easter Egg
@@ -311,7 +313,7 @@ public class Actions {
     public static String dropFromRoom(String message) throws ChainOfEventException {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        if (noun instanceof Pie) {
+        if (noun instanceof Item) {
             noun = currentRoom.dropItem(noun);
         }
         if (Command.getTargetNoun() instanceof Enemy) {
@@ -356,7 +358,7 @@ public class Actions {
             }
         }else if(cheat.equals("power me")){
             return Cheat.getInstance().doubleAttackPoints();
-        } else if(cheat.equals("super power")){
+        }else if(cheat.equals("super power")){
             return Cheat.getInstance().doubleAllAP();
         }
         return "Can not perform that cheat.";
