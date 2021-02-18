@@ -18,6 +18,7 @@ public class GameClient {
         // Tell GameState about all Enums and Classes
         Dictionary.INSTANCE.saveClass();
         WelcomeScreen w = new WelcomeScreen();
+        w.settingTheScene();
         w.loadingScreen();
         w.splash();
     }
