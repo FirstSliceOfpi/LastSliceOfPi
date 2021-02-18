@@ -147,8 +147,8 @@ public class Room implements java.io.Serializable, Savable {
                 result.append(ANSI_RESET + ANSI_CYAN + "An ingredient: " + ANSI_RESET + ANSI_BLUE).append(item.getName()).append(ANSI_RESET).append("\n ");
                 result.append(itemD);
             }else {
-                String itemD = ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
-                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + item.getName() + ANSI_RESET);
+                String itemD = ANSI_RESET + ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
+                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + ANSI_RESET + ANSI_GREEN + item.getName() + ANSI_RESET);
                 result.append(itemD);
             }
             result.append("\n");

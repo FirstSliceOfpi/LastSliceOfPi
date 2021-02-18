@@ -165,7 +165,15 @@
                 <break>
                     <action>
                         destroyNoun
+<<<<<<< HEAD
                         <arg>Whoa there! Control your anger. Hairbrush is gone.</arg>
+=======
+                        <arg>Whoa there! Control your anger.</arg>
+                    </action>
+                    <action>
+                        use
+                        <arg>Hairbrush is gone.</arg>
+>>>>>>> 7a81b20d8963ae0260c18d07b922608d1aba5359
                     </action>
                 </break>
             </modifiers>
