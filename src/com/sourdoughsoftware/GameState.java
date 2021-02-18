@@ -69,9 +69,7 @@ public class GameState implements Serializable{
             }
             objectStream.close();
             return true;
-        } catch (IOException e) {
-            System.out.println(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
         return false;

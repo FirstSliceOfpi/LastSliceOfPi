@@ -123,9 +123,11 @@ public class Actions {
         } else {
             noun = Command.getTargetNoun();
         }
+
         World.getCurrentRoom().dropItem(noun);
         GameState.getPlayer().getInventory().drop(noun);
         Dictionary.INSTANCE.deleteNoun(noun);
+        Dictionary.INSTANCE.killNounRespawn(noun);
 
         return message;
     }
@@ -405,30 +407,23 @@ public class Actions {
         if(!World.getCurrentRoom().has(targetNoun) && targetNoun instanceof Enemy) {
             return targetNoun.getName() + " isn't here.";
         }
-        if(Objects.isNull(targetNoun) || Objects.isNull(noun)) {
-            return "Attack who with what?";
-        }
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
         if (targetNoun.isAttackable() && GameState.getPlayer().getInventory().has(noun)) {
-            if (noun instanceof Pie && targetNoun instanceof Enemy) {
-                Enemy enemy = (Enemy) targetNoun;
-                Pie weapon = (Pie) noun;
-                GameState.getPlayer().getInventory().drop(noun);
-                if (enemy.getHp() > 0) {
-                    int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
-                    enemy.setHp(newHP);
-                    response.append("You " + verb.getName() + " " + enemy.getName() + " with " + noun.getName() + "."
-                           + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
+            Enemy enemy = (Enemy) targetNoun;
+            Pie weapon = (Pie) noun;
+            GameState.getPlayer().getInventory().drop(noun);
+            if (enemy.getHp() > 0) {
+                int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
+                enemy.setHp(newHP);
+                response.append("You " + verb.getName() + " " + enemy.getName() + " with " + noun.getName() + "."
+                       + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
-                } //DONE: Create Enemy victory message to place here
-                if (enemy.getHp() <= 0) {
-                    dropFromRoom("bye");
-                    GameState.getCookBook().addRecipe();
-                    return enemy.getDeadtext();
-                }
-            } else {
-                return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
+            } //DONE: Create Enemy victory message to place here
+            if (enemy.getHp() <= 0) {
+                dropFromRoom("bye");
+                GameState.getCookBook().addRecipe();
+                return enemy.getDeadtext();
             }
         }else {
             return "Item not in inventory.";
