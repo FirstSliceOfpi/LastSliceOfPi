@@ -162,12 +162,12 @@
         </modifiers>
     </pie>
     <pie id="17">
-        <name>Chocolate crust</name>
-        <description>Don't wreck a sublime chocolate experience by feeling guilty.
-            Chocolate isn't like premarital sex. It will not make you pregnant.
+        <name>Cocoa crust</name>
+        <description>Don't wreck a sublime cocoa experience by feeling guilty.
+            Cocoa isn't like premarital sex. It will not make you pregnant.
             And it always feels good.</description>
         <attackPoints>1</attackPoints>
-        <victory>What kind of monster could possibly hate chocolate?</victory>
+        <victory>What kind of monster could possibly hate cocoa crust?</victory>
         <modifiers>
             <Findable>true</Findable>
             <Grabable>true</Grabable>

@@ -234,6 +234,7 @@ public class Room implements java.io.Serializable, Savable {
                     roomItems.add((Pie) item);
                 } catch (Exception f) {
                     roomItems.add(item);
+                    Dictionary.INSTANCE.killNounRespawn(item);
                 }
             }
         }

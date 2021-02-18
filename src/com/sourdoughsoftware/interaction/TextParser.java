@@ -11,13 +11,13 @@ import java.util.*;
 
 public class TextParser {
 
-    public static void parse(String userInput) {
-
+    public static void parse(String userInput) {//grab chocolate crust
+        //chocolate key -> chocolate, chocolate crust
+        //crust key -> chocolate crust
         List<String> userInputWords = new ArrayList<>(Arrays.asList(userInput.split(" ")));
-
         Set<Noun> nounCandidates = getNounCandidates(userInputWords);
-        Noun noun = getNoun(nounCandidates, userInputWords);
 
+        Noun noun = getNoun(nounCandidates, userInputWords);
         Verb verb = getVerb(userInputWords);
 
         Set<Noun> targetNounCandidates = getNounCandidates(userInputWords);
@@ -29,7 +29,6 @@ public class TextParser {
             targetNoun = noun;
             noun = temp;
         }
-
         Command.setNoun(noun);
         Command.setVerb(verb);
         Command.setTargetNoun(targetNoun);
@@ -39,13 +38,17 @@ public class TextParser {
         if (nounSet == null || nounSet.size() == 0) {
             return null;
         }
+        nounSet.forEach(noun -> {
+            System.out.println(noun.getName());
+        });
 
         Noun noun = null;
         if (nounSet.size() == 1) {
             noun = nounSet.iterator().next();
-        } else if (nounSet.size() > 1) {
+        } else {
             Set<Noun> availableNouns = new HashSet<>(GameState.getPlayer().getInventory().getCurrentInventory());
             availableNouns.addAll(World.getCurrentRoom().getItemList());
+
             nounSet.retainAll(availableNouns);
             if(nounSet.size() > 1) {
                 StringBuilder sb = new StringBuilder();
@@ -107,7 +110,6 @@ public class TextParser {
             if (finalNounCandidates == null) {
                 finalNounCandidates = currentTargetNounCandidates;
             }
-
             //checks if current word has nothing to do with current candidates
             if (Collections.disjoint(finalNounCandidates, currentTargetNounCandidates)) {
                 continue;
