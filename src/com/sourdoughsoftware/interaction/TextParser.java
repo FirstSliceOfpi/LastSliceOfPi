@@ -51,22 +51,31 @@ public class TextParser {
 
             nounSet.retainAll(availableNouns);
             if(nounSet.size() > 1) {
-                StringBuilder sb = new StringBuilder();
-                Noun[] nouns = nounSet.toArray(new Noun[0]);
-                sb.append("Which similar ingredient?");
-                for(int i = 0; i < nouns.length; i++) {
-                    sb.append("\n");
-                    sb.append(i+1);
-                    sb.append(") ");
-                    sb.append(nouns[i].getName());
+                boolean valid = false;
+                while(!valid) {
+                    StringBuilder sb = new StringBuilder();
+                    Noun[] nouns = nounSet.toArray(new Noun[0]);
+                    sb.append("Which similar ingredient?");
+                    for(int i = 0; i < nouns.length; i++) {
+                        sb.append("\n");
+                        sb.append(i+1);
+                        sb.append(") ");
+                        sb.append(nouns[i].getName());
+                    }
+                    String response = Prompter.prompt(sb.toString());
+                    int resp = 0;
+                    try {
+                        resp = Integer.parseInt(response.trim());
+                        valid = true;
+                    } catch (NumberFormatException ignored) {
+                    }
+                    if(resp <= nouns.length && resp != 0) {
+                        noun = nouns[resp-1];
+                    }else {
+                        noun = null;
+                    }
                 }
-                String response = Prompter.prompt(sb.toString());
-                int resp = Integer.parseInt(response.trim());
-                if(resp <= nouns.length) {
-                    noun = nouns[resp-1];
-                }else{
-                    noun = null;
-                }
+
             } else {
                 if(!(nounSet.size() == 0)) {
                     noun = nounSet.iterator().next();
