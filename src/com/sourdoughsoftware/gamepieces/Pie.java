@@ -5,7 +5,7 @@ package com.sourdoughsoftware.gamepieces;
  * Additional variables are added to a weapon such as attackPoints and victory.
  *
  */
-public class Pie extends Item{
+public class Pie extends Item {
     private int attackPoints;
     private final String victory;
 

@@ -99,6 +99,10 @@ public enum Dictionary implements Serializable, Savable {
         });
     }
 
+    public void killNounRespawn(Noun noun) {
+        allNouns.remove(noun);
+    }
+
     public void saveClass() {
         GameState.addSavable(this);
     }

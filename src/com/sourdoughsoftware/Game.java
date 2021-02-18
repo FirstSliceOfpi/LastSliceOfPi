@@ -27,7 +27,6 @@ public class Game {
     public Game() throws IOException, SAXException, ParserConfigurationException {
 //        XmlParser.parseItems();
         XmlParser.parseVerbs();
-        XmlParser.parseEnemy();
         XmlParser.parseNouns();
         new Directions();
         new World();

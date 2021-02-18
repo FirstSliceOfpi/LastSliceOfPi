@@ -96,8 +96,7 @@ public class Actions {
         if(noun== null) {
             return "Carry on my wayward son";
         } else  {
-            System.out.println(Command.getNoun().getName());
-            World.getCurrentRoom().remove((Item) Command.getNoun());
+            World.getCurrentRoom().dropItem(Command.getNoun());
             if(Command.getTargetNoun() == null) {
                 Command.setTargetNoun(Command.getNoun());
             }
@@ -111,10 +110,36 @@ public class Actions {
 
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
-        Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
-        sb.append("----verbs----\n");
-        Dictionary.INSTANCE.getVerbs().keySet().forEach(word-> sb.append(word).append("\n"));
+        String[] keys = Dictionary.INSTANCE.getNouns().keySet().toArray(String[]::new);
+        for(int i = 0; i < keys.length; i++){
+            if(i%3 != 0) {
+                sb.append(keys[i]).append(calculateSpace(keys[i].length()));
+            }else {
+                sb.append("\n").append(keys[i]).append(calculateSpace(keys[i].length()));
+            }
+        }
+        sb.append("\n\n----verbs----\n");
+        keys = Dictionary.INSTANCE.getVerbs().keySet().toArray(String[]::new);
+        for(int i = 0 ; i < keys.length; i++) {
+            if(i%3 != 0) {
+                sb.append(keys[i]).append(calculateSpace(keys[i].length()));
+            }else {
+                sb.append("\n").append(keys[i]).append(calculateSpace(keys[i].length()));
+            }
+        }
+        sb.append("\n\n Also try: examine cook book");
         return sb.toString();
+    }
+
+    private static String calculateSpace(int wordLength) {
+        int columnWidth = 30;
+        int numberOfSpaces = columnWidth - wordLength;
+        StringBuilder space = new StringBuilder();
+        while(numberOfSpaces > 0) {
+            space.append(" ");
+            numberOfSpaces--;
+        }
+        return space.toString();
     }
 
     public static String destroyNoun(String message) {
@@ -124,9 +149,13 @@ public class Actions {
         } else {
             noun = Command.getTargetNoun();
         }
-        Dictionary.INSTANCE.deleteNoun(noun);
 
-        return noun.getName() + " " + message;
+        World.getCurrentRoom().dropItem(noun);
+        GameState.getPlayer().getInventory().drop(noun);
+        Dictionary.INSTANCE.deleteNoun(noun);
+        Dictionary.INSTANCE.killNounRespawn(noun);
+
+        return message;
     }
 
     public static String createNoun(String name) {
@@ -314,7 +343,7 @@ public class Actions {
     public static String dropFromRoom(String message) throws ChainOfEventException {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        if (noun instanceof Pie) {
+        if (noun instanceof Item) {
             noun = currentRoom.dropItem(noun);
         }
         if (Command.getTargetNoun() instanceof Enemy) {
@@ -391,36 +420,46 @@ public class Actions {
     }
 
 
-    private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
-        if(!World.getCurrentRoom().has(noun) && noun instanceof Enemy) {
-            return noun.getName() + " isn't here.";
+    private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
+        if(noun instanceof Enemy && targetNoun instanceof Pie) {
+            return "You're gonna attack a " + targetNoun.getName() + " with " + noun.getName()+". Can you even lift " + noun.getName() + "?";
         }
-        if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
-            return "Attack who with what?";
+        if(!(noun instanceof Pie)) {
+            return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
+        }
+        if(!(targetNoun instanceof Enemy)) {
+            return "Oh your gonna attack a " + targetNoun.getName()+". And whats that gonna solve?";
+        }
+        if(!World.getCurrentRoom().has(targetNoun) && targetNoun instanceof Enemy) {
+            return targetNoun.getName() + " isn't here.";
         }
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
-        if (noun.isAttackable()
-                && targetNoun.isWieldable()
-                && GameState.getPlayer().getInventory().has(targetNoun)) {
-            if (targetNoun instanceof Pie && noun instanceof Enemy) {
-                Enemy enemy = (Enemy) noun;
-                Pie weapon = (Pie) targetNoun;
-                GameState.getPlayer().getInventory().drop(targetNoun);
-                if (enemy.getHp() > 0) {
-                    int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
-                    enemy.setHp(newHP);
-                    response.append("You " + verb.getName() + " " + enemy.getName() + " with " + targetNoun.getName() + "."
-                           + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
+        if (targetNoun.isAttackable() && GameState.getPlayer().getInventory().has(noun)) {
+            Enemy enemy = (Enemy) targetNoun;
+            Pie weapon = (Pie) noun;
+            GameState.getPlayer().getInventory().drop(noun);
+            if (enemy.getHp() > 0) {
+                int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
+                enemy.setHp(newHP);
+                response.append("You " + verb.getName() + " " + enemy.getName() + " with " + noun.getName() + "."
+                       + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
-                } //DONE: Create Enemy victory message to place here
-                if (enemy.getHp() <= 0) {
-                    dropFromRoom("bye");
-                    GameState.getCookBook().addRecipe();
-                    return enemy.getDeadtext();
+            } //DONE: Create Enemy victory message to place here
+            if (enemy.getHp() <= 0) {
+                StringBuilder sb = new StringBuilder();
+                dropFromRoom("bye");
+                sb.append(GameState.getCookBook().addRecipe());
+                sb.append("\n");
+                try {
+                    Pie pie = (Pie) Command.getNoun();
+                    sb.append(pie.getVictory());
+                    sb.append("\n");
+                }catch(Exception e) {
+                    // do nothing
                 }
-            } else {
-                return "What are you doing sir? ";
+                sb.append(enemy.getDeadtext());
+                return sb.toString();
             }
         }else {
             return "Item not in inventory.";
