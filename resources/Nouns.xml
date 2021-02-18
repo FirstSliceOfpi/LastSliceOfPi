@@ -2,7 +2,7 @@
 <Items>
     <item id="2">
         <name>match</name>
-        <description>its a match</description>
+        <description>You could use this to light something. Wonder how it tastes.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
@@ -12,7 +12,7 @@
                     <arg>You strike the match on the bottom of your boot.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>This match is burning with a bright blue flame.</arg>
+                    <arg>This match is burning with a bright blue flame. Now find something to light! Or you could try to eat it?</arg>
                 </action>
             </light>
             <eat>
@@ -20,14 +20,21 @@
                     <arg>You eat the match.</arg>
                 </action>
                 <action>destroyNoun
-                    <arg>got digested. You're crazy dawg.</arg>
+                    <arg>The match got digested. That sucks you could have used it to light the candle. Now you ruined that. Good job.</arg>
                 </action>
             </eat>
         </modifiers>
     </item>
     <item id="0">
+        <name>pencil</name>
+        <description>You could write on something with this.</description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers></modifiers>
+    </item>
+    <item id="0">
         <name>candle</name>
-        <description>wax</description>
+        <description>This candle could be lit. If only I had something that could light it. It's seems easily breakable too.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
@@ -43,31 +50,45 @@
                     <arg>eggs</arg>
                 </action>
                 <action>destroyNoun
-                    <arg>is burned to ashes.</arg>
+                    <arg>The candle melted into nothing.</arg>
                 </action>
             </light>
-            <bite>
+            <break>
                 <action>print
-                    <arg>You take a bite of off the candle.</arg>
+                    <arg>You break the candle.</arg>
                 </action>
-                <action>changeDescription
-                    <arg>The candle has a chunk of it missing.</arg>
+                <action>destroyNoun
+                    <arg>The candle is now useless.</arg>
                 </action>
-            </bite>
+            </break>
         </modifiers>
     </item>
     <item id="1">
         <name>paper</name>
-        <description>8x10 ruled paper</description>
+        <description>8x10 ruled paper. I wish I remembered how to make a paper airplane with this. Guess I could write on it too if I had something to write with.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
         <modifiers>
-            <eat>
-                <action>use
-                    <arg>You ate the paper you fool. How fucking dare you</arg>
+            <fold>
+                <action>print
+                    <arg>You fold the paper into a paper airplane. It flew right past some Chocolate crust! Better pick that up.</arg>
                 </action>
-            </eat>
+                <action>reward
+                    <arg>chocolate crust</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>The paper airplane flies out the window.</arg>
+                </action>
+            </fold>
+            <write key ="pencil">
+                <action>print
+                    <arg>You write on the paper. Dear diary. I should have folded this into a paper airplane. Oh well.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>You throw the paper away. Just don't need it.</arg>
+                </action>
+            </write>
         </modifiers>
     </item>
     <item id="2">
@@ -152,11 +173,7 @@
                 <break>
                     <action>
                         destroyNoun
-                        <arg>Whoa there! Control your anger.</arg>
-                    </action>
-                    <action>
-                        use
-                        <arg>Hairbrush is gone.</arg>
+                        <arg>Whoa there! Control your anger. Hairbrush is gone.</arg>
                     </action>
                 </break>
             </modifiers>
@@ -202,6 +219,34 @@
                 </light>
             </modifiers>
         </item>
+<!--        <item id="8">-->
+<!--            <name>mirror</name>-->
+<!--            <description>A disturbing lack of a reflection doesn't stare you back in the face.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers>-->
+<!--                <break>-->
+<!--                    <action>-->
+<!--                        print-->
+<!--                        <arg>" "</arg>-->
+<!--                    </action>-->
+<!--                    <action>-->
+<!--                        destroyNoun-->
+<!--                        <arg> is broken. Seventy times seven years of bad luck for you!</arg>-->
+<!--                    </action>-->
+<!--                    <action>-->
+<!--                        destroyAll-->
+<!--                        <arg> 490 years bag luck erased your inventory1</arg>-->
+<!--                    </action>-->
+<!--                </break>-->
+<!--                <look>-->
+<!--                    <action>-->
+<!--                        print-->
+<!--                        <arg>Look at you beautiful!</arg>-->
+<!--                    </action>-->
+<!--                </look>-->
+<!--            </modifiers>-->
+<!--        </item>-->
         <item id="8">
             <name>mirror</name>
             <description>A disturbing lack of a reflection doesn't stare you back in the face.</description>
@@ -216,11 +261,11 @@
                     </action>
                     <action>
                         destroyNoun
-                        <arg> is broken. Seventy times seven years of bad luck for you!</arg>
+                        <arg>The mirror is broken. Seventy times seven years of bad luck for you!</arg>
                     </action>
                     <action>
                         destroyAll
-                        <arg> 490 years bag luck erased your inventory</arg>
+                        <arg>490 years bag luck erased your inventory</arg>
                     </action>
                 </break>
                 <look>
@@ -231,14 +276,6 @@
                 </look>
             </modifiers>
         </item>
-        <item id="9">
-            <name>tools</name>
-            <description>An awl, a hammer, a needle and thread, a saw, some paper, and a wooden head.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
         <item id="10">
             <name>gingerbread</name>
             <description>It wants to eat you. I mean it wants you to eat it.</description>
@@ -248,36 +285,16 @@
             <modifiers>
                 <eat>
                     <action>
-                        print<arg>It crumbles in your mouth, cinnamon and sugar filling your nose. You sneeze.</arg>
+                        print<arg>It crumbles in your mouth, cinnamon and sugar filling your nose. You sneeze. You keep the chocolate buttons though.</arg>
                     </action>
-                    <action>
-                        use<arg>" "</arg>
+                    <action>reward
+                        <arg>chocolate</arg>
+                    </action>
+                    <action>destroyNoun
+                        <arg>Just crumbles are left behind.</arg>
                     </action>
                 </eat>
             </modifiers>
-        </item>
-        <item id="11">
-            <name>oven</name>
-            <description>This oven looks like it could fit anything, like even you!</description>
-            <!--        possible keyword for doing an action based on the string response-->
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers>
-                <use>
-                    <action>
-                        print<arg>What do you want to do - BAKE a PI?</arg>
-                    </action>
-                </use>
-            </modifiers>
-        </item>
-        <item id="12">
-            <name>cage</name>
-            <description>Yes. It is a cage.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
         </item>
         <item id="13">
             <name>chest</name>
@@ -288,60 +305,37 @@
             <modifiers>
                 <open>
                     <action>print
-                        <arg>When you open the chest, you notice lots of treasure inside!</arg>
+                        <arg>When you open the chest, you notice lots of treasure inside! And a pie!!!!!!! WOOOHOOOO!</arg>
                     </action>
                     <action>reward
                         <arg>pumpkin pie</arg>
                     </action>
                     <action>destroyNoun
-                        <arg> disappears into thin air.</arg>
+                        <arg>The lid fell off. Twas an old chest.</arg>
                     </action>
                 </open>
             </modifiers>
         </item>
-        <item id="14">
-            <name>treasure</name>
-            <description>This is it! These are the NINE secrets of baking!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="15">
-            <name>doors</name>
-            <description>These doors are magnificent. They could take you anywhere!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers>
-                <open>
-                    <action>
-                        print<arg>The doors creak and moan... and stay shut.</arg>
-                    </action>
-                </open>
-            </modifiers>
-        </item>
-        <item id="16">
-            <name>bag</name>
-            <description>You know the bag is full of insects. What kind? Do you REALLY want to know?</description>
-            <attackPoints>0</attackPoints>
-            <modifiers></modifiers>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-        </item>
+<!--        <item id="16">-->
+<!--            <name>bag</name>-->
+<!--            <description>You know the bag is full of insects. What kind? Do you REALLY want to know? Maybe you can inspect it and see. Or pour out its contents?</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <modifiers></modifiers>-->
+<!--            <Findable>true</Findable>-->
+<!--        </item>-->
         <item id="17">
             <name>insects</name>
-            <description>Little, annoying, biting. Ya know - insects.</description>
+            <description>Little, annoying, biting. Ya know - insects. You hate insects. Get rid of em.</description>
             <attackPoints>0</attackPoints>
             <Findable>true</Findable>
             <Generic>true</Generic>
             <modifiers>
                 <squish>
-                    <action>
-                        print<arg>In a flurry of activity, you crush the life out of all FIVE of the little, helpless, peace loving insects. You monster.</arg>
+                    <action>print
+                        <arg>In a flurry of activity, you crush the life out of all FIVE of the little, helpless, peace loving insects. You monster.</arg>
                     </action>
-                    <action>
-                        use<arg>" "</arg>
+                    <action>destroyNoun
+                        <arg>Bye bye bug.</arg>
                     </action>
                 </squish>
             </modifiers>
@@ -359,50 +353,45 @@
                         print<arg>You rub the sphere, wishing your secret wish.</arg>
                     </action>
                 </rub>
-            </modifiers>
-        </item>
-        <item id="19">
-            <name>bed</name>
-            <description>Look at that thread count! Look at design! This is the bed of the century!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers>
-                <sleep>
-                    <action>
-                        print<arg>You take a quick snooze, and waken refreshed.</arg>
+                <break>
+                    <action>print
+                        <arg>The crystal sphere shatters into a million pieces! Oh an apple fell out. How weird.</arg>
                     </action>
-                </sleep>
+                    <action>reward
+                        <arg>apple</arg>
+                    </action>
+                    <action>destroyNoun
+                        <arg>Now who's gonna clean this mess up.</arg>
+                    </action>
+                </break>
             </modifiers>
         </item>
-        <item id="20">
-            <name>spindle</name>
-            <description>It may be old, but you feel like you could still go the whole nine yards with this thing.
-            </description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="21">
-            <name>box</name>
-            <description>This could be a first aid kit, or it could just be a box.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="22">
-            <name>first aid kit</name>
-            <description>Bandages, ointment, and a small knife. You could fix SIX small wounds with this.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
+
+<!--        <item id="20">-->
+<!--            <name>spindle</name>-->
+<!--            <description>It may be old, but you feel like you could still go the whole nine yards with this thing.-->
+<!--            </description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="21">-->
+<!--            <name>box</name>-->
+<!--            <description>This could be a first aid kit, or it could just be a box.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="22">-->
+<!--            <name>first aid kit</name>-->
+<!--            <description>Bandages, ointment, and a small knife. You could fix SIX small wounds with this.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
         <item id="23">
             <name>chair</name>
-            <description>A chair to some, a bed to others.</description>
+            <description>A chair to some, a bed to others. Maybe time for a rest.</description>
             <attackPoints>0</attackPoints>
             <Findable>true</Findable>
             <Generic>true</Generic>
@@ -430,199 +419,175 @@
                 </read>
             </modifiers>
         </item>
-        <item id="25">
-            <name>table</name>
-            <description>This table has some markings on it - "If Kings Eat Apples"</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="26">
-            <name>boxes</name>
-            <description>Large and rectangular, at least they don't remind you of coffins.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="27">
-            <name>gowns</name>
-            <description>A selection of beautiful gowns, all with impossibly small stitching.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="28">
-            <name>glass slipper</name>
-            <description>There is just no way this would fit you, right?</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="29">
-            <name>straw</name>
-            <description>You can INDEED smell the straw outside, and you wish you couldn't.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="30">
-            <name>locked doors</name>
-            <description>These doors are tightly shut, and there appears to be no keyhole that you can find.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="31">
-            <name>hay</name>
-            <description>Hey, Listen! It's hay!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="32">
-            <name>gold bars</name>
-            <description>These just don't seem to fit. Who would leave all this wealth just laying around?</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="33">
-            <name>book</name>
-            <description>You browse through the book. These are indeed the Best Baby Names, and thank goodness none of them
-                are yours!
-            </description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="34">
-            <name>tea</name>
-            <description>Chamomile, or perhaps wolfsbane? You can't quite tell but it smells delicious!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="35">
-            <name>lozenges</name>
-            <description>Not individually wrapped, not even really individual. Best steer clear.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="36">
-            <name>tissue</name>
-            <description>Honestly, what a waste of a good tree!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="37">
-            <name>night stand</name>
-            <description>It looks more like a nightsit with how short it is.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="38">
-            <name>cape</name>
-            <description>This is it, the thing you've been missing to complete you're outift and let you take your creed!
-            </description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="39">
-            <name>sleeping cap</name>
-            <description>This looks just so helpful, if only you were significantly older.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="40">
-            <name>basket</name>
-            <description>The basket is sturdy and well used, with no frayed edges or holes to be found.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="41">
-            <name>food</name>
-            <description>This is not the food you're looking for. Move along.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="42">
-            <name>packages</name>
-            <description>Forrest delivery service - right to your cottage!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="43">
-            <name>shoes</name>
-            <description>You feel like these shoes could only have been made by tiny elves, or perhaps gremlins.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="44">
-            <name>clothing</name>
-            <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such finery!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="45">
-            <name>workbench</name>
-            <description>This husky workbench looks like you could make things on it forever.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="46">
-            <name>ax</name>
-            <description>A sturdy handle, a sharp blade, why are you splitting hairs over it?</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="47">
-            <name>nest</name>
-            <description>What could possible live in a nest inside a house like this?</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="48">
-            <name>golden feather</name>
-            <description>I wager if you took a closer gander, you might get tickled!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
+<!--        <item id="25">-->
+<!--            <name>table</name>-->
+<!--            <description>This table has some markings on it - "If Kings Eat Apples"</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="26">-->
+<!--            <name>boxes</name>-->
+<!--            <description>Large and rectangular, at least they don't remind you of coffins.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="27">-->
+<!--            <name>gowns</name>-->
+<!--            <description>A selection of beautiful gowns, all with impossibly small stitching.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="28">-->
+<!--            <name>glass slipper</name>-->
+<!--            <description>There is just no way this would fit you, right?</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="29">-->
+<!--            <name>straw</name>-->
+<!--            <description>You can INDEED smell the straw outside, and you wish you couldn't.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="30">-->
+<!--            <name>locked doors</name>-->
+<!--            <description>These doors are tightly shut, and there appears to be no keyhole that you can find.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="31">-->
+<!--            <name>hay</name>-->
+<!--            <description>Hey, Listen! It's hay!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="32">-->
+<!--            <name>gold bars</name>-->
+<!--            <description>These just don't seem to fit. Who would leave all this wealth just laying around?</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="33">-->
+<!--            <name>book</name>-->
+<!--            <description>You browse through the book. These are indeed the Best Baby Names, and thank goodness none of them-->
+<!--                are yours!-->
+<!--            </description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="34">-->
+<!--            <name>tea</name>-->
+<!--            <description>Chamomile, or perhaps wolfsbane? You can't quite tell but it smells delicious!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="35">-->
+<!--            <name>lozenges</name>-->
+<!--            <description>Not individually wrapped, not even really individual. Best steer clear.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="36">-->
+<!--            <name>tissue</name>-->
+<!--            <description>Honestly, what a waste of a good tree!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="37">-->
+<!--            <name>night stand</name>-->
+<!--            <description>It looks more like a nightsit with how short it is.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="38">-->
+<!--            <name>cape</name>-->
+<!--            <description>This is it, the thing you've been missing to complete you're outift and let you take your creed!-->
+<!--            </description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="39">-->
+<!--            <name>sleeping cap</name>-->
+<!--            <description>This looks just so helpful, if only you were significantly older.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="40">-->
+<!--            <name>basket</name>-->
+<!--            <description>The basket is sturdy and well used, with no frayed edges or holes to be found.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="41">-->
+<!--            <name>food</name>-->
+<!--            <description>This is not the food you're looking for. Move along.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="42">-->
+<!--            <name>packages</name>-->
+<!--            <description>Forrest delivery service - right to your cottage!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="43">-->
+<!--            <name>shoes</name>-->
+<!--            <description>You feel like these shoes could only have been made by tiny elves, or perhaps gremlins.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="44">-->
+<!--            <name>clothing</name>-->
+<!--            <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such finery!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="45">-->
+<!--            <name>workbench</name>-->
+<!--            <description>This husky workbench looks like you could make things on it forever.</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="46">-->
+<!--            <name>ax</name>-->
+<!--            <description>A sturdy handle, a sharp blade, why are you splitting hairs over it?</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="47">-->
+<!--            <name>nest</name>-->
+<!--            <description>What could possible live in a nest inside a house like this?</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
+<!--        <item id="48">-->
+<!--            <name>golden feather</name>-->
+<!--            <description>I wager if you took a closer gander, you might get tickled!</description>-->
+<!--            <attackPoints>0</attackPoints>-->
+<!--            <Findable>true</Findable>-->
+<!--            <modifiers></modifiers>-->
+<!--        </item>-->
 </Items>
