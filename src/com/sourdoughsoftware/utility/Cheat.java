@@ -1,13 +1,18 @@
 package com.sourdoughsoftware.utility;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.dictionary.Dictionary;
+import com.sourdoughsoftware.dictionary.Noun;
+import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Cheat {
@@ -20,7 +25,7 @@ public class Cheat {
         cheat = cheat == null ? new Cheat() : cheat;
         return cheat;
     }
-
+    
     public String addAllPiesToInventory() {
         Node[] allItems = GameState.getTree().getAllItemsBFS();
         for(Node node : allItems) {
