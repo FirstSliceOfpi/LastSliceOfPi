@@ -18,9 +18,6 @@ public class Enemy extends Noun implements java.io.Serializable{
     private static int totalEnemiesHungry = 0;
     private static int totalEnemies = 0;
 
-
-
-
     public Enemy(String name, String background) {
         super(name, background);
 
