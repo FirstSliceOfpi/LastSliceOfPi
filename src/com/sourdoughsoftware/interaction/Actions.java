@@ -126,7 +126,7 @@ public class Actions {
         }
         Dictionary.INSTANCE.deleteNoun(noun);
 
-        return noun.getName() + " " + message;
+        return message;
     }
 
     public static String createNoun(String name) {
