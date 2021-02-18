@@ -7,6 +7,8 @@ import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
+import com.sourdoughsoftware.gamepieces.Player;
+
 import static com.sourdoughsoftware.utility.Colors.*;
 
 import java.util.*;
@@ -22,7 +24,7 @@ public class Room implements java.io.Serializable, Savable {
     private String description;
     private String shortDescription;
     private Map<String, Integer> exitsById;
-    private List<Noun> roomItems;
+    private HashSet<Noun> roomItems;
     Map<String, Room> roomExits = new HashMap<>();
     public Map<Directions.Direction, Room> exits = new HashMap<>();
     public Map<String, String> roomList = new HashMap<>();
@@ -31,7 +33,7 @@ public class Room implements java.io.Serializable, Savable {
         this.name = name;
         this.description = description;
         exitsById = new HashMap<>();
-        roomItems = new ArrayList<>();
+        roomItems = new HashSet<>();
         saveClass();
     }
 
@@ -71,34 +73,20 @@ public class Room implements java.io.Serializable, Savable {
     }
 
     public Noun dropItem(Noun noun) {
-        int i = roomItems.indexOf(noun);
-        if(i == -1) return null;
-
-        Noun dropped = roomItems.get(i);
-        roomItems.remove(noun);
-        return dropped;
+        if(!roomItems.contains(noun)) return null;
+            roomItems.remove(noun);
+        return noun;
     }
 
     public boolean has(Noun noun) {
         return roomItems.contains(noun);
     }
 
-    public boolean remove(Item item) {
-        int i = roomItems.indexOf(item);
-        if(i != -1) {
-           roomItems.remove(item);
-           return true;
-        }
-        return false;
-    }
-
     public Noun dropEnemy(Noun noun) {
-        int e = roomItems.indexOf(noun);
-        if (e == -1) return null;
-        Noun dropped = roomItems.get(e);
+        if(!roomItems.contains(noun)) return null;
         roomItems.remove(noun);
         Enemy.decrementEnemiesAlive();
-        return dropped;
+        return noun;
     }
 
 
@@ -108,13 +96,7 @@ public class Room implements java.io.Serializable, Savable {
     }
 
     public void clearItems() {
-        ArrayList items = new ArrayList();
-        for (Noun item : roomItems) {
-            if (!(item instanceof Pie)) {
-                items.add(item);
-            }
-        }
-        roomItems = items;
+        roomItems.removeIf(item->item instanceof Pie);
     }
 
     public void addExitbyID(String dir, Integer roomID){
@@ -134,26 +116,28 @@ public class Room implements java.io.Serializable, Savable {
         String examine = ANSI_GREEN + "Examine" + ANSI_RESET;
         result.append("You " + examine + " and See: \n");
         roomItems.forEach(item -> {
-            if (item instanceof Enemy) {
-                if (roomItems.contains(item)) {
-                    String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
-                    result.append( ANSI_RESET + ANSI_RED + item.getName() + ANSI_RESET + ANSI_GREEN + " HP: " + ((Enemy) item).getHp()
-                            + ANSI_RESET);
-                    result.append(enemyD);
-                }
-
-            }else if(item instanceof Pie){
-                String itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
-                result.append(ANSI_RESET + ANSI_CYAN + "An ingredient: " + ANSI_RESET + ANSI_BLUE).append(item.getName()).append(ANSI_RESET).append("\n ");
-                result.append(itemD);
-            }else {
-                String itemD = ANSI_RESET + ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
-                result.append(ANSI_RESET + ANSI_CYAN + "An item: " + ANSI_RESET + ANSI_GREEN + item.getName() + ANSI_RESET);
-                result.append(itemD);
-            }
-            result.append("\n");
-
-        });
+                    try {
+                        Enemy myEnemy = new Enemy(" ", " ");
+                        myEnemy = (Enemy) item;
+                        if (roomItems.contains(item)) {
+                            String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
+                            result.append(ANSI_RESET + ANSI_RED).append(item.getName()).append(ANSI_RESET).append(ANSI_GREEN).append(" HP: ").append(((Enemy) item).getHp()).append(ANSI_RESET);
+                            result.append(enemyD);
+                        }
+                    } catch (ClassCastException e) {
+                        String itemD;
+                        try {
+                            Pie pie = (Pie) item;
+                            itemD = ANSI_BLUE + item.getDescription() + ANSI_RESET;
+                            result.append(ANSI_RESET + ANSI_CYAN + "An ingredient: " + ANSI_RESET + ANSI_BLUE).append(item.getName()).append(ANSI_RESET).append("\n ");
+                        } catch (ClassCastException f) {
+                            itemD = ANSI_RESET + ANSI_GREEN + "\n" + item.getDescription() + ANSI_RESET;
+                            result.append(ANSI_RESET + ANSI_CYAN + "An item: " + ANSI_RESET + ANSI_GREEN + item.getName() + ANSI_RESET);
+                        }
+                        result.append(itemD);
+                        result.append("\n");
+                    }
+                });
         result.setLength(result.length() - 4);
         return result.toString();
     }
@@ -171,7 +155,7 @@ public class Room implements java.io.Serializable, Savable {
     }
 
     public String getDescription() {
-        return name + "\n" + description + " " + getRoomItems();
+        return name + "\n" + description + "\n" + getRoomItems();
     }
 
     public void setDescription(String description) {
@@ -194,7 +178,7 @@ public class Room implements java.io.Serializable, Savable {
         return exitsById.get(dir);
     }
 
-    public List<Noun> getItemList() {
+    public HashSet<Noun> getItemList() {
         return roomItems;
     }
 
@@ -208,9 +192,10 @@ public class Room implements java.io.Serializable, Savable {
         int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < difficulty) {
-            if(!GameState.getPlayer().getInventory().has(GameState.getFindableWeapons().get(randomNumber))) {
+            Player.Inventory playerInventory = GameState.getPlayer().getInventory();
+            if(!playerInventory.has(GameState.getFindableWeapons().get(randomNumber))) {
                 addToRoom(GameState.getFindableWeapons().get(findableWeapon));
-            }else if (tries < 3){
+            } else if (tries < 3){
                 ++tries;
                 addItemsToRoomOnEntering(tries);
             }
@@ -219,25 +204,39 @@ public class Room implements java.io.Serializable, Savable {
 
     public void addGenericsToRoomOnEntering(int tries) {
         Random rand = new Random();
-        int maxSize = Dictionary.INSTANCE.getGenericItems().size();
+        ArrayList<Noun> allNouns = Dictionary.INSTANCE.getAllNouns();
+        int maxSize = allNouns.size();
         int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
         if(randomNumber < difficulty) {
-            Noun[] items = Dictionary.INSTANCE.getGenericItems().toArray(new Noun[0]);
-            if(!GameState.getPlayer().getInventory().has(items[randomNumber])
-                    && items[randomNumber] instanceof Item
-                    && items[randomNumber].isFindable()
-            ) {
-                addToRoom((Item) items[randomNumber]);
-            }else if (tries < 3){
+            Player.Inventory playerInventory = GameState.getPlayer().getInventory();
+            Noun item = allNouns.get(randomNumber);
+            if(item instanceof Enemy || item instanceof Pie || item.isCheat()) {
+                addGenericsToRoomOnEntering(tries);
+                return;
+            }
+            if(!playerInventory.has(item)
+                    && item.isGeneric()) {
+                addToRoom(allNouns.get(randomNumber));
+            } else if (tries < 3){
                 ++tries;
-                addItemsToRoomOnEntering(tries);
+                addGenericsToRoomOnEntering(tries);
             }
         }
     }
 
-    public boolean addToRoom(Noun item) {
-        return roomItems.add(item);
+    public void addToRoom(Noun item) {
+        if(!Objects.isNull(item)){
+            try {
+                roomItems.add((Enemy) item);
+            } catch (Exception e) {
+                try {
+                    roomItems.add((Pie) item);
+                } catch (Exception f) {
+                    roomItems.add(item);
+                }
+            }
+        }
     }
 
     public boolean removeItem(Item item) {
