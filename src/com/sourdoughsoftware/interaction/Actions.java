@@ -110,10 +110,36 @@ public class Actions {
 
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
-        Dictionary.INSTANCE.getNouns().keySet().forEach(word-> sb.append(word).append("\n"));
-        sb.append("----verbs----\n");
-        Dictionary.INSTANCE.getVerbs().keySet().forEach(word-> sb.append(word).append("\n"));
+        String[] keys = Dictionary.INSTANCE.getNouns().keySet().toArray(String[]::new);
+        for(int i = 0; i < keys.length; i++){
+            if(i%3 != 0) {
+                sb.append(keys[i]).append(calculateSpace(keys[i].length()));
+            }else {
+                sb.append("\n").append(keys[i]).append(calculateSpace(keys[i].length()));
+            }
+        }
+        sb.append("\n\n----verbs----\n");
+        keys = Dictionary.INSTANCE.getVerbs().keySet().toArray(String[]::new);
+        for(int i = 0 ; i < keys.length; i++) {
+            if(i%3 != 0) {
+                sb.append(keys[i]).append(calculateSpace(keys[i].length()));
+            }else {
+                sb.append("\n").append(keys[i]).append(calculateSpace(keys[i].length()));
+            }
+        }
+        sb.append("\n\n Also try: examine cook book");
         return sb.toString();
+    }
+
+    private static String calculateSpace(int wordLength) {
+        int columnWidth = 30;
+        int numberOfSpaces = columnWidth - wordLength;
+        StringBuilder space = new StringBuilder();
+        while(numberOfSpaces > 0) {
+            space.append(" ");
+            numberOfSpaces--;
+        }
+        return space.toString();
     }
 
     public static String destroyNoun(String message) {
