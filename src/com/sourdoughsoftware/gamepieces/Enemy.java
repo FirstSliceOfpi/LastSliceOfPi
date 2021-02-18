@@ -1,8 +1,9 @@
 package com.sourdoughsoftware.gamepieces;
 
 import com.sourdoughsoftware.GameState;
+import com.sourdoughsoftware.dictionary.Noun;
 
-public class Enemy extends Item implements java.io.Serializable{
+public class Enemy extends Noun implements java.io.Serializable{
 
 
 //    private String name;
