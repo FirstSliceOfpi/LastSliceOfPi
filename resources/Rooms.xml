@@ -209,4 +209,72 @@
         </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
+    <room id="11">
+        <roomName>sheriff woody</roomName>
+        <description>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+        </description>
+        <exit>
+            <compass>east</compass>
+            <rose>narnia</rose>
+        </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>sleeping beauty</rose>
+        </exit>
+        <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
+    </room>
+    <room id="12">
+        <roomName>aladdin</roomName>
+        <description>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+        </description>
+        <exit>
+            <compass>east</compass>
+            <rose>sleeping beauty</rose>
+        </exit>
+        <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
+    </room>
+    <room id="13">
+        <roomName>narnia</roomName>
+        <description>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+        </description>
+        <exit>
+            <compass>north</compass>
+            <rose>rapunzel</rose>
+        </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>golden goose</rose>
+        </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>start</rose>
+        </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>hansel and gretel</rose>
+        </exit>
+        <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
+    </room>
+    <room id="14">
+        <roomName>elsa</roomName>
+        <description>
+            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
+            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+        </description>
+        <exit>
+            <compass>north</compass>
+            <rose>cinderella</rose>
+        </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>rapunzel</rose>
+        </exit>
+        <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
+    </room>
 </Rooms>

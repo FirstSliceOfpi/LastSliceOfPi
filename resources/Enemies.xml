@@ -45,8 +45,8 @@
         <hp>200</hp>
         <foodAlergies>strawberry pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+           "Well hey there little fella, may i offer you a drink? Tsk tsk, it's your help I require,
+            but it's not exactly what you think..." Hades flashes is toothy evil grin...
         </background>
         <deadtext>
             Like a candle under the strongest lid, Hades flames burns no more....
@@ -58,26 +58,22 @@
         <hp>100</hp>
         <foodAlergies>mississippi mud pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            "Ahoy there matey, there be children afoot. Emark on my vessel, together thy be treasure tah loot!"
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            Hook fades as the winds echo through his ears, if only he saw the ocean one last time....
         </deadtext>
     </enemy>
     <enemy>
         <name>Gaston</name>
         <class>Brawler</class>
         <hp>120</hp>
-        <foodAlergies>pumpkin pie</foodAlergies>
+        <foodAlergies>Banoffe pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            "Belle Belle!!! You are not my Belle!!" The weathered, famished Gaston madly wonders the room...
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            "Belle Belle!! Oh dear Belle, parting is such great sorrow".....
         </deadtext>
     </enemy>
     <enemy>
@@ -86,12 +82,11 @@
         <hp>110</hp>
         <foodAlergies>pecan pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            "Why don't you come hither? Oh don't be a quitter, one pup, two pups, or maybe a litter?"
+            Cruella cracks her evil laugh as she rolls around on her Dalmatian furs...
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            Cruella fades away singing..."99 dogs are stuck in my walls, 99 shake with fear......"
         </deadtext>
     </enemy>
     <enemy>
@@ -100,12 +95,11 @@
         <hp>220</hp>
         <foodAlergies>strawberry pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            No fear, No hope, Death it's self bears it fangs...
+            Welcome to his domain, where only one may remain...
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            .............   Is he reallly dead???? No seriously is HE!??
         </deadtext>
     </enemy>
     <enemy>
@@ -114,26 +108,91 @@
         <hp>90</hp>
         <foodAlergies>blueberry pie</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            He haunts with his guitar, the King of betrayals...
+            Singing his tunes, with strings made of Entrails.
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            "For ever if I'm far away, I hold you in my heart
+            I sing a secret song to you, Each night we are apart
+            Remember me....."
         </deadtext>
     </enemy>
     <enemy>
         <name>King Louie</name>
-        <class>Lemon meringue pie</class>
+        <class>Chess pie</class>
         <hp>250</hp>
         <foodAlergies>fists</foodAlergies>
         <background>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida. Pellentesque nec ullamcorper turpis, efficitur finibus nisi.
+            The King of the Swing, Longing to be a man.
+            Best watch your step around those monkey hands...
         </background>
         <deadtext>
-            TODO: orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in facilisis leo, nec bibendum lorem.
-            Praesent rhoncus eu turpis iaculis gravida.
+            "Ooobee doooooooooooooo, I WANNA BE LIKE YOUUUUUUUUUUUUUUUUUUUU!!!!!"
+        </deadtext>
+    </enemy>
+    <enemy>
+        <name>Clayton</name>
+        <class>Brawler</class>
+        <hp>100</hp>
+        <foodAlergies>Banoffe pie</foodAlergies>
+        <background>
+           Deep in the bushes he lay...awaiting...gorilla hides hang from trees as prizes.
+            He will have his ultimate trophy, Tarzan will be his!!
+        </background>
+        <deadtext>
+
+        </deadtext>
+    </enemy>
+    <enemy>
+        <name>Oogie Boogie</name>
+        <class>Monster</class>
+        <hp>200</hp>
+        <foodAlergies>Pumpkin pie</foodAlergies>
+        <background>
+         "OOOO WOAAAAHHH It's time for a jammm!! Listen to the Boogie Song, from the one and only Boogie Man!!"
+        </background>
+        <deadtext>
+            "AHHHHHHHHHHHHHHHHHH HAHHAHAHAHAHAHAHAHAHAHAHA"
+        </deadtext>
+    </enemy>
+    <enemy>
+        <name>Randall Boggs</name>
+        <class>Monster</class>
+        <hp>180</hp>
+        <foodAlergies>Buttermilk pie</foodAlergies>
+        <background>
+            Master of disguise, randall catches your scent. Stalks you from the shadows. Only thing he wants from
+            you is your voice, screaming at the top of your lungs. Monsters Inc Leaderboard rank: No.3
+        </background>
+        <deadtext>
+            "Darn it!! I will be No.1!! Skully!!!"
+        </deadtext>
+    </enemy>
+    <enemy>
+        <name>Sid</name>
+        <class>Brawler</class>
+        <hp>50</hp>
+        <foodAlergies>Cream pie</foodAlergies>
+        <background>
+            This kid is hands down the worst kid on the planet. He sits upon is throne of broken toys, all rebuilt
+            to strike the fears in little kids around the world...
+        </background>
+        <deadtext>
+            With Sids last breathes he utters... "Make a toy out of me...."
+        </deadtext>
+    </enemy>
+    <enemy>
+        <name>Ursula</name>
+        <class>Monster</class>
+        <hp>210</hp>
+        <foodAlergies>Lemon meringue pie</foodAlergies>
+        <background>
+           Wrapped in a magical bubble, tentacles slithering across the floor....
+            The Queen sits awaiting your wishes. Careful what you wish for...
+        </background>
+        <deadtext>
+            "Black as night, ohhh dark as my soul... Never have I met someone who strikes so close to home!
+            AHHH HAHAHA!"
         </deadtext>
     </enemy>
 </enemies>
