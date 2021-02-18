@@ -2,7 +2,7 @@
 <Items>
     <item id="2">
         <name>match</name>
-        <description>its a match</description>
+        <description>You could use this to light something. Wonder how it tastes.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <modifiers>
@@ -11,7 +11,7 @@
                     <arg>You strike the match on the bottom of your boot.</arg>
                 </action>
                 <action>changeDescription
-                    <arg>This match is burning with a bright blue flame.</arg>
+                    <arg>This match is burning with a bright blue flame. Now find something to light! Or you could try to eat it?</arg>
                 </action>
             </light>
             <eat>
@@ -19,14 +19,14 @@
                     <arg>You eat the match.</arg>
                 </action>
                 <action>destroyNoun
-                    <arg>got digested. You're crazy dawg.</arg>
+                    <arg>The match got digested. That sucks you could have used it to light the candle. Now you ruined that. Good job.</arg>
                 </action>
             </eat>
         </modifiers>
     </item>
     <item id="0">
         <name>candle</name>
-        <description>wax</description>
+        <description>This candle could be lit. If only I had something that could light it. It's seems easily breakable too.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <modifiers>
@@ -41,30 +41,44 @@
                     <arg>eggs</arg>
                 </action>
                 <action>destroyNoun
-                    <arg>is burned to ashes.</arg>
+                    <arg>The candle melted into nothing.</arg>
                 </action>
             </light>
-            <bite>
+            <break>
                 <action>print
-                    <arg>You take a bite of off the candle.</arg>
+                    <arg>You break the candle.</arg>
                 </action>
-                <action>changeDescription
-                    <arg>The candle has a chunk of it missing.</arg>
+                <action>destroyNoun
+                    <arg>The candle is now useless.</arg>
                 </action>
-            </bite>
+            </break>
         </modifiers>
     </item>
     <item id="1">
         <name>paper</name>
-        <description>8x10 ruled paper</description>
+        <description>8x10 ruled paper. I wish I remembered how to make a paper airplane with this. Guess I could write on it too if I had something to write with.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <modifiers>
-            <eat>
-                <action>use
-                    <arg>You ate the paper you fool. How fucking dare you</arg>
+            <fold>
+                <action>print
+                    <arg>You fold the paper into a paper airplane.</arg>
                 </action>
-            </eat>
+                <action>destroyNoun
+                    <arg>It flies out the window as you throw it.</arg>
+                </action>
+            </fold>
+            <write key ="pencil">
+                <action>print
+                    <arg>You write on the paper. You write down a recipe you just remembered. Actually better add it to the cook book!</arg>
+                </action>
+                <action>reward
+                    <arg>Chocolate crust</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>You throw the paper away. Just don't need it.</arg>
+                </action>
+            </write>
         </modifiers>
     </item>
 <!--    <item id="2">-->
