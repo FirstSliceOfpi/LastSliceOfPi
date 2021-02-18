@@ -392,25 +392,33 @@ public class Actions {
     }
 
 
-    private static String attack(Noun targetNoun, Verb verb, Noun noun) throws ChainOfEventException{
-        if(!World.getCurrentRoom().has(noun) && noun instanceof Enemy) {
-            return noun.getName() + " isn't here.";
+    private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
+        if(noun instanceof Enemy && targetNoun instanceof Pie) {
+            return "You're gonna attack a " + targetNoun.getName() + " with " + noun.getName()+". Can you even lift " + noun.getName() + "?";
         }
-        if(Objects.isNull(noun) || Objects.isNull(targetNoun)) {
+        if(!(noun instanceof Pie)) {
+            return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
+        }
+        if(!(targetNoun instanceof Enemy)) {
+            return "Oh your gonna attack a " + targetNoun.getName()+". And whats that gonna solve?";
+        }
+        if(!World.getCurrentRoom().has(targetNoun) && targetNoun instanceof Enemy) {
+            return targetNoun.getName() + " isn't here.";
+        }
+        if(Objects.isNull(targetNoun) || Objects.isNull(noun)) {
             return "Attack who with what?";
         }
         int WEAPON_MULTIPLIER = 100;
         StringBuilder response = new StringBuilder();
-        if (noun.isAttackable()
-                && GameState.getPlayer().getInventory().has(targetNoun)) {
-            if (targetNoun instanceof Pie && noun instanceof Enemy) {
-                Enemy enemy = (Enemy) noun;
-                Pie weapon = (Pie) targetNoun;
-                GameState.getPlayer().getInventory().drop(targetNoun);
+        if (targetNoun.isAttackable() && GameState.getPlayer().getInventory().has(noun)) {
+            if (noun instanceof Pie && targetNoun instanceof Enemy) {
+                Enemy enemy = (Enemy) targetNoun;
+                Pie weapon = (Pie) noun;
+                GameState.getPlayer().getInventory().drop(noun);
                 if (enemy.getHp() > 0) {
                     int newHP = enemy.getHp() - (weapon.getAttackPoints()*WEAPON_MULTIPLIER);
                     enemy.setHp(newHP);
-                    response.append("You " + verb.getName() + " " + enemy.getName() + " with " + targetNoun.getName() + "."
+                    response.append("You " + verb.getName() + " " + enemy.getName() + " with " + noun.getName() + "."
                            + "\n"+ enemy.getName() + " has " + enemy.getHp() +" hp remaining");
 
                 } //DONE: Create Enemy victory message to place here
@@ -420,7 +428,7 @@ public class Actions {
                     return enemy.getDeadtext();
                 }
             } else {
-                return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + targetNoun.getName()+". Try using food you savage.";
+                return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
             }
         }else {
             return "Item not in inventory.";
