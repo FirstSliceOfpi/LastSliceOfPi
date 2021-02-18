@@ -31,6 +31,11 @@ public class WelcomeScreen {
         return WELCOME_MESSAGE;
     }
 
+    public void settingTheScene() {
+        p.print("SettingTheScene");
+        Prompter.prompt("Press Enter to continue...");
+    }
+
     public void loadingScreen() {
         openingCredits.startJuke();
         openingCredits.turnTheDial((float) -10.69);
