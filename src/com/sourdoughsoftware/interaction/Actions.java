@@ -96,8 +96,7 @@ public class Actions {
         if(noun== null) {
             return "Carry on my wayward son";
         } else  {
-            System.out.println(Command.getNoun().getName());
-            World.getCurrentRoom().remove((Item) Command.getNoun());
+            World.getCurrentRoom().dropItem(Command.getNoun());
             if(Command.getTargetNoun() == null) {
                 Command.setTargetNoun(Command.getNoun());
             }
@@ -314,7 +313,7 @@ public class Actions {
     public static String dropFromRoom(String message) throws ChainOfEventException {
         Room currentRoom = World.getCurrentRoom();
         Noun noun = Command.getNoun();
-        if (noun instanceof Pie) {
+        if (noun instanceof Item) {
             noun = currentRoom.dropItem(noun);
         }
         if (Command.getTargetNoun() instanceof Enemy) {
