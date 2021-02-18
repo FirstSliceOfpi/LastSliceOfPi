@@ -76,6 +76,10 @@
             You see just a portion of ONE long, golden braid.
         </description>
         <exit>
+            <compass>west</compass>
+            <rose>elsa</rose>
+        </exit>
+        <exit>
             <compass>east</compass>
             <rose>rumplestiltskin</rose>
         </exit>
@@ -188,6 +192,10 @@
         <exit>
             <compass>north</compass>
             <rose>rapunzel</rose>
+        </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>aladdin</rose>
         </exit>
         <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
     </room>

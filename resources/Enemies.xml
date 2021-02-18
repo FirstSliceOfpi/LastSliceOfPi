@@ -119,9 +119,9 @@
     </enemy>
     <enemy>
         <name>King Louie</name>
-        <class>Chess pie</class>
+        <class>Monster</class>
         <hp>250</hp>
-        <foodAlergies>fists</foodAlergies>
+        <foodAlergies>Chess pie</foodAlergies>
         <background>
             The King of the Swing, Longing to be a man.
             Best watch your step around those monkey hands...
