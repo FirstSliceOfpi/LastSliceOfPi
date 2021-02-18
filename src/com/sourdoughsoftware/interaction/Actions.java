@@ -273,9 +273,12 @@ public class Actions {
             return printTy();
         }
         if (noun instanceof Directions.Direction) {
-            return World.changeCurrentRoom((Directions.Direction) noun) + "\n" + World.getCurrentRoom().getDescription();
+            return World.changeCurrentRoom((Directions.Direction) noun) +
+                    " " + ANSI_YELLOW +
+                    World.getCurrentRoom().getDescription() +
+                    ANSI_RESET;
         }
-        return "That's not a direction";
+        return "That's not a direction \n";
     }
 
     // Ty Easter Egg
@@ -356,7 +359,7 @@ public class Actions {
             }
         }else if(cheat.equals("power me")){
             return Cheat.getInstance().doubleAttackPoints();
-        } else if(cheat.equals("super power")){
+        }else if(cheat.equals("super power")){
             return Cheat.getInstance().doubleAllAP();
         }
         return "Can not perform that cheat.";

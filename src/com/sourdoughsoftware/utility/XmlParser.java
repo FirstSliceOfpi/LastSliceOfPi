@@ -92,6 +92,8 @@ public class XmlParser {
                     } catch (Exception e) {
                         if (GameState.getDevMode()) System.out.println(e);
                     }
+                    noun.setGeneric(true);
+
                     temp.put(name, noun);
 
                     NodeList modifiers = Objects.requireNonNull(
@@ -113,6 +115,7 @@ public class XmlParser {
                         if(Dictionary.INSTANCE.getVerb(modName) == null) {
                             new Verb(modName, VerbGroup.unique);
                         }
+                        if(modName.equals("cheat")) { noun.setCheat(true); }
                         eventsList = addActions(mod, keyNoun);
                         noun.setAction(modName, eventsList);
                     }

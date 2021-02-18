@@ -39,6 +39,8 @@ public class Game {
 
     public void start() throws ChainOfEventException {
         boolean gameOver = false;
+        TextParser.parse("examine room");
+        System.out.println(Actions.execute());
         while(!gameOver) {
             if(GameState.getDevMode()) {
                 StringBuilder sb = new StringBuilder();
@@ -50,7 +52,6 @@ public class Game {
                 sb.append(Enemy.getTotalEnemiesAlive());
                 System.out.println(sb);
             }
-            System.out.println("\n" + ANSI_YELLOW + World.getCurrentRoom().getName() + "\n" + ANSI_RESET);
             TextParser.parse(Prompter.prompt("What do you want to do?"));
             System.out.println(Actions.execute());
             if (Enemy.getTotalEnemiesHungry() == 0){

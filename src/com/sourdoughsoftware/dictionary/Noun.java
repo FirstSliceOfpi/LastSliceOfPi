@@ -26,6 +26,8 @@ public class Noun implements DictionaryEntry, Serializable {
     private boolean findable = false;
     private boolean dropable = false;
     private boolean wieldable = false;
+    private boolean generic = false;
+    private boolean cheat = false;
 
     public HashMap<String, ArrayList<Event>> interactions = new HashMap<>();
 
@@ -85,6 +87,19 @@ public class Noun implements DictionaryEntry, Serializable {
     public String getName() {
         return name;
     }
+
+    public void setCheat(boolean cheat) {
+        this.cheat = cheat;
+    }
+
+    public boolean isCheat() {
+        return this.cheat;
+    }
+    public void setGeneric(boolean generic) {
+        this.generic = generic;
+    }
+
+    public boolean isGeneric() { return generic; }
 
     public String getDescription() {
         return description;
