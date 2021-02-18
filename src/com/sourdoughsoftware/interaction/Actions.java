@@ -123,6 +123,8 @@ public class Actions {
         } else {
             noun = Command.getTargetNoun();
         }
+        World.getCurrentRoom().dropItem(noun);
+        GameState.getPlayer().getInventory().drop(noun);
         Dictionary.INSTANCE.deleteNoun(noun);
 
         return message;

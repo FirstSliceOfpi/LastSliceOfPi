@@ -261,11 +261,11 @@
                     </action>
                     <action>
                         destroyNoun
-                        <arg> is broken. Seventy times seven years of bad luck for you!</arg>
+                        <arg>The mirror is broken. Seventy times seven years of bad luck for you!</arg>
                     </action>
                     <action>
                         destroyAll
-                        <arg> 490 years bag luck erased your inventory</arg>
+                        <arg>490 years bag luck erased your inventory</arg>
                     </action>
                 </break>
                 <look>
@@ -275,14 +275,6 @@
                     </action>
                 </look>
             </modifiers>
-        </item>
-        <item id="9">
-            <name>tools</name>
-            <description>An awl, a hammer, a needle and thread, a saw, some paper, and a wooden head.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
         </item>
         <item id="10">
             <name>gingerbread</name>
@@ -304,14 +296,6 @@
                 </eat>
             </modifiers>
         </item>
-        <item id="12">
-            <name>cage</name>
-            <description>Yes. It is a cage.</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
         <item id="13">
             <name>chest</name>
             <description>The chest is so ornate, you don't even think you need to open it.</description>
@@ -332,28 +316,6 @@
                 </open>
             </modifiers>
         </item>
-        <item id="14">
-            <name>treasure</name>
-            <description>This is it! These are the NINE secrets of baking!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers></modifiers>
-        </item>
-        <item id="15">
-            <name>doors</name>
-            <description>These doors are magnificent. They could take you anywhere!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers>
-                <open>
-                    <action>
-                        print<arg>The doors creak and moan... and stay shut.</arg>
-                    </action>
-                </open>
-            </modifiers>
-        </item>
 <!--        <item id="16">-->
 <!--            <name>bag</name>-->
 <!--            <description>You know the bag is full of insects. What kind? Do you REALLY want to know? Maybe you can inspect it and see. Or pour out its contents?</description>-->
@@ -361,17 +323,9 @@
 <!--            <modifiers></modifiers>-->
 <!--            <Findable>true</Findable>-->
 <!--        </item>-->
-        <item id="16">
-            <name>bag</name>
-            <description>You know the bag is full of insects. What kind? Do you REALLY want to know?</description>
-            <attackPoints>0</attackPoints>
-            <modifiers></modifiers>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-        </item>
         <item id="17">
             <name>insects</name>
-            <description>Little, annoying, biting. Ya know - insects.</description>
+            <description>Little, annoying, biting. Ya know - insects. You hate insects. Get rid of em.</description>
             <attackPoints>0</attackPoints>
             <Findable>true</Findable>
             <Generic>true</Generic>
@@ -412,20 +366,7 @@
                 </break>
             </modifiers>
         </item>
-        <item id="19">
-            <name>bed</name>
-            <description>Look at that thread count! Look at design! This is the bed of the century!</description>
-            <attackPoints>0</attackPoints>
-            <Findable>true</Findable>
-            <Generic>true</Generic>
-            <modifiers>
-                <sleep>
-                    <action>
-                        print<arg>You take a quick snooze, and waken refreshed.</arg>
-                    </action>
-                </sleep>
-            </modifiers>
-        </item>
+
 <!--        <item id="20">-->
 <!--            <name>spindle</name>-->
 <!--            <description>It may be old, but you feel like you could still go the whole nine yards with this thing.-->
@@ -450,7 +391,7 @@
 <!--        </item>-->
         <item id="23">
             <name>chair</name>
-            <description>A chair to some, a bed to others.</description>
+            <description>A chair to some, a bed to others. Maybe time for a rest.</description>
             <attackPoints>0</attackPoints>
             <Findable>true</Findable>
             <Generic>true</Generic>
