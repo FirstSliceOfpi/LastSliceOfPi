@@ -36,8 +36,12 @@ public enum Dictionary implements Serializable, Savable {
                 }
             }
             if(!(entry instanceof Pie || entry instanceof Room || entry instanceof Enemy)) {
-                assert entry instanceof Noun;
-                genericItems.add((Noun) entry);
+                try{
+                    Pie item = (Pie) entry;
+                }catch(Exception e) {
+                    assert entry instanceof Noun;
+                    genericItems.add((Noun) entry);
+                }
             }
         }
     }
