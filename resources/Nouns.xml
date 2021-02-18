@@ -75,7 +75,7 @@
                     <arg>You fold the paper into a paper airplane. It flew right past some Chocolate crust! Better pick that up.</arg>
                 </action>
                 <action>reward
-                    <arg>chocolate crust</arg>
+                    <arg>cocoa crust</arg>
                 </action>
                 <action>destroyNoun
                     <arg>The paper airplane flies out the window.</arg>

@@ -401,6 +401,9 @@ public class Actions {
         if(!(noun instanceof Pie)) {
             return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
         }
+        if(targetNoun == null) {
+            return "You're gonna attack what?";
+        }
         if(!(targetNoun instanceof Enemy)) {
             return "Oh your gonna attack a " + targetNoun.getName()+". And whats that gonna solve?";
         }
