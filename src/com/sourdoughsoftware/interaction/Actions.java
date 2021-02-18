@@ -34,7 +34,7 @@ public class Actions {
     public static String execute() throws ChainOfEventException {
 
         if (Command.getVerb() == null) {
-            return "What do you want me to do?";
+            return "I am confused. What do you want me to do?";
         }
 
         if (Command.getNoun() == null && !(Command.getVerb().getGroup() == VerbGroup.save
@@ -237,11 +237,15 @@ public class Actions {
         Node weapon2Node = GameState.getTree().find(targetNoun.getName());
         Pie pie1 = null;
         Pie pie2 = null;
-        if (weapon1Node != null) {
+        if (weapon1Node != null && weapon1Node.getItem() != null) {
             pie1 = (Pie) weapon1Node.getItem();
+        } else {
+            return "You can't merge these two items.";
         }
-        if (weapon2Node != null) {
+        if (weapon2Node != null && weapon2Node.getItem() != null) {
             pie2 = (Pie) weapon2Node.getItem();
+        } else {
+            return "You can't merge these two items.";
         }
         Pie combinedPie = CombinePies.combine(pie1, pie2, GameState.getTree());
         if (combinedPie != pie1) {
