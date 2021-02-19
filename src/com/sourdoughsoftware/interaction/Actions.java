@@ -450,10 +450,13 @@ public class Actions {
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
         if(noun instanceof Enemy && targetNoun instanceof Pie) {
-            return "You're gonna attack a " + targetNoun.getName() + " with " + noun.getName()+". Can you even lift " + noun.getName() + "?";
+            return "Please use english and use 'with' ";
         }
         if(!(noun instanceof Pie)) {
             return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
+        }
+        if(targetNoun == null) {
+            return "You're gonna attack what?";
         }
         if(!(targetNoun instanceof Enemy)) {
             return "Oh your gonna attack a " + targetNoun.getName()+". And whats that gonna solve?";
