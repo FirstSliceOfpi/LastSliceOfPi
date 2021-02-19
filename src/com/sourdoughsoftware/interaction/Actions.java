@@ -450,9 +450,19 @@ public class Actions {
 
             } //DONE: Create Enemy victory message to place here
             if (enemy.getHp() <= 0) {
+                StringBuilder sb = new StringBuilder();
                 dropFromRoom("bye");
-                GameState.getCookBook().addRecipe();
-                return enemy.getDeadtext();
+                sb.append(GameState.getCookBook().addRecipe());
+                sb.append("\n");
+                try {
+                    Pie pie = (Pie) Command.getNoun();
+                    sb.append(pie.getVictory());
+                    sb.append("\n");
+                }catch(Exception e) {
+                    // do nothing
+                }
+                sb.append(enemy.getDeadtext());
+                return sb.toString();
             }
         }else {
             return "Item not in inventory.";
