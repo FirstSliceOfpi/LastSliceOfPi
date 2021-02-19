@@ -29,11 +29,11 @@ public class GameState implements Serializable, Savable{
     public static void addSavable(Savable savableClass) {
         savedClasses.add(savableClass);
     }
-
+    public static ArrayList<Savable> getSavable() { return savedClasses; }
     //create method to save the game
     public static boolean saveGame(File fileToSave) {
         try {
-            GameState gs = new GameState();
+            new GameState();
             FileOutputStream fileStream = new FileOutputStream(fileToSave.getAbsolutePath());
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
             for(int i = 0; i < savedClasses.size(); i++) {
@@ -65,7 +65,7 @@ public class GameState implements Serializable, Savable{
 
     public static boolean loadGame(File fileToLoad) {
         try {
-            GameState gs = new GameState();
+            new GameState();
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
             for(int i = 0; i < savedClasses.size(); i++) {
