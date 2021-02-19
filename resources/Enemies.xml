@@ -5,12 +5,10 @@
         <class>Witch</class>
         <hp>120</hp>
         <foodAlergies>apple pie</foodAlergies>
-        <background>
-            The beautiful Mistress Of Evil. She wanders the world lost, seducing men, condemning women. The more
+        <background>The beautiful Mistress Of Evil. She wanders the world lost, seducing men, condemning women. The more
             beautiful you are, the worst your fate will be.
         </background>
-        <deadtext>
-            She lies there, yet a smile spreads across her wickedly beautiful smile...
+        <deadtext>She lies there, yet a smile spreads across her wickedly beautiful smile...
         </deadtext>
     </enemy>
     <enemy>
@@ -18,12 +16,10 @@
         <class>Monster</class>
         <hp>180</hp>
         <foodAlergies>cherry pie</foodAlergies>
-        <background>
-            The immortal one, ghost lion of Pride Rock. Story says he still roams the earth, but no has lived to tell
+        <background>The immortal one, ghost lion of Pride Rock. Story says he still roams the earth, but no has lived to tell
             the tell...
         </background>
-        <deadtext>
-            Simba would be proud. Here lies Scar, forever may he lay...
+        <deadtext>Simba would be proud. Here lies Scar, forever may he lay...
         </deadtext>
     </enemy>
     <enemy>
@@ -31,12 +27,10 @@
         <class>Witch</class>
         <hp>130</hp>
         <foodAlergies>shoofly pie</foodAlergies>
-        <background>
-            The sorcerer of shadows, manipulator of kings. Beware his mind control, for the lesser of men have fallen
+        <background>The sorcerer of shadows, manipulator of kings. Beware his mind control, for the lesser of men have fallen
             prey...
         </background>
-        <deadtext>
-            Jafar sends you an eternal death stare as he fades from existence...
+        <deadtext>Jafar sends you an eternal death stare as he fades from existence...
         </deadtext>
     </enemy>
     <enemy>
@@ -44,12 +38,10 @@
         <class>God</class>
         <hp>200</hp>
         <foodAlergies>strawberry pie</foodAlergies>
-        <background>
-           "Well hey there little fella, may i offer you a drink? Tsk tsk, it's your help I require,
+        <background>"Well hey there little fella, may i offer you a drink? Tsk tsk, it's your help I require,
             but it's not exactly what you think..." Hades flashes is toothy evil grin...
         </background>
-        <deadtext>
-            Like a candle under the strongest lid, Hades flames burns no more....
+        <deadtext>Like a candle under the strongest lid, Hades flames burns no more....
         </deadtext>
     </enemy>
     <enemy>
@@ -57,11 +49,9 @@
         <class>Pirate</class>
         <hp>100</hp>
         <foodAlergies>mississippi mud pie</foodAlergies>
-        <background>
-            "Ahoy there matey, there be children afoot. Emark on my vessel, together thy be treasure tah loot!"
+        <background>"Ahoy there matey, there be children afoot. Emark on my vessel, together thy be treasure tah loot!"
         </background>
-        <deadtext>
-            Hook fades as the winds echo through his ears, if only he saw the ocean one last time....
+        <deadtext>Hook fades as the winds echo through his ears, if only he saw the ocean one last time....
         </deadtext>
     </enemy>
     <enemy>
@@ -69,11 +59,9 @@
         <class>Brawler</class>
         <hp>120</hp>
         <foodAlergies>Banoffe pie</foodAlergies>
-        <background>
-            "Belle Belle!!! You are not my Belle!!" The weathered, famished Gaston madly wonders the room...
+        <background>"Belle Belle!!! You are not my Belle!!" The weathered, famished Gaston madly wonders the room...
         </background>
-        <deadtext>
-            "Belle Belle!! Oh dear Belle, parting is such great sorrow".....
+        <deadtext>"Belle Belle!! Oh dear Belle, parting is such great sorrow".....
         </deadtext>
     </enemy>
     <enemy>

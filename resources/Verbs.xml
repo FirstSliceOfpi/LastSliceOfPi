@@ -33,6 +33,10 @@
         <group>getDescription</group>
     </verb>
     <verb>
+        <name>inspect</name>
+        <group>getDescription</group>
+    </verb>
+    <verb>
         <name>look</name>
         <group>getDescription</group>
     </verb>
@@ -131,5 +135,9 @@
     <verb>
         <name>reward</name>
         <group>reward</group>
+    </verb>
+    <verb>
+        <name>mix</name>
+        <group>merge</group>
     </verb>
 </Verbs>

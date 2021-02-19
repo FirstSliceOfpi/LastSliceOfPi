@@ -159,12 +159,12 @@ public class XmlParser {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element singleEnemy = (Element) node;
                 //Create new Enemy Object
-                String name = singleEnemy.getElementsByTagName("name").item(0).getTextContent();
-                String background = singleEnemy.getElementsByTagName("background").item(0).getTextContent();
-                int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent());
-                String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent();
-                String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent();
-                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent();
+                String name = singleEnemy.getElementsByTagName("name").item(0).getTextContent().strip();
+                String background = singleEnemy.getElementsByTagName("background").item(0).getTextContent().strip();
+                int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent().strip());
+                String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent().strip();
+                String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent().strip();
+                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent().strip();
                 //addInteractions(singleEnemy, enemy);
                 //Add Enemy to list
                 enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background,deadtext);
@@ -186,15 +186,15 @@ public class XmlParser {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element roomElement = (Element) node;
 //                    String roomID = roomElement.getElementsByTagName("roomID").item(0).getTextContent();
-                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent();
+                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent().strip();
                     String description = roomElement.getElementsByTagName("description").item(0).getTextContent();
 
                     Room room = new Room(name,description);
                     for (int j =0; j< roomElement.getElementsByTagName("exit").getLength(); j++) {
                         Element el = (Element) roomElement.getElementsByTagName("exit").item(j);
 
-                        String direction = el.getElementsByTagName("compass").item(0).getTextContent();
-                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent();
+                        String direction = el.getElementsByTagName("compass").item(0).getTextContent().strip();
+                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent().strip();
 
                         room.roomList.put(direction,directionName);
                     }
