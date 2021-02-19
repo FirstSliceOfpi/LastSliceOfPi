@@ -413,4 +413,31 @@
                     </wear>
                 </modifiers>
             </item>
+    <item id="35">
+        <name>wardrobe</name>
+        <description>An old family wardrobe that magically vibrates. There seems to be no lock on it. I wonder if its smashable. </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <open>
+                <action>print
+                    <arg>You open the wardrobe. You find some eggs</arg>
+                </action>
+                <action>reward
+                    <arg>eggs</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>The door fell off.</arg>
+                </action>
+            </open>
+            <smash>
+                <action>print
+                    <arg>You smash the wardrobe into pieces.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Welp. There goes the wardrobe.</arg>
+                </action>
+            </smash>
+        </modifiers>
+    </item>
 </Items>
