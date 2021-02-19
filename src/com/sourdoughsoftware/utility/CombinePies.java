@@ -10,10 +10,10 @@ public class CombinePies {
     /**
      *   returns the original weapon if it can not be combined otherwise it returns
      *   the higher level combined weapon
-     * @param pie1
-     * @param pie2
-     * @param tree
-     * @return
+     * @param pie1 Pie to combine
+     * @param pie2 Pie to combine
+     * @param tree BST to look for pies
+     * @return pie1 if not found in tree, parent pie if found in tree
      */
     public static Pie combine(Pie pie1, Pie pie2, ItemTree tree) {
         Node[] parentAndSibling = tree.getParentAndSibling(pie1);

@@ -12,10 +12,10 @@ public class Pie extends Item {
     /**
      * Constructor automatically sets grabable,wieldable, and dropable to true.
      * Provides a victory string in the event of defeating an enemy with this Pie.
-     * @param name
-     * @param description
-     * @param attackPoints
-     * @param victory
+     * @param name name of pie
+     * @param description Description of pie
+     * @param attackPoints Amount of damage able to be done
+     * @param victory String message when enemy defeated by this pie
      */
     public Pie(String name, String description, int attackPoints, String victory) {
         super(name, description);
@@ -39,7 +39,7 @@ public class Pie extends Item {
 
     /**
      * return the victory phrase when beating an enemy with this weapon
-     * @return
+     * @return Returns a string
      */
     public String getVictory() {
         return this.victory;

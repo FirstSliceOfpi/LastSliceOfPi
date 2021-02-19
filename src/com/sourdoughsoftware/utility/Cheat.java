@@ -25,7 +25,7 @@ public class Cheat {
 
     /**
      * Adds all possible pies the the inventory from the ItemTree
-     * @return
+     * @return String indicating success
      */
     public String addAllPiesToInventory() {
         Node[] allItems = GameState.getTree().getAllItemsBFS();
@@ -37,7 +37,7 @@ public class Cheat {
 
     /**
      * double the attack points of all low level pie ingredients
-     * @return
+     * @return String indicating success
      */
     public String doubleAttackPoints() {
         GameState.getFindableWeapons().forEach(pie -> pie.setAttackPoints(2*pie.getAttackPoints()));
@@ -46,7 +46,7 @@ public class Cheat {
 
     /**
      * double the attack points for all items in the ItemTree
-     * @return
+     * @return String indicating success
      */
     public String doubleAllAP() {
         Arrays.stream(GameState.getTree().getAllItemsBFS()).map(node->{
@@ -59,7 +59,7 @@ public class Cheat {
 
     /**
      * Shows animated ascii art
-     * @return
+     * @return String
      * @throws InterruptedException
      * @throws IOException
      */
