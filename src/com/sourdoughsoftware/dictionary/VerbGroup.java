@@ -19,7 +19,7 @@ public enum VerbGroup {
     unique,
     destroyNoun,
     createNoun,
-    EXAMINE,
+//    EXAMINE,
     show,
     feed,
     ATTACK,

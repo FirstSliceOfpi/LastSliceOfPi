@@ -1,4 +1,7 @@
 package com.sourdoughsoftware.utility;
+/**
+ * This class provides east access to Color unicode strings
+ */
 
 import java.util.Random;
 

@@ -34,33 +34,7 @@ import static java.lang.Boolean.parseBoolean;
 
 public class XmlParser {
 
-//    public static void parseItems() {
-//
-//        try {
-//            Document document = loadXML("resources/Items.xml");
-//
-//            NodeList nodeList = document.getElementsByTagName("item");
-//
-//            for (int current = 0; current < nodeList.getLength(); current++) {
-//                Node node = nodeList.item(current);
-//
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//
-//                    Element currentElement = (Element) node;
-//                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
-//                    String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
-//
-//                    new Item(name, description);
-//
-//                }
-//            }
-//        } catch (ParserConfigurationException | IOException | SAXException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//    }
-
-    public static void parseNouns() {
+    public static void parseItems() {
         HashMap<String, Noun> temp = new HashMap<>();
 
         ItemTree tree = new ItemTree();
@@ -185,15 +159,14 @@ public class XmlParser {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element singleEnemy = (Element) node;
                 //Create new Enemy Object
-                String name = singleEnemy.getElementsByTagName("name").item(0).getTextContent();
-                String background = singleEnemy.getElementsByTagName("background").item(0).getTextContent();
-                int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent());
-                String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent();
-                String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent();
-                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent();
-                //addInteractions(singleEnemy, enemy);
+                String name = singleEnemy.getElementsByTagName("name").item(0).getTextContent().strip();
+                String background = singleEnemy.getElementsByTagName("background").item(0).getTextContent().strip();
+                int hp = Integer.parseInt(singleEnemy.getElementsByTagName("hp").item(0).getTextContent().strip());
+                String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent().strip();
+                String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent().strip();
+                String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent().strip();
                 //Add Enemy to list
-                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background,deadtext);
+                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,  background, deadtext);
                 enemies.add(enemy);
 
             }
@@ -202,28 +175,34 @@ public class XmlParser {
     }
 
     public static ArrayList<Room> parseRooms() {
+        //Instantiate new Room list
         ArrayList<Room> rooms = new ArrayList<>();
         try{
             Document document = loadXML("resources/Rooms.xml");
+            // With node list find each element and construct room object
             NodeList nodeList = document.getElementsByTagName("room");
+            // Iterate through each node in nodeList
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element roomElement = (Element) node;
-//                    String roomID = roomElement.getElementsByTagName("roomID").item(0).getTextContent();
-                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent();
+                    // Generate local variables from each "room" element in XML
+                    String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent().strip();
                     String description = roomElement.getElementsByTagName("description").item(0).getTextContent();
-
+                    // Construct new room and add to room list
                     Room room = new Room(name,description);
+                    //for loops to read multiple exits. Return list of exits
                     for (int j =0; j< roomElement.getElementsByTagName("exit").getLength(); j++) {
+                        //cast the item read back as Element from node
                         Element el = (Element) roomElement.getElementsByTagName("exit").item(j);
 
-                        String direction = el.getElementsByTagName("compass").item(0).getTextContent();
-                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent();
-
+                        String direction = el.getElementsByTagName("compass").item(0).getTextContent().strip();
+                        String directionName = el.getElementsByTagName("rose").item(0).getTextContent().strip();
+                        //pointing to hashmap and mapping direction to room name
                         room.roomList.put(direction,directionName);
                     }
+                    // will populate the rooms
                     rooms.add(room);
 
                 }

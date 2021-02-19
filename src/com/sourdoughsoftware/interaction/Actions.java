@@ -9,13 +9,11 @@ import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.world.Directions;
-import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.world.Room;
 
 import com.sourdoughsoftware.world.World;
@@ -62,16 +60,10 @@ public class Actions {
                 return dev();
             case getDescription:
                 return getDescription();
-//            case print:
-//                return print();
             case feed:
                 return feed(Command.getNoun(), Command.getTargetNoun());
-            case wield:
-                return wield(Command.getNoun(), Command.getVerb());
             case attack:
                 return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
-//            case EXAMINE:
-//                return print();
             case show:
                 return show();
             case help:
@@ -85,11 +77,21 @@ public class Actions {
         }
     }
 
-    public static String use(String str) {
-        dropFromInventory(str);
-        return str;
-    }
+//    /**
+//     * Method for allowing to remove something from the inventory after printing a string
+//     * @param str
+//     * @return
+//     */
+//    public static String use(String str) {
+//        dropFromInventory(str);
+//        return str;
+//    }
 
+    /**
+     * Method for removing a generic from inventory and rewarding a pie
+     * @param str
+     * @return
+     */
     public static String reward(String str) {
         Noun noun = Dictionary.INSTANCE.getNoun(str);
 
@@ -108,6 +110,10 @@ public class Actions {
 
     }
 
+    /**
+     * Method for showing nouns and verbs available in the game
+     * @return
+     */
     public static String help() {
         StringBuilder sb = new StringBuilder("Try these nouns: \n");
         String[] keys = Dictionary.INSTANCE.getNouns().keySet().toArray(String[]::new);
@@ -130,7 +136,7 @@ public class Actions {
         sb.append("\n\n Also try: examine cook book");
         return sb.toString();
     }
-
+    // Helper method for help() to put nouns and verbs in nice columns
     private static String calculateSpace(int wordLength) {
         int columnWidth = 30;
         int numberOfSpaces = columnWidth - wordLength;
@@ -142,6 +148,11 @@ public class Actions {
         return space.toString();
     }
 
+    /**
+     * Method for taking a noun completely out of the game play
+     * @param message
+     * @return
+     */
     public static String destroyNoun(String message) {
         Noun noun = null;
         if(Command.getTargetNoun() == null) {
@@ -158,12 +169,22 @@ public class Actions {
         return message;
     }
 
+    /**
+     * Method for adding a new noun to game play (usually from XML document actions)
+     * @param name
+     * @return
+     */
     public static String createNoun(String name) {
         Noun noun = new Noun(name, "this is a noun");
         Dictionary.INSTANCE.add(noun);
         return name + " created";
     }
 
+    /**
+     * Method for removing all items from inventory
+     * @param message
+     * @return
+     */
     public static String destroyAll(String message) {
         GameState.getPlayer().getInventory()
                 .getCurrentInventory().forEach(item->
@@ -172,6 +193,10 @@ public class Actions {
         return message;
     }
 
+    /**
+     * Method for displaying the description of a room or other noun
+     * @return
+     */
     public static String getDescription() {
         if (Command.getNoun().getName().equals("room")) {
             return  World.getCurrentRoom().getRoomItems() + ANSI_RESET;
@@ -179,6 +204,11 @@ public class Actions {
         return Command.getNoun().getDescription() + ANSI_RESET;
     }
 
+    /**
+     * Method to change the description of a noun (usually after another action is performed)
+     * @param newDescription
+     * @return
+     */
     public static String changeDescription(String newDescription) {
         Noun noun;
         if(Command.getTargetNoun() != null) {
@@ -190,6 +220,10 @@ public class Actions {
         return noun.getDescription();
     }
 
+    /**
+     * Method to enter development mode for showing error messages and other features
+     * @return
+     */
     public static String dev() {
         GameState.setDevMode();
         return GameState.getDevMode()
@@ -197,6 +231,10 @@ public class Actions {
                 : ANSI_YELLOW + "Dev mode disabled" + ANSI_RESET;
     }
 
+    /**
+     * Method to end the game
+     * @return
+     */
     public static String quit() {
         String response = Prompter.prompt("Are you sure you want to exit?(Y/N)");
         String cleansedResponse = response.strip().toLowerCase();
@@ -208,6 +246,10 @@ public class Actions {
         return "Error in quit";
     }
 
+    /**
+     * Method to initiate the save process
+     * @return
+     */
     public static String save() {
         Path path = Paths.get("./saved_games");
         File dir = new File("./saved_games");
@@ -221,6 +263,10 @@ public class Actions {
                 : ANSI_RED + "Your game was not saved." + ANSI_RESET;
     }
 
+    /**
+     * Method to initiate the loading saved game process
+     * @return
+     */
     public static String load() {
         File dir = new File("./saved_games");
         if(Objects.isNull(dir) || Objects.isNull(dir.list())) { return "No saved games."; }
@@ -233,31 +279,13 @@ public class Actions {
                 "Your game -- " + ANSI_GREEN + fileToLoad + ANSI_RESET + " -- was loaded."
                 : ANSI_RED + "Your game was not loaded." + ANSI_RESET;
     }
-
-//    private static String examine(Noun noun) {
-//        StringBuilder result = new StringBuilder();
-//        result.append("\n");
-//        if (noun.getName().equals("room")) {
-//            if(gs.getRoom().getRoomItems().size() == 0) {
-//                return "You find nothing in the room.";
-//            }
-//            result.append("You find");
-//            for (Item item : gs.getRoom().getRoomItems()) {
-//                if (item instanceof Enemy) {
-//                    result.append(" " + item.getName() + " ( " + ((Enemy)item).getHp() + " ),");
-//                }else {
-//                    result.append(" " + item.getName() + ",");
-//                }
-//
-//            }
-//            result.append(" in the room.");
-//        } else {
-//            result.append(noun.getDescription());
-//        }
-//        return result.toString();
-//    }
-
-    // merge or combine to weapons for a higher level weapon
+    /**
+     * merge or combine to weapons for a higher level weapon
+     * @param noun
+     * @param verb
+     * @param targetNoun
+     * @return
+     */
     public static String merge(Noun noun, Verb verb, Noun targetNoun) {
         VerbGroup group = verb.getGroup();
 
@@ -310,28 +338,24 @@ public class Actions {
         return "That's not a direction \n";
     }
 
-    // Ty Easter Egg
+    // Ty Easter Egg (prints on go bananas)
     private static String printTy() {
         PrintFiles pf = new PrintFiles();
         pf.print("ty");
         return "";
     }
 
-//    private static String grab(Noun noun) {
-//        if(!noun.isFindable()) { return "You can not pick up " + noun.getName(); }
-//        String success = noun.getName() + " not found in the room.";
-//        if(gs.getRoom().removeItem((Item) noun)) {
-//            success = Player.getPlayer().getInventory().add(noun);
-//        }
-//        return success;
-//    }
-
     public static String show() {
         StringBuilder builder = new StringBuilder();
         List<Noun> inventory = GameState.getPlayer().getInventory().getCurrentInventory();
         if(inventory.size() == 0) return "No items";
         for(Noun noun : inventory) {
+            if(noun instanceof Pie) {
+                builder.append(ANSI_RESET);
+                builder.append(ANSI_GREEN);
+            }
             builder.append(noun.getName() + "\n");
+            builder.append(ANSI_RESET);
         }
         return builder.toString();
     }
@@ -390,18 +414,22 @@ public class Actions {
             return Cheat.getInstance().doubleAttackPoints();
         }else if(cheat.equals("super power")){
             return Cheat.getInstance().doubleAllAP();
+        }else if (cheat.equals("map")) {
+            return Cheat.getInstance().getMap();
+        }else if (cheat.equals("jay do you have our analytics graded?")) {
+            return Cheat.getInstance().getJay();
         }
         return "Can not perform that cheat.";
     }
 
 
-    private static String wield(Noun noun, Verb verb) {
-        if (noun.isWieldable()) {
-            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
-        } else {
-            return noun.getName() + " is not a weapon";
-        }
-    }
+//    private static String wield(Noun noun, Verb verb) {
+//        if (noun.isWieldable()) {
+//            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
+//        } else {
+//            return noun.getName() + " is not a weapon";
+//        }
+//    }
 
     public static String feed(Noun noun, Noun targetNoun) {
         if(!World.getCurrentRoom().has(targetNoun)) {
@@ -422,10 +450,13 @@ public class Actions {
 
     private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
         if(noun instanceof Enemy && targetNoun instanceof Pie) {
-            return "You're gonna attack a " + targetNoun.getName() + " with " + noun.getName()+". Can you even lift " + noun.getName() + "?";
+            return "Please use english and use 'with' ";
         }
         if(!(noun instanceof Pie)) {
             return "What are you doing sir? This is a children's game. You can't just go around attacking people with " + noun.getName()+". Try using food you savage.";
+        }
+        if(targetNoun == null) {
+            return "You're gonna attack what?";
         }
         if(!(targetNoun instanceof Enemy)) {
             return "Oh your gonna attack a " + targetNoun.getName()+". And whats that gonna solve?";

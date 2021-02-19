@@ -7,14 +7,12 @@ import com.sourdoughsoftware.interaction.Actions;
 import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.interaction.Prompter;
 import com.sourdoughsoftware.interaction.TextParser;
-import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.ItemTree;
 import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.utility.XmlParser;
 import com.sourdoughsoftware.world.Directions;
 import com.sourdoughsoftware.world.World;
 import org.xml.sax.SAXException;
-import static com.sourdoughsoftware.utility.Colors.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -25,9 +23,8 @@ public class Game {
     PrintFiles p = new PrintFiles();
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
-//        XmlParser.parseItems();
         XmlParser.parseVerbs();
-        XmlParser.parseNouns();
+        XmlParser.parseItems();
         new Directions();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();

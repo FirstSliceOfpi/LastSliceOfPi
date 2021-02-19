@@ -38,10 +38,6 @@ public class TextParser {
         if (nounSet == null || nounSet.size() == 0) {
             return null;
         }
-        nounSet.forEach(noun -> {
-            System.out.println(noun.getName());
-        });
-
         Noun noun = null;
         if (nounSet.size() == 1) {
             noun = nounSet.iterator().next();

@@ -5,6 +5,14 @@
         <group>unique</group>
     </verb>
     <verb>
+        <name>pick up</name>
+        <group>unique</group>
+    </verb>
+    <verb>
+        <name>get</name>
+        <group>unique</group>
+    </verb>
+    <verb>
         <name>drop</name>
         <group>unique</group>
     </verb>
@@ -30,6 +38,10 @@
     </verb>
     <verb>
         <name>examine</name>
+        <group>getDescription</group>
+    </verb>
+    <verb>
+        <name>inspect</name>
         <group>getDescription</group>
     </verb>
     <verb>
@@ -131,5 +143,9 @@
     <verb>
         <name>reward</name>
         <group>reward</group>
+    </verb>
+    <verb>
+        <name>mix</name>
+        <group>merge</group>
     </verb>
 </Verbs>

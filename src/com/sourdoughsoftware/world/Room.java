@@ -50,18 +50,22 @@ public class Room implements java.io.Serializable, Savable {
         result.put("exitsById", exitsById);
         result.put("roomItems", roomItems);
         result.put("exits", exits);
+        result.put("roomList", roomList);
+        result.put("roomExits", roomExits);
         return result;
     }
 
     public boolean setSaveFields(HashMap<String, Object> result) {
         try {
-            result.put("roomID", roomID);
-            result.put("name", name);
-            result.put("description", description);
-            result.put("shortDescription", shortDescription);
-            result.put("exitsById", exitsById);
-            result.put("roomItems", roomItems);
-            result.put("exits", exits);
+            roomID = (Integer) result.get("roomID");
+            name = (String) result.get("name");
+            description = (String) result.get("description");
+            shortDescription = (String) result.get("shortDescription");
+            exitsById = (Map<String, Integer>) result.get("exitsById");
+            roomItems = (HashSet<Noun>) result.get("roomItems");
+            exits = (Map<Directions.Direction, Room>) result.get("exits");
+            roomList = (Map<String, String>) result.get("roomList");
+            roomExits = (Map<String, Room>) result.get("roomExits");
         }catch (Exception e) {
             return false;
         }
@@ -89,14 +93,12 @@ public class Room implements java.io.Serializable, Savable {
         return noun;
     }
 
-
-
     public void createExit(Directions.Direction direction, Room newExit) {
         exits.put(direction, newExit);
     }
 
     public void clearItems() {
-        roomItems.removeIf(item->item instanceof Pie);
+        roomItems.removeIf(item->!(item instanceof Enemy));
     }
 
     public void addExitbyID(String dir, Integer roomID){
@@ -108,6 +110,10 @@ public class Room implements java.io.Serializable, Savable {
         return null;
     }
 
+    /**
+     * Builds a string with the items in the room (Enemies, Pies, Generics)
+     * @return
+     */
     public String getRoomItems() {
         StringBuilder result = new StringBuilder();
         if(roomItems.size() == 0) {
@@ -121,8 +127,9 @@ public class Room implements java.io.Serializable, Savable {
                         myEnemy = (Enemy) item;
                         if (roomItems.contains(item)) {
                             String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
-                            result.append(ANSI_RESET + ANSI_RED).append(item.getName()).append(ANSI_RESET).append(ANSI_GREEN).append(" HP: ").append(((Enemy) item).getHp()).append(ANSI_RESET);
+                            result.append(ANSI_RESET + ANSI_RED).append(item.getName()).append(ANSI_RESET).append(ANSI_GREEN).append(" HP: ").append(((Enemy) item).getHp() +" ").append(ANSI_RESET);
                             result.append(enemyD);
+                            result.append("\n");
                         }
                     } catch (ClassCastException e) {
                         String itemD;
@@ -170,10 +177,6 @@ public class Room implements java.io.Serializable, Savable {
         this.shortDescription = shortDescription;
     }
 
-    //    public Room getRoomAt(String dir) {
-//        return exits.get(dir);          // Returns null if dir doesn't exist
-//    }
-
     public Integer getExitByID(String dir) {
         return exitsById.get(dir);
     }
@@ -182,9 +185,10 @@ public class Room implements java.io.Serializable, Savable {
         return roomItems;
     }
 
-//    public boolean hasExit(String dir) {
-//        return exits.containsKey(dir);
-//    }
+    /**
+     * Adds findable pie ingredients to the room on entering
+     * @param tries
+     */
     public void addItemsToRoomOnEntering(int tries) {
         Random rand = new Random();
         int maxSize = GameState.getFindableWeapons().size();
@@ -202,9 +206,13 @@ public class Room implements java.io.Serializable, Savable {
         }
     }
 
+    /**
+     * Adds generic items to the room on entering
+     * @param tries
+     */
     public void addGenericsToRoomOnEntering(int tries) {
         Random rand = new Random();
-        ArrayList<Noun> allNouns = Dictionary.INSTANCE.getAllNouns();
+        ArrayList<Noun> allNouns = Dictionary.INSTANCE.getNounsForRespawn();
         int maxSize = allNouns.size();
         int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
@@ -224,7 +232,10 @@ public class Room implements java.io.Serializable, Savable {
             }
         }
     }
-
+    /**
+     * Adds nouns to the list and verfies they are of type enemy, pie, or generic
+     * @param item
+     */
     public void addToRoom(Noun item) {
         if(!Objects.isNull(item)){
             try {
