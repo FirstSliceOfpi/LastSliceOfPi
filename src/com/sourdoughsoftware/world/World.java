@@ -143,6 +143,7 @@ public class World implements Savable {
         HashMap<String, Object> result = new HashMap<String, Object>();
         result.put("gameMap", gameMap);
         result.put("enemies", enemies);
+        result.put("rooms", rooms);
         result.put("currentRoom", currentRoom);
         return result;
     }
@@ -152,6 +153,7 @@ public class World implements Savable {
             gameMap = (List<Room>) result.get("gameMap");
             enemies = (List<Enemy>) result.get("enemies");
             currentRoom = (Room) result.get("currentRoom");
+            rooms = (List<Room>) result.get("rooms");
         }catch(Exception e) {
             return false;
         }

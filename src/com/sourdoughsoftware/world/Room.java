@@ -50,18 +50,20 @@ public class Room implements java.io.Serializable, Savable {
         result.put("exitsById", exitsById);
         result.put("roomItems", roomItems);
         result.put("exits", exits);
+        result.put("roomList", roomList);
         return result;
     }
 
     public boolean setSaveFields(HashMap<String, Object> result) {
         try {
-            result.put("roomID", roomID);
-            result.put("name", name);
-            result.put("description", description);
-            result.put("shortDescription", shortDescription);
-            result.put("exitsById", exitsById);
-            result.put("roomItems", roomItems);
-            result.put("exits", exits);
+            roomID = (Integer) result.get("roomID");
+            name = (String) result.get("name");
+            description = (String) result.get("description");
+            shortDescription = (String) result.get("shortDescription");
+            exitsById = (Map<String, Integer>) result.get("exitsById");
+            roomItems = (HashSet<Noun>) result.get("roomItems");
+            exits = (Map<Directions.Direction, Room>) result.get("exits");
+            roomList = (Map<String, String>) result.get("roomList");
         }catch (Exception e) {
             return false;
         }

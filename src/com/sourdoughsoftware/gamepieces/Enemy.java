@@ -22,8 +22,6 @@ public class Enemy extends Noun implements java.io.Serializable {
 
     public Enemy(String name, String background) {
         super(name, background);
-
-
     }
 
     // Single ctor

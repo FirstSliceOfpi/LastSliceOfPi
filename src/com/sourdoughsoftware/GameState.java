@@ -15,7 +15,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GameState implements Serializable{
+public class GameState implements Serializable, Savable{
     private static Boolean devMode = false;
     private static ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
     private static ArrayList<Savable> savedClasses = new ArrayList<>();
@@ -23,6 +23,9 @@ public class GameState implements Serializable{
     private static Player player = new Player("edgar");
     private static CookBook cookBook = null;
 
+    private GameState() {
+        saveClass();
+    }
     public static void addSavable(Savable savableClass) {
         savedClasses.add(savableClass);
     }
@@ -97,4 +100,37 @@ public class GameState implements Serializable{
     public static void setPlayer(Player playr) {
         player = playr;
     }
+
+    public Object getGameState() {
+        return this;
+    }
+
+    public HashMap<String, Object> getSaveFields(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("devMode", devMode);
+        result.put("findableWeapons", findableWeapons);
+        result.put("savedClasses", savedClasses);
+        result.put("tree", tree);
+        result.put("player", player);
+        result.put("cookBook", cookBook);
+        return result;
+    }
+    public boolean setSaveFields(HashMap<String, Object> result){
+       try {
+           devMode = (Boolean) result.get("devMode");
+           findableWeapons = (ArrayList<Pie>) result.get("findableWeapons");
+           savedClasses = (ArrayList<Savable>) result.get("savedClasses");
+           tree = (ItemTree) result.get("tree");
+           player = (Player) result.get("player");
+           cookBook = (CookBook) result.get("cookBook");
+           return true;
+       }catch (Exception e) {
+           return false;
+       }
+    }
+
+    public void saveClass(){
+        addSavable(this);
+    }
+
 }
