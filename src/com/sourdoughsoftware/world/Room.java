@@ -127,8 +127,9 @@ public class Room implements java.io.Serializable, Savable {
                         myEnemy = (Enemy) item;
                         if (roomItems.contains(item)) {
                             String enemyD = ANSI_RED + item.getDescription() + ANSI_RESET;
-                            result.append(ANSI_RESET + ANSI_RED).append(item.getName()).append(ANSI_RESET).append(ANSI_GREEN).append(" HP: ").append(((Enemy) item).getHp()).append(ANSI_RESET);
+                            result.append(ANSI_RESET + ANSI_RED).append(item.getName()).append(ANSI_RESET).append(ANSI_GREEN).append(" HP: ").append(((Enemy) item).getHp() +" ").append(ANSI_RESET);
                             result.append(enemyD);
+                            result.append("\n");
                         }
                     } catch (ClassCastException e) {
                         String itemD;

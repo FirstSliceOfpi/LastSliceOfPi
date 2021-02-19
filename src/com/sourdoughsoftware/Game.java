@@ -24,7 +24,7 @@ public class Game {
 
     public Game() throws IOException, SAXException, ParserConfigurationException {
         XmlParser.parseVerbs();
-        XmlParser.parseNouns();
+        XmlParser.parseItems();
         new Directions();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();
