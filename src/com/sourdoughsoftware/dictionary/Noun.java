@@ -115,10 +115,6 @@ public class Noun implements DictionaryEntry, Serializable {
         this.findable = findable;
     }
 
-    public boolean isMergeable() {
-        return mergeable;
-    }
-
     public void setMergeable(boolean mergeable) {
         this.mergeable = mergeable;
     }
@@ -137,7 +133,6 @@ public class Noun implements DictionaryEntry, Serializable {
     public void setExaminable(boolean examinable) {
         this.examinable = examinable;
     }
-
 
 
     public void setGrabable(boolean grabable) {
