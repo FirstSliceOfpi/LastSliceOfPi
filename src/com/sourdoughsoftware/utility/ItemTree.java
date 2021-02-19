@@ -18,7 +18,11 @@ public class ItemTree implements Serializable {
     public ItemTree() {
         root = null;
     }
-    // add a weapon to the tree
+
+    /**
+     * add a weapon to the tree
+     * @param item
+     */
     public void add(Item item) {
         if (root == null) {
             root = new Node(item);
@@ -29,7 +33,8 @@ public class ItemTree implements Serializable {
         newNode.setId(++size);
         insert(root, newNode);
     }
-    // helper function for add()
+
+    // helper function for add
     private Node insert(Node lastNode, Node newNode) {
         int lastValue = lastNode.getId();
         Node left = lastNode.getLeft();
@@ -50,18 +55,33 @@ public class ItemTree implements Serializable {
         return find(++lastValue);
     }
 
-    // Weapons can be found by Item object, String name, Node id as an integer
+
+
+    /**
+     * Weapons can be found by Item object
+     * @param item
+     * @return
+     */
     public Node find(Item item) {
         return DFSHelper(item, this.root, new Node());
     }
-
+    /**
+     * Weapons can be found by String name
+     * @param item
+     * @return
+     */
     public Node find(String item) {
         return DFSHelper(item, this.root, new Node());
     }
-
+    /**
+     * Weapons can be found by Node id as an integer
+     * @param item
+     * @return
+     */
     public Node find(int item) {
         return DFSHelper(item, this.root, new Node());
     }
+
     // Overloaded DFSHelpers for find functions
     private Node DFSHelper(int item, Node node, Node result) {
         if (node != null) {
@@ -102,7 +122,10 @@ public class ItemTree implements Serializable {
         return result;
     }
 
-    // Performs a bread first search and returns all the Nodes(weapons) in an array
+    /**
+     * Performs a bread first search and returns all the Nodes(weapons) in an array
+     * @return
+     */
     public Node[] getAllItemsBFS() {
         List<Node> items = new ArrayList<>();
         int height = height(root);
@@ -113,8 +136,14 @@ public class ItemTree implements Serializable {
         return items.toArray(Node[]::new);
     }
 
-    // Helper function for getAllItems but also publicly accessible
-    // to find weapons of a certain level
+    /**
+     * Helper function for getAllItems but also publicly accessible
+     * to find weapons of a certain level
+     * @param root
+     * @param level
+     * @param result
+     * @return
+     */
     public ArrayList<Node> getLevelItems(Node root, int level, ArrayList<Node> result) {
         if (root == null) return result;
         if (level == 1) {
@@ -127,7 +156,11 @@ public class ItemTree implements Serializable {
         return result;
     }
 
-    // returns the height of the tree from the node passed in (typically the root)
+    /**
+     * returns the height of the tree from the node passed in (typically the root)
+     * @param root
+     * @return
+     */
     public int height(Node root) {
         if (root == null) return 0;
         else {
@@ -138,27 +171,38 @@ public class ItemTree implements Serializable {
             else return (rheight + 1);
         }
     }
-
-    // Size is used to set the Node id and is also the current
-    // size of the tree
+    /**
+     * Size is used to set the Node id and is also the current
+     * size of the tree
+     * @return
+     */
     public int getSize() {
         return size;
     }
-
+    /**
+     * returns the root of the tree
+     * @return
+     */
     public Node getRoot() {
         return root;
     }
-
-    // getChildren is for determining what two items
-    // combine to make the parent item
+    /**
+     * getChildren is for determining what two items
+     * combine to make the parent item
+     * @param item
+     * @return
+     */
     public Node[] getChildren(Item item) {
         Node parent = find(item);
         return new Node[]{parent.getLeft(), parent.getRight()};
     }
-
-    // getParentAndSibling is for determining if you
-    // have one item will it combine to make another item
-    // if so then what other item
+    /**
+     *  getParentAndSibling is for determining if you
+     *  have one item will it combine to make another item
+     *  if so then what other item
+     * @param item
+     * @return
+     */
     public Node[] getParentAndSibling(Item item) {
         Node firstChild = find(item);
         if(firstChild == root) { return new Node[]{firstChild}; }
@@ -171,8 +215,10 @@ public class ItemTree implements Serializable {
         }
         return new Node[]{parent};
     }
-
-    // A version of toString that shows more details for development
+    /**
+     *  A version of toString that shows more details for development
+     * @return
+     */
     public String treeNodeDetails() {
         StringBuilder result = new StringBuilder();
         Node[] allItemsInTree = getAllItemsBFS();

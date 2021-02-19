@@ -1,4 +1,8 @@
 package com.sourdoughsoftware.gamepieces;
+/**
+ * CookBook extends the Noun class
+ * This class holds all possible recipes and recipes currently discovered by the player
+ */
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
@@ -15,6 +19,10 @@ import static com.sourdoughsoftware.utility.Colors.ANSI_RESET;
 public class CookBook extends Noun implements Serializable {
     private ArrayList<String> recipes = new ArrayList<>();
     private ArrayList<String> currentRecipes = new ArrayList();
+
+    /**
+     * Primary constructor using findableWeapons in GameState
+     */
     public CookBook() {
         super("cook book", "its a cookbook");
         ArrayList<Pie> findablePies = GameState.getFindableWeapons();
@@ -27,6 +35,9 @@ public class CookBook extends Noun implements Serializable {
         }
     }
 
+    /**
+     * Allows adding a new recipe to the cookbook until all recipes are found
+     */
     public String addRecipe() {
         Random rand = new Random();
         if(recipes.size() >0) {
@@ -39,6 +50,10 @@ public class CookBook extends Noun implements Serializable {
         return "You know all the recipes!";
     }
 
+    /**
+     * Provides a cookbook string output of currently discovered recipes
+     * @return
+     */
     public String getRecipes() {
         if(currentRecipes.size() == 0) {
             return "The cook book is empty";
@@ -55,6 +70,10 @@ public class CookBook extends Noun implements Serializable {
         return cookBook.toString();
     }
 
+    /**
+     * Alternate method to call getRecipes()
+     * @return
+     */
     public String getDescription() {
         return getRecipes();
     }

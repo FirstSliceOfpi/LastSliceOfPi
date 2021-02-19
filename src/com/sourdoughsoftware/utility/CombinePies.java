@@ -7,8 +7,14 @@ package com.sourdoughsoftware.utility;
 import com.sourdoughsoftware.gamepieces.Pie;
 
 public class CombinePies {
-    // returns the original weapon if it can not be combined otherwise it returns
-    // the higher level combined weapon
+    /**
+     *   returns the original weapon if it can not be combined otherwise it returns
+     *   the higher level combined weapon
+     * @param pie1
+     * @param pie2
+     * @param tree
+     * @return
+     */
     public static Pie combine(Pie pie1, Pie pie2, ItemTree tree) {
         Node[] parentAndSibling = tree.getParentAndSibling(pie1);
         Pie sibling;

@@ -34,32 +34,6 @@ import static java.lang.Boolean.parseBoolean;
 
 public class XmlParser {
 
-//    public static void parseItems() {
-//
-//        try {
-//            Document document = loadXML("resources/Items.xml");
-//
-//            NodeList nodeList = document.getElementsByTagName("item");
-//
-//            for (int current = 0; current < nodeList.getLength(); current++) {
-//                Node node = nodeList.item(current);
-//
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//
-//                    Element currentElement = (Element) node;
-//                    String name = currentElement.getElementsByTagName("name").item(0).getTextContent();
-//                    String description = currentElement.getElementsByTagName("description").item(0).getTextContent();
-//
-//                    new Item(name, description);
-//
-//                }
-//            }
-//        } catch (ParserConfigurationException | IOException | SAXException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//    }
-
     public static void parseNouns() {
         HashMap<String, Noun> temp = new HashMap<>();
 

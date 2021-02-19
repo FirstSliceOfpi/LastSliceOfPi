@@ -1,4 +1,8 @@
 package com.sourdoughsoftware.utility;
+/**
+ * This class allows entry into an Excel file and automatic refactor into a
+ * useful XML file for nouns
+ */
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
