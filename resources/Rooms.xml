@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Rooms>
-    <room id="0">
+    <room>
+        <roomName>start</roomName>
+        <description>
+           ***
+        </description>
+        <exit>
+            <compass>north</compass>
+            <rose>start</rose>
+        </exit>
+        <exit>
+            <compass>south</compass>
+            <rose>start</rose>
+        </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>start</rose>
+        </exit>
+        <exit>
+            <compass>west</compass>
+            <rose>start</rose>
+        </exit>
+        <shortDescription>This was where you started. Nothing here.</shortDescription>
+    </room>
+    <room>
         <roomName>start</roomName>
         <description>
             You're in a circular room, unsure how you got here. Your mouth is dry,
@@ -29,7 +52,7 @@
         </exit>
         <shortDescription>This was where you started. Nothing here.</shortDescription>
     </room>
-    <room id="1">
+    <room>
         <roomName>snow white</roomName>
         <description>
             As your eyes adjust to the darkness, you find yourself in tall room with stone walls.
@@ -48,7 +71,7 @@
         </exit>
         <shortDescription>Is that an apple reflected in a mirror? Because you could use a little snack.</shortDescription>
     </room>
-    <room id="2">
+    <room>
         <roomName>frog prince</roomName>
         <description>
             You feel a perfect breeze and find yourself in a bright, airy room with open double doors.
@@ -67,7 +90,7 @@
         </exit>
         <shortDescription>Do you wonder if that tiny crown is waterproof? Also, do you smell amphibians?</shortDescription>
     </room>
-    <room id="3">
+    <room>
         <roomName>rapunzel</roomName>
         <description>
             You hear beautiful singing in the distance. Enchanted, you follow the sound.
@@ -90,7 +113,7 @@
         </exit>
         <shortDescription>There is so much hair in this room. And no door in sight.</shortDescription>
     </room>
-    <room id="4">
+    <room>
         <roomName>rumplestiltskin</roomName>
         <description>
             You can smell the fresh straw from outside the room.
@@ -107,7 +130,7 @@
         </exit>
         <shortDescription>This room could be worth its weight in gold.</shortDescription>
     </room>
-    <room id="5">
+    <room>
         <roomName>cinderella</roomName>
         <description>
             This room smells clean and damp, like it’s just been cleaned.
@@ -127,7 +150,7 @@
         </exit>
         <shortDescription>Are those keys to a pumpkin carriage?!?!</shortDescription>
     </room>
-    <room id="6">
+    <room>
         <roomName>hansel and gretel</roomName>
         <description>
             The delicious smell four fresh, warm gingerbread cookies lure you into the room.
@@ -143,7 +166,7 @@
         </exit>
         <shortDescription>If you have a sweet tooth, you are going to love this room.</shortDescription>
     </room>
-    <room id="7">
+    <room>
         <roomName>red riding hood</roomName>
         <description>
             You see a single bed in this room, piled high with pillows and blankets.
@@ -159,7 +182,7 @@
         </exit>
         <shortDescription>My, but what big ears those are!</shortDescription>
     </room>
-    <room id="8">
+    <room>
         <roomName>shoemaker</roomName>
         <description>
             This room is crowded with items and smells of leather.
@@ -179,7 +202,7 @@
         </exit>
         <shortDescription>Those might be the tiniest shoeprints you've ever seen.</shortDescription>
     </room>
-    <room id="9">
+    <room>
         <roomName>sleeping beauty</roomName>
         <description>
             This room is cozy and dim.
@@ -200,7 +223,7 @@
         </exit>
         <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
     </room>
-    <room id="10">
+    <room>
         <roomName>golden goose</roomName>
         <description>
             This room is furnished sparsely, with contents that look worn or handed down.
@@ -218,7 +241,7 @@
         </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
-    <room id="11">
+    <room>
         <roomName>sheriff woody</roomName>
         <description>
            This room radiates with joy and happiness. The curtains are colorful and playful,
@@ -239,7 +262,7 @@
         </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
-    <room id="12">
+    <room>
         <roomName>aladdin</roomName>
         <description>
             This room smells of danger, beats of a drum hums in the air. Gold piles with jewels
@@ -253,7 +276,7 @@
         </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
-    <room id="13">
+    <room>
         <roomName>narnia</roomName>
         <description>
             This room...well this is not quite that. You make your way through a wardrobe into
@@ -280,7 +303,7 @@
         </exit>
         <shortDescription>Nothing much to see in here, but there is definitely a distinct FOWL smell.</shortDescription>
     </room>
-    <room id="14">
+    <room>
         <roomName>elsa</roomName>
         <description>
             This room is cold to the touch...literally. Ice sculptures as far as the eye can see.

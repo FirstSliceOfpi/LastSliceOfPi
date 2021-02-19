@@ -44,6 +44,12 @@ public class Cheat {
         return "Powered Up!";
     }
 
+    public String getMap() {
+        PrintFiles p = new PrintFiles();
+        p.print("map.txt");
+        return "Here is your map";
+    }
+
     /**
      * double the attack points for all items in the ItemTree
      * @return String indicating success

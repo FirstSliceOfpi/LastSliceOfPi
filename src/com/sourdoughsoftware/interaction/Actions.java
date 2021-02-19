@@ -418,6 +418,8 @@ public class Actions {
             return Cheat.getInstance().doubleAttackPoints();
         }else if(cheat.equals("super power")){
             return Cheat.getInstance().doubleAllAP();
+        }else if (cheat.equals("map")) {
+            return Cheat.getInstance().getMap();
         }
         return "Can not perform that cheat.";
     }
