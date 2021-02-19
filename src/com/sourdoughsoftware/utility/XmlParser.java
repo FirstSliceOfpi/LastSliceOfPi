@@ -34,7 +34,7 @@ import static java.lang.Boolean.parseBoolean;
 
 public class XmlParser {
 
-    public static void parseNouns() {
+    public static void parseItems() {
         HashMap<String, Noun> temp = new HashMap<>();
 
         ItemTree tree = new ItemTree();

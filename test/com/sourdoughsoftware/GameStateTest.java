@@ -3,7 +3,6 @@ package com.sourdoughsoftware;
 import com.sourdoughsoftware.dictionary.Dictionary;
 import com.sourdoughsoftware.gamepieces.CookBook;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.interaction.ChainOfEventException;
 import com.sourdoughsoftware.utility.ItemTree;
 import com.sourdoughsoftware.utility.XmlParser;
 import com.sourdoughsoftware.world.Directions;
@@ -42,7 +41,7 @@ public class GameStateTest {
     @Test
     public void saveGame() throws ParserConfigurationException, SAXException, IOException {
         XmlParser.parseVerbs();
-        XmlParser.parseNouns();
+        XmlParser.parseItems();
         new Directions();
         new World();
         HashMap<String, Object> pies = XmlParser.parsePies();
