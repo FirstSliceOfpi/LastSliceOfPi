@@ -27,8 +27,6 @@ public class Enemy extends Noun implements java.io.Serializable {
     // Single ctor
     public Enemy(String name, String enemyClass, int hp, String pie, String background, String deadtext) {
         super(name, background);
-//        this.name = name;
-
 
         this.enemyClass = enemyClass;
         this.hp = hp;
@@ -38,18 +36,7 @@ public class Enemy extends Noun implements java.io.Serializable {
         setAttackable(true);
 //        this.setAction("feed", new ArrayList<>(){{add(new Event(VerbGroup.feed, "Im hungry"));}});
 
-
     }
-
-
-    //Getters & Setters
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 
     public static int getTotalEnemiesAlive() {
         return totalEnemiesAlive;

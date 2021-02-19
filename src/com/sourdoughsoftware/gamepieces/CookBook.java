@@ -17,8 +17,8 @@ import static com.sourdoughsoftware.utility.Colors.ANSI_UNDERLINE;
 import static com.sourdoughsoftware.utility.Colors.ANSI_RESET;
 
 public class CookBook extends Noun implements Serializable {
-    private ArrayList<String> recipes = new ArrayList<>();
-    private ArrayList<String> currentRecipes = new ArrayList();
+    private final ArrayList<String> recipes = new ArrayList<>();
+    private final ArrayList<String> currentRecipes = new ArrayList<>();
 
     /**
      * Primary constructor using findableWeapons in GameState
@@ -38,6 +38,7 @@ public class CookBook extends Noun implements Serializable {
 
     /**
      * Allows adding a new recipe to the cookbook until all recipes are found
+     * @return String statement indicating success or not
      */
     public String addRecipe() {
         Random rand = new Random();
@@ -52,8 +53,8 @@ public class CookBook extends Noun implements Serializable {
     }
 
     /**
-     * Provides a cookbook string output of currently discovered recipes
-     * @return
+     *
+     * @return Provides a cookbook string output of currently discovered recipes
      */
     public String getRecipes() {
         if(currentRecipes.size() == 0) {
@@ -73,7 +74,7 @@ public class CookBook extends Noun implements Serializable {
 
     /**
      * Alternate method to call getRecipes()
-     * @return
+     * @return String of recipes
      */
     public String getDescription() {
         return getRecipes();
