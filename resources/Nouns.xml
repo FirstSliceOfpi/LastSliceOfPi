@@ -117,6 +117,21 @@
             </cheat>
         </modifiers>
     </item>
+    <item id="222">
+        <name>map</name>
+        <description>where am I exactly?</description>
+        <attackPoints>0</attackPoints>
+        <Findable>false</Findable>
+        <Generic>true</Generic>
+        <modifiers>
+            <cheat>
+                <action>
+                    cheat
+                    <arg>map</arg>
+                </action>
+            </cheat>
+        </modifiers>
+    </item>
     <item id="2">
         <name>super power</name>
         <description>Homelander Style</description>
