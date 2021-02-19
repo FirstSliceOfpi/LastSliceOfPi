@@ -67,7 +67,7 @@ public class Player implements Serializable, Savable {
 
         private Inventory() {
             super("inventory", "This is your inventory bag");
-            setExaminable(true);
+//            setExaminable(true);
             saveClass();
         }
 

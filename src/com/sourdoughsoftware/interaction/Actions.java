@@ -64,8 +64,8 @@ public class Actions {
                 return getDescription();
             case feed:
                 return feed(Command.getNoun(), Command.getTargetNoun());
-            case wield:
-                return wield(Command.getNoun(), Command.getVerb());
+//            case wield:
+//                return wield(Command.getNoun(), Command.getVerb());
             case attack:
                 return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
             case show:
@@ -423,13 +423,13 @@ public class Actions {
     }
 
 
-    private static String wield(Noun noun, Verb verb) {
-        if (noun.isWieldable()) {
-            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
-        } else {
-            return noun.getName() + " is not a weapon";
-        }
-    }
+//    private static String wield(Noun noun, Verb verb) {
+//        if (noun.isWieldable()) {
+//            return "YOU now "+ verb.getName() + " " + noun.getName() + noun.getDescription();
+//        } else {
+//            return noun.getName() + " is not a weapon";
+//        }
+//    }
 
     public static String feed(Noun noun, Noun targetNoun) {
         if(!World.getCurrentRoom().has(targetNoun)) {

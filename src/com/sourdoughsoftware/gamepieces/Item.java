@@ -11,10 +11,10 @@ public class Item extends Noun implements Serializable {
 
     public Item(String name, String description) {
         super(name, description);
-        setGrabable(true);
-        setDropable(true);
+//        setGrabable(true);
+//        setDropable(true);
         this.setAction("grab", new ArrayList<>(){{add(new Event(VerbGroup.dropFromRoom, "dropped from room"));add(new Event(VerbGroup.addToInventory, "It's now in your inventory"));}});
-        this.setAction("pick up", new ArrayList<>(){{add(new Event(VerbGroup.dropFromRoom, "dropped from room"));add(new Event(VerbGroup.addToInventory, "It's now in yur inventory."));}});
+        this.setAction("pick up", new ArrayList<>(){{add(new Event(VerbGroup.dropFromRoom, "dropped from room"));add(new Event(VerbGroup.addToInventory, "It's now in yur inventory.1"));}});
         this.setAction("get", new ArrayList<>(){{add(new Event(VerbGroup.dropFromRoom, "dropped from room"));add(new Event(VerbGroup.addToInventory, ". It's now in your inventory"));}});
         this.setAction("drop", new ArrayList<>(){{add(new Event(VerbGroup.dropFromInventory, "dropped to inventory"));add(new Event(VerbGroup.addToRoom, "It's added to room"));}});
 
@@ -22,8 +22,8 @@ public class Item extends Noun implements Serializable {
 
     public Item(Item item) {
         super(item.getName(), item.getDescription());
-        setGrabable(true);
-        setDropable(true);
+//        setGrabable(true);
+//        setDropable(true);
     }
 
     public Item() {}

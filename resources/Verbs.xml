@@ -5,6 +5,14 @@
         <group>unique</group>
     </verb>
     <verb>
+        <name>pick up</name>
+        <group>unique</group>
+    </verb>
+    <verb>
+        <name>get</name>
+        <group>unique</group>
+    </verb>
+    <verb>
         <name>drop</name>
         <group>unique</group>
     </verb>

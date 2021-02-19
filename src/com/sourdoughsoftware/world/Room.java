@@ -211,7 +211,7 @@ public class Room implements java.io.Serializable, Savable {
      */
     public void addGenericsToRoomOnEntering(int tries) {
         Random rand = new Random();
-        ArrayList<Noun> allNouns = Dictionary.INSTANCE.getAllNouns();
+        ArrayList<Noun> allNouns = Dictionary.INSTANCE.getNounsForRespawn();
         int maxSize = allNouns.size();
         int difficulty = (maxSize*1);
         int randomNumber = rand.nextInt(difficulty);
