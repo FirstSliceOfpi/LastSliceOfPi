@@ -497,5 +497,33 @@
             </drink>
         </modifiers>
     </item>
+    <item id="44">
+        <name>boomerang</name>
+        <description>I wonder how far I can toss this. It's all in the flick of the wrist
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <toss>
+                <action>print
+                    <arg>You toss the boomerang.</arg>
+                </action>
 
+                <action>destroyNoun
+                    <arg>It didn't come back though</arg>
+                </action>
+            </toss>
+            <flick>
+                <action>print
+                    <arg>You flick the boomerang with great technique. It makes its way back with a banana</arg>
+                </action>
+                <action>reward
+                    <arg>blueberry pie</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Enough of this boomerang. Gotta keep it moving</arg>
+                </action>
+            </flick>
+        </modifiers>
+    </item>
 </Items>
