@@ -15,8 +15,7 @@ public class GameClient {
                 GameState.setDevMode();
             }
         }
-        // Tell GameState about all Enums and Classes
-        Dictionary.INSTANCE.saveClass();
+        GameState.getDevMode();
         WelcomeScreen w = new WelcomeScreen();
         w.settingTheScene();
         w.loadingScreen();

@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class GameState implements Serializable, Savable{
     private static Boolean devMode = false;
-    private static ArrayList<Pie> findableWeapons = new ArrayList<Pie>();
+    private static ArrayList<Pie> findableWeapons = new ArrayList<>();
     private static ArrayList<Savable> savedClasses = new ArrayList<>();
     private static ItemTree tree = new ItemTree();
     private static Player player = new Player("edgar");
@@ -33,6 +33,7 @@ public class GameState implements Serializable, Savable{
     //create method to save the game
     public static boolean saveGame(File fileToSave) {
         try {
+            GameState gs = new GameState();
             FileOutputStream fileStream = new FileOutputStream(fileToSave.getAbsolutePath());
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
             for(int i = 0; i < savedClasses.size(); i++) {
@@ -64,6 +65,7 @@ public class GameState implements Serializable, Savable{
 
     public static boolean loadGame(File fileToLoad) {
         try {
+            GameState gs = new GameState();
             FileInputStream fileStream = new FileInputStream(fileToLoad.getAbsolutePath());
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
             for(int i = 0; i < savedClasses.size(); i++) {
