@@ -165,9 +165,8 @@ public class XmlParser {
                 String foodAlergies = singleEnemy.getElementsByTagName("foodAlergies").item(0).getTextContent().strip();
                 String enemyClass = singleEnemy.getElementsByTagName("class").item(0).getTextContent().strip();
                 String deadtext = singleEnemy.getElementsByTagName("deadtext").item(0).getTextContent().strip();
-                //addInteractions(singleEnemy, enemy);
                 //Add Enemy to list
-                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,background,deadtext);
+                enemy = new Enemy(name, enemyClass ,hp, foodAlergies,  background, deadtext);
                 enemies.add(enemy);
 
             }
@@ -176,28 +175,34 @@ public class XmlParser {
     }
 
     public static ArrayList<Room> parseRooms() {
+        //Instantiate new Room list
         ArrayList<Room> rooms = new ArrayList<>();
         try{
             Document document = loadXML("resources/Rooms.xml");
+            // With node list find each element and construct room object
             NodeList nodeList = document.getElementsByTagName("room");
+            // Iterate through each node in nodeList
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element roomElement = (Element) node;
-//                    String roomID = roomElement.getElementsByTagName("roomID").item(0).getTextContent();
+                    // Generate local variables from each "room" element in XML
                     String name = roomElement.getElementsByTagName("roomName").item(0).getTextContent().strip();
                     String description = roomElement.getElementsByTagName("description").item(0).getTextContent();
-
+                    // Construct new room and add to room list
                     Room room = new Room(name,description);
+                    //for loops to read multiple exits. Return list of exits
                     for (int j =0; j< roomElement.getElementsByTagName("exit").getLength(); j++) {
+                        //cast the item read back as Element from node
                         Element el = (Element) roomElement.getElementsByTagName("exit").item(j);
 
                         String direction = el.getElementsByTagName("compass").item(0).getTextContent().strip();
                         String directionName = el.getElementsByTagName("rose").item(0).getTextContent().strip();
-
+                        //pointing to hashmap and mapping direction to room name
                         room.roomList.put(direction,directionName);
                     }
+                    // will populate the rooms
                     rooms.add(room);
 
                 }
