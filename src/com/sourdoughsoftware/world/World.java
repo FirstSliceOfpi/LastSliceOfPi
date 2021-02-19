@@ -60,78 +60,78 @@ public class World implements Savable {
                     Enemy.incrementEnemiesHungry();
                     Enemy.incrementTotalEnemies();
                     break;
-//                case "rapunzel":
-//                    room.addToRoom(enemies.get(3));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "rumplestiltskin":
-//                    room.addToRoom(enemies.get(4));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "cinderella":
-//                    room.addToRoom(enemies.get(5));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "hansel and gretel":
-//                    room.addToRoom(enemies.get(6));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "red riding hood":
-//                    room.addToRoom(enemies.get(7));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "shoemaker":
-//                    room.addToRoom(enemies.get(8));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "sleeping beauty":
-//                    room.addToRoom(enemies.get(0));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "golden goose":
-//                    room.addToRoom(enemies.get(10));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "sheriff woody":
-//                    room.addToRoom(enemies.get(13));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "aladdin":
-//                    room.addToRoom(enemies.get(12));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "narnia":
-//                    room.addToRoom(enemies.get(9));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
-//                case "elsa":
-//                    room.addToRoom(enemies.get(11));
-//                    Enemy.incrementEnemiesAlive();
-//                    Enemy.incrementEnemiesHungry();
-//                    Enemy.incrementTotalEnemies();
-//                    break;
+                case "rapunzel":
+                    room.addToRoom(enemies.get(3));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "rumplestiltskin":
+                    room.addToRoom(enemies.get(4));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "cinderella":
+                    room.addToRoom(enemies.get(5));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "hansel and gretel":
+                    room.addToRoom(enemies.get(6));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "red riding hood":
+                    room.addToRoom(enemies.get(7));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "shoemaker":
+                    room.addToRoom(enemies.get(8));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "sleeping beauty":
+                    room.addToRoom(enemies.get(0));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "golden goose":
+                    room.addToRoom(enemies.get(10));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "sheriff woody":
+                    room.addToRoom(enemies.get(13));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "aladdin":
+                    room.addToRoom(enemies.get(12));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "narnia":
+                    room.addToRoom(enemies.get(9));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
+                case "elsa":
+                    room.addToRoom(enemies.get(11));
+                    Enemy.incrementEnemiesAlive();
+                    Enemy.incrementEnemiesHungry();
+                    Enemy.incrementTotalEnemies();
+                    break;
             }
 
         }

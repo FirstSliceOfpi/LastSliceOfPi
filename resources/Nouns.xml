@@ -193,7 +193,9 @@
     </item>
     <item id="10">
         <name>gingerbread</name>
-        <description>It wants to eat you. I mean it wants you to eat it. Of course if gingerbread isn't your thing you can always karate kick it across the room</description>
+        <description>It wants to eat you. I mean it wants you to eat it. Of course if gingerbread isn't your thing you
+            can always karate kick it across the room
+        </description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
@@ -226,7 +228,8 @@
     </item>
     <item id="13">
         <name>chest</name>
-        <description>The chest is so ornate, you don't even think you need to open it. Could use some cleaning.</description>
+        <description>The chest is so ornate, you don't even think you need to open it. Could use some cleaning.
+        </description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
@@ -244,7 +247,9 @@
             </open>
             <clean>
                 <action>print
-                    <arg>You take out your Febreeze spray and start cleaning the chest. You use Febreeze to clean a chest right?</arg>
+                    <arg>You take out your Febreeze spray and start cleaning the chest. You use Febreeze to clean a
+                        chest right?
+                    </arg>
                 </action>
                 <action>destroyNoun
                     <arg>The chest deteriorates. Guess you don't use Febreeze to clean a chest.</arg>
@@ -286,7 +291,8 @@
     </item>
     <item id="18">
         <name>crystal sphere</name>
-        <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there. These things grant wishes if I rub them right? Wonder whats inside.
+        <description>You stare into the translucent, perfect crystal, and feel like it might be nice in there. These
+            things grant wishes if I rub them right? Wonder whats inside.
         </description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
@@ -313,7 +319,7 @@
     </item>
     <item id="23">
         <name>chair</name>
-        <description>A chair to some, a bed to others. Maybe time for a rest. </description>
+        <description>A chair to some, a bed to others. Maybe time for a rest.</description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <Generic>true</Generic>
@@ -345,77 +351,83 @@
             </read>
         </modifiers>
     </item>
-            <item id="35">
-                <name>bottle</name>
-                <description>Who left this trash here. Someone should throw this away.</description>
-                <attackPoints>0</attackPoints>
-                <Findable>true</Findable>
-                <modifiers>
-                    <throw>
-                        <action>print
-                            <arg>There we go. Good deed done. </arg>
-                        </action>
-                        <action>destroyNoun
-                            <arg>Hope I don't see anymore bottles laying around.</arg>
-                        </action>
-                    </throw>
-                    <recycle>
-                        <action>print
-                            <arg>Saving the planet while I'm at it. Oh, theres a cream pie in the recycle bin. Well five second rule right?</arg>
-                        </action>
-                        <action>reward
-                            <arg>cream pie</arg>
-                        </action>
-                        <action>destroyNoun
-                            <arg>Hope I don't see anymore bottles laying around.</arg>
-                        </action>
-                    </recycle>
-                </modifiers>
-            </item>
+    <item id="35">
+        <name>bottle</name>
+        <description>Who left this trash here. Someone should throw this away.</description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <throw>
+                <action>print
+                    <arg>There we go. Good deed done.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Hope I don't see anymore bottles laying around.</arg>
+                </action>
+            </throw>
+            <recycle>
+                <action>print
+                    <arg>Saving the planet while I'm at it. Oh, theres a cream pie in the recycle bin. Well five second
+                        rule right?
+                    </arg>
+                </action>
+                <action>reward
+                    <arg>cream pie</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Hope I don't see anymore bottles laying around.</arg>
+                </action>
+            </recycle>
+        </modifiers>
+    </item>
 
 
-            <item id="38">
-                <name>tax returns</name>
-                <description>Oh its my tax returns. Maybe I should file my taxes.
-                </description>
-                <attackPoints>0</attackPoints>
-                <Findable>true</Findable>
-                <modifiers>
-                    <file>
-                        <action>print
-                            <arg>You file your taxes. The IRS owes you a cherry.</arg>
-                        </action>
-                        <action>reward
-                            <arg>cherry</arg>
-                        </action>
-                        <action>destroyNoun
-                            <arg>Glad I got that over with</arg>
-                        </action>
-                    </file>
-                </modifiers>
-            </item>
-            <item id="44">
-                <name>shirt</name>
-                <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such finery! Seems like its your size</description>
-                <attackPoints>0</attackPoints>
-                <Findable>true</Findable>
-                <modifiers>
-                    <wear>
-                        <action>print
-                            <arg>Oh wow its Gucci. Nice. And there's sugar in the pocket. dafuq?</arg>
-                        </action>
-                        <action>reward
-                            <arg>sugar</arg>
-                        </action>
-                        <action>destroyNoun
-                            <arg>Enough with fashion. I need to leave this place.</arg>
-                        </action>
-                    </wear>
-                </modifiers>
-            </item>
+    <item id="38">
+        <name>tax returns</name>
+        <description>Oh its my tax returns. Maybe I should file my taxes.
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <file>
+                <action>print
+                    <arg>You file your taxes. The IRS owes you a cherry.</arg>
+                </action>
+                <action>reward
+                    <arg>cherry</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Glad I got that over with</arg>
+                </action>
+            </file>
+        </modifiers>
+    </item>
+    <item id="44">
+        <name>shirt</name>
+        <description>The clothing, while folded, is just so small and cute you can't imagine who would fit in such
+            finery! Seems like its your size
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <wear>
+                <action>print
+                    <arg>Oh wow its Gucci. Nice. And there's sugar in the pocket. dafuq?</arg>
+                </action>
+                <action>reward
+                    <arg>sugar</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Enough with fashion. I need to leave this place.</arg>
+                </action>
+            </wear>
+        </modifiers>
+    </item>
     <item id="35">
         <name>wardrobe</name>
-        <description>An old family wardrobe that magically vibrates. There seems to be no lock on it. I wonder if its smashable. </description>
+        <description>An old family wardrobe that magically vibrates. There seems to be no lock on it. I wonder if its
+            smashable.
+        </description>
         <attackPoints>0</attackPoints>
         <Findable>true</Findable>
         <modifiers>
@@ -440,4 +452,50 @@
             </smash>
         </modifiers>
     </item>
+    <item id="44">
+        <name>laptop</name>
+        <description>Oh wow a macbook pro. It looks like intellij is open on it. Lots of bugs here. I can make better code than this.
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <code>
+                <action>print
+                    <arg>You write a hello world.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>Null pointer Exception. laptop blows up</arg>
+                </action>
+            </code>
+            <debug>
+                <action>print
+                    <arg>You debug this spaghetti code. A programmer jumps in through the window. Programmer: OMG how did you do that? Thanks! Here's a chess pie!</arg>
+                </action>
+                <action>reward
+                    <arg>chess pie</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>The programmer flies away with his laptop never to be seen again.</arg>
+                </action>
+            </debug>
+        </modifiers>
+    </item>
+    <item id="44">
+        <name>jack daniels whiskey no 47</name>
+        <description>some good ol whiskey.</description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <drink>
+                <action>print
+                    <arg>You take a drink. Another. Might as well chug it!........... You wake up the next day next to some pecan pie and a picture of you in vegas. </arg>
+                </action>
+                <action>reward<arg>pecan pie</arg></action>
+                <action>destroyNoun
+                    <arg>Bottle is empty. Guess you did finish it.</arg>
+                </action>
+            </drink>
+        </modifiers>
+    </item>
+
 </Items>

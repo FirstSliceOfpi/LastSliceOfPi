@@ -141,4 +141,9 @@ public class Enemy extends Noun implements java.io.Serializable {
     public void setBackground(String background) {
         this.background = background;
     }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ". " + getName() +" loves " + pie;
+    }
 }
