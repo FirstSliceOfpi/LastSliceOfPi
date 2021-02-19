@@ -50,6 +50,16 @@ public class Cheat {
         return "Here is your map";
     }
 
+    public String getJay() {
+        String open = "https://www.youtube.com/watch?v=hyctW2abkY4";
+        try {
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(open));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+           return "Jammin Jbone Jay!!";
+    }
+
     /**
      * double the attack points for all items in the ItemTree
      * @return String indicating success

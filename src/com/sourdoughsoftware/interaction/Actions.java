@@ -420,6 +420,8 @@ public class Actions {
             return Cheat.getInstance().doubleAllAP();
         }else if (cheat.equals("map")) {
             return Cheat.getInstance().getMap();
+        }else if (cheat.equals("jay do you have our analytics graded?")) {
+            return Cheat.getInstance().getJay();
         }
         return "Can not perform that cheat.";
     }
