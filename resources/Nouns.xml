@@ -556,4 +556,59 @@
             </flick>
         </modifiers>
     </item>
+    <item id="44">
+        <name>money</name>
+        <description>It's a hundred dollar bill. I can spend it or save it.
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <spend>
+                <action>print
+                    <arg>You buy some butter this cash you found.</arg>
+                </action>
+                <action>reward
+                <arg>butter</arg>
+            </action>
+                <action>destroyNoun
+                    <arg>The money is easy to spend and hard to make.</arg>
+                </action>
+            </spend>
+            <save>
+                <action>print
+                    <arg>How responsible of you. You put it in your savings account.</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>You're savings account is now $100 higher. Better not touch it.</arg>
+                </action>
+            </save>
+        </modifiers>
+    </item>
+    <item id="44">
+        <name>will smith cd</name>
+        <description>Wow a will smith cd. Or is it trash?
+        </description>
+        <attackPoints>0</attackPoints>
+        <Findable>true</Findable>
+        <modifiers>
+            <play>
+                <action>print
+                    <arg>You play the will smith cd. Wow I guess it was trash</arg>
+                </action>
+                <action>destroyNoun
+                    <arg>I'll just toss it.</arg>
+                </action>
+            </play>
+            <throw>
+                <action>print
+                    <arg>You look at the corner of your eye and see some toffee. More useful than a will smith cd thats for sure.</arg>
+                </action>
+                <action>reward<arg>toffee</arg></action>
+                <action>destroyNoun
+                    <arg>Im gonna just toss this cd. Not my style. </arg>
+                </action>
+            </throw>
+        </modifiers>
+    </item>
+
 </Items>
