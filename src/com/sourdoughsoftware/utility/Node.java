@@ -72,8 +72,10 @@ public class Node implements Serializable {
     public String toString() {
        return Integer.toString(id);
     }
-
-    // Modified toString to expand on output for development purposes
+    /**
+     * Modified toString to expand on output for development purposes
+     * @return
+     */
     public String nodeDetails() {
         int left = 0;
         int right = 0;

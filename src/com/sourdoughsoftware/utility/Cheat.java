@@ -1,18 +1,15 @@
 package com.sourdoughsoftware.utility;
+/**
+ * This class provides some static methods for implementing various cheats in the game
+ */
 
 import com.sourdoughsoftware.GameState;
-import com.sourdoughsoftware.dictionary.Dictionary;
-import com.sourdoughsoftware.dictionary.Noun;
-import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.gamepieces.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Cheat {
@@ -25,7 +22,11 @@ public class Cheat {
         cheat = cheat == null ? new Cheat() : cheat;
         return cheat;
     }
-    
+
+    /**
+     * Adds all possible pies the the inventory from the ItemTree
+     * @return
+     */
     public String addAllPiesToInventory() {
         Node[] allItems = GameState.getTree().getAllItemsBFS();
         for(Node node : allItems) {
@@ -34,11 +35,19 @@ public class Cheat {
         return "Your items have been delivered.";
     }
 
+    /**
+     * double the attack points of all low level pie ingredients
+     * @return
+     */
     public String doubleAttackPoints() {
         GameState.getFindableWeapons().forEach(pie -> pie.setAttackPoints(2*pie.getAttackPoints()));
         return "Powered Up!";
     }
 
+    /**
+     * double the attack points for all items in the ItemTree
+     * @return
+     */
     public String doubleAllAP() {
         Arrays.stream(GameState.getTree().getAllItemsBFS()).map(node->{
             Pie pie = (Pie) node.getItem();
@@ -48,6 +57,12 @@ public class Cheat {
         return "Super Powered!";
     }
 
+    /**
+     * Shows animated ascii art
+     * @return
+     * @throws InterruptedException
+     * @throws IOException
+     */
     public String showCheatArt() throws InterruptedException, IOException {
             String[] art = new String[0];
             try {
