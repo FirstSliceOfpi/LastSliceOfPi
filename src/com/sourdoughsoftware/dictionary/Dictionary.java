@@ -72,6 +72,7 @@ public enum Dictionary implements Serializable, Savable {
         try {
             nouns = (Map<String, Set<Noun>>) result.get("nouns");
             verbs = (Map<String, Verb>) result.get("verbs");
+            allNouns = (ArrayList<Noun>) result.get("allNouns");
         }catch (Exception e) {
             System.out.println(e);
             return false;
@@ -83,6 +84,7 @@ public enum Dictionary implements Serializable, Savable {
         HashMap<String, Object> result = new HashMap<String, Object>();
         result.put("nouns", nouns);
         result.put("verbs", verbs);
+        result.put("allNouns", allNouns);
         return result;
     }
 

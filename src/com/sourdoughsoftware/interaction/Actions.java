@@ -331,7 +331,12 @@ public class Actions {
         List<Noun> inventory = GameState.getPlayer().getInventory().getCurrentInventory();
         if(inventory.size() == 0) return "No items";
         for(Noun noun : inventory) {
+            if(noun instanceof Pie) {
+                builder.append(ANSI_RESET);
+                builder.append(ANSI_GREEN);
+            }
             builder.append(noun.getName() + "\n");
+            builder.append(ANSI_RESET);
         }
         return builder.toString();
     }

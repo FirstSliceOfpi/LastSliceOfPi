@@ -4,6 +4,7 @@ import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.dictionary.Noun;
 import com.sourdoughsoftware.utility.Node;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import static com.sourdoughsoftware.utility.Colors.ANSI_BLUE;
 import static com.sourdoughsoftware.utility.Colors.ANSI_UNDERLINE;
 import static com.sourdoughsoftware.utility.Colors.ANSI_RESET;
 
-public class CookBook extends Noun {
+public class CookBook extends Noun implements Serializable {
     private ArrayList<String> recipes = new ArrayList<>();
     private ArrayList<String> currentRecipes = new ArrayList();
     public CookBook() {
