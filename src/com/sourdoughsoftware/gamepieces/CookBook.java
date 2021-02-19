@@ -28,6 +28,7 @@ public class CookBook extends Noun implements Serializable {
         ArrayList<Pie> findablePies = GameState.getFindableWeapons();
         for(int i = 0; i < findablePies.size(); i+=2) {
             Node parent = GameState.getTree().find(findablePies.get(i)).getParent();
+            if(parent == null) continue;
             String ingredient1 = findablePies.get(i).getName();
             String ingredient2 = findablePies.get(i+1).getName();
             String recipe = parent.getItem().getName() + " = " + ingredient1 + " + " + ingredient2;
@@ -76,6 +77,14 @@ public class CookBook extends Noun implements Serializable {
      */
     public String getDescription() {
         return getRecipes();
+    }
+
+    public int getRecipesSize() {
+        return recipes.size();
+    }
+
+    public int getCurrentRecipesSize() {
+        return currentRecipes.size();
     }
 
 }
