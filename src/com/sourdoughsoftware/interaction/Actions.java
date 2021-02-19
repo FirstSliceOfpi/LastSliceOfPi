@@ -9,13 +9,11 @@ import com.sourdoughsoftware.gamepieces.Item;
 import com.sourdoughsoftware.gamepieces.Enemy;
 import com.sourdoughsoftware.gamepieces.Pie;
 import com.sourdoughsoftware.gamepieces.Player;
-import com.sourdoughsoftware.utility.Colors;
 import com.sourdoughsoftware.utility.Cheat;
 import com.sourdoughsoftware.utility.CombinePies;
 import com.sourdoughsoftware.utility.Node;
 import com.sourdoughsoftware.utility.PrintFiles;
 import com.sourdoughsoftware.world.Directions;
-import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.world.Room;
 
 import com.sourdoughsoftware.world.World;
@@ -64,8 +62,6 @@ public class Actions {
                 return getDescription();
             case feed:
                 return feed(Command.getNoun(), Command.getTargetNoun());
-//            case wield:
-//                return wield(Command.getNoun(), Command.getVerb());
             case attack:
                 return attack(Command.getNoun(),Command.getVerb(), Command.getTargetNoun());
             case show:
@@ -81,15 +77,15 @@ public class Actions {
         }
     }
 
-    /**
-     * Method for allowing to remove something from the inventory after printing a string
-     * @param str
-     * @return
-     */
-    public static String use(String str) {
-        dropFromInventory(str);
-        return str;
-    }
+//    /**
+//     * Method for allowing to remove something from the inventory after printing a string
+//     * @param str
+//     * @return
+//     */
+//    public static String use(String str) {
+//        dropFromInventory(str);
+//        return str;
+//    }
 
     /**
      * Method for removing a generic from inventory and rewarding a pie

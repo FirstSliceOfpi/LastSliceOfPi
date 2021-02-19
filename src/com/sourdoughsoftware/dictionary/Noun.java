@@ -19,13 +19,8 @@ public class Noun implements DictionaryEntry, Serializable {
     private String name;
     private String description;
 
-    private boolean examinable = false;
-    private boolean grabable = false;
-    private boolean mergeable = false;
     private boolean attackable = false;
     private boolean findable = false;
-    private boolean dropable = false;
-    private boolean wieldable = false;
     private boolean generic = false;
     private boolean cheat = false;
 
@@ -115,32 +110,8 @@ public class Noun implements DictionaryEntry, Serializable {
         this.findable = findable;
     }
 //
-//    public void setMergeable(boolean mergeable) {
-//        this.mergeable = mergeable;
-//    }
-//
-//
     public boolean isAttackable() {return attackable;}
 
     public void setAttackable(boolean attackable){this.attackable = attackable;}
-//
-//    public boolean isWieldable(){return wieldable;}
-//
-//    public void setWieldable(boolean wieldable) {
-//        this.wieldable = wieldable;
-//    }
-//
-//    public void setExaminable(boolean examinable) {
-//        this.examinable = examinable;
-//    }
-//
-//
-//    public void setGrabable(boolean grabable) {
-//        this.grabable = grabable;
-//    }
-//
-//
-//    public void setDropable(boolean dropable) {
-//        this.dropable = dropable;
-//    }
+
 }
