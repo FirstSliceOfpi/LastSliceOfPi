@@ -18,6 +18,9 @@ public enum Dictionary implements Serializable, Savable {
     private Map<String, Verb> verbs = new HashMap<>();
     private ArrayList<Noun> allNouns = new ArrayList<>();
 
+   Dictionary() {
+        saveClass();
+    }
     public void add(DictionaryEntry entry) {
 
         String[] entryNameWords = entry.getName().split(" ");

@@ -51,6 +51,7 @@ public class Room implements java.io.Serializable, Savable {
         result.put("roomItems", roomItems);
         result.put("exits", exits);
         result.put("roomList", roomList);
+        result.put("roomExits", roomExits);
         return result;
     }
 
@@ -64,6 +65,7 @@ public class Room implements java.io.Serializable, Savable {
             roomItems = (HashSet<Noun>) result.get("roomItems");
             exits = (Map<Directions.Direction, Room>) result.get("exits");
             roomList = (Map<String, String>) result.get("roomList");
+            roomExits = (Map<String, Room>) result.get("roomExits");
         }catch (Exception e) {
             return false;
         }
@@ -90,8 +92,6 @@ public class Room implements java.io.Serializable, Savable {
         Enemy.decrementEnemiesAlive();
         return noun;
     }
-
-
 
     public void createExit(Directions.Direction direction, Room newExit) {
         exits.put(direction, newExit);
@@ -172,10 +172,6 @@ public class Room implements java.io.Serializable, Savable {
         this.shortDescription = shortDescription;
     }
 
-    //    public Room getRoomAt(String dir) {
-//        return exits.get(dir);          // Returns null if dir doesn't exist
-//    }
-
     public Integer getExitByID(String dir) {
         return exitsById.get(dir);
     }
@@ -184,9 +180,6 @@ public class Room implements java.io.Serializable, Savable {
         return roomItems;
     }
 
-//    public boolean hasExit(String dir) {
-//        return exits.containsKey(dir);
-//    }
     public void addItemsToRoomOnEntering(int tries) {
         Random rand = new Random();
         int maxSize = GameState.getFindableWeapons().size();
