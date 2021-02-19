@@ -114,33 +114,33 @@ public class Noun implements DictionaryEntry, Serializable {
     public void setFindable(boolean findable) {
         this.findable = findable;
     }
-
-    public void setMergeable(boolean mergeable) {
-        this.mergeable = mergeable;
-    }
-
-
+//
+//    public void setMergeable(boolean mergeable) {
+//        this.mergeable = mergeable;
+//    }
+//
+//
     public boolean isAttackable() {return attackable;}
 
     public void setAttackable(boolean attackable){this.attackable = attackable;}
-
-    public boolean isWieldable(){return wieldable;}
-
-    public void setWieldable(boolean wieldable) {
-        this.wieldable = wieldable;
-    }
-
-    public void setExaminable(boolean examinable) {
-        this.examinable = examinable;
-    }
-
-
-    public void setGrabable(boolean grabable) {
-        this.grabable = grabable;
-    }
-
-
-    public void setDropable(boolean dropable) {
-        this.dropable = dropable;
-    }
+//
+//    public boolean isWieldable(){return wieldable;}
+//
+//    public void setWieldable(boolean wieldable) {
+//        this.wieldable = wieldable;
+//    }
+//
+//    public void setExaminable(boolean examinable) {
+//        this.examinable = examinable;
+//    }
+//
+//
+//    public void setGrabable(boolean grabable) {
+//        this.grabable = grabable;
+//    }
+//
+//
+//    public void setDropable(boolean dropable) {
+//        this.dropable = dropable;
+//    }
 }

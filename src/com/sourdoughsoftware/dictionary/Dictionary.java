@@ -2,25 +2,20 @@ package com.sourdoughsoftware.dictionary;
 
 import com.sourdoughsoftware.GameState;
 import com.sourdoughsoftware.Savable;
-import com.sourdoughsoftware.gamepieces.Enemy;
-import com.sourdoughsoftware.gamepieces.Item;
-import com.sourdoughsoftware.gamepieces.Pie;
-import com.sourdoughsoftware.world.Room;
-
 import java.io.Serializable;
 import java.util.*;
-import java.util.function.Function;
 
 public enum Dictionary implements Serializable, Savable {
     INSTANCE;
 
     private Map<String, Set<Noun>> nouns = new HashMap<>();
     private Map<String, Verb> verbs = new HashMap<>();
-    private ArrayList<Noun> allNouns = new ArrayList<>();
+    private ArrayList<Noun> nounsForRespawn = new ArrayList<>();
 
    Dictionary() {
         saveClass();
     }
+
     public void add(DictionaryEntry entry) {
 
         String[] entryNameWords = entry.getName().split(" ");
@@ -30,7 +25,7 @@ public enum Dictionary implements Serializable, Savable {
                 verbs.put(entryNameWord, (Verb) entry);
             } else {
                 Set<Noun> nounResults = nouns.get(entryNameWord);
-                allNouns.add((Noun) entry);
+                nounsForRespawn.add((Noun) entry);
                 if (nounResults == null) {
                     nouns.put(entryNameWord, new HashSet<>(){{add((Noun) entry);}});
                 } else {
@@ -41,8 +36,8 @@ public enum Dictionary implements Serializable, Savable {
         }
     }
 
-    public ArrayList<Noun> getAllNouns() {
-        return allNouns;
+    public ArrayList<Noun> getNounsForRespawn() {
+        return nounsForRespawn;
     }
     public Verb getVerb(String name) {
         return verbs.get(name);
@@ -75,7 +70,7 @@ public enum Dictionary implements Serializable, Savable {
         try {
             nouns = (Map<String, Set<Noun>>) result.get("nouns");
             verbs = (Map<String, Verb>) result.get("verbs");
-            allNouns = (ArrayList<Noun>) result.get("allNouns");
+            nounsForRespawn = (ArrayList<Noun>) result.get("allNouns");
         }catch (Exception e) {
             System.out.println(e);
             return false;
@@ -87,7 +82,7 @@ public enum Dictionary implements Serializable, Savable {
         HashMap<String, Object> result = new HashMap<String, Object>();
         result.put("nouns", nouns);
         result.put("verbs", verbs);
-        result.put("allNouns", allNouns);
+        result.put("allNouns", nounsForRespawn);
         return result;
     }
 
@@ -105,7 +100,7 @@ public enum Dictionary implements Serializable, Savable {
     }
 
     public void killNounRespawn(Noun noun) {
-        allNouns.remove(noun);
+        nounsForRespawn.remove(noun);
     }
 
     public void saveClass() {

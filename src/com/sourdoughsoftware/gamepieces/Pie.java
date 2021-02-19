@@ -19,11 +19,11 @@ public class Pie extends Item {
      */
     public Pie(String name, String description, int attackPoints, String victory) {
         super(name, description);
-        setGrabable(true);
+//        setGrabable(true);
         this.attackPoints = attackPoints;
         this.victory = victory;
-        setWieldable(true);
-        setDropable(true);
+//        setWieldable(true);
+//        setDropable(true);
     }
 
     /**
