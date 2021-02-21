@@ -221,6 +221,10 @@
             <compass>west</compass>
             <rose>aladdin</rose>
         </exit>
+        <exit>
+            <compass>east</compass>
+            <rose>sheriff woody</rose>
+        </exit>
         <shortDescription>This room looks perfect for a nice, looooooong nap.</shortDescription>
     </room>
     <room>

@@ -19,7 +19,6 @@ public class World implements Savable, Serializable {
     List<Room> gameMap = new ArrayList<>();
     List<Room> rooms = XmlParser.parseRooms();
     List<Enemy> enemies = XmlParser.parseEnemy();
-
     private static Room currentRoom;
 
     public World() throws IOException, SAXException, ParserConfigurationException {
@@ -138,6 +137,11 @@ public class World implements Savable, Serializable {
         }
         new Noun("room","All rooms.");
         saveClass();
+    }
+
+
+    public List<Room> getGameMap() {
+        return gameMap;
     }
 
     public HashMap<String, Object> getSaveFields() {
