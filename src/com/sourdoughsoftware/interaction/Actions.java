@@ -448,7 +448,7 @@ public class Actions {
     }
 
 
-    private static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
+    public static String attack(Noun noun, Verb verb, Noun targetNoun) throws ChainOfEventException{
         if(noun instanceof Enemy && targetNoun instanceof Pie) {
             return "Please use english and use 'with' ";
         }
