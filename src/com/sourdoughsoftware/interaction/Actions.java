@@ -115,7 +115,17 @@ public class Actions {
      * @return
      */
     public static String help() {
-        StringBuilder sb = new StringBuilder("Try these nouns: \n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Gameplay: \n");
+        sb.append("Example of movement: go west\n");
+        sb.append("Example of attack: attack gaston with eggs\n");
+        sb.append("Example of item interaction: examine the eggs\n");
+        sb.append("Example of feeding enemy: feed gaston eggs\n");
+        sb.append("Make sure to examine your cook book for recepie hints!\n");
+
+
+
+        sb.append("\n Try these nouns: \n");
         String[] keys = Dictionary.INSTANCE.getNouns().keySet().toArray(String[]::new);
         for(int i = 0; i < keys.length; i++){
             if(i%3 != 0) {
@@ -133,7 +143,6 @@ public class Actions {
                 sb.append("\n").append(keys[i]).append(calculateSpace(keys[i].length()));
             }
         }
-        sb.append("\n\n Also try: examine cook book");
         return sb.toString();
     }
     // Helper method for help() to put nouns and verbs in nice columns

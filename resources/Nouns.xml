@@ -584,31 +584,4 @@
             </save>
         </modifiers>
     </item>
-    <item id="44">
-        <name>will smith cd</name>
-        <description>Wow a will smith cd. Or is it trash?
-        </description>
-        <attackPoints>0</attackPoints>
-        <Findable>true</Findable>
-        <modifiers>
-            <play>
-                <action>print
-                    <arg>You play the will smith cd. Wow I guess it was trash</arg>
-                </action>
-                <action>destroyNoun
-                    <arg>I'll just toss it.</arg>
-                </action>
-            </play>
-            <throw>
-                <action>print
-                    <arg>You look at the corner of your eye and see some toffee. More useful than a will smith cd thats for sure.</arg>
-                </action>
-                <action>reward<arg>toffee</arg></action>
-                <action>destroyNoun
-                    <arg>Im gonna just toss this cd. Not my style. </arg>
-                </action>
-            </throw>
-        </modifiers>
-    </item>
-
 </Items>
