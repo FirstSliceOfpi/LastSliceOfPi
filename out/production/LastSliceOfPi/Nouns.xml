@@ -442,7 +442,7 @@
         <modifiers>
             <wear>
                 <action>print
-                    <arg>Oh wow its Gucci. Nice. And there's sugar in the pocket. dafuq?</arg>
+                    <arg>Oh wow its Gucci. Nice. And there's sugar in the pocket.</arg>
                 </action>
                 <action>reward
                     <arg>sugar</arg>
