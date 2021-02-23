@@ -1,5 +1,6 @@
+/.idea
 # Compiled class file
-*.class
+
 
 # Log file
 *.log
@@ -11,11 +12,10 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
-*.zip
+
 *.tar.gz
 *.rar
 
@@ -26,4 +26,7 @@ hs_err_pid*
 *.iml
 
 # tests
-test/
+/.idea/
+/saved_games/
+*.java
+
